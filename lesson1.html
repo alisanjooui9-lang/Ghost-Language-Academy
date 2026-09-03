@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1 | شروع زبان انگلیسی</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:
+      radial-gradient(circle at 10% 10%,rgba(0,170,255,.18),transparent 30%),
+      radial-gradient(circle at 90% 20%,rgba(130,60,255,.18),transparent 30%),
+      #070b16;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(7,11,22,.85);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    padding:14px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#5bc7ff;
+}
+
+.back{
+    color:#fff;
+    text-decoration:none;
+    background:rgba(255,255,255,.08);
+    padding:9px 14px;
+    border-radius:12px;
+}
+
+.progress-box{
+    position:fixed;
+    top:70px;
+    left:15px;
+    right:15px;
+    z-index:90;
+    height:7px;
+    background:#171d2d;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00c6ff,#8c52ff);
+    transition:.4s;
+}
+
+.container{
+    width:min(1000px,92%);
+    margin:45px auto;
+}
+
+.hero{
+    text-align:center;
+    padding:55px 20px 35px;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(0,198,255,.12);
+    border:1px solid rgba(0,198,255,.3);
+    color:#67d5ff;
+    padding:8px 15px;
+    border-radius:50px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(32px,7vw,60px);
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#aeb8cb;
+    line-height:2;
+}
+
+.section{
+    background:rgba(17,23,40,.82);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:25px;
+    margin:25px 0;
+    box-shadow:0 15px 50px rgba(0,0,0,.2);
+}
+
+.section h2{
+    margin-bottom:18px;
+    color:#68d5ff;
+}
+
+.section p{
+    color:#c3cad8;
+    line-height:2;
+    margin-bottom:12px;
+}
+
+.alphabet{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(65px,1fr));
+    gap:10px;
+}
+
+.letter{
+    background:linear-gradient(145deg,#151d32,#0d1322);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:15px;
+    padding:17px 5px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.letter:hover{
+    transform:translateY(-5px);
+    border-color:#45c9ff;
+}
+
+.letter b{
+    display:block;
+    font-size:25px;
+    color:#fff;
+}
+
+.letter small{
+    color:#8e9bb2;
+}
+
+.words{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+}
+
+.word{
+    background:#10182a;
+    border-radius:16px;
+    padding:18px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.word strong{
+    display:block;
+    color:#70d9ff;
+    font-size:21px;
+    direction:ltr;
+}
+
+.word span{
+    color:#b9c1d0;
+    display:block;
+    margin-top:8px;
+}
+
+.speak{
+    margin-top:10px;
+    border:0;
+    background:#1e2c48;
+    color:white;
+    padding:7px 12px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.example{
+    background:#0c1323;
+    border-right:4px solid #48c8ff;
+    padding:16px;
+    margin:12px 0;
+    border-radius:10px;
+    direction:ltr;
+    text-align:left;
+}
+
+.example .fa{
+    direction:rtl;
+    text-align:right;
+    color:#9da8ba;
+    margin-top:7px;
+}
+
+.question{
+    margin:20px 0;
+    padding:20px;
+    background:#0c1323;
+    border-radius:18px;
+}
+
+.question-title{
+    font-size:17px;
+    margin-bottom:15px;
+    line-height:1.8;
+}
+
+.options{
+    display:grid;
+    gap:10px;
+}
+
+.option{
+    background:#151e32;
+    border:1px solid rgba(255,255,255,.08);
+    color:#fff;
+    padding:13px;
+    border-radius:12px;
+    cursor:pointer;
+    text-align:right;
+}
+
+.option:hover{
+    border-color:#55caff;
+}
+
+.option.correct{
+    background:rgba(0,190,110,.18);
+    border-color:#00d084;
+}
+
+.option.wrong{
+    background:rgba(255,60,80,.15);
+    border-color:#ff5265;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #28344d;
+    background:#080e1b;
+    color:#fff;
+    font-size:16px;
+    outline:none;
+    direction:ltr;
+}
+
+input:focus{
+    border-color:#4bcaff;
+}
+
+.check{
+    margin-top:12px;
+    border:0;
+    padding:12px 18px;
+    border-radius:12px;
+    background:linear-gradient(90deg,#00bfff,#7655ff);
+    color:#fff;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.feedback{
+    margin-top:12px;
+    min-height:25px;
+}
+
+.order-area{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:15px 0;
+    direction:ltr;
+}
+
+.word-btn{
+    background:#19243b;
+    color:#fff;
+    border:1px solid #2b3b5c;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.answer-area{
+    min-height:55px;
+    border:2px dashed #31415e;
+    border-radius:15px;
+    padding:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    direction:ltr;
+}
+
+.score{
+    text-align:center;
+    font-size:22px;
+    margin:20px 0;
+}
+
+.complete{
+    text-align:center;
+    padding:35px 20px;
+}
+
+.complete button{
+    border:0;
+    padding:15px 25px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#00c6ff,#8055ff);
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.tip{
+    background:rgba(255,193,7,.08);
+    border:1px solid rgba(255,193,7,.2);
+    padding:15px;
+    border-radius:14px;
+    color:#e6d28a;
+    line-height:2;
+}
+
+footer{
+    text-align:center;
+    color:#66738a;
+    padding:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">👻 Ghost <span>Language Academy</span></div>
+    <a class="back" href="english.html">← دوره انگلیسی</a>
+</header>
+
+<div class="progress-box">
+    <div class="progress" id="progress"></div>
+</div>
+
+<div class="container">
+
+<section class="hero">
+    <div class="badge">LESSON 1 • BEGINNER</div>
+    <h1>شروع زبان انگلیسی 🚀</h1>
+    <p class="subtitle">
+        اولین قدمت برای یادگیری انگلیسی.<br>
+        در این درس با الفبا، کلمات پایه، تلفظ و جمله‌های ساده آشنا می‌شوی.
+    </p>
+</section>
+
+<section class="section">
+    <h2>🎯 هدف درس</h2>
+
+    <p>
+        بعد از تمام کردن این درس باید بتوانی حروف انگلیسی را بشناسی،
+        چندین کلمه‌ی پایه را بخوانی، خودت را به شکل ساده معرفی کنی
+        و جمله‌های کوتاه انگلیسی را درک کنی.
+    </p>
+
+    <div class="tip">
+        💡 نکته: لازم نیست همه چیز را یک‌باره حفظ کنی.
+        مهم این است که تمرین‌ها را انجام بدهی و اشتباهاتت را بررسی کنی.
+    </div>
+</section>
+
+<section class="section">
+    <h2>🔤 الفبای انگلیسی</h2>
+
+    <p>
+        زبان انگلیسی ۲۶ حرف دارد. روی هر حرف بزن تا تلفظ آن توسط مرورگر پخش شود.
+    </p>
+
+    <div class="alphabet" id="alphabet"></div>
+</section>
+
+<section class="section">
+    <h2>🧠 کلمات پایه</h2>
+
+    <div class="words">
+
+        <div class="word">
+            <strong>Hello</strong>
+            <span>سلام</span>
+            <button class="speak" onclick="speak('Hello')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Hi</strong>
+            <span>سلام</span>
+            <button class="speak" onclick="speak('Hi')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Goodbye</strong>
+            <span>خداحافظ</span>
+            <button class="speak" onclick="speak('Goodbye')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Yes</strong>
+            <span>بله</span>
+            <button class="speak" onclick="speak('Yes')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>No</strong>
+            <span>نه</span>
+            <button class="speak" onclick="speak('No')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Thanks</strong>
+            <span>ممنون</span>
+            <button class="speak" onclick="speak('Thanks')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Please</strong>
+            <span>لطفاً</span>
+            <button class="speak" onclick="speak('Please')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Sorry</strong>
+            <span>متأسفم</span>
+            <button class="speak" onclick="speak('Sorry')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Friend</strong>
+            <span>دوست</span>
+            <button class="speak" onclick="speak('Friend')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Student</strong>
+            <span>دانش‌آموز</span>
+            <button class="speak" onclick="speak('Student')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Teacher</strong>
+            <span>معلم</span>
+            <button class="speak" onclick="speak('Teacher')">🔊 تلفظ</button>
+        </div>
+
+        <div class="word">
+            <strong>Book</strong>
+            <span>کتاب</span>
+            <button class="speak" onclick="speak('Book')">🔊 تلفظ</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>💬 جمله‌های بسیار مهم</h2>
+
+    <div class="example">
+        <b>Hello!</b>
+        <div class="fa">سلام!</div>
+    </div>
+
+    <div class="example">
+        <b>My name is Ali.</b>
+        <div class="fa">اسم من علی است.</div>
+    </div>
+
+    <div class="example">
+        <b>I am a student.</b>
+        <div class="fa">من یک دانش‌آموز هستم.</div>
+    </div>
+
+    <div class="example">
+        <b>Nice to meet you.</b>
+        <div class="fa">از آشنایی با تو خوشحالم.</div>
+    </div>
+
+    <div class="example">
+        <b>How are you?</b>
+        <div class="fa">حالت چطور است؟</div>
+    </div>
+
+    <div class="example">
+        <b>I am fine, thank you.</b>
+        <div class="fa">من خوبم، ممنون.</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>🗣️ تلفظ و تمرین گفتاری</h2>
+
+    <p>
+        جمله زیر را چند بار با صدای بلند تکرار کن:
+    </p>
+
+    <div class="example">
+        <b>Hello, my name is Ali.</b>
+    </div>
+
+    <button class="check" onclick="speak('Hello, my name is Ali.')">
+        🔊 پخش تلفظ
+    </button>
+
+    <p style="margin-top:20px">
+        سپس این جمله را تمرین کن:
+    </p>
+
+    <div class="example">
+        <b>Nice to meet you.</b>
+    </div>
+
+    <button class="check" onclick="speak('Nice to meet you.')">
+        🔊 پخش تلفظ
+    </button>
+</section>
+
+<section class="section">
+    <h2>⌨️ تمرین تایپی</h2>
+
+    <p>
+        کلمه‌ی فارسی را ببین و معادل انگلیسی آن را تایپ کن.
+    </p>
+
+    <div class="question">
+        <div class="question-title">
+            «سلام» به انگلیسی چیست؟
+        </div>
+
+        <input id="typing1" placeholder="Type your answer...">
+
+        <button class="check" onclick="checkTyping()">
+            بررسی پاسخ
+        </button>
+
+        <div class="feedback" id="typingFeedback"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>🎯 تمرین چهارگزینه‌ای</h2>
+
+    <div class="question">
+        <div class="question-title">
+            1. معنی کلمه <b dir="ltr">Book</b> چیست؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">دوست</button>
+            <button class="option" onclick="answer(this,true)">کتاب</button>
+            <button class="option" onclick="answer(this,false)">معلم</button>
+            <button class="option" onclick="answer(this,false)">دانش‌آموز</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-title">
+            2. کدام گزینه به معنی «خداحافظ» است؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">Hello</button>
+            <button class="option" onclick="answer(this,false)">Thanks</button>
+            <button class="option" onclick="answer(this,true)">Goodbye</button>
+            <button class="option" onclick="answer(this,false)">Please</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-title">
+            3. جمله درست را انتخاب کن:
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">My name Ali is.</button>
+            <button class="option" onclick="answer(this,true)">My name is Ali.</button>
+            <button class="option" onclick="answer(this,false)">Name my is Ali.</button>
+            <button class="option" onclick="answer(this,false)">Ali my name.</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-title">
+            4. معنی <b dir="ltr">Teacher</b> چیست؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">دانش‌آموز</button>
+            <button class="option" onclick="answer(this,true)">معلم</button>
+            <button class="option" onclick="answer(this,false)">کتاب</button>
+            <button class="option" onclick="answer(this,false)">دوست</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>✏️ جای خالی</h2>
+
+    <div class="question">
+        <div class="question-title">
+            Complete the sentence:
+            <br>
+            My name ___ Ali.
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,true)">is</button>
+            <button class="option" onclick="answer(this,false)">are</button>
+            <button class="option" onclick="answer(this,false)">am</button>
+            <button class="option" onclick="answer(this,false)">be</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-title">
+            Complete:
+            <br>
+            I ___ a student.
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">is</button>
+            <button class="option" onclick="answer(this,true)">am</button>
+            <button class="option" onclick="answer(this,false)">are</button>
+            <button class="option" onclick="answer(this,false)">be</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>🧩 جمله را مرتب کن</h2>
+
+    <p>
+        روی کلمات بزن تا جمله ساخته شود.
+    </p>
+
+    <div class="order-area" id="words1">
+        <button class="word-btn" onclick="addWord(this)">name</button>
+        <button class="word-btn" onclick="addWord(this)">is</button>
+        <button class="word-btn" onclick="addWord(this)">My</button>
+        <button class="word-btn" onclick="addWord(this)">Ali</button>
+    </div>
+
+    <div class="answer-area" id="answer1"></div>
+
+    <button class="check" onclick="checkOrder()">
+        بررسی جمله
+    </button>
+
+    <div class="feedback" id="orderFeedback"></div>
+</section>
+
+<section class="section">
+    <h2>🌍 ترجمه</h2>
+
+    <div class="question">
+        <div class="question-title" dir="ltr">
+            Translate: Hello
+        </div>
+
+        <input id="translate1" placeholder="ترجمه را بنویس...">
+
+        <button class="check" onclick="checkTranslate()">
+            بررسی
+        </button>
+
+        <div class="feedback" id="translateFeedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="question-title" dir="ltr">
+            Translate: I am a student.
+        </div>
+
+        <input id="translate2" placeholder="ترجمه را بنویس...">
+
+        <button class="check" onclick="checkTranslate2()">
+            بررسی
+        </button>
+
+        <div class="feedback" id="translateFeedback2"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>📝 مرور سریع</h2>
+
+    <p>قبل از پایان درس، این موارد را مرور کن:</p>
+
+    <div class="tip">
+        ✅ الفبای انگلیسی = 26 حرف<br>
+        ✅ Hello = سلام<br>
+        ✅ Goodbye = خداحافظ<br>
+        ✅ Thanks = ممنون<br>
+        ✅ Please = لطفاً<br>
+        ✅ My name is... = اسم من ... است<br>
+        ✅ I am a student. = من یک دانش‌آموز هستم.
+    </div>
+</section>
+
+<section class="section complete">
+    <h2>🏆 پایان درس</h2>
+
+    <p>
+        اگر مطالب این درس را مطالعه کردی و تمرین‌ها را انجام دادی،
+        می‌توانی درس را کامل کنی.
+    </p>
+
+    <div class="score">
+        XP فعلی: <b id="xp">0</b> ⭐
+    </div>
+
+    <button onclick="completeLesson()">
+        ✅ تکمیل درس ۱
+    </button>
+
+    <div class="feedback" id="completeFeedback"></div>
+</section>
+
+</div>
+
+<footer>
+    👻 Ghost Language Academy — Learn. Practice. Master.
+</footer>
+
+<script>
+
+let xp = Number(localStorage.getItem("xp") || 0);
+
+document.getElementById("xp").textContent = xp;
+
+
+/* =========================
+   SPEECH
+========================= */
+
+function speak(text){
+
+    if(!("speechSynthesis" in window)){
+        alert("مرورگر شما از پخش تلفظ پشتیبانی نمی‌کند.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "en-US";
+    speech.rate = 0.8;
+    speech.pitch = 1;
+
+    speechSynthesis.speak(speech);
+}
+
+
+/* =========================
+   ALPHABET
+========================= */
+
+const letters = [
+["A","ay"],["B","bee"],["C","see"],["D","dee"],
+["E","ee"],["F","ef"],["G","gee"],["H","aitch"],
+["I","eye"],["J","jay"],["K","kay"],["L","el"],
+["M","em"],["N","en"],["O","oh"],["P","pee"],
+["Q","cue"],["R","ar"],["S","ess"],["T","tee"],
+["U","you"],["V","vee"],["W","double-u"],["X","ex"],
+["Y","why"],["Z","zee"]
+];
+
+const alphabet = document.getElementById("alphabet");
+
+letters.forEach(letter => {
+
+    const div = document.createElement("div");
+
+    div.className = "letter";
+
+    div.innerHTML = `
+        <b>${letter[0]}</b>
+        <small>${letter[1]}</small>
+    `;
+
+    div.onclick = () => speak(letter[0]);
+
+    alphabet.appendChild(div);
+});
+
+
+/* =========================
+   MULTIPLE CHOICE
+========================= */
+
+function answer(button, correct){
+
+    const question = button.closest(".question");
+    const buttons = question.querySelectorAll(".option");
+    const feedback = question.querySelector(".feedback");
+
+    buttons.forEach(btn => btn.disabled = true);
+
+    if(correct){
+
+        button.classList.add("correct");
+
+        feedback.innerHTML =
+        "✅ درست! عالی بود.";
+
+        addXP(5);
+
+    }else{
+
+        button.classList.add("wrong");
+
+        feedback.innerHTML =
+        "❌ پاسخ درست نیست. دوباره مطالب درس را مرور کن.";
+    }
+}
+
+
+/* =========================
+   TYPING
+========================= */
+
+function checkTyping(){
+
+    const value =
+    document.getElementById("typing1").value
+    .trim()
+    .toLowerCase();
+
+    const feedback =
+    document.getElementById("typingFeedback");
+
+    if(value === "hello" || value === "hi"){
+
+        feedback.innerHTML = "✅ درست!";
+
+        addXP(10);
+
+    }else{
+
+        feedback.innerHTML =
+        "❌ پاسخ درست: Hello";
+    }
+}
+
+
+/* =========================
+   TRANSLATION
+========================= */
+
+function checkTranslate(){
+
+    const value =
+    document.getElementById("translate1").value
+    .trim()
+    .toLowerCase();
+
+    const feedback =
+    document.getElementById("translateFeedback");
+
+    if(
+        value.includes("سلام")
+    ){
+
+        feedback.innerHTML = "✅ درست!";
+        addXP(10);
+
+    }else{
+
+        feedback.innerHTML =
+        "❌ پاسخ درست: سلام";
+    }
+}
+
+function checkTranslate2(){
+
+    const value =
+    document.getElementById("translate2").value
+    .trim()
+    .toLowerCase();
+
+    const feedback =
+    document.getElementById("translateFeedback2");
+
+    if(
+        value.includes("دانش") ||
+        value.includes("دانش آموز") ||
+        value.includes("دانش‌آموز")
+    ){
+
+        feedback.innerHTML = "✅ درست!";
+        addXP(10);
+
+    }else{
+
+        feedback.innerHTML =
+        "❌ پاسخ درست: من یک دانش‌آموز هستم.";
+    }
+}
+
+
+/* =========================
+   SENTENCE ORDER
+========================= */
+
+let orderWords = [];
+
+function addWord(button){
+
+    orderWords.push(button.textContent);
+
+    const answer =
+    document.getElementById("answer1");
+
+    const item =
+    document.createElement("button");
+
+    item.className = "word-btn";
+
+    item.textContent = button.textContent;
+
+    item.onclick = function(){
+
+        const index =
+        orderWords.indexOf(button.textContent);
+
+        if(index > -1){
+            orderWords.splice(index,1);
+        }
+
+        item.remove();
+    };
+
+    answer.appendChild(item);
+
+    button.style.opacity = ".4";
+    button.disabled = true;
+}
+
+
+function checkOrder(){
+
+    const sentence =
+    orderWords.join(" ");
+
+    const feedback =
+    document.getElementById("orderFeedback");
+
+    if(sentence === "My name is Ali"){
+
+        feedback.innerHTML =
+        "✅ عالی! جمله کاملاً درست است.";
+
+        addXP(15);
+
+    }else{
+
+        feedback.innerHTML =
+        "❌ ترتیب درست: My name is Ali";
+    }
+}
+
+
+/* =========================
+   XP
+========================= */
+
+function addXP(amount){
+
+    xp += amount;
+
+    localStorage.setItem("xp",xp);
+
+    document.getElementById("xp").textContent = xp;
+}
+
+
+/* =========================
+   COMPLETE LESSON
+========================= */
+
+function completeLesson(){
+
+    let completed =
+    Number(localStorage.getItem("completedLessons") || 0);
+
+    if(completed < 1){
+        completed = 1;
+    }
+
+    localStorage.setItem(
+        "completedLessons",
+        completed
+    );
+
+    addXP(50);
+
+    const feedback =
+    document.getElementById("completeFeedback");
+
+    feedback.innerHTML =
+    "🎉 درس ۱ با موفقیت کامل شد! درس بعدی برایت باز شد.";
+
+    setTimeout(() => {
+        window.location.href = "english.html";
+    },1800);
+}
+
+
+/* =========================
+   PAGE PROGRESS
+========================= */
+
+window.addEventListener("scroll",()=>{
+
+    const scrollTop =
+    document.documentElement.scrollTop;
+
+    const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+    const percent =
+    height > 0
+    ? (scrollTop / height) * 100
+    : 0;
+
+    document.getElementById("progress").style.width =
+    percent + "%";
+});
+
+</script>
+
+</body>
+                                                                      </html>
