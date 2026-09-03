@@ -6,7 +6,12 @@
 <title>Lesson 2 | سلام و معرفی</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Tahoma,Arial,sans-serif}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif
+}
 
 body{
     background:
@@ -25,7 +30,7 @@ header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:rgba(7,11,22,.86);
+    background:rgba(7,11,22,.9);
     backdrop-filter:blur(15px);
     border-bottom:1px solid rgba(255,255,255,.08);
 }
@@ -35,7 +40,9 @@ header{
     font-weight:bold;
 }
 
-.logo span{color:#58d1ff}
+.logo span{
+    color:#58d1ff;
+}
 
 .back{
     color:#fff;
@@ -224,6 +231,11 @@ h1{
     background:rgba(255,83,103,.13);
 }
 
+.option:disabled{
+    cursor:default;
+    opacity:.9;
+}
+
 .feedback{
     margin-top:10px;
     min-height:23px;
@@ -241,7 +253,9 @@ input{
     direction:ltr;
 }
 
-input:focus{border-color:#50cfff}
+input:focus{
+    border-color:#50cfff;
+}
 
 .btn{
     margin-top:11px;
@@ -307,9 +321,18 @@ input:focus{border-color:#50cfff}
     font-weight:bold;
 }
 
+.complete button:disabled{
+    opacity:.65;
+    cursor:default;
+}
+
 .xp{
     font-size:22px;
     margin:20px 0;
+}
+
+.success{
+    color:#00e89b;
 }
 
 footer{
@@ -317,14 +340,40 @@ footer{
     color:#68758a;
     padding:35px;
 }
+
+@media(max-width:600px){
+    header{
+        padding:13px;
+    }
+
+    .logo{
+        font-size:15px;
+    }
+
+    .back{
+        font-size:12px;
+        padding:8px 10px;
+    }
+
+    .section{
+        padding:19px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">👻 Ghost <span>Language Academy</span></div>
-    <a class="back" href="english.html">← دوره انگلیسی</a>
+
+    <div class="logo">
+        👻 Ghost <span>Language Academy</span>
+    </div>
+
+    <a class="back" href="english.html">
+        ← دوره انگلیسی
+    </a>
+
 </header>
 
 <div class="progress-bar">
@@ -334,20 +383,30 @@ footer{
 <div class="container">
 
 <section class="hero">
-    <div class="badge">LESSON 2 • BEGINNER</div>
 
-    <h1>سلام و معرفی 👋</h1>
+    <div class="badge">
+        LESSON 2 • BEGINNER
+    </div>
+
+    <h1>
+        سلام و معرفی 👋
+    </h1>
 
     <p class="subtitle">
         در این درس یاد می‌گیری چگونه سلام کنی،
         خودت را معرفی کنی و درباره‌ی دیگران سؤال‌های ساده بپرسی.
     </p>
+
 </section>
 
+
 <section class="section">
+
     <h2>🎯 اهداف درس</h2>
 
-    <p>در پایان این درس می‌توانی:</p>
+    <p>
+        در پایان این درس می‌توانی:
+    </p>
 
     <div class="tip">
         ✅ سلام و خداحافظی کنی<br>
@@ -357,9 +416,12 @@ footer{
         ✅ درباره حال افراد سؤال کنی<br>
         ✅ یک مکالمه کوتاه انجام دهی
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>👋 سلام کردن</h2>
 
     <div class="cards">
@@ -367,55 +429,74 @@ footer{
         <div class="card">
             <div class="en">Hello</div>
             <div class="fa">سلام</div>
-            <button class="speak" onclick="speak('Hello')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('Hello')">
+                🔊 تلفظ
+            </button>
         </div>
 
         <div class="card">
             <div class="en">Hi</div>
             <div class="fa">سلام — دوستانه</div>
-            <button class="speak" onclick="speak('Hi')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('Hi')">
+                🔊 تلفظ
+            </button>
         </div>
 
         <div class="card">
             <div class="en">Good morning</div>
             <div class="fa">صبح بخیر</div>
-            <button class="speak" onclick="speak('Good morning')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('Good morning')">
+                🔊 تلفظ
+            </button>
         </div>
 
         <div class="card">
             <div class="en">Good afternoon</div>
             <div class="fa">بعدازظهر بخیر</div>
-            <button class="speak" onclick="speak('Good afternoon')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('Good afternoon')">
+                🔊 تلفظ
+            </button>
         </div>
 
         <div class="card">
             <div class="en">Good evening</div>
             <div class="fa">عصر بخیر</div>
-            <button class="speak" onclick="speak('Good evening')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('Good evening')">
+                🔊 تلفظ
+            </button>
         </div>
 
         <div class="card">
             <div class="en">Goodbye</div>
             <div class="fa">خداحافظ</div>
-            <button class="speak" onclick="speak('Goodbye')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('Goodbye')">
+                🔊 تلفظ
+            </button>
         </div>
 
         <div class="card">
             <div class="en">See you</div>
             <div class="fa">می‌بینمت</div>
-            <button class="speak" onclick="speak('See you')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('See you')">
+                🔊 تلفظ
+            </button>
         </div>
 
         <div class="card">
             <div class="en">See you later</div>
             <div class="fa">بعداً می‌بینمت</div>
-            <button class="speak" onclick="speak('See you later')">🔊 تلفظ</button>
+            <button class="speak" onclick="speak('See you later')">
+                🔊 تلفظ
+            </button>
         </div>
 
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>🙋 معرفی خودت</h2>
 
     <p>
@@ -423,228 +504,486 @@ footer{
     </p>
 
     <div class="card">
-        <div class="en">My name is Ali.</div>
-        <div class="fa">اسم من علی است.</div>
-        <button class="speak" onclick="speak('My name is Ali.')">🔊 تلفظ</button>
+
+        <div class="en">
+            My name is Ali.
+        </div>
+
+        <div class="fa">
+            اسم من علی است.
+        </div>
+
+        <button class="speak"
+        onclick="speak('My name is Ali.')">
+            🔊 تلفظ
+        </button>
+
     </div>
 
     <br>
 
     <div class="card">
-        <div class="en">I am Ali.</div>
-        <div class="fa">من علی هستم.</div>
-        <button class="speak" onclick="speak('I am Ali.')">🔊 تلفظ</button>
+
+        <div class="en">
+            I am Ali.
+        </div>
+
+        <div class="fa">
+            من علی هستم.
+        </div>
+
+        <button class="speak"
+        onclick="speak('I am Ali.')">
+            🔊 تلفظ
+        </button>
+
     </div>
 
     <br>
 
     <div class="card">
-        <div class="en">I am a student.</div>
-        <div class="fa">من یک دانش‌آموز هستم.</div>
-        <button class="speak" onclick="speak('I am a student.')">🔊 تلفظ</button>
+
+        <div class="en">
+            I am a student.
+        </div>
+
+        <div class="fa">
+            من یک دانش‌آموز هستم.
+        </div>
+
+        <button class="speak"
+        onclick="speak('I am a student.')">
+            🔊 تلفظ
+        </button>
+
     </div>
 
     <br>
 
     <div class="tip">
-        💡 <b>My name is...</b> برای معرفی اسم استفاده می‌شود.
+
+        💡 <b>My name is...</b>
+        برای معرفی اسم استفاده می‌شود.
+
         <br>
-        مثال: My name is Sara.
+
+        مثال:
+        My name is Sara.
+
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>❓ پرسیدن اسم</h2>
 
     <div class="cards">
 
         <div class="card">
-            <div class="en">What is your name?</div>
-            <div class="fa">اسم تو چیست؟</div>
-            <button class="speak" onclick="speak('What is your name?')">🔊</button>
+
+            <div class="en">
+                What is your name?
+            </div>
+
+            <div class="fa">
+                اسم تو چیست؟
+            </div>
+
+            <button class="speak"
+            onclick="speak('What is your name?')">
+                🔊
+            </button>
+
         </div>
 
         <div class="card">
-            <div class="en">What's your name?</div>
-            <div class="fa">شکل کوتاه جمله بالا</div>
-            <button class="speak" onclick="speak('What is your name?')">🔊</button>
+
+            <div class="en">
+                What's your name?
+            </div>
+
+            <div class="fa">
+                شکل کوتاه جمله بالا
+            </div>
+
+            <button class="speak"
+            onclick="speak('What is your name?')">
+                🔊
+            </button>
+
         </div>
 
         <div class="card">
-            <div class="en">My name is Ali.</div>
-            <div class="fa">اسم من علی است.</div>
-            <button class="speak" onclick="speak('My name is Ali.')">🔊</button>
+
+            <div class="en">
+                My name is Ali.
+            </div>
+
+            <div class="fa">
+                اسم من علی است.
+            </div>
+
+            <button class="speak"
+            onclick="speak('My name is Ali.')">
+                🔊
+            </button>
+
         </div>
 
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>🙂 پرسیدن حال</h2>
 
     <div class="cards">
 
         <div class="card">
-            <div class="en">How are you?</div>
-            <div class="fa">حالت چطور است؟</div>
-            <button class="speak" onclick="speak('How are you?')">🔊</button>
+
+            <div class="en">
+                How are you?
+            </div>
+
+            <div class="fa">
+                حالت چطور است؟
+            </div>
+
+            <button class="speak"
+            onclick="speak('How are you?')">
+                🔊
+            </button>
+
         </div>
 
         <div class="card">
-            <div class="en">I am fine.</div>
-            <div class="fa">من خوبم.</div>
-            <button class="speak" onclick="speak('I am fine.')">🔊</button>
+
+            <div class="en">
+                I am fine.
+            </div>
+
+            <div class="fa">
+                من خوبم.
+            </div>
+
+            <button class="speak"
+            onclick="speak('I am fine.')">
+                🔊
+            </button>
+
         </div>
 
         <div class="card">
-            <div class="en">I am good.</div>
-            <div class="fa">من خوبم.</div>
-            <button class="speak" onclick="speak('I am good.')">🔊</button>
+
+            <div class="en">
+                I am good.
+            </div>
+
+            <div class="fa">
+                من خوبم.
+            </div>
+
+            <button class="speak"
+            onclick="speak('I am good.')">
+                🔊
+            </button>
+
         </div>
 
         <div class="card">
-            <div class="en">I am great!</div>
-            <div class="fa">من عالی‌ام!</div>
-            <button class="speak" onclick="speak('I am great!')">🔊</button>
+
+            <div class="en">
+                I am great!
+            </div>
+
+            <div class="fa">
+                من عالی‌ام!
+            </div>
+
+            <button class="speak"
+            onclick="speak('I am great!')">
+                🔊
+            </button>
+
         </div>
 
         <div class="card">
-            <div class="en">Thank you.</div>
-            <div class="fa">ممنون.</div>
-            <button class="speak" onclick="speak('Thank you.')">🔊</button>
+
+            <div class="en">
+                Thank you.
+            </div>
+
+            <div class="fa">
+                ممنون.
+            </div>
+
+            <button class="speak"
+            onclick="speak('Thank you.')">
+                🔊
+            </button>
+
         </div>
 
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>💬 مکالمه نمونه</h2>
 
     <div class="dialogue">
 
         <div class="message a">
             Hello!
-            <div class="translation">سلام!</div>
+            <div class="translation">
+                سلام!
+            </div>
         </div>
 
         <div class="message b">
             Hi!
-            <div class="translation">سلام!</div>
+            <div class="translation">
+                سلام!
+            </div>
         </div>
 
         <div class="message a">
             What's your name?
-            <div class="translation">اسمت چیست؟</div>
+            <div class="translation">
+                اسمت چیست؟
+            </div>
         </div>
 
         <div class="message b">
             My name is Ali.
-            <div class="translation">اسم من علی است.</div>
+            <div class="translation">
+                اسم من علی است.
+            </div>
         </div>
 
         <div class="message a">
             Nice to meet you.
-            <div class="translation">از آشنایی با تو خوشحالم.</div>
+            <div class="translation">
+                از آشنایی با تو خوشحالم.
+            </div>
         </div>
 
         <div class="message b">
             Nice to meet you too.
-            <div class="translation">من هم از آشنایی با تو خوشحالم.</div>
+            <div class="translation">
+                من هم از آشنایی با تو خوشحالم.
+            </div>
         </div>
 
         <div class="message a">
             How are you?
-            <div class="translation">حالت چطور است؟</div>
+            <div class="translation">
+                حالت چطور است؟
+            </div>
         </div>
 
         <div class="message b">
             I am fine, thank you.
-            <div class="translation">خوبم، ممنون.</div>
+            <div class="translation">
+                خوبم، ممنون.
+            </div>
         </div>
 
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>🧠 تمرین چهارگزینه‌ای</h2>
 
+
     <div class="question">
+
         <div class="q">
             1. معنی <b dir="ltr">Good morning</b> چیست؟
         </div>
 
         <div class="options">
-            <button class="option" onclick="answer(this,false)">شب بخیر</button>
-            <button class="option" onclick="answer(this,true)">صبح بخیر</button>
-            <button class="option" onclick="answer(this,false)">خداحافظ</button>
-            <button class="option" onclick="answer(this,false)">ممنون</button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                شب بخیر
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                صبح بخیر
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                خداحافظ
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                ممنون
+            </button>
+
         </div>
 
         <div class="feedback"></div>
+
     </div>
 
+
     <div class="question">
+
         <div class="q">
             2. برای پرسیدن «اسمت چیست؟» کدام جمله درست است؟
         </div>
 
         <div class="options">
-            <button class="option" onclick="answer(this,true)">What's your name?</button>
-            <button class="option" onclick="answer(this,false)">Your name what?</button>
-            <button class="option" onclick="answer(this,false)">Name your is?</button>
-            <button class="option" onclick="answer(this,false)">What name you?</button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                What's your name?
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                Your name what?
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                Name your is?
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                What name you?
+            </button>
+
         </div>
 
         <div class="feedback"></div>
+
     </div>
 
+
     <div class="question">
+
         <div class="q">
             3. معنی <b dir="ltr">How are you?</b> چیست؟
         </div>
 
         <div class="options">
-            <button class="option" onclick="answer(this,false)">اسمت چیست؟</button>
-            <button class="option" onclick="answer(this,true)">حالت چطور است؟</button>
-            <button class="option" onclick="answer(this,false)">کجا هستی؟</button>
-            <button class="option" onclick="answer(this,false)">چند سال داری؟</button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                اسمت چیست؟
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                حالت چطور است؟
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                کجا هستی؟
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                چند سال داری؟
+            </button>
+
         </div>
 
         <div class="feedback"></div>
+
     </div>
 
+
     <div class="question">
+
         <div class="q">
             4. کدام جمله برای معرفی خودت درست است؟
         </div>
 
         <div class="options">
-            <button class="option" onclick="answer(this,false)">My Ali name.</button>
-            <button class="option" onclick="answer(this,true)">My name is Ali.</button>
-            <button class="option" onclick="answer(this,false)">Name is my Ali.</button>
-            <button class="option" onclick="answer(this,false)">Ali is name my.</button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                My Ali name.
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                My name is Ali.
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                Name is my Ali.
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                Ali is name my.
+            </button>
+
         </div>
 
         <div class="feedback"></div>
+
     </div>
 
+
     <div class="question">
+
         <div class="q">
             5. معنی <b dir="ltr">Goodbye</b> چیست؟
         </div>
 
         <div class="options">
-            <button class="option" onclick="answer(this,true)">خداحافظ</button>
-            <button class="option" onclick="answer(this,false)">سلام</button>
-            <button class="option" onclick="answer(this,false)">صبح بخیر</button>
-            <button class="option" onclick="answer(this,false)">دوست</button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                خداحافظ
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                سلام
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                صبح بخیر
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                دوست
+            </button>
+
         </div>
 
         <div class="feedback"></div>
+
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>⌨️ تمرین تایپی</h2>
 
     <div class="question">
@@ -653,18 +992,27 @@ footer{
             عبارت انگلیسی «اسم من علی است» را بنویس.
         </div>
 
-        <input id="typing" placeholder="Type in English...">
+        <input
+            id="typing"
+            placeholder="Type in English..."
+        >
 
         <button class="btn" onclick="checkTyping()">
             بررسی پاسخ
         </button>
 
-        <div class="feedback" id="typingFeedback"></div>
+        <div
+            class="feedback"
+            id="typingFeedback">
+        </div>
 
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>🧩 جمله را مرتب کن</h2>
 
     <p>
@@ -673,22 +1021,43 @@ footer{
 
     <div class="order" id="words">
 
-        <button class="word" onclick="selectWord(this)">you</button>
-        <button class="word" onclick="selectWord(this)">are</button>
-        <button class="word" onclick="selectWord(this)">How</button>
+        <button class="word"
+        onclick="selectWord(this)">
+            you
+        </button>
+
+        <button class="word"
+        onclick="selectWord(this)">
+            are
+        </button>
+
+        <button class="word"
+        onclick="selectWord(this)">
+            How
+        </button>
 
     </div>
 
-    <div class="answer" id="answer"></div>
+    <div
+        class="answer"
+        id="answer">
+    </div>
 
-    <button class="btn" onclick="checkOrder()">
+    <button class="btn"
+    onclick="checkOrder()">
         بررسی جمله
     </button>
 
-    <div class="feedback" id="orderFeedback"></div>
+    <div
+        class="feedback"
+        id="orderFeedback">
+    </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>🌍 تمرین ترجمه</h2>
 
     <div class="question">
@@ -699,16 +1068,23 @@ footer{
 
         <input id="translation">
 
-        <button class="btn" onclick="checkTranslation()">
+        <button class="btn"
+        onclick="checkTranslation()">
             بررسی
         </button>
 
-        <div class="feedback" id="translationFeedback"></div>
+        <div
+            class="feedback"
+            id="translationFeedback">
+        </div>
 
     </div>
+
 </section>
 
+
 <section class="section">
+
     <h2>🔥 چالش آخر</h2>
 
     <p>
@@ -716,7 +1092,10 @@ footer{
         باید بتوانی حداقل این مکالمه را انجام بدهی:
     </p>
 
-    <div class="tip" dir="ltr" style="text-align:left">
+    <div
+        class="tip"
+        dir="ltr"
+        style="text-align:left">
 
         Hello!<br>
         What's your name?<br>
@@ -727,7 +1106,9 @@ footer{
         I am fine, thank you.
 
     </div>
+
 </section>
+
 
 <section class="section complete">
 
@@ -735,45 +1116,75 @@ footer{
 
     <p>
         اگر درس را مطالعه کردی و تمرین‌ها را انجام دادی،
-        درس را کامل کن تا پیشرفتت ذخیره شود.
+        روی دکمه زیر بزن.
     </p>
 
     <div class="xp">
-        ⭐ XP: <b id="xp">0</b>
+        ⭐ XP:
+        <b id="xp">0</b>
     </div>
 
-    <button onclick="completeLesson()">
-        ✅ تکمیل درس ۲
+    <button
+        id="completeButton"
+        onclick="completeLesson()">
+
+        🎁 دریافت XP و باز کردن درس ۳
+
     </button>
 
-    <div class="feedback" id="completeFeedback"></div>
+    <div
+        class="feedback"
+        id="completeFeedback">
+    </div>
 
 </section>
 
 </div>
 
+
 <footer>
-    👻 Ghost Language Academy<br>
+
+    👻 Ghost Language Academy
+    <br>
     Learn. Practice. Master. — Completely Free.
+
 </footer>
+
 
 <script>
 
 /* =========================
-   XP
+   XP SYSTEM
 ========================= */
 
-let xp = Number(localStorage.getItem("xp") || 0);
+function getXP(){
 
-document.getElementById("xp").textContent = xp;
+    return Number(
+        localStorage.getItem("xp") || "0"
+    );
+
+}
+
+function updateXP(){
+
+    document.getElementById("xp").textContent =
+        getXP();
+
+}
 
 function addXP(amount){
 
-    xp += amount;
+    let currentXP = getXP();
 
-    localStorage.setItem("xp",xp);
+    currentXP += amount;
 
-    document.getElementById("xp").textContent = xp;
+    localStorage.setItem(
+        "xp",
+        String(currentXP)
+    );
+
+    updateXP();
+
 }
 
 
@@ -784,20 +1195,25 @@ function addXP(amount){
 function speak(text){
 
     if(!("speechSynthesis" in window)){
-        alert("مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.");
+
+        alert(
+            "مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند."
+        );
+
         return;
     }
 
     speechSynthesis.cancel();
 
     const utterance =
-    new SpeechSynthesisUtterance(text);
+        new SpeechSynthesisUtterance(text);
 
     utterance.lang = "en-US";
     utterance.rate = .8;
     utterance.pitch = 1;
 
     speechSynthesis.speak(utterance);
+
 }
 
 
@@ -808,16 +1224,18 @@ function speak(text){
 function answer(button,correct){
 
     const question =
-    button.closest(".question");
+        button.closest(".question");
 
     const buttons =
-    question.querySelectorAll(".option");
+        question.querySelectorAll(".option");
 
     const feedback =
-    question.querySelector(".feedback");
+        question.querySelector(".feedback");
 
-    buttons.forEach(b=>{
+    buttons.forEach(function(b){
+
         b.disabled = true;
+
     });
 
     if(correct){
@@ -825,17 +1243,29 @@ function answer(button,correct){
         button.classList.add("correct");
 
         feedback.textContent =
-        "✅ درست!";
+            "✅ درست! +5 XP";
 
-        addXP(5);
+        /*
+         * جلوگیری از گرفتن چندباره XP
+         */
+
+        if(!question.dataset.xp){
+
+            addXP(5);
+
+            question.dataset.xp = "true";
+
+        }
 
     }else{
 
         button.classList.add("wrong");
 
         feedback.textContent =
-        "❌ اشتباه. پاسخ را دوباره بررسی کن.";
+            "❌ اشتباه. دوباره درس را مرور کن.";
+
     }
+
 }
 
 
@@ -846,14 +1276,14 @@ function answer(button,correct){
 function checkTyping(){
 
     const value =
-    document.getElementById("typing")
-    .value
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g," ");
+        document.getElementById("typing")
+        .value
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g," ");
 
     const feedback =
-    document.getElementById("typingFeedback");
+        document.getElementById("typingFeedback");
 
     if(
         value === "my name is ali." ||
@@ -861,62 +1291,100 @@ function checkTyping(){
     ){
 
         feedback.textContent =
-        "✅ عالی! جمله درست است.";
+            "✅ عالی! +15 XP";
 
-        addXP(15);
+        if(!localStorage.getItem("lesson2TypingXP")){
+
+            addXP(15);
+
+            localStorage.setItem(
+                "lesson2TypingXP",
+                "true"
+            );
+
+        }
 
     }else{
 
         feedback.textContent =
-        "❌ پاسخ درست: My name is Ali.";
+            "❌ پاسخ درست: My name is Ali.";
+
     }
+
 }
 
 
 /* =========================
-   ORDER
+   SENTENCE ORDER
 ========================= */
 
 let selectedWords = [];
 
 function selectWord(button){
 
-    selectedWords.push(button.textContent);
+    if(button.disabled){
+        return;
+    }
+
+    selectedWords.push(
+        button.textContent.trim()
+    );
 
     button.disabled = true;
     button.style.opacity = ".35";
 
     const item =
-    document.createElement("button");
+        document.createElement("button");
 
     item.className = "word";
-    item.textContent = button.textContent;
 
-    document.getElementById("answer")
-    .appendChild(item);
+    item.textContent =
+        button.textContent.trim();
+
+    document
+        .getElementById("answer")
+        .appendChild(item);
+
 }
 
 
 function checkOrder(){
 
     const result =
-    selectedWords.join(" ");
+        selectedWords.join(" ");
 
     const feedback =
-    document.getElementById("orderFeedback");
+        document.getElementById(
+            "orderFeedback"
+        );
 
     if(result === "How are you"){
 
         feedback.textContent =
-        "✅ درست! How are you?";
+            "✅ درست! +15 XP";
 
-        addXP(15);
+        if(
+            !localStorage.getItem(
+                "lesson2OrderXP"
+            )
+        ){
+
+            addXP(15);
+
+            localStorage.setItem(
+                "lesson2OrderXP",
+                "true"
+            );
+
+        }
 
     }else{
 
         feedback.textContent =
-        "❌ ترتیب درست: How are you";
+            "❌ ترتیب درست: How are you";
+
     }
+
 }
 
 
@@ -927,12 +1395,16 @@ function checkOrder(){
 function checkTranslation(){
 
     const value =
-    document.getElementById("translation")
-    .value
-    .trim();
+        document.getElementById(
+            "translation"
+        )
+        .value
+        .trim();
 
     const feedback =
-    document.getElementById("translationFeedback");
+        document.getElementById(
+            "translationFeedback"
+        );
 
     if(
         value.includes("حالت") ||
@@ -940,46 +1412,159 @@ function checkTranslation(){
     ){
 
         feedback.textContent =
-        "✅ ترجمه درست است.";
+            "✅ ترجمه درست است! +15 XP";
 
-        addXP(15);
+        if(
+            !localStorage.getItem(
+                "lesson2TranslationXP"
+            )
+        ){
+
+            addXP(15);
+
+            localStorage.setItem(
+                "lesson2TranslationXP",
+                "true"
+            );
+
+        }
 
     }else{
 
         feedback.textContent =
-        "❌ ترجمه درست: حالت چطور است؟";
+            "❌ ترجمه درست: حالت چطور است؟";
+
     }
+
 }
 
 
 /* =========================
-   COMPLETE
+   COMPLETE LESSON 2
 ========================= */
 
 function completeLesson(){
 
-    let completed =
-    Number(localStorage.getItem("completedLessons") || 0);
+    const button =
+        document.getElementById(
+            "completeButton"
+        );
 
-    if(completed < 2){
-        completed = 2;
+    const feedback =
+        document.getElementById(
+            "completeFeedback"
+        );
+
+
+    /*
+     * بررسی اینکه قبلاً درس ۲ کامل شده یا نه
+     */
+
+    const alreadyCompleted =
+        localStorage.getItem(
+            "lesson2Completed"
+        ) === "true";
+
+
+    if(!alreadyCompleted){
+
+        /*
+         * ثبت تکمیل درس ۲
+         */
+
+        localStorage.setItem(
+            "lesson2Completed",
+            "true"
+        );
+
+
+        /*
+         * ثبت آخرین درس تکمیل‌شده
+         */
+
+        let completedLessons =
+            Number(
+                localStorage.getItem(
+                    "completedLessons"
+                ) || "0"
+            );
+
+
+        if(completedLessons < 2){
+
+            completedLessons = 2;
+
+        }
+
+
+        localStorage.setItem(
+            "completedLessons",
+            String(completedLessons)
+        );
+
+
+        /*
+         * XP پایان درس
+         */
+
+        addXP(50);
+
+        localStorage.setItem(
+            "lesson2CompletionXP",
+            "true"
+        );
+
+
+        feedback.innerHTML =
+            "🎉 <span class='success'>درس ۲ کامل شد! +50 XP</span><br>" +
+            "🔓 درس ۳ باز شد.";
+
+
+    }else{
+
+        /*
+         * اگر قبلاً کامل شده بود
+         */
+
+        localStorage.setItem(
+            "completedLessons",
+            String(
+                Math.max(
+                    2,
+                    Number(
+                        localStorage.getItem(
+                            "completedLessons"
+                        ) || "0"
+                    )
+                )
+            )
+        );
+
+
+        feedback.innerHTML =
+            "✅ <span class='success'>این درس قبلاً کامل شده است.</span><br>" +
+            "🔓 درس ۳ باز است.";
+
     }
 
-    localStorage.setItem(
-        "completedLessons",
-        completed
-    );
 
-    addXP(50);
+    button.disabled = true;
 
-    document.getElementById(
-        "completeFeedback"
-    ).textContent =
-    "🎉 درس ۲ کامل شد! درس بعدی برایت باز شد.";
+    button.textContent =
+        "✅ درس ۲ تکمیل شد";
 
-    setTimeout(()=>{
-        window.location.href = "english.html";
-    },1800);
+
+    /*
+     * برگشت به صفحه دوره
+     */
+
+    setTimeout(function(){
+
+        window.location.href =
+            "english.html";
+
+    },1500);
+
 }
 
 
@@ -987,25 +1572,38 @@ function completeLesson(){
    SCROLL PROGRESS
 ========================= */
 
-window.addEventListener("scroll",()=>{
+window.addEventListener(
+    "scroll",
+    function(){
 
-    const top =
-    document.documentElement.scrollTop;
+        const top =
+            document.documentElement.scrollTop;
 
-    const height =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
+        const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
 
-    const percent =
-    height > 0
-    ? (top / height) * 100
-    : 0;
+        const percent =
+            height > 0
+            ? (top / height) * 100
+            : 0;
 
-    document.getElementById("progress")
-    .style.width = percent + "%";
-});
+        document.getElementById(
+            "progress"
+        ).style.width =
+            percent + "%";
+
+    }
+);
+
+
+/* =========================
+   START
+========================= */
+
+updateXP();
 
 </script>
 
 </body>
-              </html>⁶
+</html>
