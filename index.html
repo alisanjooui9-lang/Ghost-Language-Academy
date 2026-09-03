@@ -1,646 +1,716 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ghost Language Academy | آموزش زبان رایگان</title>
+<title>Ghost Language Academy</title>
 
-  <meta name="description"
-        content="Ghost Language Academy؛ پلتفرم آموزش زبان کاملاً رایگان با درس‌های تعاملی، تمرین و آزمون.">
+<style>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    color:white;
+    background:
+        radial-gradient(circle at 10% 20%,rgba(0,200,255,.18),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(130,70,255,.2),transparent 30%),
+        #060914;
+}
+
+/* Background */
+
+.bg-orb{
+    position:fixed;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.35;
+    z-index:-1;
+    animation:float 8s infinite alternate ease-in-out;
+}
+
+.orb1{
+    background:#00c6ff;
+    top:10%;
+    left:-100px;
+}
+
+.orb2{
+    background:#7d4cff;
+    right:-100px;
+    top:45%;
+    animation-delay:2s;
+}
+
+.orb3{
+    background:#00ffcc;
+    bottom:-100px;
+    left:35%;
+    animation-delay:4s;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0) scale(1);
     }
-
-    html {
-      scroll-behavior: smooth;
+    to{
+        transform:translateY(-40px) scale(1.15);
     }
+}
 
-    body {
-      font-family: Arial, Tahoma, sans-serif;
-      background: #070b14;
-      color: #fff;
-      overflow-x: hidden;
+/* Header */
+
+header{
+    position:relative;
+    z-index:10;
+    width:100%;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    background:rgba(6,9,20,.65);
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#5ed5ff;
+}
+
+.free{
+    padding:8px 14px;
+    border-radius:50px;
+    color:#6be0ff;
+    background:rgba(0,200,255,.1);
+    border:1px solid rgba(0,200,255,.25);
+    font-size:13px;
+}
+
+/* Hero */
+
+.hero{
+    width:min(1100px,92%);
+    margin:auto;
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero-content{
+    animation:appear 1s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(40px);
     }
-
-    /* ---------- Background ---------- */
-
-    .background {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      z-index: -2;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0, 140, 255, .16), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(130, 50, 255, .14), transparent 30%),
-        #070b14;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
+}
 
-    .orb {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      filter: blur(70px);
-      opacity: .45;
-      animation: float 8s ease-in-out infinite;
+.tag{
+    display:inline-block;
+    padding:9px 17px;
+    border-radius:50px;
+    color:#68d8ff;
+    background:rgba(0,200,255,.1);
+    border:1px solid rgba(0,200,255,.25);
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(38px,8vw,75px);
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+h1 span{
+    background:linear-gradient(90deg,#00c6ff,#9a5cff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.description{
+    max-width:700px;
+    margin:auto;
+    color:#adb8ca;
+    font-size:18px;
+    line-height:2;
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:13px;
+    margin-top:35px;
+}
+
+.btn{
+    border:0;
+    text-decoration:none;
+    padding:15px 25px;
+    border-radius:15px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.primary{
+    color:white;
+    background:linear-gradient(90deg,#00bfff,#8055ff);
+    box-shadow:0 10px 30px rgba(80,100,255,.25);
+}
+
+.primary:hover{
+    transform:translateY(-4px) scale(1.02);
+}
+
+.secondary{
+    color:white;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.secondary:hover{
+    background:rgba(255,255,255,.12);
+}
+
+/* Floating words */
+
+.floating{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.word{
+    position:absolute;
+    padding:12px 18px;
+    border-radius:14px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    color:rgba(255,255,255,.35);
+    animation:wordFloat 5s infinite ease-in-out;
+}
+
+.w1{
+    top:18%;
+    left:5%;
+}
+
+.w2{
+    top:30%;
+    right:5%;
+    animation-delay:1s;
+}
+
+.w3{
+    bottom:20%;
+    left:8%;
+    animation-delay:2s;
+}
+
+.w4{
+    bottom:15%;
+    right:8%;
+    animation-delay:3s;
+}
+
+@keyframes wordFloat{
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
     }
-
-    .orb.one {
-      background: #008cff;
-      top: 5%;
-      left: -80px;
+    50%{
+        transform:translateY(-18px) rotate(3deg);
     }
+}
 
-    .orb.two {
-      background: #8a2be2;
-      right: -100px;
-      bottom: 10%;
-      animation-delay: -3s;
-    }
+/* Stats */
 
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
+.stats{
+    width:min(950px,92%);
+    margin:0 auto 50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
 
-      50% {
-        transform: translate(50px, -40px) scale(1.15);
-      }
-    }
+.stat{
+    text-align:center;
+    padding:25px 15px;
+    border-radius:20px;
+    background:rgba(15,22,39,.8);
+    border:1px solid rgba(255,255,255,.07);
+}
 
-    /* ---------- Header ---------- */
+.stat strong{
+    display:block;
+    font-size:30px;
+    color:#63d7ff;
+    margin-bottom:7px;
+}
 
-    header {
-      width: 100%;
-      padding: 22px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      z-index: 10;
-    }
+.stat span{
+    color:#8995aa;
+}
 
-    .logo {
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: .5px;
-    }
+/* Features */
 
-    .logo span {
-      color: #38a8ff;
-    }
+.features{
+    width:min(1100px,92%);
+    margin:70px auto;
+}
 
-    .free-badge {
-      padding: 9px 15px;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.06);
-      border-radius: 999px;
-      font-size: 13px;
-      color: #8fd0ff;
-      backdrop-filter: blur(10px);
-    }
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
 
-    /* ---------- Hero ---------- */
+.section-title h2{
+    font-size:35px;
+    margin-bottom:10px;
+}
 
-    .hero {
-      min-height: 82vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 20px 80px;
-      position: relative;
-    }
+.section-title p{
+    color:#8995aa;
+}
 
-    .hero-content {
-      max-width: 900px;
-    }
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
 
-    .tag {
-      display: inline-block;
-      padding: 10px 17px;
-      border-radius: 999px;
-      background: rgba(56,168,255,.1);
-      border: 1px solid rgba(56,168,255,.25);
-      color: #83caff;
-      margin-bottom: 25px;
-      animation: fadeUp .8s ease both;
-    }
+.feature{
+    padding:25px;
+    border-radius:22px;
+    background:rgba(15,22,39,.8);
+    border:1px solid rgba(255,255,255,.07);
+    transition:.25s;
+}
 
-    h1 {
-      font-size: clamp(42px, 8vw, 85px);
-      line-height: 1.05;
-      font-weight: 1000;
-      margin-bottom: 22px;
-      animation: fadeUp .9s ease .1s both;
-    }
+.feature:hover{
+    transform:translateY(-7px);
+    border-color:rgba(80,210,255,.3);
+}
 
-    h1 span {
-      background: linear-gradient(90deg, #38a8ff, #9c5cff, #38a8ff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: gradientMove 4s linear infinite;
-    }
+.icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
 
-    @keyframes gradientMove {
-      to {
-        background-position: 200% center;
-      }
-    }
+.feature h3{
+    margin-bottom:10px;
+}
 
-    .subtitle {
-      color: #b8c2d3;
-      font-size: clamp(17px, 2.5vw, 22px);
-      line-height: 2;
-      max-width: 700px;
-      margin: auto;
-      animation: fadeUp 1s ease .2s both;
-    }
+.feature p{
+    color:#8995aa;
+    line-height:1.9;
+}
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
+/* Language preview */
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.languages{
+    width:min(1100px,92%);
+    margin:80px auto;
+    text-align:center;
+}
 
-    /* ---------- Floating Words ---------- */
+.language-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+    margin-top:30px;
+}
 
-    .word {
-      position: absolute;
-      color: rgba(255,255,255,.08);
-      font-weight: 900;
-      user-select: none;
-      animation: wordFloat 7s ease-in-out infinite;
-    }
+.language{
+    padding:20px 10px;
+    border-radius:18px;
+    background:#0e1627;
+    border:1px solid rgba(255,255,255,.07);
+    transition:.25s;
+}
 
-    .w1 {
-      top: 20%;
-      left: 8%;
-      font-size: 30px;
-    }
+.language:hover{
+    transform:translateY(-5px);
+    border-color:#4acfff;
+}
 
-    .w2 {
-      top: 65%;
-      right: 8%;
-      font-size: 24px;
-      animation-delay: -2s;
-    }
+.language .flag{
+    font-size:32px;
+}
 
-    .w3 {
-      bottom: 8%;
-      left: 20%;
-      font-size: 20px;
-      animation-delay: -4s;
-    }
+.language b{
+    display:block;
+    margin-top:8px;
+}
 
-    .w4 {
-      top: 13%;
-      right: 20%;
-      font-size: 18px;
-      animation-delay: -1s;
-    }
+.language small{
+    color:#77849a;
+}
 
-    @keyframes wordFloat {
-      0%,100% {
-        transform: translateY(0) rotate(-4deg);
-      }
+/* CTA */
 
-      50% {
-        transform: translateY(-25px) rotate(4deg);
-      }
-    }
-
-    /* ---------- Buttons ---------- */
-
-    .buttons {
-      margin-top: 35px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      animation: fadeUp 1s ease .35s both;
-    }
-
-    .btn {
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      padding: 16px 28px;
-      border-radius: 15px;
-      font-size: 16px;
-      font-weight: 800;
-      transition: .25s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      color: white;
-      background: linear-gradient(135deg, #168cff, #713cff);
-      box-shadow: 0 12px 35px rgba(38,130,255,.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 18px 45px rgba(38,130,255,.4);
-    }
-
-    .btn-secondary {
-      color: #dce8f7;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,.1);
-    }
-
-    /* ---------- Stats ---------- */
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      max-width: 900px;
-      margin: 10px auto 80px;
-      padding: 0 20px;
-    }
-
-    .stat {
-      padding: 25px 15px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(12px);
-      transition: .3s;
-    }
-
-    .stat:hover {
-      transform: translateY(-7px);
-      background: rgba(255,255,255,.07);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .stat span {
-      color: #9daabd;
-      font-size: 14px;
-    }
-
-    /* ---------- Features ---------- */
-
-    section {
-      padding: 80px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(30px, 5vw, 48px);
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: #9daabd;
-      font-size: 16px;
-    }
-
-    .features {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 30px;
-      border-radius: 25px;
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.08);
-      transition: .35s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: rgba(56,168,255,.12);
-      filter: blur(25px);
-      top: -60px;
-      right: -60px;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(56,168,255,.3);
-    }
-
-    .icon {
-      font-size: 38px;
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 21px;
-    }
-
-    .card p {
-      color: #9daabd;
-      line-height: 1.9;
-      font-size: 14px;
-    }
-
-    /* ---------- CTA ---------- */
-
-    .cta {
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 60px 25px;
-      text-align: center;
-      border-radius: 30px;
-      background:
+.cta{
+    width:min(900px,92%);
+    margin:90px auto;
+    padding:55px 25px;
+    text-align:center;
+    border-radius:30px;
+    background:
         linear-gradient(
-          135deg,
-          rgba(30,130,255,.15),
-          rgba(125,55,255,.15)
+            135deg,
+            rgba(0,198,255,.12),
+            rgba(130,70,255,.12)
         );
-      border: 1px solid rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.cta h2{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#9da8ba;
+    margin-bottom:25px;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:35px;
+    color:#626f84;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:15px 4%;
     }
 
-    .cta h2 {
-      font-size: clamp(30px, 5vw, 48px);
-      margin-bottom: 15px;
+    .logo{
+        font-size:16px;
     }
 
-    .cta p {
-      color: #aebbd0;
-      margin-bottom: 25px;
+    .hero{
+        min-height:620px;
     }
 
-    /* ---------- Footer ---------- */
-
-    footer {
-      text-align: center;
-      padding: 35px 20px;
-      border-top: 1px solid rgba(255,255,255,.07);
-      color: #78869c;
-      font-size: 13px;
+    .floating .word{
+        font-size:11px;
+        padding:8px 11px;
     }
 
-    /* ---------- Mobile ---------- */
-
-    @media (max-width: 800px) {
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        padding: 18px 5%;
-      }
-
-      .w1,
-      .w2,
-      .w3,
-      .w4 {
-        opacity: .4;
-      }
+    .description{
+        font-size:15px;
     }
 
-    @media (max-width: 480px) {
-      .hero {
-        min-height: 78vh;
-      }
+}
 
-      .stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .stat strong {
-        font-size: 24px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <div class="background">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-  </div>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
 
-  <header>
+
+<header>
+
     <div class="logo">
-      Ghost <span>Language</span> Academy
+        👻 Ghost <span>Language Academy</span>
     </div>
 
-    <div class="free-badge">
-      ✨ کاملاً رایگان
+    <div class="free">
+        ✨ کاملاً رایگان
     </div>
-  </header>
 
-  <main>
+</header>
 
-    <section class="hero">
 
-      <div class="word w1">LEARN</div>
-      <div class="word w2">HELLO</div>
-      <div class="word w3">PRACTICE</div>
-      <div class="word w4">ENGLISH</div>
+<main>
 
-      <div class="hero-content">
+<section class="hero">
+
+    <div class="floating">
+
+        <div class="word w1">HELLO</div>
+        <div class="word w2">LEARN</div>
+        <div class="word w3">PRACTICE</div>
+        <div class="word w4">MASTER</div>
+
+    </div>
+
+
+    <div class="hero-content">
 
         <div class="tag">
-          🌍 یادگیری زبان برای همه
+            🌍 آموزش زبان برای همه
         </div>
 
         <h1>
-          زبان جدیدت را<br>
-          <span>از همین‌جا شروع کن</span>
+            زبان جدیدت را<br>
+            <span>از همین‌جا شروع کن.</span>
         </h1>
 
-        <p class="subtitle">
-          یک پلتفرم آموزشی تعاملی برای یادگیری زبان،
-          از صفر تا سطح متوسط؛ با درس‌های کامل،
-          تمرین‌های جذاب و آزمون‌های واقعی.
+        <p class="description">
+            زبان مورد علاقه‌ات را انتخاب کن،
+            درس‌ها را یاد بگیر، تمرین کن،
+            آزمون بده و قدم‌به‌قدم مهارتت را افزایش بده.
+            <br>
+            <b>کاملاً رایگان و بدون پرداخت هزینه.</b>
         </p>
 
+
         <div class="buttons">
-          <a href="#features" class="btn btn-primary">
-            🚀 شروع یادگیری رایگان
-          </a>
 
-          <a href="#about" class="btn btn-secondary">
-            بیشتر بدانید
-          </a>
+            <a href="languages.html" class="btn primary">
+                🚀 شروع یادگیری رایگان
+            </a>
+
+            <a href="#features" class="btn secondary">
+                📚 امکانات سایت
+            </a>
+
         </div>
-
-      </div>
-    </section>
-
-    <div class="stats">
-
-      <div class="stat">
-        <strong>50+</strong>
-        <span>درس مفصل</span>
-      </div>
-
-      <div class="stat">
-        <strong>250+</strong>
-        <span>سؤال آزمون فصل</span>
-      </div>
-
-      <div class="stat">
-        <strong>100</strong>
-        <span>سؤال آزمون نهایی</span>
-      </div>
-
-      <div class="stat">
-        <strong>0 تومان</strong>
-        <span>هزینه یادگیری</span>
-      </div>
 
     </div>
 
-    <section id="features">
+</section>
 
-      <div class="section-title">
-        <h2>چرا Ghost Language Academy؟</h2>
-        <p>
-          یادگیری زبان را از یک کار خسته‌کننده به یک تجربه جذاب تبدیل کن.
-        </p>
-      </div>
 
-      <div class="features">
+<section class="stats">
 
-        <div class="card">
-          <div class="icon">📚</div>
-          <h3>۵۰ درس کامل</h3>
-          <p>
-            درس‌ها به‌صورت مرحله‌ای طراحی می‌شوند تا
-            از پایه شروع کنی و قدم‌به‌قدم پیشرفت کنی.
-          </p>
-        </div>
+    <div class="stat">
+        <strong>50+</strong>
+        <span>درس انگلیسی</span>
+    </div>
 
-        <div class="card">
-          <div class="icon">🎯</div>
-          <h3>تمرین تعاملی</h3>
-          <p>
-            تمرین تایپی، چهارگزینه‌ای، جای خالی،
-            مرتب‌کردن کلمات، ترجمه و تمرین‌های متنوع.
-          </p>
-        </div>
+    <div class="stat">
+        <strong>250+</strong>
+        <span>سؤال آزمون</span>
+    </div>
 
-        <div class="card">
-          <div class="icon">📝</div>
-          <h3>آزمون‌های بزرگ</h3>
-          <p>
-            پایان هر فصل یک آزمون ۵۰ سؤالی برای
-            سنجش واقعی میزان یادگیری برگزار می‌شود.
-          </p>
-        </div>
+    <div class="stat">
+        <strong>100</strong>
+        <span>سؤال آزمون نهایی</span>
+    </div>
 
-        <div class="card">
-          <div class="icon">📊</div>
-          <h3>پیشرفت شما</h3>
-          <p>
-            روند یادگیری و نتایج آزمون‌ها را دنبال کن
-            و ببین چقدر در مسیر یادگیری پیشرفت کرده‌ای.
-          </p>
-        </div>
+    <div class="stat">
+        <strong>0 تومان</strong>
+        <span>هزینه آموزش</span>
+    </div>
 
-        <div class="card">
-          <div class="icon">🏆</div>
-          <h3>آزمون نهایی</h3>
-          <p>
-            در پایان دوره یک آزمون نهایی ۱۰۰ سؤالی
-            برای بررسی مهارت‌های کلی برگزار می‌شود.
-          </p>
-        </div>
+</section>
 
-        <div class="card">
-          <div class="icon">💎</div>
-          <h3>کاملاً رایگان</h3>
-          <p>
-            هدف ما فراهم‌کردن یک تجربه آموزشی رایگان
-            و قابل استفاده برای همه است.
-          </p>
-        </div>
 
-      </div>
+<section class="features" id="features">
 
-    </section>
+    <div class="section-title">
 
-    <section id="about">
-
-      <div class="cta">
-
-        <h2>آماده‌ای شروع کنی؟</h2>
+        <h2>🔥 چرا Ghost Language Academy؟</h2>
 
         <p>
-          اولین قدم را بردار و یادگیری زبان را همین امروز شروع کن.
+            یادگیری زبان را از حالت خسته‌کننده خارج می‌کنیم.
         </p>
 
-        <a href="#" class="btn btn-primary" id="startBtn">
-          🚀 شروع رایگان
-        </a>
+    </div>
 
-      </div>
 
-    </section>
+    <div class="feature-grid">
 
-  </main>
+        <div class="feature">
 
-  <footer>
-    © 2026 Ghost Language Academy — آموزش زبان، ساده و رایگان
-  </footer>
+            <div class="icon">🎮</div>
 
-  <script>
-    const startBtn = document.getElementById("startBtn");
+            <h3>یادگیری تعاملی</h3>
 
-    startBtn.addEventListener("click", function(event) {
-      event.preventDefault();
+            <p>
+                فقط متن نمی‌خوانی؛
+                تست می‌زنی، تایپ می‌کنی،
+                جمله می‌سازی و تمرین می‌کنی.
+            </p>
 
-      alert(
-        "بخش انتخاب زبان به‌زودی فعال می‌شود! 🌍"
-      );
-    });
-  </script>
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">🏆</div>
+
+            <h3>سیستم XP</h3>
+
+            <p>
+                با انجام تمرین‌ها XP بگیر
+                و پیشرفت خودت را دنبال کن.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">🧠</div>
+
+            <h3>آموزش مرحله‌ای</h3>
+
+            <p>
+                درس‌ها مرحله‌به‌مرحله باز می‌شوند
+                تا مسیر یادگیری منظم باشد.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="icon">📝</div>
+
+            <h3>آزمون‌های بزرگ</h3>
+
+            <p>
+                بعد از هر فصل یک آزمون ۵۰ سؤالی
+                و در پایان دوره آزمون نهایی ۱۰۰ سؤالی داری.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="languages">
+
+    <div class="section-title">
+
+        <h2>🌎 زبان‌ها</h2>
+
+        <p>
+            زبان مورد علاقه‌ات را انتخاب کن.
+        </p>
+
+    </div>
+
+
+    <div class="language-grid">
+
+        <div class="language">
+            <div class="flag">🇬🇧</div>
+            <b>English</b>
+            <small>انگلیسی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇪🇸</div>
+            <b>Spanish</b>
+            <small>اسپانیایی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇫🇷</div>
+            <b>French</b>
+            <small>فرانسوی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇩🇪</div>
+            <b>German</b>
+            <small>آلمانی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇹🇷</div>
+            <b>Turkish</b>
+            <small>ترکی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇸🇦</div>
+            <b>Arabic</b>
+            <small>عربی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇷🇺</div>
+            <b>Russian</b>
+            <small>روسی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇮🇹</div>
+            <b>Italian</b>
+            <small>ایتالیایی</small>
+        </div>
+
+        <div class="language">
+            <div class="flag">🇯🇵</div>
+            <b>Japanese</b>
+            <small>ژاپنی</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta">
+
+    <h2>
+        آماده‌ای شروع کنی؟ 🚀
+    </h2>
+
+    <p>
+        اولین قدم فقط یک کلیک فاصله دارد.
+    </p>
+
+    <a href="languages.html" class="btn primary">
+        🌍 انتخاب زبان
+    </a>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    👻 Ghost Language Academy
+
+    <br><br>
+
+    Learn. Practice. Master. — Completely Free.
+
+</footer>
 
 </body>
-        </html>
+</html>
