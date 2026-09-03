@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lesson 2 | سلام و معرفی</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Tahoma,Arial,sans-serif}
+
+body{
+    background:
+    radial-gradient(circle at 10% 10%,rgba(0,200,255,.18),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(130,70,255,.18),transparent 30%),
+    #070b16;
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:14px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(7,11,22,.86);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:19px;
+    font-weight:bold;
+}
+
+.logo span{color:#58d1ff}
+
+.back{
+    color:#fff;
+    text-decoration:none;
+    background:#151e32;
+    padding:9px 14px;
+    border-radius:12px;
+}
+
+.progress-bar{
+    position:fixed;
+    top:69px;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#141b2b;
+    z-index:101;
+}
+
+.progress{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00c6ff,#8b52ff);
+    transition:.3s;
+}
+
+.container{
+    width:min(1000px,92%);
+    margin:auto;
+}
+
+.hero{
+    text-align:center;
+    padding:65px 15px 35px;
+}
+
+.badge{
+    display:inline-block;
+    color:#69d7ff;
+    border:1px solid rgba(90,210,255,.3);
+    background:rgba(0,190,255,.1);
+    padding:8px 16px;
+    border-radius:50px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(32px,7vw,58px);
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#aeb9cb;
+    line-height:2;
+}
+
+.section{
+    background:rgba(16,23,40,.84);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:24px;
+    padding:25px;
+    margin:25px 0;
+    box-shadow:0 15px 45px rgba(0,0,0,.2);
+}
+
+.section h2{
+    color:#68d6ff;
+    margin-bottom:18px;
+}
+
+.section p{
+    color:#c2cbd9;
+    line-height:2;
+    margin-bottom:12px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:14px;
+}
+
+.card{
+    background:#0c1323;
+    padding:18px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.card .en{
+    direction:ltr;
+    text-align:left;
+    font-size:22px;
+    font-weight:bold;
+    color:#6ad7ff;
+}
+
+.card .fa{
+    color:#aeb8c9;
+    margin-top:8px;
+}
+
+.speak{
+    margin-top:10px;
+    border:0;
+    padding:8px 12px;
+    border-radius:10px;
+    background:#192843;
+    color:#fff;
+    cursor:pointer;
+}
+
+.dialogue{
+    background:#0b1220;
+    padding:20px;
+    border-radius:18px;
+}
+
+.message{
+    max-width:80%;
+    padding:13px 16px;
+    margin:10px 0;
+    border-radius:15px;
+    line-height:1.8;
+}
+
+.a{
+    background:#16233b;
+    margin-left:auto;
+    direction:ltr;
+    text-align:left;
+}
+
+.b{
+    background:#202d45;
+    margin-right:auto;
+    direction:ltr;
+    text-align:left;
+}
+
+.translation{
+    direction:rtl;
+    text-align:right;
+    color:#929fb5;
+    font-size:13px;
+}
+
+.question{
+    background:#0b1220;
+    padding:19px;
+    border-radius:18px;
+    margin:15px 0;
+}
+
+.q{
+    line-height:1.9;
+    margin-bottom:13px;
+}
+
+.options{
+    display:grid;
+    gap:9px;
+}
+
+.option{
+    border:1px solid rgba(255,255,255,.08);
+    background:#172238;
+    color:white;
+    padding:13px;
+    border-radius:12px;
+    cursor:pointer;
+    text-align:right;
+}
+
+.option:hover{
+    border-color:#52cfff;
+}
+
+.option.correct{
+    border-color:#00d084;
+    background:rgba(0,208,132,.14);
+}
+
+.option.wrong{
+    border-color:#ff5367;
+    background:rgba(255,83,103,.13);
+}
+
+.feedback{
+    margin-top:10px;
+    min-height:23px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    background:#070d19;
+    color:#fff;
+    border:1px solid #2b3953;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    direction:ltr;
+}
+
+input:focus{border-color:#50cfff}
+
+.btn{
+    margin-top:11px;
+    border:0;
+    padding:12px 18px;
+    border-radius:12px;
+    color:white;
+    background:linear-gradient(90deg,#00bfff,#7654ff);
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.tip{
+    background:rgba(255,193,7,.08);
+    border:1px solid rgba(255,193,7,.2);
+    color:#e4d18a;
+    padding:15px;
+    border-radius:14px;
+    line-height:2;
+}
+
+.order{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    direction:ltr;
+    margin:15px 0;
+}
+
+.word{
+    border:1px solid #30405d;
+    background:#17233a;
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.answer{
+    min-height:58px;
+    border:2px dashed #354563;
+    border-radius:15px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:10px;
+    direction:ltr;
+}
+
+.complete{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.complete button{
+    border:0;
+    background:linear-gradient(90deg,#00c6ff,#8455ff);
+    color:#fff;
+    padding:15px 25px;
+    border-radius:14px;
+    font-size:17px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.xp{
+    font-size:22px;
+    margin:20px 0;
+}
+
+footer{
+    text-align:center;
+    color:#68758a;
+    padding:35px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">👻 Ghost <span>Language Academy</span></div>
+    <a class="back" href="english.html">← دوره انگلیسی</a>
+</header>
+
+<div class="progress-bar">
+    <div class="progress" id="progress"></div>
+</div>
+
+<div class="container">
+
+<section class="hero">
+    <div class="badge">LESSON 2 • BEGINNER</div>
+
+    <h1>سلام و معرفی 👋</h1>
+
+    <p class="subtitle">
+        در این درس یاد می‌گیری چگونه سلام کنی،
+        خودت را معرفی کنی و درباره‌ی دیگران سؤال‌های ساده بپرسی.
+    </p>
+</section>
+
+<section class="section">
+    <h2>🎯 اهداف درس</h2>
+
+    <p>در پایان این درس می‌توانی:</p>
+
+    <div class="tip">
+        ✅ سلام و خداحافظی کنی<br>
+        ✅ نام خودت را بگویی<br>
+        ✅ نام دیگران را بپرسی<br>
+        ✅ بگویی دانش‌آموز یا معلم هستی<br>
+        ✅ درباره حال افراد سؤال کنی<br>
+        ✅ یک مکالمه کوتاه انجام دهی
+    </div>
+</section>
+
+<section class="section">
+    <h2>👋 سلام کردن</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="en">Hello</div>
+            <div class="fa">سلام</div>
+            <button class="speak" onclick="speak('Hello')">🔊 تلفظ</button>
+        </div>
+
+        <div class="card">
+            <div class="en">Hi</div>
+            <div class="fa">سلام — دوستانه</div>
+            <button class="speak" onclick="speak('Hi')">🔊 تلفظ</button>
+        </div>
+
+        <div class="card">
+            <div class="en">Good morning</div>
+            <div class="fa">صبح بخیر</div>
+            <button class="speak" onclick="speak('Good morning')">🔊 تلفظ</button>
+        </div>
+
+        <div class="card">
+            <div class="en">Good afternoon</div>
+            <div class="fa">بعدازظهر بخیر</div>
+            <button class="speak" onclick="speak('Good afternoon')">🔊 تلفظ</button>
+        </div>
+
+        <div class="card">
+            <div class="en">Good evening</div>
+            <div class="fa">عصر بخیر</div>
+            <button class="speak" onclick="speak('Good evening')">🔊 تلفظ</button>
+        </div>
+
+        <div class="card">
+            <div class="en">Goodbye</div>
+            <div class="fa">خداحافظ</div>
+            <button class="speak" onclick="speak('Goodbye')">🔊 تلفظ</button>
+        </div>
+
+        <div class="card">
+            <div class="en">See you</div>
+            <div class="fa">می‌بینمت</div>
+            <button class="speak" onclick="speak('See you')">🔊 تلفظ</button>
+        </div>
+
+        <div class="card">
+            <div class="en">See you later</div>
+            <div class="fa">بعداً می‌بینمت</div>
+            <button class="speak" onclick="speak('See you later')">🔊 تلفظ</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>🙋 معرفی خودت</h2>
+
+    <p>
+        یکی از مهم‌ترین الگوهای زبان انگلیسی:
+    </p>
+
+    <div class="card">
+        <div class="en">My name is Ali.</div>
+        <div class="fa">اسم من علی است.</div>
+        <button class="speak" onclick="speak('My name is Ali.')">🔊 تلفظ</button>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="en">I am Ali.</div>
+        <div class="fa">من علی هستم.</div>
+        <button class="speak" onclick="speak('I am Ali.')">🔊 تلفظ</button>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="en">I am a student.</div>
+        <div class="fa">من یک دانش‌آموز هستم.</div>
+        <button class="speak" onclick="speak('I am a student.')">🔊 تلفظ</button>
+    </div>
+
+    <br>
+
+    <div class="tip">
+        💡 <b>My name is...</b> برای معرفی اسم استفاده می‌شود.
+        <br>
+        مثال: My name is Sara.
+    </div>
+</section>
+
+<section class="section">
+    <h2>❓ پرسیدن اسم</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="en">What is your name?</div>
+            <div class="fa">اسم تو چیست؟</div>
+            <button class="speak" onclick="speak('What is your name?')">🔊</button>
+        </div>
+
+        <div class="card">
+            <div class="en">What's your name?</div>
+            <div class="fa">شکل کوتاه جمله بالا</div>
+            <button class="speak" onclick="speak('What is your name?')">🔊</button>
+        </div>
+
+        <div class="card">
+            <div class="en">My name is Ali.</div>
+            <div class="fa">اسم من علی است.</div>
+            <button class="speak" onclick="speak('My name is Ali.')">🔊</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>🙂 پرسیدن حال</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="en">How are you?</div>
+            <div class="fa">حالت چطور است؟</div>
+            <button class="speak" onclick="speak('How are you?')">🔊</button>
+        </div>
+
+        <div class="card">
+            <div class="en">I am fine.</div>
+            <div class="fa">من خوبم.</div>
+            <button class="speak" onclick="speak('I am fine.')">🔊</button>
+        </div>
+
+        <div class="card">
+            <div class="en">I am good.</div>
+            <div class="fa">من خوبم.</div>
+            <button class="speak" onclick="speak('I am good.')">🔊</button>
+        </div>
+
+        <div class="card">
+            <div class="en">I am great!</div>
+            <div class="fa">من عالی‌ام!</div>
+            <button class="speak" onclick="speak('I am great!')">🔊</button>
+        </div>
+
+        <div class="card">
+            <div class="en">Thank you.</div>
+            <div class="fa">ممنون.</div>
+            <button class="speak" onclick="speak('Thank you.')">🔊</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>💬 مکالمه نمونه</h2>
+
+    <div class="dialogue">
+
+        <div class="message a">
+            Hello!
+            <div class="translation">سلام!</div>
+        </div>
+
+        <div class="message b">
+            Hi!
+            <div class="translation">سلام!</div>
+        </div>
+
+        <div class="message a">
+            What's your name?
+            <div class="translation">اسمت چیست؟</div>
+        </div>
+
+        <div class="message b">
+            My name is Ali.
+            <div class="translation">اسم من علی است.</div>
+        </div>
+
+        <div class="message a">
+            Nice to meet you.
+            <div class="translation">از آشنایی با تو خوشحالم.</div>
+        </div>
+
+        <div class="message b">
+            Nice to meet you too.
+            <div class="translation">من هم از آشنایی با تو خوشحالم.</div>
+        </div>
+
+        <div class="message a">
+            How are you?
+            <div class="translation">حالت چطور است؟</div>
+        </div>
+
+        <div class="message b">
+            I am fine, thank you.
+            <div class="translation">خوبم، ممنون.</div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>🧠 تمرین چهارگزینه‌ای</h2>
+
+    <div class="question">
+        <div class="q">
+            1. معنی <b dir="ltr">Good morning</b> چیست؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">شب بخیر</button>
+            <button class="option" onclick="answer(this,true)">صبح بخیر</button>
+            <button class="option" onclick="answer(this,false)">خداحافظ</button>
+            <button class="option" onclick="answer(this,false)">ممنون</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="q">
+            2. برای پرسیدن «اسمت چیست؟» کدام جمله درست است؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,true)">What's your name?</button>
+            <button class="option" onclick="answer(this,false)">Your name what?</button>
+            <button class="option" onclick="answer(this,false)">Name your is?</button>
+            <button class="option" onclick="answer(this,false)">What name you?</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="q">
+            3. معنی <b dir="ltr">How are you?</b> چیست؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">اسمت چیست؟</button>
+            <button class="option" onclick="answer(this,true)">حالت چطور است؟</button>
+            <button class="option" onclick="answer(this,false)">کجا هستی؟</button>
+            <button class="option" onclick="answer(this,false)">چند سال داری؟</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="q">
+            4. کدام جمله برای معرفی خودت درست است؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,false)">My Ali name.</button>
+            <button class="option" onclick="answer(this,true)">My name is Ali.</button>
+            <button class="option" onclick="answer(this,false)">Name is my Ali.</button>
+            <button class="option" onclick="answer(this,false)">Ali is name my.</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+        <div class="q">
+            5. معنی <b dir="ltr">Goodbye</b> چیست؟
+        </div>
+
+        <div class="options">
+            <button class="option" onclick="answer(this,true)">خداحافظ</button>
+            <button class="option" onclick="answer(this,false)">سلام</button>
+            <button class="option" onclick="answer(this,false)">صبح بخیر</button>
+            <button class="option" onclick="answer(this,false)">دوست</button>
+        </div>
+
+        <div class="feedback"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>⌨️ تمرین تایپی</h2>
+
+    <div class="question">
+
+        <div class="q">
+            عبارت انگلیسی «اسم من علی است» را بنویس.
+        </div>
+
+        <input id="typing" placeholder="Type in English...">
+
+        <button class="btn" onclick="checkTyping()">
+            بررسی پاسخ
+        </button>
+
+        <div class="feedback" id="typingFeedback"></div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>🧩 جمله را مرتب کن</h2>
+
+    <p>
+        کلمات را به ترتیب درست انتخاب کن.
+    </p>
+
+    <div class="order" id="words">
+
+        <button class="word" onclick="selectWord(this)">you</button>
+        <button class="word" onclick="selectWord(this)">are</button>
+        <button class="word" onclick="selectWord(this)">How</button>
+
+    </div>
+
+    <div class="answer" id="answer"></div>
+
+    <button class="btn" onclick="checkOrder()">
+        بررسی جمله
+    </button>
+
+    <div class="feedback" id="orderFeedback"></div>
+</section>
+
+<section class="section">
+    <h2>🌍 تمرین ترجمه</h2>
+
+    <div class="question">
+
+        <div class="q" dir="ltr">
+            Translate: How are you?
+        </div>
+
+        <input id="translation">
+
+        <button class="btn" onclick="checkTranslation()">
+            بررسی
+        </button>
+
+        <div class="feedback" id="translationFeedback"></div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>🔥 چالش آخر</h2>
+
+    <p>
+        تصور کن یک نفر را برای اولین بار می‌بینی.
+        باید بتوانی حداقل این مکالمه را انجام بدهی:
+    </p>
+
+    <div class="tip" dir="ltr" style="text-align:left">
+
+        Hello!<br>
+        What's your name?<br>
+        My name is Ali.<br>
+        Nice to meet you.<br>
+        Nice to meet you too.<br>
+        How are you?<br>
+        I am fine, thank you.
+
+    </div>
+</section>
+
+<section class="section complete">
+
+    <h2>🏆 پایان درس ۲</h2>
+
+    <p>
+        اگر درس را مطالعه کردی و تمرین‌ها را انجام دادی،
+        درس را کامل کن تا پیشرفتت ذخیره شود.
+    </p>
+
+    <div class="xp">
+        ⭐ XP: <b id="xp">0</b>
+    </div>
+
+    <button onclick="completeLesson()">
+        ✅ تکمیل درس ۲
+    </button>
+
+    <div class="feedback" id="completeFeedback"></div>
+
+</section>
+
+</div>
+
+<footer>
+    👻 Ghost Language Academy<br>
+    Learn. Practice. Master. — Completely Free.
+</footer>
+
+<script>
+
+/* =========================
+   XP
+========================= */
+
+let xp = Number(localStorage.getItem("xp") || 0);
+
+document.getElementById("xp").textContent = xp;
+
+function addXP(amount){
+
+    xp += amount;
+
+    localStorage.setItem("xp",xp);
+
+    document.getElementById("xp").textContent = xp;
+}
+
+
+/* =========================
+   SPEECH
+========================= */
+
+function speak(text){
+
+    if(!("speechSynthesis" in window)){
+        alert("مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const utterance =
+    new SpeechSynthesisUtterance(text);
+
+    utterance.lang = "en-US";
+    utterance.rate = .8;
+    utterance.pitch = 1;
+
+    speechSynthesis.speak(utterance);
+}
+
+
+/* =========================
+   MCQ
+========================= */
+
+function answer(button,correct){
+
+    const question =
+    button.closest(".question");
+
+    const buttons =
+    question.querySelectorAll(".option");
+
+    const feedback =
+    question.querySelector(".feedback");
+
+    buttons.forEach(b=>{
+        b.disabled = true;
+    });
+
+    if(correct){
+
+        button.classList.add("correct");
+
+        feedback.textContent =
+        "✅ درست!";
+
+        addXP(5);
+
+    }else{
+
+        button.classList.add("wrong");
+
+        feedback.textContent =
+        "❌ اشتباه. پاسخ را دوباره بررسی کن.";
+    }
+}
+
+
+/* =========================
+   TYPING
+========================= */
+
+function checkTyping(){
+
+    const value =
+    document.getElementById("typing")
+    .value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g," ");
+
+    const feedback =
+    document.getElementById("typingFeedback");
+
+    if(
+        value === "my name is ali." ||
+        value === "my name is ali"
+    ){
+
+        feedback.textContent =
+        "✅ عالی! جمله درست است.";
+
+        addXP(15);
+
+    }else{
+
+        feedback.textContent =
+        "❌ پاسخ درست: My name is Ali.";
+    }
+}
+
+
+/* =========================
+   ORDER
+========================= */
+
+let selectedWords = [];
+
+function selectWord(button){
+
+    selectedWords.push(button.textContent);
+
+    button.disabled = true;
+    button.style.opacity = ".35";
+
+    const item =
+    document.createElement("button");
+
+    item.className = "word";
+    item.textContent = button.textContent;
+
+    document.getElementById("answer")
+    .appendChild(item);
+}
+
+
+function checkOrder(){
+
+    const result =
+    selectedWords.join(" ");
+
+    const feedback =
+    document.getElementById("orderFeedback");
+
+    if(result === "How are you"){
+
+        feedback.textContent =
+        "✅ درست! How are you?";
+
+        addXP(15);
+
+    }else{
+
+        feedback.textContent =
+        "❌ ترتیب درست: How are you";
+    }
+}
+
+
+/* =========================
+   TRANSLATION
+========================= */
+
+function checkTranslation(){
+
+    const value =
+    document.getElementById("translation")
+    .value
+    .trim();
+
+    const feedback =
+    document.getElementById("translationFeedback");
+
+    if(
+        value.includes("حالت") ||
+        value.includes("چطور")
+    ){
+
+        feedback.textContent =
+        "✅ ترجمه درست است.";
+
+        addXP(15);
+
+    }else{
+
+        feedback.textContent =
+        "❌ ترجمه درست: حالت چطور است؟";
+    }
+}
+
+
+/* =========================
+   COMPLETE
+========================= */
+
+function completeLesson(){
+
+    let completed =
+    Number(localStorage.getItem("completedLessons") || 0);
+
+    if(completed < 2){
+        completed = 2;
+    }
+
+    localStorage.setItem(
+        "completedLessons",
+        completed
+    );
+
+    addXP(50);
+
+    document.getElementById(
+        "completeFeedback"
+    ).textContent =
+    "🎉 درس ۲ کامل شد! درس بعدی برایت باز شد.";
+
+    setTimeout(()=>{
+        window.location.href = "english.html";
+    },1800);
+}
+
+
+/* =========================
+   SCROLL PROGRESS
+========================= */
+
+window.addEventListener("scroll",()=>{
+
+    const top =
+    document.documentElement.scrollTop;
+
+    const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+    const percent =
+    height > 0
+    ? (top / height) * 100
+    : 0;
+
+    document.getElementById("progress")
+    .style.width = percent + "%";
+});
+
+</script>
+
+</body>
+              </html>⁶
