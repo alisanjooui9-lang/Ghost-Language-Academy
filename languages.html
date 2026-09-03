@@ -1,289 +1,574 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>انتخاب زبان | Ghost Language Academy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>انتخاب زبان | Ghost Language Academy</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:white;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(0,255,170,.12),transparent 30%),
+        radial-gradient(circle at 85% 80%,rgba(90,80,255,.15),transparent 30%),
+        #05070d;
+    overflow-x:hidden;
+}
+
+/* Background */
+.bg{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.25;
+    animation:float 8s infinite ease-in-out;
+}
+
+.orb1{
+    width:280px;
+    height:280px;
+    background:#00ffaa;
+    top:-100px;
+    right:-80px;
+}
+
+.orb2{
+    width:320px;
+    height:320px;
+    background:#635bff;
+    bottom:-130px;
+    left:-100px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translate(0,0);
+    }
+    50%{
+        transform:translate(30px,-25px);
+    }
+}
+
+/* Header */
+header{
+    padding:20px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+}
+
+.logo{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#00ffaa;
+}
+
+.free{
+    padding:8px 14px;
+    border-radius:30px;
+    background:rgba(0,255,170,.1);
+    border:1px solid rgba(0,255,170,.25);
+    color:#00ffaa;
+    font-size:12px;
+}
+
+/* Main */
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:55px 20px 70px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    color:#b9c2d0;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(32px,6vw,58px);
+    margin-bottom:15px;
+    background:linear-gradient(90deg,#fff,#00ffaa,#8d86ff,#fff);
+    background-size:250%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:titleMove 6s linear infinite;
+}
+
+@keyframes titleMove{
+    0%{background-position:0%}
+    100%{background-position:250%}
+}
+
+.hero p{
+    color:#9ba4b5;
+    font-size:15px;
+    line-height:2;
+}
+
+/* Languages */
+.languages{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    position:relative;
+    min-height:190px;
+    padding:25px;
+    border-radius:25px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.09);
+    backdrop-filter:blur(15px);
+    overflow:hidden;
+    transition:.35s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:#00ffaa;
+    filter:blur(70px);
+    opacity:0;
+    top:-50px;
+    right:-40px;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(0,255,170,.45);
+    box-shadow:0 15px 50px rgba(0,255,170,.08);
+}
+
+.card:hover::before{
+    opacity:.35;
+}
+
+.active{
+    cursor:pointer;
+    border-color:rgba(0,255,170,.3);
+}
+
+.active:hover{
+    transform:translateY(-10px) scale(1.01);
+}
+
+.locked{
+    opacity:.62;
+    cursor:not-allowed;
+}
+
+.flag{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.name{
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.en{
+    color:#7f8999;
+    font-size:13px;
+    direction:ltr;
+    text-align:right;
+}
+
+.status{
+    position:absolute;
+    left:18px;
+    top:18px;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.ready{
+    color:#00ffaa;
+    background:rgba(0,255,170,.1);
+    border:1px solid rgba(0,255,170,.2);
+}
+
+.soon{
+    color:#aeb6c4;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* English special */
+.english-card{
+    background:
+        linear-gradient(145deg,rgba(0,255,170,.08),rgba(255,255,255,.035));
+}
+
+.english-card .name{
+    color:#00ffaa;
+}
+
+/* Bottom */
+.bottom{
+    margin-top:35px;
+    text-align:center;
+}
+
+.back{
+    display:inline-block;
+    text-decoration:none;
+    color:#9ba4b5;
+    padding:12px 20px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.back:hover{
+    color:white;
+    border-color:rgba(0,255,170,.3);
+}
+
+/* Toast */
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translate(-50%,120px);
+    background:#10151f;
+    border:1px solid rgba(255,255,255,.1);
+    padding:14px 22px;
+    border-radius:15px;
+    color:white;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    transition:.4s;
+    z-index:20;
+}
+
+.toast.show{
+    transform:translate(-50%,0);
+}
+
+/* Mobile */
+@media(max-width:800px){
+    .languages{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:520px){
+    header{
+        padding:17px;
     }
 
-    body {
-      font-family: Arial, Tahoma, sans-serif;
-      min-height: 100vh;
-      color: white;
-      background:
-        radial-gradient(circle at 20% 20%, #123c65, transparent 30%),
-        radial-gradient(circle at 80% 80%, #32145c, transparent 30%),
-        #060a12;
-      overflow-x: hidden;
+    .logo{
+        font-size:17px;
     }
 
-    header {
-      padding: 22px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .free{
+        font-size:10px;
     }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 900;
+    main{
+        padding:40px 15px 50px;
     }
 
-    .logo span {
-      color: #42aaff;
+    .languages{
+        grid-template-columns:1fr;
     }
 
-    .free {
-      padding: 9px 15px;
-      border-radius: 50px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.12);
-      color: #8dceff;
-      font-size: 13px;
+    .card{
+        min-height:160px;
     }
 
-    .container {
-      width: min(1100px, 90%);
-      margin: 40px auto 70px;
+    h1{
+        font-size:35px;
     }
-
-    .title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .title .emoji {
-      font-size: 55px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .title h1 {
-      font-size: clamp(30px, 6vw, 55px);
-      margin: 15px 0;
-    }
-
-    .title p {
-      color: #aab7ca;
-      line-height: 1.9;
-      font-size: 16px;
-    }
-
-    @keyframes float {
-      0%,100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-12px);
-      }
-    }
-
-    .languages {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .language {
-      position: relative;
-      padding: 30px 25px;
-      border-radius: 25px;
-      cursor: pointer;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.1);
-      backdrop-filter: blur(12px);
-      transition: .3s;
-      overflow: hidden;
-    }
-
-    .language:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: rgba(70,170,255,.5);
-      box-shadow: 0 20px 50px rgba(0,0,0,.25);
-    }
-
-    .flag {
-      font-size: 45px;
-      margin-bottom: 18px;
-    }
-
-    .language h2 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .language p {
-      color: #9eacc0;
-      font-size: 14px;
-    }
-
-    .free-text {
-      margin-top: 18px;
-      color: #67c1ff;
-      font-weight: bold;
-      font-size: 13px;
-    }
-
-    .language::after {
-      content: "→";
-      position: absolute;
-      left: 22px;
-      bottom: 22px;
-      font-size: 25px;
-      color: #4aafff;
-      transition: .3s;
-    }
-
-    .language:hover::after {
-      left: 16px;
-    }
-
-    .note {
-      text-align: center;
-      margin-top: 35px;
-      color: #77869c;
-      font-size: 13px;
-    }
-
-    @media (max-width: 800px) {
-      .languages {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 520px) {
-      .languages {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        padding: 18px 5%;
-      }
-
-      .container {
-        margin-top: 25px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">
-    Ghost <span>Language</span> Academy
-  </div>
+<div class="bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+</div>
 
-  <div class="free">
-    ✨ کاملاً رایگان
-  </div>
+<header>
+    <div class="logo">
+        Ghost <span>Language</span> Academy
+    </div>
+
+    <div class="free">
+        کاملاً رایگان
+    </div>
 </header>
 
-<main class="container">
+<main>
 
-  <div class="title">
-    <div class="emoji">🌍</div>
+    <section class="hero">
+        <div class="badge">🌍 قدم اول یادگیری</div>
 
-    <h1>چه زبانی می‌خواهی یاد بگیری؟</h1>
+        <h1>زبانت را انتخاب کن</h1>
 
-    <p>
-      زبان موردنظر خودت را انتخاب کن و یادگیری را از سطح پایه شروع کن.
-    </p>
-  </div>
+        <p>
+            زبان مورد علاقه‌ات را انتخاب کن و یادگیری را شروع کن.
+            <br>
+            آموزش‌ها تعاملی، مرحله‌ای و کاملاً رایگان هستند.
+        </p>
+    </section>
 
-  <div class="languages">
+    <section class="languages">
 
-    <div class="language" onclick="selectLanguage('English')">
-      <div class="flag">🇬🇧</div>
-      <h2>English</h2>
-      <p>انگلیسی</p>
-      <div class="free-text">رایگان • ۵۰ درس</div>
+        <!-- English -->
+        <div class="card active english-card" onclick="openEnglish()">
+
+            <div class="status ready">
+                ✓ آماده
+            </div>
+
+            <div class="flag">🇬🇧</div>
+
+            <div class="name">
+                انگلیسی
+            </div>
+
+            <div class="en">
+                English
+            </div>
+
+        </div>
+
+        <!-- Spanish -->
+        <div class="card locked" onclick="comingSoon('اسپانیایی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇪🇸</div>
+
+            <div class="name">
+                اسپانیایی
+            </div>
+
+            <div class="en">
+                Español
+            </div>
+
+        </div>
+
+        <!-- French -->
+        <div class="card locked" onclick="comingSoon('فرانسوی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇫🇷</div>
+
+            <div class="name">
+                فرانسوی
+            </div>
+
+            <div class="en">
+                Français
+            </div>
+
+        </div>
+
+        <!-- German -->
+        <div class="card locked" onclick="comingSoon('آلمانی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇩🇪</div>
+
+            <div class="name">
+                آلمانی
+            </div>
+
+            <div class="en">
+                Deutsch
+            </div>
+
+        </div>
+
+        <!-- Turkish -->
+        <div class="card locked" onclick="comingSoon('ترکی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇹🇷</div>
+
+            <div class="name">
+                ترکی
+            </div>
+
+            <div class="en">
+                Türkçe
+            </div>
+
+        </div>
+
+        <!-- Arabic -->
+        <div class="card locked" onclick="comingSoon('عربی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇸🇦</div>
+
+            <div class="name">
+                عربی
+            </div>
+
+            <div class="en">
+                العربية
+            </div>
+
+        </div>
+
+        <!-- Russian -->
+        <div class="card locked" onclick="comingSoon('روسی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇷🇺</div>
+
+            <div class="name">
+                روسی
+            </div>
+
+            <div class="en">
+                Русский
+            </div>
+
+        </div>
+
+        <!-- Italian -->
+        <div class="card locked" onclick="comingSoon('ایتالیایی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇮🇹</div>
+
+            <div class="name">
+                ایتالیایی
+            </div>
+
+            <div class="en">
+                Italiano
+            </div>
+
+        </div>
+
+        <!-- Japanese -->
+        <div class="card locked" onclick="comingSoon('ژاپنی')">
+
+            <div class="status soon">
+                به‌زودی
+            </div>
+
+            <div class="flag">🇯🇵</div>
+
+            <div class="name">
+                ژاپنی
+            </div>
+
+            <div class="en">
+                日本語
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="bottom">
+        <a href="index.html" class="back">
+            ← بازگشت به صفحه اصلی
+        </a>
     </div>
-
-    <div class="language" onclick="selectLanguage('Spanish')">
-      <div class="flag">🇪🇸</div>
-      <h2>Español</h2>
-      <p>اسپانیایی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-    <div class="language" onclick="selectLanguage('French')">
-      <div class="flag">🇫🇷</div>
-      <h2>Français</h2>
-      <p>فرانسوی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-    <div class="language" onclick="selectLanguage('German')">
-      <div class="flag">🇩🇪</div>
-      <h2>Deutsch</h2>
-      <p>آلمانی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-    <div class="language" onclick="selectLanguage('Turkish')">
-      <div class="flag">🇹🇷</div>
-      <h2>Türkçe</h2>
-      <p>ترکی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-    <div class="language" onclick="selectLanguage('Arabic')">
-      <div class="flag">🇸🇦</div>
-      <h2>العربية</h2>
-      <p>عربی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-    <div class="language" onclick="selectLanguage('Russian')">
-      <div class="flag">🇷🇺</div>
-      <h2>Русский</h2>
-      <p>روسی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-    <div class="language" onclick="selectLanguage('Italian')">
-      <div class="flag">🇮🇹</div>
-      <h2>Italiano</h2>
-      <p>ایتالیایی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-    <div class="language" onclick="selectLanguage('Japanese')">
-      <div class="flag">🇯🇵</div>
-      <h2>日本語</h2>
-      <p>ژاپنی</p>
-      <div class="free-text">رایگان</div>
-    </div>
-
-  </div>
-
-  <div class="note">
-    زبان‌های بیشتری در آینده اضافه خواهند شد 🚀
-  </div>
 
 </main>
 
+<div class="toast" id="toast"></div>
+
 <script>
-  function selectLanguage(language) {
 
-    localStorage.setItem("selectedLanguage", language);
+function openEnglish(){
 
-    if (language === "English") {
-      window.location.href = "english.html";
-    } else {
-      alert(
-        "دوره " + language +
-        " به‌زودی اضافه می‌شود! 🚀"
-      );
-    }
-  }
+    localStorage.setItem("selectedLanguage","English");
+
+    const toast = document.getElementById("toast");
+
+    toast.innerHTML = "🇬🇧 زبان انگلیسی انتخاب شد!";
+
+    toast.classList.add("show");
+
+    setTimeout(function(){
+        window.location.href = "english.html";
+    },700);
+}
+
+function comingSoon(language){
+
+    const toast = document.getElementById("toast");
+
+    toast.innerHTML = "🔒 آموزش " + language + " به‌زودی اضافه می‌شود.";
+
+    toast.classList.add("show");
+
+    setTimeout(function(){
+        toast.classList.remove("show");
+    },2500);
+}
+
 </script>
 
 </body>
