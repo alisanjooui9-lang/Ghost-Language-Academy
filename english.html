@@ -1,533 +1,567 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Course | Ghost Code Academy</title>
 
-  <title>دوره انگلیسی | Ghost Language Academy</title>
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body{
+    background:
+    radial-gradient(circle at 20% 10%,#18234a 0%,transparent 35%),
+    radial-gradient(circle at 90% 90%,#261044 0%,transparent 35%),
+    #070b16;
+    color:#fff;
+    min-height:100vh;
+}
 
-    body {
-      font-family: Arial, Tahoma, sans-serif;
-      background: #070b14;
-      color: white;
-      min-height: 100vh;
-    }
+header{
+    padding:25px 18px;
+    text-align:center;
+    background:rgba(10,15,30,.85);
+    border-bottom:1px solid #26345d;
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(12px);
+}
 
-    header {
-      padding: 20px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(7,11,20,.85);
-      backdrop-filter: blur(15px);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#6ea8ff;
+}
 
-    .logo {
-      font-size: 21px;
-      font-weight: 900;
-    }
+.subtitle{
+    margin-top:7px;
+    color:#aab4d0;
+    font-size:13px;
+}
 
-    .logo span {
-      color: #42aaff;
-    }
+.progressBox{
+    max-width:700px;
+    margin:18px auto 0;
+    background:#11182c;
+    border:1px solid #26345d;
+    border-radius:15px;
+    padding:15px;
+}
 
-    .free {
-      color: #79c8ff;
-      font-size: 13px;
-    }
+.progressInfo{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:9px;
+    font-size:13px;
+    color:#cbd4ed;
+}
 
-    .container {
-      width: min(1100px, 90%);
-      margin: auto;
-      padding: 45px 0 80px;
-    }
+.progress{
+    width:100%;
+    height:10px;
+    background:#252d43;
+    border-radius:20px;
+    overflow:hidden;
+}
 
-    .hero {
-      text-align: center;
-      padding: 30px 10px 60px;
-    }
+.progressBar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#4d8dff,#8d5cff);
+    border-radius:20px;
+    transition:.4s;
+}
 
-    .hero-icon {
-      font-size: 60px;
-      animation: float 3s ease-in-out infinite;
-    }
+.container{
+    width:min(1100px,94%);
+    margin:30px auto;
+}
 
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+.sectionTitle{
+    text-align:center;
+    margin-bottom:25px;
+}
 
-    .hero h1 {
-      font-size: clamp(32px, 6vw, 58px);
-      margin: 18px 0 12px;
-    }
+.sectionTitle h1{
+    font-size:28px;
+}
 
-    .hero p {
-      color: #9eacc0;
-      line-height: 2;
-    }
+.sectionTitle p{
+    color:#9da8c4;
+    margin-top:8px;
+    font-size:14px;
+}
 
-    .progress-box {
-      max-width: 650px;
-      margin: 30px auto 0;
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
-    }
+.lessons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+}
 
-    .progress-info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      font-size: 14px;
-      color: #aebbd0;
-    }
+.lesson{
+    position:relative;
+    background:linear-gradient(145deg,#111a31,#0c1223);
+    border:1px solid #26345d;
+    border-radius:20px;
+    padding:20px;
+    min-height:185px;
+    transition:.25s;
+    overflow:hidden;
+}
 
-    .progress {
-      height: 10px;
-      border-radius: 20px;
-      background: #151c29;
-      overflow: hidden;
-    }
+.lesson:not(.locked){
+    cursor:pointer;
+}
 
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg,#168cff,#8a4cff);
-      transition: width .5s;
-    }
+.lesson:not(.locked):hover{
+    transform:translateY(-5px);
+    border-color:#578fff;
+    box-shadow:0 10px 30px rgba(55,100,255,.18);
+}
 
-    .chapter {
-      margin-bottom: 45px;
-    }
+.lesson.locked{
+    opacity:.55;
+    cursor:not-allowed;
+}
 
-    .chapter-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
+.lessonNumber{
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#172448;
+    color:#72a6ff;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
 
-    .chapter-number {
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg,#168cff,#733cff);
-      font-weight: 900;
-      font-size: 20px;
-    }
+.lesson h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
 
-    .chapter-header h2 {
-      font-size: 25px;
-    }
+.lesson p{
+    color:#9ba6c1;
+    font-size:12px;
+    line-height:1.8;
+}
 
-    .chapter-header p {
-      color: #8492a7;
-      font-size: 13px;
-      margin-top: 5px;
-    }
+.status{
+    position:absolute;
+    left:15px;
+    top:15px;
+    font-size:20px;
+}
 
-    .lessons {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 15px;
-    }
+.completed{
+    border-color:#315d47;
+}
 
-    .lesson {
-      position: relative;
-      padding: 22px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.08);
-      cursor: pointer;
-      transition: .3s;
-    }
+.completed .lessonNumber{
+    background:#17382a;
+    color:#5ee59a;
+}
 
-    .lesson:hover:not(.locked) {
-      transform: translateY(-5px);
-      border-color: rgba(66,170,255,.35);
-      background: rgba(255,255,255,.065);
-    }
+.badge{
+    display:inline-block;
+    margin-top:12px;
+    padding:5px 9px;
+    border-radius:8px;
+    background:#14233b;
+    color:#91b5ff;
+    font-size:10px;
+}
 
-    .lesson-number {
-      color: #54b4ff;
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
+.completed .badge{
+    background:#17382a;
+    color:#5ee59a;
+}
 
-    .lesson h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .lesson p {
-      color: #8492a7;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .status {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      font-size: 18px;
-    }
-
-    .locked {
-      opacity: .48;
-      cursor: not-allowed;
-    }
-
-    .exam {
-      margin-top: 18px;
-      padding: 25px;
-      border-radius: 22px;
-      background: linear-gradient(
-        135deg,
-        rgba(255,170,0,.08),
-        rgba(255,70,100,.07)
-      );
-      border: 1px solid rgba(255,180,50,.18);
-    }
-
-    .exam h3 {
-      margin-bottom: 8px;
-    }
-
-    .exam p {
-      color: #9eacc0;
-      font-size: 13px;
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-
-    .exam button {
-      border: none;
-      color: white;
-      background: linear-gradient(135deg,#ff9d18,#ff4d5d);
-      padding: 12px 20px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .exam button:disabled {
-      opacity: .4;
-      cursor: not-allowed;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      color: #68758a;
-      font-size: 13px;
-    }
-
-    @media (max-width: 650px) {
-      .lessons {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        padding: 18px 5%;
-      }
-    }
-  </style>
+footer{
+    text-align:center;
+    padding:35px 10px;
+    color:#68728c;
+    font-size:12px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">
-    Ghost <span>Language</span> Academy
-  </div>
+    <div class="logo">👻 Ghost Code Academy</div>
+    <div class="subtitle">دوره جامع آموزش زبان انگلیسی</div>
 
-  <div class="free">
-    ✨ دوره کاملاً رایگان
-  </div>
+    <div class="progressBox">
+        <div class="progressInfo">
+            <span id="progressText">پیشرفت: 0 از 50 درس</span>
+            <span id="xpText">XP: 0</span>
+        </div>
+
+        <div class="progress">
+            <div class="progressBar" id="progressBar"></div>
+        </div>
+    </div>
 </header>
 
-<main class="container">
+<div class="container">
 
-  <section class="hero">
-
-    <div class="hero-icon">🇬🇧</div>
-
-    <h1>دوره جامع زبان انگلیسی</h1>
-
-    <p>
-      از صفر شروع کن و قدم‌به‌قدم تا سطح متوسط پیش برو.
-    </p>
-
-    <div class="progress-box">
-
-      <div class="progress-info">
-        <span>پیشرفت دوره</span>
-        <span id="progressText">0 از 50 درس</span>
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-
+    <div class="sectionTitle">
+        <h1>🇬🇧 دوره انگلیسی</h1>
+        <p>از صفر تا سطح متوسط — ۵۰ درس مرحله‌به‌مرحله</p>
     </div>
 
-  </section>
+    <div class="lessons" id="lessons"></div>
 
-  <div id="course"></div>
-
-</main>
+</div>
 
 <footer>
-  © 2026 Ghost Language Academy — English Course
+    Ghost Code Academy © 2026
 </footer>
 
 <script>
 
-const chapters = [
+/* =========================================
+   تنظیمات
+========================================= */
 
-  {
-    title: "شروع از صفر",
-    description: "الفبا، لغات پایه، معرفی، خانواده و جمله‌سازی",
-    lessons: [
-      "شروع زبان انگلیسی",
-      "سلام و معرفی",
-      "اعداد و اطلاعات شخصی",
-      "خانواده و افراد",
-      "اشیای اطراف ما",
-      "رنگ‌ها و توصیف کردن",
-      "خانه و اتاق‌ها",
-      "زمان و برنامه روزانه",
-      "غذا و نوشیدنی",
-      "شهر و مکان‌ها"
-    ]
-  },
+const TOTAL_LESSONS = 50;
 
-  {
-    title: "سطح مقدماتی",
-    description: "گرامر پایه و موقعیت‌های روزمره",
-    lessons: [
-      "زندگی روزمره و Present Simple",
-      "توانایی‌ها و Can / Can't",
-      "کارهای در حال انجام",
-      "خرید و قیمت‌ها",
-      "رستوران و سفارش غذا",
-      "سفر و حمل‌ونقل",
-      "آب‌وهوا و فصل‌ها",
-      "گذشته ساده",
-      "اتفاقات گذشته",
-      "برنامه‌های آینده"
-    ]
-  },
 
-  {
-    title: "پیش‌متوسط",
-    description: "گرامر و مهارت‌های کاربردی‌تر",
-    lessons: [
-      "زمان‌های انگلیسی",
-      "Present Perfect",
-      "Past Continuous",
-      "Phrasal Verbs",
-      "افعال Modal",
-      "شرطی‌ها",
-      "جمله‌های طولانی",
-      "Reading",
-      "Writing",
-      "Listening و Speaking"
-    ]
-  },
+/* =========================================
+   نام درس‌ها
+========================================= */
 
-  {
-    title: "سطح متوسط",
-    description: "گرامر پیشرفته‌تر و انگلیسی واقعی",
-    lessons: [
-      "زمان‌های ترکیبی",
-      "Passive Voice",
-      "Reported Speech",
-      "Relative Clauses",
-      "اصطلاحات روزمره",
-      "واژگان گسترده",
-      "تکنولوژی و اینترنت",
-      "مدرسه و سفر",
-      "بحث و نظر دادن",
-      "استفاده واقعی از انگلیسی"
-    ]
-  },
-
-  {
-    title: "تسلط و جمع‌بندی",
-    description: "مرور، تمرین و آماده‌سازی برای آزمون نهایی",
-    lessons: [
-      "مرور کامل گرامر",
-      "مرور واژگان",
-      "Reading پیشرفته‌تر",
-      "Listening پیشرفته‌تر",
-      "Speaking",
-      "Writing",
-      "مکالمه واقعی",
-      "تمرین ترکیبی",
-      "آمادگی آزمون نهایی",
-      "جمع‌بندی کل دوره"
-    ]
-  }
-
+const lessonTitles = [
+    "سلام و معرفی",
+    "خداحافظی و احوالپرسی",
+    "ضمیرهای شخصی",
+    "افعال to be",
+    "جمله‌های ساده",
+    "اعداد انگلیسی",
+    "روزها و ماه‌ها",
+    "رنگ‌ها",
+    "اعضای خانواده",
+    "اشیای روزمره",
+    "افعال پرکاربرد",
+    "زمان حال ساده",
+    "منفی کردن جملات",
+    "سوالی کردن جملات",
+    "There is / There are",
+    "اسم‌های قابل شمارش",
+    "صفات",
+    "مقایسه کردن",
+    "حروف اضافه",
+    "مکان‌ها",
+    "زمان و ساعت",
+    "کارهای روزانه",
+    "غذا و نوشیدنی",
+    "خرید کردن",
+    "لباس‌ها",
+    "آب‌وهوا",
+    "حمل‌ونقل",
+    "شهر و مکان‌ها",
+    "پرسیدن مسیر",
+    "مکالمه روزمره",
+    "حال استمراری",
+    "گذشته ساده",
+    "افعال بی‌قاعده",
+    "گذشته استمراری",
+    "آینده با Will",
+    "آینده با Going to",
+    "افعال Modal",
+    "Can / Could",
+    "Should / Must",
+    "Present Perfect",
+    "قیدها",
+    "جملات شرطی",
+    "جملات موصولی",
+    "افعال عبارتی",
+    "مکالمه پیشرفته",
+    "خواندن متن",
+    "نوشتن متن",
+    "درک شنیداری",
+    "مرور جامع",
+    "آزمون نهایی"
 ];
 
-const course = document.getElementById("course");
 
-let lessonIndex = 0;
+/* =========================================
+   پیدا کردن XP
+   ========================================= */
 
-chapters.forEach((chapter, chapterIndex) => {
+function getXP(){
 
-  const chapterElement = document.createElement("section");
-  chapterElement.className = "chapter";
+    const possibleKeys = [
+        "xp",
+        "XP",
+        "userXP",
+        "totalXP",
+        "englishXP"
+    ];
 
-  let lessonsHTML = "";
+    for(const key of possibleKeys){
 
-  chapter.lessons.forEach((lesson, i) => {
+        const value = localStorage.getItem(key);
 
-    const currentIndex = lessonIndex;
-    const unlocked = currentIndex === 0;
+        if(value !== null){
 
-    lessonsHTML += `
-      <div
-        class="lesson ${unlocked ? "" : "locked"}"
-        onclick="openLesson(${currentIndex}, ${unlocked})"
-      >
+            const number = parseInt(value);
 
-        <div class="status">
-          ${unlocked ? "▶️" : "🔒"}
-        </div>
+            if(!isNaN(number)){
+                return number;
+            }
+        }
+    }
 
-        <div class="lesson-number">
-          درس ${currentIndex + 1}
-        </div>
+    return 0;
+}
 
-        <h3>${lesson}</h3>
 
-        <p>
-          آموزش کامل + لغات + گرامر + تمرین‌های تعاملی
-        </p>
+/* =========================================
+   تشخیص تکمیل شدن درس
+========================================= */
 
-      </div>
-    `;
+function isLessonCompleted(number){
 
-    lessonIndex++;
-  });
+    const possibleKeys = [
 
-  chapterElement.innerHTML = `
-    <div class="chapter-header">
+        `lesson${number}Completed`,
 
-      <div class="chapter-number">
-        ${chapterIndex + 1}
-      </div>
+        `lesson_${number}_completed`,
 
-      <div>
-        <h2>فصل ${chapterIndex + 1}: ${chapter.title}</h2>
-        <p>${chapter.description}</p>
-      </div>
+        `lesson${number}_completed`,
 
-    </div>
+        `completedLesson${number}`,
 
-    <div class="lessons">
-      ${lessonsHTML}
-    </div>
+        `completed_${number}`,
 
-    <div class="exam">
+        `lesson-${number}-completed`
 
-      <h3>📝 آزمون فصل ${chapterIndex + 1}</h3>
+    ];
 
-      <p>
-        پس از تکمیل ۱۰ درس این فصل، آزمون ۵۰ سؤالی فعال می‌شود.
-        برای عبور به فصل بعد باید حداقل ۷۰٪ امتیاز کسب کنید.
-      </p>
+    for(const key of possibleKeys){
 
-      <button
-        ${chapterIndex === 0 ? "" : "disabled"}
-        onclick="startExam(${chapterIndex})"
-      >
-        شروع آزمون ۵۰ سؤالی
-      </button>
+        const value = localStorage.getItem(key);
 
-    </div>
-  `;
+        if(
+            value === "true" ||
+            value === "1" ||
+            value === "completed" ||
+            value === "yes"
+        ){
+            return true;
+        }
+    }
 
-  course.appendChild(chapterElement);
+    return false;
+}
+
+
+/* =========================================
+   تعداد درس‌های تکمیل شده
+========================================= */
+
+function getCompletedCount(){
+
+    let count = 0;
+
+    for(let i=1;i<=TOTAL_LESSONS;i++){
+
+        if(isLessonCompleted(i)){
+            count++;
+        }
+    }
+
+    return count;
+}
+
+
+/* =========================================
+   آیا درس باز است؟
+=========================================
+
+   قانون:
+
+   درس 1 همیشه باز
+
+   درس N وقتی باز است که
+   درس N-1 تکمیل شده باشد
+
+   بنابراین درس‌های قبلی
+   هیچ‌وقت دوباره قفل نمی‌شوند.
+========================================= */
+
+function isLessonUnlocked(number){
+
+    if(number === 1){
+        return true;
+    }
+
+    return isLessonCompleted(number - 1);
+}
+
+
+/* =========================================
+   ساخت کارت‌ها
+========================================= */
+
+function createLessons(){
+
+    const container = document.getElementById("lessons");
+
+    container.innerHTML = "";
+
+    for(let i=1;i<=TOTAL_LESSONS;i++){
+
+        const completed = isLessonCompleted(i);
+
+        const unlocked = isLessonUnlocked(i);
+
+        const card = document.createElement("div");
+
+        card.className =
+            "lesson" +
+            (completed ? " completed" : "") +
+            (!unlocked ? " locked" : "");
+
+        let status = "";
+
+        if(completed){
+
+            status = "✅";
+
+        }else if(!unlocked){
+
+            status = "🔒";
+
+        }else{
+
+            status = "🔓";
+        }
+
+
+        card.innerHTML = `
+
+            <div class="status">${status}</div>
+
+            <div class="lessonNumber">
+                ${i}
+            </div>
+
+            <h3>
+                درس ${i}: ${lessonTitles[i-1]}
+            </h3>
+
+            <p>
+                آموزش مرحله‌ای زبان انگلیسی
+                همراه با تمرین و سوالات تعاملی.
+            </p>
+
+            <span class="badge">
+                ${
+                    completed
+                    ? "تکمیل شده"
+                    : unlocked
+                    ? "قابل شروع"
+                    : "قفل"
+                }
+            </span>
+
+        `;
+
+
+        /* فقط درس‌های باز قابل کلیک هستند */
+
+        if(unlocked){
+
+            card.addEventListener("click",function(){
+
+                window.location.href =
+                    `lesson${i}.html`;
+
+            });
+        }
+
+
+        container.appendChild(card);
+    }
+}
+
+
+/* =========================================
+   بروزرسانی پیشرفت
+========================================= */
+
+function updateProgress(){
+
+    const completed = getCompletedCount();
+
+    const xp = getXP();
+
+    const percent =
+        Math.round((completed / TOTAL_LESSONS) * 100);
+
+
+    document.getElementById("progressText").textContent =
+        `پیشرفت: ${completed} از ${TOTAL_LESSONS} درس`;
+
+    document.getElementById("xpText").textContent =
+        `XP: ${xp}`;
+
+
+    document.getElementById("progressBar").style.width =
+        `${percent}%`;
+}
+
+
+/* =========================================
+   اجرای اولیه
+========================================= */
+
+function refresh(){
+
+    createLessons();
+
+    updateProgress();
+}
+
+refresh();
+
+
+/* =========================================
+   اگر از یک تب دیگر برگشت
+========================================= */
+
+window.addEventListener("storage",function(){
+
+    refresh();
 
 });
 
 
-function openLesson(index, unlocked) {
+/* =========================================
+   وقتی صفحه دوباره فعال شد
+========================================= */
 
-  if (!unlocked) {
-    alert("🔒 ابتدا درس‌های قبلی را کامل کنید.");
-    return;
-  }
+document.addEventListener("visibilitychange",function(){
 
-  localStorage.setItem("currentLesson", index);
+    if(!document.hidden){
 
-  /*
-    بعداً هر درس به فایل اختصاصی خودش وصل می‌شود.
-    مثال:
-    lesson1.html
-    lesson2.html
-    ...
-  */
+        refresh();
 
-  window.location.href = `lesson${index + 1}.html`;
-}
+    }
 
-
-function startExam(chapter) {
-
-  localStorage.setItem("currentExam", chapter + 1);
-
-  /*
-    بعداً این قسمت به exam.html وصل می‌شود
-    و برای هر فصل ۵۰ سؤال اختصاصی خواهد داشت.
-  */
-
-  window.location.href = `exam${chapter + 1}.html`;
-}
-
-
-function updateProgress() {
-
-  const completed =
-    Number(localStorage.getItem("completedLessons")) || 0;
-
-  const percent = Math.min(
-    100,
-    Math.round((completed / 50) * 100)
-  );
-
-  document.getElementById("progressBar").style.width =
-    percent + "%";
-
-  document.getElementById("progressText").textContent =
-    `${completed} از 50 درس`;
-
-}
-
-updateProgress();
+});
 
 </script>
 
