@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3 | اعداد و اطلاعات شخصی</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at 10% 10%,rgba(0,198,255,.16),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(130,70,255,.18),transparent 30%),
+    #070b16;
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:14px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(7,11,22,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-weight:bold;
+    font-size:19px;
+}
+
+.logo span{
+    color:#5bd2ff;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    background:#151f34;
+    padding:9px 14px;
+    border-radius:12px;
+}
+
+.progress-bar{
+    position:fixed;
+    top:69px;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#151c2c;
+    z-index:101;
+}
+
+.progress{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00c6ff,#8c52ff);
+    transition:.3s;
+}
+
+.container{
+    width:min(1000px,92%);
+    margin:auto;
+}
+
+.hero{
+    text-align:center;
+    padding:65px 15px 35px;
+}
+
+.badge{
+    display:inline-block;
+    color:#68d8ff;
+    background:rgba(0,190,255,.1);
+    border:1px solid rgba(80,210,255,.3);
+    border-radius:50px;
+    padding:8px 16px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(31px,7vw,58px);
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#aeb9ca;
+    line-height:2;
+}
+
+.section{
+    background:rgba(16,23,40,.84);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:24px;
+    padding:25px;
+    margin:25px 0;
+    box-shadow:0 15px 45px rgba(0,0,0,.2);
+}
+
+.section h2{
+    color:#69d7ff;
+    margin-bottom:18px;
+}
+
+.section p{
+    color:#c1cad8;
+    line-height:2;
+    margin-bottom:12px;
+}
+
+.number-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:10px;
+}
+
+.number{
+    background:#0c1323;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:15px;
+    padding:17px;
+    text-align:center;
+}
+
+.number b{
+    display:block;
+    direction:ltr;
+    font-size:25px;
+    color:#68d6ff;
+}
+
+.number span{
+    color:#aab5c6;
+    display:block;
+    margin-top:6px;
+}
+
+.speak{
+    border:0;
+    margin-top:9px;
+    padding:7px 11px;
+    border-radius:9px;
+    color:#fff;
+    background:#1a2943;
+    cursor:pointer;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:13px;
+}
+
+.card{
+    background:#0b1220;
+    padding:18px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.en{
+    direction:ltr;
+    text-align:left;
+    color:#68d6ff;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.fa{
+    margin-top:8px;
+    color:#aab5c6;
+}
+
+.example{
+    background:#0b1220;
+    border-right:4px solid #4ecbff;
+    border-radius:12px;
+    padding:16px;
+    margin:12px 0;
+    direction:ltr;
+    text-align:left;
+    line-height:1.8;
+}
+
+.example small{
+    color:#929eb2;
+    display:block;
+    direction:rtl;
+    text-align:right;
+}
+
+.tip{
+    background:rgba(255,193,7,.08);
+    border:1px solid rgba(255,193,7,.2);
+    padding:15px;
+    border-radius:14px;
+    color:#e5d18a;
+    line-height:2;
+}
+
+.question{
+    background:#0b1220;
+    padding:19px;
+    border-radius:18px;
+    margin:15px 0;
+}
+
+.q{
+    line-height:1.9;
+    margin-bottom:14px;
+}
+
+.options{
+    display:grid;
+    gap:9px;
+}
+
+.option{
+    border:1px solid rgba(255,255,255,.08);
+    background:#172238;
+    color:#fff;
+    padding:13px;
+    border-radius:12px;
+    cursor:pointer;
+    text-align:right;
+}
+
+.option:hover{
+    border-color:#52ceff;
+}
+
+.option.correct{
+    border-color:#00d084;
+    background:rgba(0,208,132,.14);
+}
+
+.option.wrong{
+    border-color:#ff5367;
+    background:rgba(255,83,103,.13);
+}
+
+.feedback{
+    margin-top:10px;
+    min-height:24px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #2c3b55;
+    background:#070d19;
+    color:#fff;
+    outline:none;
+    font-size:16px;
+    direction:ltr;
+}
+
+input:focus{
+    border-color:#50ceff;
+}
+
+.btn{
+    margin-top:11px;
+    padding:12px 19px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(90deg,#00bfff,#7654ff);
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.profile{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+.profile-item{
+    background:#0b1220;
+    border-radius:15px;
+    padding:18px;
+}
+
+.profile-item span{
+    display:block;
+    color:#8f9bb0;
+    margin-bottom:8px;
+}
+
+.profile-item b{
+    direction:ltr;
+    display:block;
+    color:#68d7ff;
+}
+
+.order{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    direction:ltr;
+    margin:15px 0;
+}
+
+.word{
+    border:1px solid #30405c;
+    background:#17233a;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.answer{
+    min-height:58px;
+    border:2px dashed #354563;
+    border-radius:15px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:10px;
+    direction:ltr;
+}
+
+.complete{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.complete button{
+    border:0;
+    background:linear-gradient(90deg,#00c6ff,#8455ff);
+    color:white;
+    padding:15px 25px;
+    border-radius:14px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.xp{
+    font-size:22px;
+    margin:20px 0;
+}
+
+footer{
+    text-align:center;
+    color:#68758a;
+    padding:35px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        👻 Ghost <span>Language Academy</span>
+    </div>
+
+    <a class="back" href="english.html">
+        ← دوره انگلیسی
+    </a>
+</header>
+
+<div class="progress-bar">
+    <div class="progress" id="progress"></div>
+</div>
+
+<div class="container">
+
+<section class="hero">
+
+    <div class="badge">
+        LESSON 3 • BEGINNER
+    </div>
+
+    <h1>
+        اعداد و اطلاعات شخصی 🔢
+    </h1>
+
+    <p class="subtitle">
+        اعداد انگلیسی را یاد بگیر و بتوانی اطلاعات ساده‌ای
+        مثل سن، شماره و اطلاعات شخصی را بیان کنی.
+    </p>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🎯 اهداف درس</h2>
+
+    <div class="tip">
+        ✅ اعداد 1 تا 100 را بشناسی<br>
+        ✅ سن خودت را بگویی<br>
+        ✅ درباره سن دیگران سؤال کنی<br>
+        ✅ شماره تلفن را به انگلیسی بخوانی<br>
+        ✅ اطلاعات شخصی ساده بدهی<br>
+        ✅ تاریخ و سال را بهتر درک کنی
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🔢 اعداد 1 تا 20</h2>
+
+    <div class="number-grid">
+
+        <div class="number">
+            <b>1</b>
+            <span>one</span>
+            <button class="speak" onclick="speak('one')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>2</b>
+            <span>two</span>
+            <button class="speak" onclick="speak('two')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>3</b>
+            <span>three</span>
+            <button class="speak" onclick="speak('three')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>4</b>
+            <span>four</span>
+            <button class="speak" onclick="speak('four')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>5</b>
+            <span>five</span>
+            <button class="speak" onclick="speak('five')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>6</b>
+            <span>six</span>
+            <button class="speak" onclick="speak('six')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>7</b>
+            <span>seven</span>
+            <button class="speak" onclick="speak('seven')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>8</b>
+            <span>eight</span>
+            <button class="speak" onclick="speak('eight')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>9</b>
+            <span>nine</span>
+            <button class="speak" onclick="speak('nine')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>10</b>
+            <span>ten</span>
+            <button class="speak" onclick="speak('ten')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>11</b>
+            <span>eleven</span>
+            <button class="speak" onclick="speak('eleven')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>12</b>
+            <span>twelve</span>
+            <button class="speak" onclick="speak('twelve')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>13</b>
+            <span>thirteen</span>
+            <button class="speak" onclick="speak('thirteen')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>14</b>
+            <span>fourteen</span>
+            <button class="speak" onclick="speak('fourteen')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>15</b>
+            <span>fifteen</span>
+            <button class="speak" onclick="speak('fifteen')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>16</b>
+            <span>sixteen</span>
+            <button class="speak" onclick="speak('sixteen')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>17</b>
+            <span>seventeen</span>
+            <button class="speak" onclick="speak('seventeen')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>18</b>
+            <span>eighteen</span>
+            <button class="speak" onclick="speak('eighteen')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>19</b>
+            <span>nineteen</span>
+            <button class="speak" onclick="speak('nineteen')">🔊</button>
+        </div>
+
+        <div class="number">
+            <b>20</b>
+            <span>twenty</span>
+            <button class="speak" onclick="speak('twenty')">🔊</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🔟 دهگان</h2>
+
+    <div class="number-grid">
+
+        <div class="number">
+            <b>30</b>
+            <span>thirty</span>
+        </div>
+
+        <div class="number">
+            <b>40</b>
+            <span>forty</span>
+        </div>
+
+        <div class="number">
+            <b>50</b>
+            <span>fifty</span>
+        </div>
+
+        <div class="number">
+            <b>60</b>
+            <span>sixty</span>
+        </div>
+
+        <div class="number">
+            <b>70</b>
+            <span>seventy</span>
+        </div>
+
+        <div class="number">
+            <b>80</b>
+            <span>eighty</span>
+        </div>
+
+        <div class="number">
+            <b>90</b>
+            <span>ninety</span>
+        </div>
+
+        <div class="number">
+            <b>100</b>
+            <span>one hundred</span>
+        </div>
+
+    </div>
+
+    <div class="tip" style="margin-top:18px">
+
+        💡 برای ساخت عددهایی مثل 21:
+        <br><br>
+
+        <b dir="ltr">
+            twenty-one
+        </b>
+
+        <br>
+
+        یعنی 20 + 1
+
+        <br><br>
+
+        مثال:
+        <br>
+
+        <b dir="ltr">35 = thirty-five</b>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🎂 گفتن سن</h2>
+
+    <p>
+        برای گفتن سن در انگلیسی از فعل <b>be</b> استفاده می‌کنیم.
+    </p>
+
+    <div class="example">
+        <b>I am 13 years old.</b>
+        <small>من ۱۳ ساله هستم.</small>
+    </div>
+
+    <div class="example">
+        <b>She is 15 years old.</b>
+        <small>او ۱۵ ساله است.</small>
+    </div>
+
+    <div class="example">
+        <b>He is 20 years old.</b>
+        <small>او ۲۰ ساله است.</small>
+    </div>
+
+    <div class="tip">
+        ⚠️ در انگلیسی معمولاً نمی‌گوییم:
+        <br>
+        ❌ I have 13 years.
+        <br><br>
+        بلکه می‌گوییم:
+        <br>
+        ✅ I am 13 years old.
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>❓ پرسیدن سن</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="en">
+                How old are you?
+            </div>
+            <div class="fa">
+                چند سالت است؟
+            </div>
+            <button class="speak"
+            onclick="speak('How old are you?')">
+                🔊 تلفظ
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="en">
+                I am 13 years old.
+            </div>
+            <div class="fa">
+                من ۱۳ ساله هستم.
+            </div>
+            <button class="speak"
+            onclick="speak('I am thirteen years old.')">
+                🔊 تلفظ
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>👤 اطلاعات شخصی</h2>
+
+    <div class="profile">
+
+        <div class="profile-item">
+            <span>Name</span>
+            <b>Ali</b>
+        </div>
+
+        <div class="profile-item">
+            <span>Age</span>
+            <b>13</b>
+        </div>
+
+        <div class="profile-item">
+            <span>Country</span>
+            <b>Iran</b>
+        </div>
+
+        <div class="profile-item">
+            <span>Job</span>
+            <b>Student</b>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="example">
+        <b>My name is Ali.</b>
+        <small>اسم من علی است.</small>
+    </div>
+
+    <div class="example">
+        <b>I am 13 years old.</b>
+        <small>من ۱۳ ساله هستم.</small>
+    </div>
+
+    <div class="example">
+        <b>I am a student.</b>
+        <small>من دانش‌آموز هستم.</small>
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🧠 تمرین چهارگزینه‌ای</h2>
+
+    <div class="question">
+
+        <div class="q">
+            1. عدد <b>15</b> به انگلیسی چیست؟
+        </div>
+
+        <div class="options">
+            <button class="option"
+            onclick="answer(this,false)">
+                fifty
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                fifteen
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                five
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                fourteen
+            </button>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <div class="question">
+
+        <div class="q">
+            2. معنی <b>twenty</b> چیست؟
+        </div>
+
+        <div class="options">
+
+            <button class="option"
+            onclick="answer(this,false)">
+                12
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                20
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                30
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                10
+            </button>
+
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <div class="question">
+
+        <div class="q">
+            3. «چند سالت است؟» کدام است؟
+        </div>
+
+        <div class="options">
+
+            <button class="option"
+            onclick="answer(this,true)">
+                How old are you?
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                How name are you?
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                What old you?
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                How you old?
+            </button>
+
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <div class="question">
+
+        <div class="q">
+            4. کدام جمله درست است؟
+        </div>
+
+        <div class="options">
+
+            <button class="option"
+            onclick="answer(this,false)">
+                I have 13 years.
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                I am 13 years old.
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                I 13 am years.
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                I old 13 years.
+            </button>
+
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <div class="question">
+
+        <div class="q">
+            5. عدد 100 چیست؟
+        </div>
+
+        <div class="options">
+
+            <button class="option"
+            onclick="answer(this,false)">
+                ninety
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                one thousand
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                one hundred
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                hundred one
+            </button>
+
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>⌨️ تمرین تایپی</h2>
+
+    <div class="question">
+
+        <div class="q">
+            عدد <b>25</b> را به انگلیسی بنویس.
+        </div>
+
+        <input id="typing"
+        placeholder="Type the answer...">
+
+        <button class="btn"
+        onclick="checkTyping()">
+            بررسی پاسخ
+        </button>
+
+        <div class="feedback"
+        id="typingFeedback"></div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🔢 عدد را پیدا کن</h2>
+
+    <div class="question">
+
+        <div class="q">
+            کدام عدد برابر با
+            <b dir="ltr">thirty-five</b>
+            است؟
+        </div>
+
+        <div class="options">
+
+            <button class="option"
+            onclick="answer(this,false)">
+                25
+            </button>
+
+            <button class="option"
+            onclick="answer(this,true)">
+                35
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                45
+            </button>
+
+            <button class="option"
+            onclick="answer(this,false)">
+                55
+            </button>
+
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🧩 جمله را مرتب کن</h2>
+
+    <p>
+        جمله صحیح را بساز:
+    </p>
+
+    <div class="order" id="words">
+
+        <button class="word"
+        onclick="selectWord(this)">
+            old
+        </button>
+
+        <button class="word"
+        onclick="selectWord(this)">
+            years
+        </button>
+
+        <button class="word"
+        onclick="selectWord(this)">
+            am
+        </button>
+
+        <button class="word"
+        onclick="selectWord(this)">
+            I
+        </button>
+
+        <button class="word"
+        onclick="selectWord(this)">
+            13
+        </button>
+
+        <button class="word"
+        onclick="selectWord(this)">
+            .
+        </button>
+
+    </div>
+
+    <div class="answer" id="answer"></div>
+
+    <button class="btn"
+    onclick="checkOrder()">
+        بررسی جمله
+    </button>
+
+    <div class="feedback"
+    id="orderFeedback"></div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🌍 ترجمه کن</h2>
+
+    <div class="question">
+
+        <div class="q" dir="ltr">
+            I am 13 years old.
+        </div>
+
+        <input id="translation"
+        placeholder="ترجمه فارسی...">
+
+        <button class="btn"
+        onclick="checkTranslation()">
+            بررسی
+        </button>
+
+        <div class="feedback"
+        id="translationFeedback"></div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>🔥 چالش اطلاعات شخصی</h2>
+
+    <p>
+        حالا تصور کن شخصی از تو درباره اطلاعاتت سؤال می‌پرسد.
+    </p>
+
+    <div class="example">
+        <b>What is your name?</b>
+        <small>اسمت چیست؟</small>
+    </div>
+
+    <div class="example">
+        <b>How old are you?</b>
+        <small>چند سالت است؟</small>
+    </div>
+
+    <div class="example">
+        <b>Are you a student?</b>
+        <small>آیا دانش‌آموز هستی؟</small>
+    </div>
+
+    <div class="example">
+        <b>Yes, I am.</b>
+        <small>بله، هستم.</small>
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>📚 مرور نهایی</h2>
+
+    <div class="tip">
+
+        🔢 1 = one<br>
+        🔢 10 = ten<br>
+        🔢 20 = twenty<br>
+        🔢 30 = thirty<br>
+        🔢 40 = forty<br>
+        🔢 50 = fifty<br>
+        🔢 100 = one hundred<br><br>
+
+        🎂 How old are you?<br>
+        👤 My name is Ali.<br>
+        🎓 I am a student.<br>
+        ⭐ I am 13 years old.
+
+    </div>
+
+</section>
+
+
+<section class="section complete">
+
+    <h2>🏆 پایان درس ۳</h2>
+
+    <p>
+        درس را کامل کردی؟ پیشرفتت را ذخیره کن و برو سراغ درس بعدی.
+    </p>
+
+    <div class="xp">
+        ⭐ XP:
+        <b id="xp">0</b>
+    </div>
+
+    <button onclick="completeLesson()">
+        ✅ تکمیل درس ۳
+    </button>
+
+    <div class="feedback"
+    id="completeFeedback"></div>
+
+</section>
+
+</div>
+
+<footer>
+    👻 Ghost Language Academy<br>
+    Learn. Practice. Master. — Completely Free.
+</footer>
+
+
+<script>
+
+/* XP */
+
+let xp =
+Number(localStorage.getItem("xp") || 0);
+
+document.getElementById("xp").textContent = xp;
+
+
+function addXP(amount){
+
+    xp += amount;
+
+    localStorage.setItem("xp",xp);
+
+    document.getElementById("xp").textContent = xp;
+}
+
+
+/* Speech */
+
+function speak(text){
+
+    if(!("speechSynthesis" in window)){
+        alert("مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    const u =
+    new SpeechSynthesisUtterance(text);
+
+    u.lang = "en-US";
+    u.rate = .8;
+    u.pitch = 1;
+
+    speechSynthesis.speak(u);
+}
+
+
+/* MCQ */
+
+function answer(button,correct){
+
+    const question =
+    button.closest(".question");
+
+    const buttons =
+    question.querySelectorAll(".option");
+
+    const feedback =
+    question.querySelector(".feedback");
+
+    buttons.forEach(b=>{
+        b.disabled = true;
+    });
+
+    if(correct){
+
+        button.classList.add("correct");
+
+        feedback.textContent =
+        "✅ درست! عالی بود.";
+
+        addXP(5);
+
+    }else{
+
+        button.classList.add("wrong");
+
+        feedback.textContent =
+        "❌ اشتباه. پاسخ را دوباره بررسی کن.";
+    }
+}
+
+
+/* Typing */
+
+function checkTyping(){
+
+    const value =
+    document.getElementById("typing")
+    .value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g," ");
+
+    const feedback =
+    document.getElementById("typingFeedback");
+
+    if(
+        value === "twenty-five" ||
+        value === "twenty five"
+    ){
+
+        feedback.textContent =
+        "✅ درست! 25 = twenty-five";
+
+        addXP(15);
+
+    }else{
+
+        feedback.textContent =
+        "❌ پاسخ درست: twenty-five";
+    }
+}
+
+
+/* Sentence order */
+
+let selectedWords = [];
+
+function selectWord(button){
+
+    selectedWords.push(button.textContent);
+
+    button.disabled = true;
+    button.style.opacity = ".35";
+
+    const item =
+    document.createElement("button");
+
+    item.className = "word";
+    item.textContent = button.textContent;
+
+    document.getElementById("answer")
+    .appendChild(item);
+}
+
+
+function checkOrder(){
+
+    const result =
+    selectedWords.join(" ");
+
+    const feedback =
+    document.getElementById("orderFeedback");
+
+    if(result === "I am 13 years old ."){
+
+        feedback.textContent =
+        "✅ عالی! جمله درست است.";
+
+        addXP(15);
+
+    }else{
+
+        feedback.textContent =
+        "❌ ترتیب درست: I am 13 years old.";
+    }
+}
+
+
+/* Translation */
+
+function checkTranslation(){
+
+    const value =
+    document.getElementById("translation")
+    .value
+    .trim();
+
+    const feedback =
+    document.getElementById("translationFeedback");
+
+    if(
+        value.includes("۱۳") ||
+        value.includes("13")
+    ){
+
+        feedback.textContent =
+        "✅ ترجمه درست است.";
+
+        addXP(15);
+
+    }else{
+
+        feedback.textContent =
+        "❌ پاسخ: من ۱۳ ساله هستم.";
+    }
+}
+
+
+/* Complete */
+
+function completeLesson(){
+
+    let completed =
+    Number(
+        localStorage.getItem("completedLessons") || 0
+    );
+
+    if(completed < 3){
+        completed = 3;
+    }
+
+    localStorage.setItem(
+        "completedLessons",
+        completed
+    );
+
+    addXP(50);
+
+    document.getElementById(
+        "completeFeedback"
+    ).textContent =
+    "🎉 درس ۳ با موفقیت کامل شد!";
+
+    setTimeout(()=>{
+        window.location.href =
+        "english.html";
+    },1800);
+}
+
+
+/* Scroll progress */
+
+window.addEventListener("scroll",()=>{
+
+    const top =
+    document.documentElement.scrollTop;
+
+    const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+    const percent =
+    height > 0
+    ? top / height * 100
+    : 0;
+
+    document.getElementById("progress")
+    .style.width = percent + "%";
+
+});
+
+</script>
+
+</body>
+              </html>
