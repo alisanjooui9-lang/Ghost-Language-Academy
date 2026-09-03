@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>انتخاب زبان | Ghost Language Academy</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      min-height: 100vh;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 20%, #123c65, transparent 30%),
+        radial-gradient(circle at 80% 80%, #32145c, transparent 30%),
+        #060a12;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .logo span {
+      color: #42aaff;
+    }
+
+    .free {
+      padding: 9px 15px;
+      border-radius: 50px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #8dceff;
+      font-size: 13px;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 40px auto 70px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .title .emoji {
+      font-size: 55px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .title h1 {
+      font-size: clamp(30px, 6vw, 55px);
+      margin: 15px 0;
+    }
+
+    .title p {
+      color: #aab7ca;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .languages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .language {
+      position: relative;
+      padding: 30px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(12px);
+      transition: .3s;
+      overflow: hidden;
+    }
+
+    .language:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(70,170,255,.5);
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+
+    .flag {
+      font-size: 45px;
+      margin-bottom: 18px;
+    }
+
+    .language h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .language p {
+      color: #9eacc0;
+      font-size: 14px;
+    }
+
+    .free-text {
+      margin-top: 18px;
+      color: #67c1ff;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .language::after {
+      content: "→";
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      font-size: 25px;
+      color: #4aafff;
+      transition: .3s;
+    }
+
+    .language:hover::after {
+      left: 16px;
+    }
+
+    .note {
+      text-align: center;
+      margin-top: 35px;
+      color: #77869c;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .languages {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .languages {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 18px 5%;
+      }
+
+      .container {
+        margin-top: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    Ghost <span>Language</span> Academy
+  </div>
+
+  <div class="free">
+    ✨ کاملاً رایگان
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="title">
+    <div class="emoji">🌍</div>
+
+    <h1>چه زبانی می‌خواهی یاد بگیری؟</h1>
+
+    <p>
+      زبان موردنظر خودت را انتخاب کن و یادگیری را از سطح پایه شروع کن.
+    </p>
+  </div>
+
+  <div class="languages">
+
+    <div class="language" onclick="selectLanguage('English')">
+      <div class="flag">🇬🇧</div>
+      <h2>English</h2>
+      <p>انگلیسی</p>
+      <div class="free-text">رایگان • ۵۰ درس</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('Spanish')">
+      <div class="flag">🇪🇸</div>
+      <h2>Español</h2>
+      <p>اسپانیایی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('French')">
+      <div class="flag">🇫🇷</div>
+      <h2>Français</h2>
+      <p>فرانسوی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('German')">
+      <div class="flag">🇩🇪</div>
+      <h2>Deutsch</h2>
+      <p>آلمانی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('Turkish')">
+      <div class="flag">🇹🇷</div>
+      <h2>Türkçe</h2>
+      <p>ترکی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('Arabic')">
+      <div class="flag">🇸🇦</div>
+      <h2>العربية</h2>
+      <p>عربی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('Russian')">
+      <div class="flag">🇷🇺</div>
+      <h2>Русский</h2>
+      <p>روسی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('Italian')">
+      <div class="flag">🇮🇹</div>
+      <h2>Italiano</h2>
+      <p>ایتالیایی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+    <div class="language" onclick="selectLanguage('Japanese')">
+      <div class="flag">🇯🇵</div>
+      <h2>日本語</h2>
+      <p>ژاپنی</p>
+      <div class="free-text">رایگان</div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    زبان‌های بیشتری در آینده اضافه خواهند شد 🚀
+  </div>
+
+</main>
+
+<script>
+  function selectLanguage(language) {
+
+    localStorage.setItem("selectedLanguage", language);
+
+    if (language === "English") {
+      window.location.href = "english.html";
+    } else {
+      alert(
+        "دوره " + language +
+        " به‌زودی اضافه می‌شود! 🚀"
+      );
+    }
+  }
+</script>
+
+</body>
+</html>
