@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 10 | اشیای روزمره</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #18243d 0%, #090d18 45%, #05070d 100%);
+      color: #fff;
+      min-height: 100vh;
+      line-height: 1.8;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 15px;
+      text-align: center;
+      background: rgba(5, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #aeb9d1;
+      font-size: 14px;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 7px;
+      background: #20283a;
+      margin-top: 14px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 20%;
+      height: 100%;
+      background: linear-gradient(90deg, #00e5ff, #7c4dff);
+      border-radius: 20px;
+    }
+
+    main {
+      width: min(1000px, 92%);
+      margin: 30px auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #aeb9d1;
+    }
+
+    .section {
+      background: rgba(17, 24, 40, 0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    }
+
+    .section h3 {
+      color: #00e5ff;
+      margin-bottom: 16px;
+      font-size: 21px;
+    }
+
+    .object-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      gap: 14px;
+    }
+
+    .object-card {
+      padding: 18px;
+      border-radius: 15px;
+      text-align: center;
+      background: #101827;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.25s;
+    }
+
+    .object-card:hover {
+      transform: translateY(-4px);
+      border-color: #00e5ff;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 8px;
+    }
+
+    .english {
+      display: block;
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .persian {
+      display: block;
+      color: #aeb9d1;
+      margin-top: 3px;
+    }
+
+    .speak-btn {
+      background: #18263a;
+      border: 1px solid #30415f;
+      font-size: 13px;
+      padding: 7px 12px;
+      margin-top: 8px;
+    }
+
+    .example {
+      background: rgba(0, 229, 255, 0.07);
+      border-right: 4px solid #00e5ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+
+    .example strong {
+      color: #00e5ff;
+    }
+
+    .ltr {
+      direction: ltr;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+
+    .tip {
+      background: rgba(124, 77, 255, 0.12);
+      border: 1px solid rgba(124, 77, 255, 0.35);
+      padding: 15px;
+      border-radius: 12px;
+      color: #dcd6ff;
+    }
+
+    .question {
+      background: #0d1422;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .question-title {
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #29344b;
+      background: #131c2c;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: right;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      border-color: #00e5ff;
+      background: #18263a;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+      min-height: 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid #2c3850;
+      background: #0a101c;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      margin-top: 8px;
+    }
+
+    input:focus {
+      border-color: #00e5ff;
+    }
+
+    button {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #00bcd4, #7c4dff);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .complete {
+      text-align: center;
+      padding: 28px 20px;
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(0,229,255,0.10),
+        rgba(124,77,255,0.12)
+      );
+      border: 1px solid rgba(0,229,255,0.25);
+    }
+
+    .complete h3 {
+      color: #00e5ff;
+      margin-bottom: 8px;
+    }
+
+    .xp {
+      color: #ffd54f;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .status {
+      margin-top: 12px;
+      color: #aeb9d1;
+    }
+
+    footer {
+      text-align: center;
+      color: #71809d;
+      padding: 25px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Ghost Language Academy</h1>
+  <p>Lesson 10 — اشیای روزمره</p>
+
+  <div class="progress-container">
+    <div class="progress"></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <h2>🏠 اشیای روزمره | Everyday Objects</h2>
+    <p>در این درس نام وسایل و اشیای پرکاربرد روزمره را یاد می‌گیریم.</p>
+  </div>
+
+  <section class="section">
+    <h3>📚 لغات مهم</h3>
+
+    <div class="object-grid">
+
+      <div class="object-card">
+        <div class="icon">📱</div>
+        <span class="english">Phone</span>
+        <span class="persian">گوشی</span>
+        <button class="speak-btn" onclick="speak('Phone')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">💻</div>
+        <span class="english">Computer</span>
+        <span class="persian">رایانه / کامپیوتر</span>
+        <button class="speak-btn" onclick="speak('Computer')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">📖</div>
+        <span class="english">Book</span>
+        <span class="persian">کتاب</span>
+        <button class="speak-btn" onclick="speak('Book')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">✏️</div>
+        <span class="english">Pencil</span>
+        <span class="persian">مداد</span>
+        <button class="speak-btn" onclick="speak('Pencil')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🖊️</div>
+        <span class="english">Pen</span>
+        <span class="persian">خودکار</span>
+        <button class="speak-btn" onclick="speak('Pen')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🎒</div>
+        <span class="english">Bag</span>
+        <span class="persian">کیف</span>
+        <button class="speak-btn" onclick="speak('Bag')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🪑</div>
+        <span class="english">Chair</span>
+        <span class="persian">صندلی</span>
+        <button class="speak-btn" onclick="speak('Chair')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🪟</div>
+        <span class="english">Window</span>
+        <span class="persian">پنجره</span>
+        <button class="speak-btn" onclick="speak('Window')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🚪</div>
+        <span class="english">Door</span>
+        <span class="persian">در</span>
+        <button class="speak-btn" onclick="speak('Door')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🗝️</div>
+        <span class="english">Key</span>
+        <span class="persian">کلید</span>
+        <button class="speak-btn" onclick="speak('Key')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">⌚</div>
+        <span class="english">Watch</span>
+        <span class="persian">ساعت مچی</span>
+        <button class="speak-btn" onclick="speak('Watch')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🪞</div>
+        <span class="english">Mirror</span>
+        <span class="persian">آینه</span>
+        <button class="speak-btn" onclick="speak('Mirror')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🛏️</div>
+        <span class="english">Bed</span>
+        <span class="persian">تخت</span>
+        <button class="speak-btn" onclick="speak('Bed')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🛋️</div>
+        <span class="english">Sofa</span>
+        <span class="persian">مبل</span>
+        <button class="speak-btn" onclick="speak('Sofa')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🍽️</div>
+        <span class="english">Plate</span>
+        <span class="persian">بشقاب</span>
+        <button class="speak-btn" onclick="speak('Plate')">🔊 تلفظ</button>
+      </div>
+
+      <div class="object-card">
+        <div class="icon">🥤</div>
+        <span class="english">Cup</span>
+        <span class="persian">فنجان / لیوان</span>
+        <button class="speak-btn" onclick="speak('Cup')">🔊 تلفظ</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>🧠 جمله‌سازی</h3>
+
+    <div class="example ltr">
+      <strong>This is my phone.</strong><br>
+      این گوشی من است.
+    </div>
+
+    <div class="example ltr">
+      <strong>This is a book.</strong><br>
+      این یک کتاب است.
+    </div>
+
+    <div class="example ltr">
+      <strong>The door is open.</strong><br>
+      در باز است.
+    </div>
+
+    <div class="example ltr">
+      <strong>My bag is black.</strong><br>
+      کیف من مشکی است.
+    </div>
+
+    <div class="example ltr">
+      <strong>The key is on the table.</strong><br>
+      کلید روی میز است.
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>💡 نکته مهم</h3>
+
+    <div class="tip">
+      برای معرفی یک شیء می‌توانیم از
+      <b>This is...</b>
+      استفاده کنیم.
+      <br><br>
+
+      <span class="ltr">
+        This is a pen.
+      </span>
+      <br>
+      این یک خودکار است.
+      <br><br>
+
+      اگر بیشتر از یک شیء داشته باشیم، می‌توانیم از
+      <b>These are...</b>
+      استفاده کنیم.
+      <br><br>
+
+      <span class="ltr">
+        These are books.
+      </span>
+      <br>
+      این‌ها کتاب هستند.
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>📝 آزمون</h3>
+
+    <div class="question">
+      <div class="question-title">
+        1. کدام گزینه به معنی «گوشی» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q1')">Phone</button>
+      <button class="option" onclick="answer(this, false, 'q1')">Book</button>
+      <button class="option" onclick="answer(this, false, 'q1')">Chair</button>
+
+      <div id="q1" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        2. کدام گزینه به معنی «کتاب» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q2')">Bag</button>
+      <button class="option" onclick="answer(this, true, 'q2')">Book</button>
+      <button class="option" onclick="answer(this, false, 'q2')">Key</button>
+
+      <div id="q2" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        3. کدام گزینه به معنی «صندلی» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q3')">Window</button>
+      <button class="option" onclick="answer(this, true, 'q3')">Chair</button>
+      <button class="option" onclick="answer(this, false, 'q3')">Door</button>
+
+      <div id="q3" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        4. کدام گزینه به معنی «کلید» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q4')">Key</button>
+      <button class="option" onclick="answer(this, false, 'q4')">Watch</button>
+      <button class="option" onclick="answer(this, false, 'q4')">Mirror</button>
+
+      <div id="q4" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        5. معنی جمله زیر چیست؟
+      </div>
+
+      <div class="example ltr">
+        <strong>This is a pen.</strong>
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q5')">این یک کتاب است.</button>
+      <button class="option" onclick="answer(this, true, 'q5')">این یک خودکار است.</button>
+      <button class="option" onclick="answer(this, false, 'q5')">این یک کیف است.</button>
+
+      <div id="q5" class="feedback"></div>
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>⌨️ تمرین تایپ</h3>
+
+    <p>
+      ترجمه انگلیسی «این یک کتاب است» را بنویس:
+    </p>
+
+    <input
+      id="typing1"
+      type="text"
+      placeholder="Type your answer..."
+    >
+
+    <button onclick="checkTyping()">
+      بررسی پاسخ
+    </button>
+
+    <div id="typingFeedback" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h3>🌍 ترجمه کن</h3>
+
+    <div class="example ltr">
+      <strong>This is my phone.</strong>
+    </div>
+
+    <p>
+      ترجمه فارسی را بنویس:
+    </p>
+
+    <input
+      id="translation"
+      type="text"
+      placeholder="ترجمه فارسی..."
+    >
+
+    <button onclick="checkTranslation()">
+      بررسی
+    </button>
+
+    <div id="translationFeedback" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h3>🔤 جای خالی را پر کن</h3>
+
+    <div class="question">
+      <div class="question-title ltr">
+        This is my ______. 📱
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q6')">Phone</button>
+      <button class="option" onclick="answer(this, false, 'q6')">Book</button>
+      <button class="option" onclick="answer(this, false, 'q6')">Chair</button>
+
+      <div id="q6" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title ltr">
+        This is a ______. 📖
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q7')">Door</button>
+      <button class="option" onclick="answer(this, true, 'q7')">Book</button>
+      <button class="option" onclick="answer(this, false, 'q7')">Key</button>
+
+      <div id="q7" class="feedback"></div>
+    </div>
+
+  </section>
+
+  <section class="complete">
+    <h3>🏆 پایان درس ۱۰</h3>
+
+    <p>
+      اگر اشیای روزمره را یاد گرفتی، درس را کامل کن تا درس بعدی باز شود.
+    </p>
+
+    <div class="xp">⭐ +20 XP</div>
+
+    <button onclick="completeLesson()">
+      ✅ تکمیل درس
+    </button>
+
+    <div id="status" class="status"></div>
+  </section>
+
+</main>
+
+<footer>
+  Ghost Language Academy © 2026
+</footer>
+
+<script>
+  function speak(text) {
+    if ("speechSynthesis" in window) {
+      speechSynthesis.cancel();
+
+      const utterance =
+        new SpeechSynthesisUtterance(text);
+
+      utterance.lang = "en-US";
+      utterance.rate = 0.85;
+
+      speechSynthesis.speak(utterance);
+    } else {
+      alert("مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.");
+    }
+  }
+
+  function answer(button, correct, feedbackId) {
+    const feedback =
+      document.getElementById(feedbackId);
+
+    if (correct) {
+      feedback.textContent = "✅ درست است!";
+      feedback.style.color = "#00e676";
+      button.style.borderColor = "#00e676";
+    } else {
+      feedback.textContent =
+        "❌ پاسخ اشتباه است. دوباره تلاش کن.";
+
+      feedback.style.color = "#ff5252";
+      button.style.borderColor = "#ff5252";
+    }
+  }
+
+  function normalize(text) {
+    return text
+      .trim()
+      .toLowerCase()
+      .replace(/[؟?!.,]/g, "")
+      .replace(/\s+/g, " ");
+  }
+
+  function checkTyping() {
+    const input =
+      normalize(document.getElementById("typing1").value);
+
+    const feedback =
+      document.getElementById("typingFeedback");
+
+    if (input === "this is a book") {
+      feedback.textContent =
+        "✅ عالی! پاسخ درست است.";
+
+      feedback.style.color = "#00e676";
+    } else {
+      feedback.textContent =
+        "❌ پاسخ درست: This is a book.";
+
+      feedback.style.color = "#ff5252";
+    }
+  }
+
+  function checkTranslation() {
+    const input =
+      normalize(document.getElementById("translation").value);
+
+    const feedback =
+      document.getElementById("translationFeedback");
+
+    const correctAnswers = [
+      "این گوشی من است",
+      "این موبایل من است",
+      "این تلفن من است"
+    ];
+
+    if (correctAnswers.includes(input)) {
+      feedback.textContent =
+        "✅ ترجمه درست است!";
+
+      feedback.style.color = "#00e676";
+    } else {
+      feedback.textContent =
+        "❌ پاسخ پیشنهادی: این گوشی من است.";
+
+      feedback.style.color = "#ff5252";
+    }
+  }
+
+  function getXP() {
+    const keys = [
+      "xp",
+      "XP",
+      "userXP",
+      "totalXP",
+      "englishXP"
+    ];
+
+    for (const key of keys) {
+      const value =
+        parseInt(localStorage.getItem(key));
+
+      if (!isNaN(value)) {
+        return {
+          key: key,
+          value: value
+        };
+      }
+    }
+
+    return {
+      key: "xp",
+      value: 0
+    };
+  }
+
+  function completeLesson() {
+    const alreadyCompleted =
+      localStorage.getItem("lesson10Completed") === "true";
+
+    if (!alreadyCompleted) {
+      const xpData = getXP();
+
+      localStorage.setItem(
+        xpData.key,
+        xpData.value + 20
+      );
+
+      localStorage.setItem(
+        "lesson10Completed",
+        "true"
+      );
+    }
+
+    const status =
+      document.getElementById("status");
+
+    status.innerHTML =
+      "🎉 درس ۱۰ با موفقیت تکمیل شد!<br>" +
+      "⭐ ۲۰ XP دریافت کردی.<br>" +
+      "🔓 درس ۱۱ «افعال پرکاربرد» برایت باز شد.";
+
+    status.style.color = "#00e676";
+  }
+
+  window.addEventListener("load", function() {
+    if (
+      localStorage.getItem("lesson10Completed") === "true"
+    ) {
+      document.getElementById("status").innerHTML =
+        "✅ این درس قبلاً تکمیل شده است.<br>" +
+        "🔓 درس ۱۱ «افعال پرکاربرد» باز است.";
+
+      document.getElementById("status").style.color =
+        "#00e676";
+    }
+  });
+</script>
+
+</body>
+          </html>
