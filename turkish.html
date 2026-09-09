@@ -1,0 +1,1891 @@
+<!DOCTYPE html><html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghost Language Academy — Turkish</title><style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:
+      radial-gradient(circle at top,#18233d 0,#070b14 45%,#03050a 100%);
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    padding:28px 18px;
+    text-align:center;
+    border-bottom:1px solid #263657;
+    background:rgba(5,8,16,.8);
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.subtitle{
+    color:#8fa7d8;
+    margin-top:8px;
+}
+
+.xp-box{
+    margin:20px auto 0;
+    max-width:700px;
+    padding:15px;
+    border:1px solid #33466d;
+    border-radius:15px;
+    background:rgba(20,30,52,.7);
+}
+
+#xp{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.container{
+    width:min(1000px,94%);
+    margin:30px auto;
+}
+
+.lesson{
+    background:rgba(13,19,34,.9);
+    border:1px solid #283a60;
+    border-radius:18px;
+    margin-bottom:18px;
+    overflow:hidden;
+    box-shadow:0 10px 35px rgba(0,0,0,.25);
+}
+
+.lesson-header{
+    padding:20px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.lesson-header:hover{
+    background:rgba(30,45,75,.35);
+}
+
+.lesson-title{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.status{
+    font-size:13px;
+    color:#8fa7d8;
+}
+
+.lesson-content{
+    display:none;
+    padding:0 20px 24px;
+    border-top:1px solid #253554;
+}
+
+.lesson.open .lesson-content{
+    display:block;
+}
+
+h2,h3{
+    color:#9db8ff;
+}
+
+.words{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:10px;
+    margin:15px 0;
+}
+
+.word{
+    padding:13px;
+    border:1px solid #31466f;
+    border-radius:12px;
+    background:#101a2d;
+}
+
+.example{
+    padding:13px;
+    border-left:3px solid #6d8cff;
+    background:#0d1627;
+    margin:10px 0;
+    border-radius:8px;
+}
+
+.tip{
+    padding:15px;
+    border:1px solid #526da5;
+    background:#101b31;
+    border-radius:12px;
+    margin-top:18px;
+}
+
+.question{
+    margin-top:22px;
+    padding:18px;
+    background:#0b1220;
+    border:1px solid #30466f;
+    border-radius:14px;
+}
+
+.option{
+    display:block;
+    width:100%;
+    text-align:left;
+    margin:9px 0;
+    padding:13px;
+    border-radius:10px;
+    border:1px solid #33486e;
+    background:#111d32;
+    color:white;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#1a2a47;
+}
+
+.option:disabled{
+    cursor:not-allowed;
+    opacity:.85;
+}
+
+.correct{
+    border-color:#55d68a!important;
+}
+
+.wrong{
+    border-color:#ff6878!important;
+}
+
+.complete{
+    margin-top:15px;
+    padding:13px 20px;
+    border:0;
+    border-radius:10px;
+    background:#536dff;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    display:none;
+}
+
+.complete:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.locked{
+    opacity:.45;
+}
+
+.exam{
+    padding:24px;
+    background:linear-gradient(145deg,#111b30,#080d17);
+    border:1px solid #465d91;
+    border-radius:20px;
+}
+
+.exam-question{
+    margin:20px 0;
+    padding:17px;
+    border:1px solid #2d4269;
+    border-radius:13px;
+}
+
+.exam-option{
+    display:block;
+    width:100%;
+    text-align:left;
+    padding:12px;
+    margin:8px 0;
+    background:#111c30;
+    color:white;
+    border:1px solid #33486f;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+.submit{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:0;
+    border-radius:12px;
+    background:#667cff;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#examResult{
+    margin-top:20px;
+    padding:18px;
+    border-radius:14px;
+    display:none;
+}
+
+.certificate{
+    display:none;
+    margin-top:30px;
+    padding:35px 25px;
+    background:#f5f1df;
+    color:#111;
+    border:10px double #1d2638;
+    text-align:center;
+}
+
+.certificate h1{
+    font-size:35px;
+    margin:10px;
+}
+
+.certificate h2{
+    color:#18233d;
+}
+
+.seal{
+    display:inline-block;
+    margin:18px;
+    padding:10px 18px;
+    border:2px solid #18233d;
+    border-radius:50%;
+    font-weight:bold;
+}
+
+.signature{
+    margin-top:25px;
+    font-family:cursive;
+    font-size:25px;
+}
+
+.print{
+    margin-top:20px;
+    padding:12px 20px;
+    border:0;
+    border-radius:10px;
+    background:#18233d;
+    color:white;
+    cursor:pointer;
+}
+
+@media print{
+    body{background:white;color:black}
+    header,.container>.lesson,.exam,.print{display:none!important}
+    .certificate{
+        display:block!important;
+        width:100%;
+        margin:0;
+        min-height:90vh;
+    }
+}
+</style></head><body><header>
+    <div class="logo">👻 GHOST LANGUAGE ACADEMY</div>
+    <div class="subtitle">🇹🇷 Turkish — Türkçe</div><div class="xp-box">
+    XP: <span id="xp">0</span>
+</div>
+
+</header><div class="container"><div id="lessons"></div><div class="exam">
+    <h2>🏆 Final Exam — Türkçe</h2>
+    <p>
+        50 درس را کامل کن، سپس در آزمون نهایی شرکت کن.
+        برای قبولی حداقل <b>70%</b> لازم است.
+    </p><div id="examContainer"></div>
+<button class="submit" onclick="submitExam()">ارسال آزمون</button>
+
+<div id="examResult"></div>
+
+<div id="certificate" class="certificate">
+    <div>👻</div>
+    <h2>GHOST LANGUAGE ACADEMY</h2>
+    <h1>Certificate of Completion</h1>
+
+    <p>Bu sertifika</p>
+
+    <h2>Alex</h2>
+
+    <p>
+        Türkçe eğitim programını başarıyla tamamladığını
+        belgelemektedir.
+    </p>
+
+    <p><b>Score:</b> <span id="certScore"></span></p>
+    <p><b>Date:</b> <span id="certDate"></span></p>
+    <p><b>Certificate ID:</b> <span id="certID"></span></p>
+
+    <div class="seal">
+        GHOST LANGUAGE ACADEMY<br>
+        ✓ VERIFIED
+    </div>
+
+    <div class="signature">Ghost Director</div>
+
+    <button class="print" onclick="window.print()">
+        🖨️ Print / Save PDF
+    </button>
+</div>
+
+</div></div><script>
+
+const lessons = [
+
+{
+title:"Merhaba ve Tanışma",
+words:[
+["Merhaba","سلام"],
+["Selam","سلام / درود"],
+["Günaydın","صبح بخیر"],
+["İyi akşamlar","عصر بخیر"],
+["Hoşça kal","خداحافظ"],
+["Görüşürüz","می‌بینمت"],
+["Teşekkürler","ممنون"],
+["Lütfen","لطفاً"]
+],
+grammar:"Türkçede kendini tanıtırken 'Benim adım...' veya 'Ben ...' kullanılabilir.",
+examples:[
+"Merhaba!",
+"Benim adım Alex.",
+"Ben öğrenciyim.",
+"Teşekkürler!",
+"Görüşürüz!"
+],
+tip:"هر روز چند بار عبارت‌های سلام و خداحافظی را با صدای بلند تکرار کن.",
+q:"'Merhaba' ne demektir?",
+options:["سلام","خداحافظ","شب بخیر","لطفاً"],
+answer:0
+},
+
+{
+title:"Sayılar 1–10",
+words:[
+["bir","یک"],["iki","دو"],["üç","سه"],["dört","چهار"],
+["beş","پنج"],["altı","شش"],["yedi","هفت"],["sekiz","هشت"],
+["dokuz","نه"],["on","ده"]
+],
+grammar:"Sayılar Türkçede isimlerden önce veya tek başına kullanılabilir.",
+examples:[
+"Bir kitap.",
+"İki kalem.",
+"Üç öğrenci.",
+"Beş elma.",
+"On kişi."
+],
+tip:"اعداد را از ۱ تا ۱۰ هر روز بدون نگاه کردن بگو.",
+q:"'Beş' kaçtır?",
+options:["3","4","5","6"],
+answer:2
+},
+
+{
+title:"Sınıf ve Okul",
+words:[
+["okul","مدرسه"],["sınıf","کلاس"],["öğrenci","دانش‌آموز"],
+["öğretmen","معلم"],["kitap","کتاب"],["defter","دفتر"],
+["kalem","خودکار"],["tahta","تخته"]
+],
+grammar:"'Bu' برای معرفی یک چیز نزدیک استفاده می‌شود: Bu bir kitap.",
+examples:[
+"Bu bir kitap.",
+"Bu benim defterim.",
+"Öğretmen sınıfta.",
+"Ben öğrenciyim.",
+"Kalem masada."
+],
+tip:"وسایل اطرافت را به ترکی نام‌گذاری کن.",
+q:"'Öğretmen' ne demektir?",
+options:["دانش‌آموز","معلم","مدرسه","کتاب"],
+answer:1
+},
+
+{
+title:"Aile",
+words:[
+["aile","خانواده"],["anne","مادر"],["baba","پدر"],
+["kardeş","خواهر/برادر"],["abi","برادر بزرگ‌تر"],
+["abla","خواهر بزرگ‌تر"],["dede","پدربزرگ"],["nine","مادربزرگ"]
+],
+grammar:"'Benim' یعنی «مال من / ـِ من». مثال: Benim annem.",
+examples:[
+"Bu benim annem.",
+"Babam evde.",
+"Bir kardeşim var.",
+"Ailem büyük.",
+"Dedem yaşlı."
+],
+tip:"اعضای خانواده را با جمله‌های کوتاه معرفی کن.",
+q:"'Anne' ne demektir?",
+options:["پدر","مادر","برادر","پدربزرگ"],
+answer:1
+},
+
+{
+title:"Renkler",
+words:[
+["kırmızı","قرمز"],["mavi","آبی"],["yeşil","سبز"],
+["sarı","زرد"],["siyah","مشکی"],["beyaz","سفید"],
+["mor","بنفش"],["turuncu","نارنجی"]
+],
+grammar:"صفت رنگ معمولاً قبل از اسم می‌آید: kırmızı araba.",
+examples:[
+"Kırmızı bir araba.",
+"Mavi kalem.",
+"Yeşil çanta.",
+"Siyah telefon.",
+"Beyaz gömlek."
+],
+tip:"رنگ وسایل اطرافت را به ترکی بگو.",
+q:"'Mavi' hangi renktir?",
+options:["قرمز","سبز","آبی","زرد"],
+answer:2
+},
+
+{
+title:"Yiyecekler",
+words:[
+["ekmek","نان"],["su","آب"],["süt","شیر"],
+["elma","سیب"],["muz","موز"],["peynir","پنیر"],
+["çorba","سوپ"],["pilav","برنج"]
+],
+grammar:"برای بیان داشتن از 'var' استفاده می‌شود.",
+examples:[
+"Su var.",
+"Ekmek istiyorum.",
+"Elma seviyorum.",
+"Çorba sıcak.",
+"Bir muz var."
+],
+tip:"نام خوراکی‌های روزمره را تمرین کن.",
+q:"'Su' ne demektir?",
+options:["نان","آب","شیر","سوپ"],
+answer:1
+},
+
+{
+title:"İçecekler",
+words:[
+["su","آب"],["çay","چای"],["kahve","قهوه"],
+["süt","شیر"],["meyve suyu","آبمیوه"],
+["limonata","لیموناد"],["ayran","دوغ"],["içecek","نوشیدنی"]
+],
+grammar:"'İstiyorum' یعنی «می‌خواهم».",
+examples:[
+"Su istiyorum.",
+"Çay istiyorum.",
+"Kahve sıcak.",
+"Ayran içiyorum.",
+"Meyve suyu seviyorum."
+],
+tip:"با الگوی '... istiyorum' درخواست‌های ساده بساز.",
+q:"'Çay' ne demektir?",
+options:["چای","قهوه","آب","شیر"],
+answer:0
+},
+
+{
+title:"Günlük Fiiller",
+words:[
+["gelmek","آمدن"],["gitmek","رفتن"],["yemek","خوردن"],
+["içmek","نوشیدن"],["okumak","خواندن"],["yazmak","نوشتن"],
+["uyumak","خوابیدن"],["çalışmak","کار کردن/درس خواندن"]
+],
+grammar:"در زمان حال استمراری، پسوند -yor بسیار مهم است.",
+examples:[
+"Kitap okuyorum.",
+"Okula gidiyorum.",
+"Su içiyorum.",
+"Yemek yiyorum.",
+"Çalışıyorum."
+],
+tip:"هر فعل را با «Ben ...-yorum» تمرین کن.",
+q:"'Okumak' ne demektir?",
+options:["خواندن","نوشتن","رفتن","خوابیدن"],
+answer:0
+},
+
+{
+title:"Zamirler",
+words:[
+["ben","من"],["sen","تو"],["o","او"],
+["biz","ما"],["siz","شما"],["onlar","آن‌ها"],
+["benim","مال من"],["senin","مال تو"]
+],
+grammar:"ضمیرها فاعل جمله را مشخص می‌کنند.",
+examples:[
+"Ben öğrenciyim.",
+"Sen arkadaşsın.",
+"O öğretmen.",
+"Biz hazırız.",
+"Onlar evde."
+],
+tip:"هر ضمیر را با یک جمله کوتاه تمرین کن.",
+q:"'Biz' ne demektir?",
+options:["من","تو","ما","آن‌ها"],
+answer:2
+},
+
+{
+title:"Ev",
+words:[
+["ev","خانه"],["oda","اتاق"],["mutfak","آشپزخانه"],
+["banyo","حمام"],["kapı","در"],["pencere","پنجره"],
+["masa","میز"],["sandalye","صندلی"]
+],
+grammar:"'Evde' یعنی «در خانه». پسوند -de/-da برای مکان کاربرد دارد.",
+examples:[
+"Evdeyim.",
+"Odada bir masa var.",
+"Kapı açık.",
+"Pencere kapalı.",
+"Mutfakta yemek var."
+],
+tip:"اتاق خودت را با جمله‌های ترکی توصیف کن.",
+q:"'Ev' ne demektir?",
+options:["خانه","اتاق","در","میز"],
+answer:0
+},
+
+{
+title:"Şehir",
+words:[
+["şehir","شهر"],["sokak","خیابان"],["cadde","بلوار/خیابان اصلی"],
+["park","پارک"],["market","فروشگاه"],["okul","مدرسه"],
+["hastane","بیمارستان"],["istasyon","ایستگاه"]
+],
+grammar:"'Nerede?' یعنی «کجا؟» و برای پرسیدن مکان استفاده می‌شود.",
+examples:[
+"Okul nerede?",
+"Park şehirde.",
+"Market burada.",
+"Hastane nerede?",
+"İstasyon yakın."
+],
+tip:"با سؤال 'Nerede?' مکان‌ها را تمرین کن.",
+q:"'Şehir' ne demektir?",
+options:["روستا","شهر","خیابان","پارک"],
+answer:1
+},
+
+{
+title:"Ulaşım",
+words:[
+["araba","ماشین"],["otobüs","اتوبوس"],["tren","قطار"],
+["uçak","هواپیما"],["bisiklet","دوچرخه"],["taksi","تاکسی"],
+["metro","مترو"],["yol","راه"]
+],
+grammar:"'ile' یعنی «با». مثال: Otobüs ile gidiyorum.",
+examples:[
+"Otobüs ile gidiyorum.",
+"Tren hızlı.",
+"Araba burada.",
+"Bisiklet sürüyorum.",
+"Metro ile gidiyorum."
+],
+tip:"روش رفت‌وآمد خودت را با جمله‌های ساده بگو.",
+q:"'Tren' ne demektir?",
+options:["قطار","هواپیما","تاکسی","اتوبوس"],
+answer:0
+},
+
+{
+title:"Hava Durumu",
+words:[
+["hava","هوا"],["güneşli","آفتابی"],["yağmurlu","بارانی"],
+["karlı","برفی"],["sıcak","گرم"],["soğuk","سرد"],
+["rüzgarlı","بادخیز"],["bulutlu","ابری"]
+],
+grammar:"برای گفتن وضعیت هوا از 'Hava ...' استفاده می‌شود.",
+examples:[
+"Hava sıcak.",
+"Hava soğuk.",
+"Hava güneşli.",
+"Bugün yağmurlu.",
+"Hava bulutlu."
+],
+tip:"هر روز وضعیت هوا را به ترکی توصیف کن.",
+q:"'Soğuk' ne demektir?",
+options:["گرم","سرد","ابری","آفتابی"],
+answer:1
+},
+
+{
+title:"Günler",
+words:[
+["Pazartesi","دوشنبه"],["Salı","سه‌شنبه"],["Çarşamba","چهارشنبه"],
+["Perşembe","پنجشنبه"],["Cuma","جمعه"],["Cumartesi","شنبه"],
+["Pazar","یکشنبه"],["bugün","امروز"]
+],
+grammar:"'Bugün' یعنی امروز و 'yarın' یعنی فردا.",
+examples:[
+"Bugün Pazartesi.",
+"Yarın Salı.",
+"Bugün okul var.",
+"Pazar günü tatil.",
+"Cuma günü."
+],
+tip:"روزهای هفته را به ترتیب حفظ کن.",
+q:"'Pazar' hangi gündür?",
+options:["جمعه","شنبه","یکشنبه","دوشنبه"],
+answer:2
+},
+
+{
+title:"Aylar",
+words:[
+["Ocak","ژانویه"],["Şubat","فوریه"],["Mart","مارس"],
+["Nisan","آوریل"],["Mayıs","مه"],["Haziran","ژوئن"],
+["Temmuz","ژوئیه"],["Ağustos","اوت"],
+["Eylül","سپتامبر"],["Ekim","اکتبر"],
+["Kasım","نوامبر"],["Aralık","دسامبر"]
+],
+grammar:"نام ماه‌ها معمولاً با حروف کوچک نوشته می‌شوند مگر در ابتدای جمله.",
+examples:[
+"Ocak soğuk.",
+"Mayıs güzel.",
+"Temmuz sıcak.",
+"Eylül başladı.",
+"Aralık kış ayıdır."
+],
+tip:"ماه تولد یا ماه فعلی را به ترکی بگو.",
+q:"'Temmuz' hangi aydır?",
+options:["ژوئن","ژوئیه","اوت","سپتامبر"],
+answer:1
+},
+
+{
+title:"Saat",
+words:[
+["saat","ساعت"],["dakika","دقیقه"],["şimdi","الان"],
+["sabah","صبح"],["öğle","ظهر"],["akşam","عصر"],
+["gece","شب"],["yarım","نیم"]
+],
+grammar:"'Saat kaç?' یعنی «ساعت چند است؟»",
+examples:[
+"Saat kaç?",
+"Saat üç.",
+"Şimdi saat beş.",
+"Sabah saat yedi.",
+"Akşam saat sekiz."
+],
+tip:"هر ساعت را که می‌بینی به ترکی بیان کن.",
+q:"'Saat kaç?' ne demektir?",
+options:["امروز چندم است؟","ساعت چند است؟","کجا هستی؟","چه می‌خوری؟"],
+answer:1
+},
+
+{
+title:"Sıfatlar",
+words:[
+["büyük","بزرگ"],["küçük","کوچک"],["güzel","زیبا"],
+["yeni","جدید"],["eski","قدیمی"],["hızlı","سریع"],
+["yavaş","آهسته"],["uzun","بلند/طولانی"]
+],
+grammar:"صفت معمولاً قبل از اسم قرار می‌گیرد.",
+examples:[
+"Büyük ev.",
+"Küçük araba.",
+"Yeni kitap.",
+"Eski okul.",
+"Hızlı tren."
+],
+tip:"برای هر وسیله یک صفت ترکی انتخاب کن.",
+q:"'Büyük' ne demektir?",
+options:["کوچک","بزرگ","سریع","قدیمی"],
+answer:1
+},
+
+{
+title:"Duygular",
+words:[
+["mutlu","خوشحال"],["üzgün","ناراحت"],["yorgun","خسته"],
+["heyecanlı","هیجان‌زده"],["korkmuş","ترسیده"],
+["sakin","آرام"],["şaşkın","متعجب"],["hazır","آماده"]
+],
+grammar:"'Ben ...im' برای بیان حالت یا ویژگی استفاده می‌شود.",
+examples:[
+"Ben mutluyum.",
+"Bugün yorgunum.",
+"Ben hazırım.",
+"O sakin.",
+"Biz heyecanlıyız."
+],
+tip:"حالت‌های مختلف را با 'Ben ...' تمرین کن.",
+q:"'Mutlu' ne demektir?",
+options:["خوشحال","خسته","ناراحت","آماده"],
+answer:0
+},
+
+{
+title:"Kıyafetler",
+words:[
+["gömlek","پیراهن"],["pantolon","شلوار"],["ayakkabı","کفش"],
+["ceket","کت"],["şapka","کلاه"],["çorap","جوراب"],
+["tişört","تی‌شرت"],["elbise","لباس"]
+],
+grammar:"برای مالکیت می‌توان از پسوندهای ملکی استفاده کرد: gömleğim = پیراهن من.",
+examples:[
+"Bu benim gömleğim.",
+"Ayakkabım yeni.",
+"Ceketim siyah.",
+"Şapkam burada.",
+"Tişörtüm mavi."
+],
+tip:"لباس‌های خودت را با رنگ و مالکیت توصیف کن.",
+q:"'Ayakkabı' ne demektir?",
+options:["کفش","کلاه","جوراب","کت"],
+answer:0
+},
+
+{
+title:"Vücut Bölümleri",
+words:[
+["baş","سر"],["göz","چشم"],["kulak","گوش"],
+["burun","بینی"],["ağız","دهان"],["el","دست"],
+["ayak","پا"],["saç","مو"]
+],
+grammar:"'Benim gözüm' یعنی «چشم من».",
+examples:[
+"Benim gözlerim kahverengi.",
+"Saçım siyah.",
+"Elim burada.",
+"Başım ağrıyor.",
+"Ayağım yerde."
+],
+tip:"فقط برای یادگیری زبان، اعضای بدن را با تصویر یا آینه تمرین کن.",
+q:"'Göz' ne demektir?",
+options:["گوش","چشم","بینی","دست"],
+answer:1
+},
+
+{
+title:"Hobiler",
+words:[
+["futbol","فوتبال"],["müzik","موسیقی"],["kitap okumak","کتاب خواندن"],
+["film izlemek","فیلم دیدن"],["oyun oynamak","بازی کردن"],
+["yüzmek","شنا کردن"],["koşmak","دویدن"],["çizmek","نقاشی کردن"]
+],
+grammar:"'Seviyorum' یعنی «دوست دارم».",
+examples:[
+"Futbol seviyorum.",
+"Müzik dinliyorum.",
+"Kitap okuyorum.",
+"Oyun oynuyorum.",
+"Film izliyorum."
+],
+tip:"درباره سرگرمی‌های خودت سه جمله ترکی بساز.",
+q:"'Oyun oynamak' ne demektir?",
+options:["کتاب خواندن","بازی کردن","شنا کردن","دویدن"],
+answer:1
+},
+
+{
+title:"Alışveriş",
+words:[
+["mağaza","فروشگاه"],["fiyat","قیمت"],["para","پول"],
+["ucuz","ارزان"],["pahalı","گران"],["satın almak","خریدن"],
+["satmak","فروختن"],["indirim","تخفیف"]
+],
+grammar:"'Ne kadar?' یعنی «چقدر؟» و برای پرسیدن قیمت کاربرد دارد.",
+examples:[
+"Bu ne kadar?",
+"Fiyatı ne kadar?",
+"Bu ucuz.",
+"Bu pahalı.",
+"İndirim var mı?"
+],
+tip:"عبارت‌های مربوط به قیمت را تمرین کن.",
+q:"'Ucuz' ne demektir?",
+options:["گران","ارزان","جدید","بزرگ"],
+answer:1
+},
+
+{
+title:"Restoran",
+words:[
+["restoran","رستوران"],["menü","منو"],["yemek","غذا"],
+["garson","پیشخدمت"],["hesap","صورتحساب"],
+["sipariş","سفارش"],["tabak","بشقاب"],["kaşık","قاشق"]
+],
+grammar:"'... istiyorum' برای سفارش ساده استفاده می‌شود.",
+examples:[
+"Menü lütfen.",
+"Su istiyorum.",
+"Bir çorba istiyorum.",
+"Hesap lütfen.",
+"Teşekkürler."
+],
+tip:"یک سفارش خیالی را به ترکی تمرین کن.",
+q:"'Hesap' ne demektir?",
+options:["منو","صورتحساب","قاشق","بشقاب"],
+answer:1
+},
+
+{
+title:"Yer Yön",
+words:[
+["sağ","راست"],["sol","چپ"],["düz","مستقیم"],
+["yakın","نزدیک"],["uzak","دور"],["içinde","داخل"],
+["dışında","خارج"],["önünde","جلوی"]
+],
+grammar:"'Sağa dön' یعنی «به راست بپیچ».",
+examples:[
+"Sağa dön.",
+"Sola dön.",
+"Düz git.",
+"Okul yakın.",
+"Market uzakta."
+],
+tip:"مسیر اتاق یا خانه را با راست، چپ و مستقیم توضیح بده.",
+q:"'Sağ' ne demektir?",
+options:["چپ","راست","دور","داخل"],
+answer:1
+},
+
+{
+title:"Soru Kelimeleri",
+words:[
+["ne","چه"],["kim","چه کسی"],["nerede","کجا"],
+["ne zaman","چه زمانی"],["neden","چرا"],["nasıl","چطور"],
+["hangi","کدام"],["kaç","چند"]
+],
+grammar:"کلمات پرسشی معمولاً در ابتدای سؤال می‌آیند.",
+examples:[
+"Bu ne?",
+"Kim geldi?",
+"Okul nerede?",
+"Ne zaman geliyorsun?",
+"Nasıl gidiyorsun?"
+],
+tip:"هر کلمه پرسشی را با یک سؤال تمرین کن.",
+q:"'Kim' ne demektir?",
+options:["چه کسی","کجا","چرا","چند"],
+answer:0
+},
+
+{
+title:"Olumsuzluk",
+words:[
+["değil","نیست"],["yok","وجود ندارد/ندارم"],
+["istemiyorum","نمی‌خواهم"],["bilmiyorum","نمی‌دانم"],
+["gelmiyorum","نمی‌آیم"],["gitmiyorum","نمی‌روم"],
+["sevmiyorum","دوست ندارم"],["yapmıyorum","انجام نمی‌دهم"]
+],
+grammar:"'değil' برای منفی کردن جمله‌های اسمی و 'yok' برای نبودن استفاده می‌شود.",
+examples:[
+"Ben öğrenci değilim.",
+"Evde kimse yok.",
+"Çay istemiyorum.",
+"Bilmiyorum.",
+"Okula gitmiyorum."
+],
+tip:"جمله‌های مثبت ساده را به منفی تبدیل کن.",
+q:"'değil' چه کاربردی دارد؟",
+options:["پرسیدن قیمت","منفی کردن جمله اسمی","گفتن زمان","گفتن مکان"],
+answer:1
+},
+
+{
+title:"Şimdiki Zaman",
+words:[
+["geliyorum","می‌آیم"],["gidiyorum","می‌روم"],
+["okuyorum","می‌خوانم"],["yazıyorum","می‌نویسم"],
+["yiyorum","می‌خورم"],["içiyorum","می‌نوشم"],
+["uyuyorum","می‌خوابم"],["çalışıyorum","کار/درس می‌کنم"]
+],
+grammar:"پسوند -yor یکی از پایه‌های زمان حال استمراری ترکی است.",
+examples:[
+"Okuyorum.",
+"Yazıyorum.",
+"Su içiyorum.",
+"Okula gidiyorum.",
+"Şimdi çalışıyorum."
+],
+tip:"روز خودت را با ۵ فعل در زمان حال توضیح بده.",
+q:"'Gidiyorum' ne demektir?",
+options:["می‌آیم","می‌روم","می‌خوابم","می‌خورم"],
+answer:1
+},
+
+{
+title:"Geniş Zaman",
+words:[
+["gelirim","می‌آیم/معمولاً می‌آیم"],
+["giderim","می‌روم/معمولاً می‌روم"],
+["okurum","می‌خوانم"],
+["yazarım","می‌نویسم"],
+["severim","دوست دارم"],
+["isterim","می‌خواهم"],
+["bilirim","می‌دانم"],
+["yaparım","انجام می‌دهم"]
+],
+grammar:"زمان گسترده برای عادت‌ها و کارهای معمولی استفاده می‌شود.",
+examples:[
+"Her gün kitap okurum.",
+"Sabah erken kalkarım.",
+"Futbol severim.",
+"Su içerim.",
+"Okula giderim."
+],
+tip:"درباره کارهای روزانه‌ات با «Her gün...» جمله بساز.",
+q:"'Severim' ne demektir?",
+options:["دوست دارم","نمی‌دانم","می‌روم","می‌نویسم"],
+answer:0
+},
+
+{
+title:"Geçmiş Zaman",
+words:[
+["geldim","آمدم"],["gittim","رفتم"],["yaptım","انجام دادم"],
+["yedim","خوردم"],["içtim","نوشیدم"],["okudum","خواندم"],
+["yazdım","نوشتم"],["gördüm","دیدم"]
+],
+grammar:"پسوند -di/-dı/-du/-dü برای گذشته ساده بسیار رایج است.",
+examples:[
+"Dün okula gittim.",
+"Kitap okudum.",
+"Su içtim.",
+"Film izledim.",
+"Arkadaşımı gördüm."
+],
+tip:"درباره دیروز پنج جمله کوتاه بساز.",
+q:"'Gittim' ne demektir?",
+options:["می‌روم","رفتم","آمدم","دیدم"],
+answer:1
+},
+
+{
+title:"Gelecek Zaman",
+words:[
+["geleceğim","خواهم آمد"],["gideceğim","خواهم رفت"],
+["yapacağım","انجام خواهم داد"],
+["okuyacağım","خواهم خواند"],
+["yazacağım","خواهم نوشت"],
+["yiyeceğim","خواهم خورد"],
+["içeceğim","خواهم نوشید"],
+["göreceğim","خواهم دید"]
+],
+grammar:"برای آینده از ساختار -ecek/-acak استفاده می‌شود.",
+examples:[
+"Yarın okula gideceğim.",
+"Kitap okuyacağım.",
+"Su içeceğim.",
+"Arkadaşımı göreceğim.",
+"Çalışacağım."
+],
+tip:"برای فردا پنج جمله بساز.",
+q:"'Gideceğim' ne demektir?",
+options:["رفتم","می‌روم","خواهم رفت","نمی‌روم"],
+answer:2
+},
+
+{
+title:"Bağlaçlar",
+words:[
+["ve","و"],["ama","اما"],["çünkü","زیرا"],
+["veya","یا"],["fakat","ولی"],["sonra","بعد"],
+["önce","قبل"],["ile","با"]
+],
+grammar:"حروف ربط کمک می‌کنند جمله‌های طولانی‌تر بسازی.",
+examples:[
+"Çay ve kahve.",
+"Geliyorum ama geç kaldım.",
+"Evdeyim çünkü hastayım.",
+"Çay veya su.",
+"Önce yemek, sonra ders."
+],
+tip:"دو جمله کوتاه را با ve یا ama به هم وصل کن.",
+q:"'Çünkü' ne demektir?",
+options:["اما","و","زیرا","یا"],
+answer:2
+},
+
+{
+title:"Sahiplik",
+words:[
+["benim","مال من"],["senin","مال تو"],["onun","مال او"],
+["bizim","مال ما"],["sizin","مال شما"],["onların","مال آن‌ها"],
+["kitabım","کتابم"],["evim","خانه‌ام"]
+],
+grammar:"مالکیت در ترکی می‌تواند هم با ضمیر ملکی و هم با پسوند بیان شود.",
+examples:[
+"Bu benim kitabım.",
+"Bu senin kalemin.",
+"Onun evi büyük.",
+"Bizim okulumuz yakın.",
+"Benim telefonum burada."
+],
+tip:"۵ وسیله را با «benim» معرفی کن.",
+q:"'Benim kitabım' ne demektir?",
+options:["کتاب تو","کتاب من","کتاب او","کتاب ما"],
+answer:1
+},
+
+{
+title:"Karşılaştırma",
+words:[
+["daha","بیشتر/ـتر"],["en","ترین"],
+["büyük","بزرگ"],["küçük","کوچک"],
+["iyi","خوب"],["kötü","بد"],["hızlı","سریع"],["yavaş","آهسته"]
+],
+grammar:"'daha' برای مقایسه و 'en' برای عالی‌ترین درجه استفاده می‌شود.",
+examples:[
+"Bu daha büyük.",
+"Bu araba daha hızlı.",
+"En güzel kitap.",
+"Ali daha hızlı.",
+"Bu en iyi seçenek."
+],
+tip:"دو چیز را با «daha» مقایسه کن.",
+q:"'daha' در مقایسه چه معنایی دارد؟",
+options:["کمتر/ـتر","بیشتر/ـتر","قبل","بعد"],
+answer:1
+},
+
+{
+title:"Meslekler",
+words:[
+["doktor","پزشک"],["mühendis","مهندس"],["öğretmen","معلم"],
+["polis","پلیس"],["aşçı","آشپز"],["şoför","راننده"],
+["programcı","برنامه‌نویس"],["sanatçı","هنرمند"]
+],
+grammar:"برای معرفی شغل می‌توان از '...yim' یا '...im' استفاده کرد.",
+examples:[
+"Ben öğrenciyim.",
+"O doktor.",
+"Babam mühendis.",
+"Öğretmen sınıfta.",
+"Programcı bilgisayar kullanıyor."
+],
+tip:"چند شغل را با «O...» معرفی کن.",
+q:"'Programcı' ne demektir?",
+options:["برنامه‌نویس","پزشک","راننده","هنرمند"],
+answer:0
+},
+
+{
+title:"Teknoloji",
+words:[
+["bilgisayar","کامپیوتر"],["telefon","تلفن"],["internet","اینترنت"],
+["ekran","صفحه‌نمایش"],["klavye","صفحه‌کلید"],["fare","ماوس"],
+["uygulama","برنامه"],["şifre","رمز عبور"]
+],
+grammar:"برای توصیف کار با ابزارها می‌توان از 'kullanmak' استفاده کرد.",
+examples:[
+"Bilgisayar kullanıyorum.",
+"Telefonum yeni.",
+"İnternet hızlı.",
+"Ekran büyük.",
+"Bir uygulama kullanıyorum."
+],
+tip:"وسایل دیجیتال اطرافت را به ترکی نام‌گذاری کن.",
+q:"'Bilgisayar' ne demektir?",
+options:["تلفن","کامپیوتر","اینترنت","صفحه"],
+answer:1
+},
+
+{
+title:"Doğa",
+words:[
+["ağaç","درخت"],["çiçek","گل"],["orman","جنگل"],
+["deniz","دریا"],["göl","دریاچه"],["dağ","کوه"],
+["nehir","رودخانه"],["hayvan","حیوان"]
+],
+grammar:"با 'var' می‌توان وجود چیزی را بیان کرد.",
+examples:[
+"Ormanda ağaçlar var.",
+"Deniz mavi.",
+"Dağ yüksek.",
+"Gölde balık var.",
+"Bahçede çiçek var."
+],
+tip:"یک منظره طبیعی را با پنج کلمه ترکی توصیف کن.",
+q:"'Ağaç' ne demektir?",
+options:["گل","درخت","کوه","جنگل"],
+answer:1
+},
+
+{
+title:"Hayvanlar",
+words:[
+["kedi","گربه"],["köpek","سگ"],["kuş","پرنده"],
+["balık","ماهی"],["at","اسب"],["inek","گاو"],
+["aslan","شیر"],["kaplan","ببر"]
+],
+grammar:"برای بیان داشتن حیوان از '... var' استفاده کن.",
+examples:[
+"Bir kedim var.",
+"Köpek hızlı.",
+"Kuş uçuyor.",
+"Balık suda.",
+"Aslan güçlü."
+],
+tip:"نام حیوانات را با تصویر تمرین کن.",
+q:"'Köpek' ne demektir?",
+options:["گربه","سگ","اسب","پرنده"],
+answer:1
+},
+
+{
+title:"Vücut ve Sağlık Kelimeleri",
+words:[
+["sağlık","سلامتی"],["doktor","پزشک"],["hastane","بیمارستان"],
+["ilaç","دارو"],["hasta","بیمار"],["iyi","خوب"],
+["dinlenmek","استراحت کردن"],["kontrol","معاینه/بررسی"]
+],
+grammar:"این درس فقط برای یادگیری واژگان عمومی مرتبط با سلامت است.",
+examples:[
+"Doktor hastanede.",
+"Bugün iyi hissediyorum.",
+"Dinleniyorum.",
+"Sağlık önemli.",
+"Doktor kontrol yapıyor."
+],
+tip:"واژگان را در جمله‌های ساده و غیرتخصصی استفاده کن.",
+q:"'Hastane' ne demektir?",
+options:["مدرسه","بیمارستان","فروشگاه","خانه"],
+answer:1
+},
+
+{
+title:"İletişim",
+words:[
+["konuşmak","صحبت کردن"],["dinlemek","گوش دادن"],
+["sormak","پرسیدن"],["cevaplamak","پاسخ دادن"],
+["anlamak","فهمیدن"],["anlatmak","توضیح دادن"],
+["mesaj","پیام"],["telefon etmek","تماس گرفتن"]
+],
+grammar:"'Anlamıyorum' یعنی «نمی‌فهمم» و در مکالمه بسیار کاربردی است.",
+examples:[
+"Türkçe konuşuyorum.",
+"Seni dinliyorum.",
+"Bir soru soruyorum.",
+"Anlıyorum.",
+"Anlamıyorum."
+],
+tip:"عبارت‌های کاربردی مکالمه را زیاد تکرار کن.",
+q:"'Anlamak' ne demektir?",
+options:["پرسیدن","فهمیدن","نوشتن","رفتن"],
+answer:1
+},
+
+{
+title:"Seyahat",
+words:[
+["seyahat","سفر"],["tatil","تعطیلات"],["otel","هتل"],
+["bilet","بلیط"],["havaalanı","فرودگاه"],["pasaport","گذرنامه"],
+["valiz","چمدان"],["turist","گردشگر"]
+],
+grammar:"برای بیان مقصد از '...e/-a' استفاده می‌شود: İstanbul'a gidiyorum.",
+examples:[
+"Otelde kalıyorum.",
+"Uçak bileti aldım.",
+"Havaalanına gidiyorum.",
+"Valizim hazır.",
+"Tatile gidiyorum."
+],
+tip:"یک سفر خیالی را با پنج جمله توضیح بده.",
+q:"'Bilet' ne demektir?",
+options:["هتل","بلیط","چمدان","فرودگاه"],
+answer:1
+},
+
+{
+title:"Telefon ve Mesajlaşma",
+words:[
+["telefon","تلفن"],["arama","تماس"],["mesaj","پیام"],
+["fotoğraf","عکس"],["video","ویدیو"],["göndermek","فرستادن"],
+["almak","گرفتن"],["cevap","پاسخ"]
+],
+grammar:"'Mesaj göndermek' یعنی «پیام فرستادن».",
+examples:[
+"Mesaj gönderiyorum.",
+"Fotoğraf gönderiyorum.",
+"Telefonuma cevap veriyorum.",
+"Bir video gönderdi.",
+"Arama geldi."
+],
+tip:"افعال ارسال، دریافت و پاسخ را تمرین کن.",
+q:"'Mesaj' ne demektir?",
+options:["عکس","پیام","ویدیو","تماس"],
+answer:1
+},
+
+{
+title:"Ev İşleri",
+words:[
+["temizlemek","تمیز کردن"],["yıkamak","شستن"],
+["pişirmek","پختن"],["düzenlemek","مرتب کردن"],
+["açmak","باز کردن"],["kapatmak","بستن"],
+["taşımak","حمل کردن"],["hazırlamak","آماده کردن"]
+],
+grammar:"افعال را می‌توان در زمان حال استمراری به کار برد.",
+examples:[
+"Evi temizliyorum.",
+"Kapıyı açıyorum.",
+"Pencereyi kapatıyorum.",
+"Yemek pişiriyorum.",
+"Odayı düzenliyorum."
+],
+tip:"کارهای خانه را با «Şimdi...» توصیف کن.",
+q:"'Temizlemek' ne demektir?",
+options:["تمیز کردن","پختن","باز کردن","بستن"],
+answer:0
+},
+
+{
+title:"Okul Hayatı",
+words:[
+["ders","درس"],["sınav","امتحان"],["ödev","تکلیف"],
+["teneffüs","زنگ تفریح"],["not","نمره"],["konu","موضوع"],
+["soru","سؤال"],["cevap","پاسخ"]
+],
+grammar:"'Ders çalışmak' یعنی درس خواندن/مطالعه کردن.",
+examples:[
+"Ders çalışıyorum.",
+"Ödev yapıyorum.",
+"Sınav yarın.",
+"Soru kolay.",
+"Cevabı biliyorum."
+],
+tip:"درباره برنامه مدرسه چند جمله بساز.",
+q:"'Ödev' ne demektir?",
+options:["امتحان","تکلیف","زنگ تفریح","موضوع"],
+answer:1
+},
+
+{
+title:"Planlar",
+words:[
+["plan","برنامه"],["bugün","امروز"],["yarın","فردا"],
+["hafta","هفته"],["sonra","بعد"],["önce","قبل"],
+["buluşmak","ملاقات کردن"],["başlamak","شروع کردن"]
+],
+grammar:"زمان‌های آینده با عبارت‌هایی مانند 'Yarın...' بسیار طبیعی هستند.",
+examples:[
+"Yarın çalışacağım.",
+"Sonra eve gideceğim.",
+"Bugün ders çalışacağım.",
+"Hafta sonu dinleneceğim.",
+"Saat üçte buluşacağız."
+],
+tip:"برنامه فردای خودت را به ترکی بنویس.",
+q:"'Yarın' ne demektir?",
+options:["دیروز","امروز","فردا","هفته"],
+answer:2
+},
+
+{
+title:"Sık Kullanılan İfadeler",
+words:[
+["tamam","باشه"],["tabii","البته"],["belki","شاید"],
+["elbette","حتماً"],["gerçekten","واقعاً"],["bence","به نظر من"],
+["sanırım","فکر می‌کنم"],["maalesef","متأسفانه"]
+],
+grammar:"این عبارت‌ها مکالمه را طبیعی‌تر می‌کنند.",
+examples:[
+"Tamam!",
+"Tabii, gel.",
+"Bence güzel.",
+"Belki yarın.",
+"Sanırım doğru."
+],
+tip:"در مکالمه‌های کوتاه از این عبارت‌ها استفاده کن.",
+q:"'Bence' ne demektir?",
+options:["به نظر من","متأسفانه","شاید","حتماً"],
+answer:0
+},
+
+{
+title:"Emir ve Rica",
+words:[
+["gel","بیا"],["git","برو"],["bekle","صبر کن"],
+["dinle","گوش کن"],["bak","نگاه کن"],["otur","بنشین"],
+["kalk","بلند شو"],["yardım et","کمک کن"]
+],
+grammar:"فعل امری می‌تواند برای دستور یا درخواست ساده استفاده شود.",
+examples:[
+"Buraya gel.",
+"Bir dakika bekle.",
+"Bana bak.",
+"Lütfen dinle.",
+"Yardım et, lütfen."
+],
+tip:"برای هر فعل یک درخواست مؤدبانه با «lütfen» بساز.",
+q:"'Bekle' ne demektir?",
+options:["بیا","برو","صبر کن","بنشین"],
+answer:2
+},
+
+{
+title:"Kibar Konuşma",
+words:[
+["lütfen","لطفاً"],["teşekkür ederim","متشکرم"],
+["rica ederim","خواهش می‌کنم"],["özür dilerim","ببخشید"],
+["affedersiniz","ببخشید"],["memnun oldum","خوشوقتم"],
+["buyurun","بفرمایید"],["sağ olun","متشکرم"]
+],
+grammar:"این عبارت‌ها برای مکالمه مؤدبانه و محترمانه بسیار مفید هستند.",
+examples:[
+"Lütfen yardım eder misiniz?",
+"Teşekkür ederim.",
+"Rica ederim.",
+"Özür dilerim.",
+"Memnun oldum."
+],
+tip:"در مکالمه روزمره از عبارت‌های مؤدبانه استفاده کن.",
+q:"'Rica ederim' چه معنایی دارد؟",
+options:["خواهش می‌کنم","ببخشید","سلام","خداحافظ"],
+answer:0
+},
+
+{
+title:"Günlük Konuşma",
+words:[
+["nasılsın","حالت چطور است"],["iyiyim","خوبم"],
+["sen nasılsın","تو چطوری"],["ne yapıyorsun","چه کار می‌کنی"],
+["neredesin","کجا هستی"],["geliyorum","دارم می‌آیم"],
+["bekliyorum","منتظرم"],["görüşürüz","می‌بینمت"]
+],
+grammar:"ترکی در مکالمه روزمره از شکل‌های کوتاه و طبیعی زیاد استفاده می‌کند.",
+examples:[
+"Nasılsın?",
+"İyiyim, teşekkürler.",
+"Ne yapıyorsun?",
+"Evdeyim.",
+"Görüşürüz!"
+],
+tip:"یک گفت‌وگوی کوتاه دو نفره برای خودت بساز.",
+q:"'Nasılsın?' ne demektir?",
+options:["کجا هستی؟","حالت چطور است؟","چه می‌خوری؟","چه زمانی می‌آیی؟"],
+answer:1
+},
+
+{
+title:"Türkçe Cümle Kurma",
+words:[
+["cümle","جمله"],["kelime","کلمه"],["fiil","فعل"],
+["isim","اسم"],["sıfat","صفت"],["soru","سؤال"],
+["cevap","پاسخ"],["anlam","معنی"]
+],
+grammar:"ساخت جمله ترکی معمولاً بر پایه فاعل + مفعول/مکمل + فعل است.",
+examples:[
+"Ben kitap okuyorum.",
+"Ali okula gidiyor.",
+"Bu kitap güzel.",
+"Sen Türkçe konuşuyorsun.",
+"Biz müzik dinliyoruz."
+],
+tip:"هر روز پنج جمله ترکی از خودت بساز.",
+q:"'Kelime' ne demektir?",
+options:["جمله","کلمه","فعل","معنی"],
+answer:1
+},
+
+{
+title:"Orta Seviye Kelimeler",
+words:[
+["fikir","ایده"],["sebep","دلیل"],["sonuç","نتیجه"],
+["örnek","مثال"],["problem","مشکل"],["çözüm","راه‌حل"],
+["farklı","متفاوت"],["önemli","مهم"]
+],
+grammar:"با این واژه‌ها می‌توان توضیحات دقیق‌تر و طولانی‌تری ساخت.",
+examples:[
+"Bu önemli bir konu.",
+"Bir problem var.",
+"Çözüm bulmalıyız.",
+"Bu iyi bir örnek.",
+"Farklı bir fikir."
+],
+tip:"سعی کن درباره یک موضوع ساده نظر خودت را بگویی.",
+q:"'Önemli' ne demektir?",
+options:["مهم","متفاوت","ساده","دور"],
+answer:0
+},
+
+{
+title:"Konuşma Pratiği",
+words:[
+["düşünmek","فکر کردن"],["hatırlamak","به یاد آوردن"],
+["unutmak","فراموش کردن"],["öğrenmek","یاد گرفتن"],
+["öğretmek","آموزش دادن"],["tekrar etmek","تکرار کردن"],
+["denemek","امتحان کردن"],["başarmak","موفق شدن"]
+],
+grammar:"برای پیشرفت زبان، تکرار و استفاده از واژه‌ها در جمله بسیار مهم است.",
+examples:[
+"Türkçe öğreniyorum.",
+"Yeni kelimeler öğreniyorum.",
+"Tekrar ediyorum.",
+"Konuşmayı deniyorum.",
+"Başarmak istiyorum."
+],
+tip:"یک متن کوتاه ترکی را چند بار با صدای بلند بخوان.",
+q:"'Öğrenmek' ne demektir?",
+options:["آموزش دادن","یاد گرفتن","فراموش کردن","فکر کردن"],
+answer:1
+},
+
+{
+title:"Fiil Tekrarı",
+words:[
+["görmek","دیدن"],["duymak","شنیدن"],["konuşmak","صحبت کردن"],
+["söylemek","گفتن"],["sormak","پرسیدن"],["cevaplamak","پاسخ دادن"],
+["seçmek","انتخاب کردن"],["bulmak","پیدا کردن"]
+],
+grammar:"شناخت افعال پرکاربرد باعث می‌شود جمله‌سازی سریع‌تر شود.",
+examples:[
+"Bir şey görüyorum.",
+"Müzik duyuyorum.",
+"Bir soru soruyorum.",
+"Cevap veriyorum.",
+"Bir kitap buldum."
+],
+tip:"افعال را در سه زمان حال، گذشته و آینده تمرین کن.",
+q:"'Bulmak' ne demektir?",
+options:["پیدا کردن","انتخاب کردن","گفتن","شنیدن"],
+answer:0
+},
+
+{
+title:"Bağlantılı Cümleler",
+words:[
+["eğer","اگر"],["çünkü","زیرا"],["ama","اما"],
+["bu yüzden","به همین دلیل"],["sonra","بعد"],
+["önce","قبل"],["ne zaman","وقتی که"],
+["için","برای"]
+],
+grammar:"این ساختارها برای ساخت جمله‌های طولانی‌تر و طبیعی‌تر استفاده می‌شوند.",
+examples:[
+"Eğer zamanım varsa gelirim.",
+"Çalışıyorum çünkü sınavım var.",
+"Yorgunum ama çalışıyorum.",
+"Yağmur yağıyor, bu yüzden evdeyim.",
+"Sen gelince konuşuruz."
+],
+tip:"جمله‌های ساده را با çünkü و ama به هم وصل کن.",
+q:"'Eğer' ne demektir?",
+options:["زیرا","اگر","اما","برای"],
+answer:1
+},
+
+{
+title:"Son Hazırlık",
+words:[
+["tekrar","تکرار"],["alıştırma","تمرین"],["başarı","موفقیت"],
+["bilgi","دانش"],["dil","زبان"],["konuşma","مکالمه"],
+["okuma","خواندن"],["yazma","نوشتن"]
+],
+grammar:"در این مرحله واژگان و ساختارهای اصلی دوره را مرور می‌کنیم.",
+examples:[
+"Türkçe öğreniyorum.",
+"Her gün tekrar yapıyorum.",
+"Konuşma pratiği yapıyorum.",
+"Yeni kelimeler öğreniyorum.",
+"Başarı için çalışıyorum."
+],
+tip:"قبل از آزمون نهایی درس‌های قبلی را مرور کن.",
+q:"'Dil' ne demektir?",
+options:["زبان","موفقیت","تمرین","خواندن"],
+answer:0
+},
+
+{
+title:"Final Exam — Türkçe",
+final:true
+}
+
+];
+
+
+/* اگر آرایه کمتر از 50 درس باشد، اسلات‌های مرور تکمیل می‌شوند */
+while(lessons.length < 50){
+    lessons.splice(lessons.length-1,0,{
+        title:"Türkçe Tekrar Dersi "+lessons.length,
+        words:[
+            ["tekrar","تکرار"],
+            ["kelime","کلمه"],
+            ["cümle","جمله"],
+            ["öğrenmek","یاد گرفتن"],
+            ["konuşmak","صحبت کردن"],
+            ["okumak","خواندن"],
+            ["yazmak","نوشتن"],
+            ["dinlemek","گوش دادن"]
+        ],
+        grammar:"این درس برای مرور واژگان و ساخت جمله‌های ترکی است.",
+        examples:[
+            "Türkçe öğreniyorum.",
+            "Kitap okuyorum.",
+            "Cümle yazıyorum.",
+            "Türkçe konuşuyorum.",
+            "Her gün tekrar yapıyorum."
+        ],
+        tip:"واژه‌های قبلی را مرور کن و با آن‌ها جمله بساز.",
+        q:"'Tekrar' ne demektir?",
+        options:["تکرار","شروع","پایان","سؤال"],
+        answer:0
+    });
+}
+
+
+const lessonContainer=document.getElementById("lessons");
+let xp=Number(localStorage.getItem("turkishXP")||0);
+
+function updateXP(){
+    document.getElementById("xp").textContent=xp;
+    localStorage.setItem("turkishXP",xp);
+}
+
+function completed(n){
+    return localStorage.getItem("turkishLesson"+n+"Completed")==="true";
+}
+
+function renderLessons(){
+
+    lessonContainer.innerHTML="";
+
+    lessons.forEach((lesson,index)=>{
+
+        const number=index+1;
+
+        if(lesson.final){
+            return;
+        }
+
+        const unlocked =
+            number===1 || completed(number-1);
+
+        const done=completed(number);
+
+        const card=document.createElement("div");
+
+        card.className="lesson "+(!unlocked?"locked":"");
+
+        card.innerHTML=`
+            <div class="lesson-header">
+                <div>
+                    <div class="lesson-title">
+                        ${number}. ${lesson.title}
+                    </div>
+                    <div class="status">
+                        ${done?"✅ Completed":
+                          unlocked?"🔓 Open":"🔒 Locked"}
+                    </div>
+                </div>
+                <div>🇹🇷</div>
+            </div>
+
+            <div class="lesson-content">
+
+                <h3>📚 Kelimeler — واژگان</h3>
+
+                <div class="words">
+                    ${lesson.words.map(w=>`
+                        <div class="word">
+                            <b>${w[0]}</b><br>
+                            <span>${w[1]}</span>
+                        </div>
+                    `).join("")}
+                </div>
+
+                <h3>📖 Grammar — گرامر</h3>
+                <p>${lesson.grammar}</p>
+
+                <h3>💬 Örnekler — مثال‌ها</h3>
+
+                ${lesson.examples.map(x=>`
+                    <div class="example">${x}</div>
+                `).join("")}
+
+                <div class="tip">
+                    💡 <b>Learning Tip:</b><br>
+                    ${lesson.tip}
+                </div>
+
+                <div class="question">
+                    <h3>🧠 Mini Quiz</h3>
+                    <p>${lesson.q}</p>
+
+                    ${lesson.options.map((op,i)=>`
+                        <button class="option"
+                            onclick="answerLesson(${number},${i},${lesson.answer},this)">
+                            ${op}
+                        </button>
+                    `).join("")}
+
+                    <button
+                        id="complete-${number}"
+                        class="complete"
+                        onclick="completeLesson(${number})">
+                        ✅ Complete Lesson +20 XP
+                    </button>
+                </div>
+
+            </div>
+        `;
+
+        if(unlocked){
+            card.querySelector(".lesson-header")
+                .onclick=()=>card.classList.toggle("open");
+        }
+
+        lessonContainer.appendChild(card);
+    });
+
+    renderFinalExam();
+}
+
+function answerLesson(number,selected,correct,button){
+
+    const card=button.closest(".lesson");
+    const buttons=card.querySelectorAll(".option");
+
+    buttons.forEach(b=>b.disabled=true);
+
+    if(selected===correct){
+
+        button.classList.add("correct");
+
+        const complete=document.getElementById("complete-"+number);
+        complete.style.display="block";
+
+    }else{
+
+        button.classList.add("wrong");
+
+        buttons[correct].classList.add("correct");
+    }
+}
+
+function completeLesson(number){
+
+    if(completed(number)) return;
+
+    localStorage.setItem(
+        "turkishLesson"+number+"Completed",
+        "true"
+    );
+
+    xp+=20;
+    updateXP();
+
+    renderLessons();
+
+    setTimeout(()=>{
+        const next=document.querySelectorAll(".lesson")[number];
+        if(next){
+            next.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+        }
+    },100);
+}
+
+
+/* FINAL EXAM */
+
+const examQuestions=[
+{
+q:"'Merhaba' ne demektir?",
+o:["سلام","خداحافظ","ممنون","لطفاً"],
+a:0
+},
+{
+q:"'Teşekkür ederim' ne demektir?",
+o:["ببخشید","متشکرم","سلام","خوشوقتم"],
+a:1
+},
+{
+q:"'Okul' ne demektir?",
+o:["خانه","مدرسه","کتاب","فروشگاه"],
+a:1
+},
+{
+q:"'Su' ne demektir?",
+o:["نان","آب","شیر","چای"],
+a:1
+},
+{
+q:"'Bugün' ne demektir?",
+o:["فردا","دیروز","امروز","هفته"],
+a:2
+},
+{
+q:"'Gidiyorum' ne demektir?",
+o:["می‌آیم","می‌روم","می‌خوابم","می‌خورم"],
+a:1
+},
+{
+q:"'Geleceğim' ne demektir?",
+o:["آمدم","خواهم آمد","می‌روم","رفتم"],
+a:1
+},
+{
+q:"'Benim kitabım' ne demektir?",
+o:["کتاب تو","کتاب من","کتاب او","کتاب ما"],
+a:1
+},
+{
+q:"'Nerede?' ne demektir?",
+o:["چه کسی؟","کجا؟","چرا؟","چند؟"],
+a:1
+},
+{
+q:"'Çünkü' ne demektir?",
+o:["اما","یا","زیرا","اگر"],
+a:2
+}
+];
+
+function renderFinalExam(){
+
+    const container=document.getElementById("examContainer");
+
+    container.innerHTML=examQuestions.map((item,index)=>`
+
+        <div class="exam-question">
+            <b>${index+1}. ${item.q}</b>
+
+            ${item.o.map((op,i)=>`
+                <button
+                    class="exam-option"
+                    onclick="selectExam(${index},${i},this)">
+                    ${op}
+                </button>
+            `).join("")}
+
+        </div>
+
+    `).join("");
+}
+
+const examAnswers={};
+
+function selectExam(q,a,button){
+
+    examAnswers[q]=a;
+
+    const parent=button.parentElement;
+
+    parent.querySelectorAll(".exam-option")
+        .forEach(b=>b.disabled=true);
+
+    button.classList.add("correct");
+}
+
+function submitExam(){
+
+    if(Object.keys(examAnswers).length!==examQuestions.length){
+
+        alert("لطفاً به همه سؤال‌ها پاسخ بده.");
+        return;
+    }
+
+    let correct=0;
+
+    examQuestions.forEach((q,i)=>{
+        if(examAnswers[i]===q.a) correct++;
+    });
+
+    const score=Math.round(
+        correct/examQuestions.length*100
+    );
+
+    const result=document.getElementById("examResult");
+
+    result.style.display="block";
+
+    localStorage.setItem("turkishExamScore",score);
+
+    if(score>=70){
+
+        result.innerHTML=
+            `🎉 تبریک! شما قبول شدید.<br>
+             Score: <b>${score}%</b><br>
+             +50 XP`;
+
+        result.style.border="1px solid #55d68a";
+
+        localStorage.setItem(
+            "turkishExamPassed",
+            "true"
+        );
+
+        if(
+            localStorage.getItem("turkishExamXPAdded")
+            !=="true"
+        ){
+
+            xp+=50;
+
+            localStorage.setItem(
+                "turkishExamXPAdded",
+                "true"
+            );
+
+            updateXP();
+        }
+
+        createCertificate(score);
+
+    }else{
+
+        result.innerHTML=
+            `❌ قبول نشدید.<br>
+             Score: <b>${score}%</b><br>
+             برای قبولی حداقل 70% لازم است.`;
+
+        result.style.border="1px solid #ff6878";
+    }
+}
+
+function createCertificate(score){
+
+    let id=
+        localStorage.getItem("turkishCertificateID");
+
+    if(!id){
+
+        id=
+            "GLA-TUR-"+
+            Date.now().toString(36).toUpperCase();
+
+        localStorage.setItem(
+            "turkishCertificateID",
+            id
+        );
+    }
+
+    document.getElementById("certScore")
+        .textContent=score+"%";
+
+    document.getElementById("certDate")
+        .textContent=new Date().toLocaleDateString();
+
+    document.getElementById("certID")
+        .textContent=id;
+
+    document.getElementById("certificate")
+        .style.display="block";
+}
+
+updateXP();
+renderLessons();
+
+if(
+    localStorage.getItem("turkishExamPassed")==="true"
+){
+    const score=
+        Number(localStorage.getItem("turkishExamScore")||0);
+
+    createCertificate(score);
+}
+
+</script></body>
+  </html>
