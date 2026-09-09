@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghost Language Academy | English</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top right,#151a45 0%,#080b18 38%,#05060d 100%);
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:18px 20px;
+    background:rgba(5,7,18,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(83,105,255,.25);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+    color:#7d8cff;
+    text-shadow:0 0 15px rgba(100,120,255,.6);
+}
+
+.back{
+    text-decoration:none;
+    color:#fff;
+    background:linear-gradient(135deg,#3445ff,#8b3dff);
+    padding:10px 16px;
+    border-radius:12px;
+    font-size:13px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 18px 60px;
+}
+
+.hero{
+    text-align:center;
+    padding:25px 10px 30px;
+}
+
+.hero h1{
+    font-size:34px;
+    margin-bottom:12px;
+    background:linear-gradient(90deg,#7185ff,#c16cff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#aeb5d4;
+    line-height:1.9;
+}
+
+.progressBox{
+    margin:20px 0 30px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(18,22,48,.75);
+    border:1px solid rgba(110,125,255,.22);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.progressInfo{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+    color:#dce0ff;
+    margin-bottom:12px;
+    font-size:14px;
+}
+
+.progress{
+    height:12px;
+    background:#171b32;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progressBar{
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#4355ff,#a349ff);
+    box-shadow:0 0 18px rgba(112,85,255,.6);
+    transition:.4s;
+}
+
+.lessons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:16px;
+}
+
+.lesson{
+    position:relative;
+    padding:22px;
+    min-height:150px;
+    border-radius:20px;
+    background:linear-gradient(145deg,rgba(20,25,55,.95),rgba(11,14,31,.95));
+    border:1px solid rgba(100,115,255,.18);
+    transition:.25s;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.lesson:hover:not(.locked){
+    transform:translateY(-5px);
+    border-color:rgba(126,139,255,.65);
+    box-shadow:0 12px 35px rgba(63,75,255,.18);
+}
+
+.lesson::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-40px;
+    top:-40px;
+    background:rgba(84,91,255,.12);
+    border-radius:50%;
+}
+
+.number{
+    font-size:13px;
+    color:#8592ff;
+    margin-bottom:12px;
+}
+
+.lesson h3{
+    font-size:17px;
+    margin-bottom:9px;
+}
+
+.lesson p{
+    color:#949bbd;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.status{
+    margin-top:15px;
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:9px;
+    font-size:11px;
+    background:rgba(64,72,120,.25);
+    color:#c4c9e8;
+}
+
+.completed{
+    border-color:rgba(60,220,150,.4);
+}
+
+.completed .status{
+    color:#5df0b0;
+    background:rgba(40,210,130,.1);
+}
+
+.locked{
+    opacity:.48;
+    cursor:not-allowed;
+}
+
+.locked .status{
+    color:#ff9d9d;
+}
+
+.lessonView{
+    display:none;
+}
+
+.lessonContent{
+    max-width:850px;
+    margin:auto;
+    background:rgba(12,16,36,.92);
+    border:1px solid rgba(105,120,255,.25);
+    border-radius:24px;
+    padding:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.lessonTop{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.lessonTop .badge{
+    display:inline-block;
+    background:rgba(85,95,255,.15);
+    color:#9da7ff;
+    padding:7px 12px;
+    border-radius:10px;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.lessonTop h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.lessonTop p{
+    color:#a8aecb;
+}
+
+.section{
+    margin-top:22px;
+    padding:18px;
+    background:rgba(23,28,57,.65);
+    border-radius:17px;
+    border:1px solid rgba(120,130,255,.12);
+}
+
+.section h3{
+    color:#9ba6ff;
+    margin-bottom:13px;
+}
+
+.word{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    padding:12px;
+    margin:8px 0;
+    border-radius:11px;
+    background:rgba(5,8,20,.6);
+}
+
+.word b{
+    color:#fff;
+}
+
+.word span{
+    color:#9fa7c8;
+}
+
+.example{
+    margin-top:10px;
+    padding:13px;
+    border-right:3px solid #6877ff;
+    background:rgba(80,90,255,.06);
+    line-height:1.9;
+    color:#d8dcf5;
+}
+
+.quiz{
+    margin-top:12px;
+}
+
+.quiz label{
+    display:block;
+    margin:8px 0;
+    padding:11px;
+    border-radius:10px;
+    background:#0a0e20;
+    cursor:pointer;
+}
+
+.quiz label:hover{
+    background:#111632;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:13px;
+    margin-top:8px;
+    background:#080b18;
+    color:#fff;
+    border:1px solid #303862;
+    border-radius:11px;
+    outline:none;
+}
+
+.completeArea{
+    text-align:center;
+    margin-top:25px;
+}
+
+.completeBtn,.backBtn{
+    border:0;
+    cursor:pointer;
+    padding:13px 20px;
+    border-radius:12px;
+    color:#fff;
+    font-weight:bold;
+    margin:5px;
+}
+
+.completeBtn{
+    background:linear-gradient(135deg,#4054ff,#9b43ff);
+    box-shadow:0 8px 25px rgba(80,70,255,.25);
+}
+
+.backBtn{
+    background:#202641;
+}
+
+.message{
+    margin-top:12px;
+    color:#6ff0b2;
+    min-height:24px;
+}
+
+@media(max-width:600px){
+    .hero h1{
+        font-size:27px;
+    }
+
+    .lessonContent{
+        padding:17px;
+    }
+
+    .lessonTop h2{
+        font-size:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">👻 Ghost Language Academy</div>
+    <a href="index.html" class="back">بازگشت</a>
+</header>
+
+<main class="container">
+
+<section id="lessonList">
+
+    <div class="hero">
+        <h1>🇬🇧 English Academy</h1>
+        <p>۵۰ درس انگلیسی از سطح پایه تا پیشرفته</p>
+    </div>
+
+    <div class="progressBox">
+        <div class="progressInfo">
+            <span id="progressText">پیشرفت: 0 از 50 درس</span>
+            <span id="xpText">XP: 0</span>
+        </div>
+
+        <div class="progress">
+            <div class="progressBar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <div class="lessons" id="lessons"></div>
+
+</section>
+
+<section class="lessonView" id="lessonView">
+
+    <div class="lessonContent">
+
+        <div class="lessonTop">
+            <div class="badge" id="lessonNumber"></div>
+            <h2 id="lessonTitle"></h2>
+            <p id="lessonDescription"></p>
+        </div>
+
+        <div id="lessonBody"></div>
+
+        <div class="completeArea">
+            <button class="completeBtn" onclick="completeLesson()">
+                ✅ تکمیل درس
+            </button>
+
+            <button class="backBtn" onclick="showList()">
+                ↩ بازگشت به درس‌ها
+            </button>
+
+            <div class="message" id="message"></div>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<script>
+
+/* =========================
+   50 LESSONS
+========================= */
+
+const lessons = [
+
+{
+title:"سلام و معرفی",
+desc:"یاد بگیریم چطور خودمان را به زبان انگلیسی معرفی کنیم.",
+words:[
+["Hello","سلام"],
+["Hi","سلام / درود"],
+["My name is...","اسم من ... است"],
+["I am...","من ... هستم"],
+["Nice to meet you","از آشنایی با شما خوشحالم"]
+],
+examples:[
+"Hello! My name is Ali.",
+"Hi! I am a student.",
+"Nice to meet you!"
+],
+question:"کدام جمله برای معرفی خود مناسب است؟",
+options:["My name is Ali.","Good night.","See you tomorrow."],
+answer:0
+},
+
+{
+title:"خداحافظی و احوالپرسی",
+desc:"عبارت‌های مهم برای سلام کردن، احوالپرسی و خداحافظی.",
+words:[
+["How are you?","حالت چطور است؟"],
+["I am fine.","من خوبم."],
+["Good morning","صبح بخیر"],
+["Good evening","عصر بخیر"],
+["Goodbye","خداحافظ"]
+],
+examples:[
+"How are you?",
+"I am fine, thank you.",
+"Goodbye! See you soon."
+],
+question:"معنی How are you? چیست؟",
+options:["اسمت چیست؟","حالت چطور است؟","کجا زندگی می‌کنی؟"],
+answer:1
+},
+
+{
+title:"ضمیرهای شخصی",
+desc:"با ضمیرهای شخصی اصلی زبان انگلیسی آشنا شو.",
+words:[
+["I","من"],
+["You","تو / شما"],
+["He","او - مذکر"],
+["She","او - مؤنث"],
+["It","آن"],
+["We","ما"],
+["They","آنها"]
+],
+examples:[
+"I am a student.",
+"She is my friend.",
+"They are students."
+],
+question:"کدام ضمیر به معنی «ما» است؟",
+options:["They","We","He"],
+answer:1
+},
+
+{
+title:"افعال to be",
+desc:"کاربرد am، is و are را یاد بگیر.",
+words:[
+["am","هستم"],
+["is","است"],
+["are","هستند / هستی"],
+["I am","من هستم"],
+["He is","او است"],
+["They are","آنها هستند"]
+],
+examples:[
+"I am happy.",
+"He is a student.",
+"They are friends."
+],
+question:"کدام گزینه درست است؟",
+options:["I is happy.","I am happy.","I are happy."],
+answer:1
+},
+
+{
+title:"جمله‌های ساده",
+desc:"ساخت جمله‌های ساده انگلیسی.",
+words:[
+["I like","من دوست دارم"],
+["I have","من دارم"],
+["I want","من می‌خواهم"],
+["I play","من بازی می‌کنم"],
+["I live","من زندگی می‌کنم"]
+],
+examples:[
+"I like football.",
+"I have a book.",
+"I play games."
+],
+question:"کدام جمله درست است؟",
+options:["I like football.","Like I football.","Football I like am."],
+answer:0
+},
+
+{
+title:"اعداد انگلیسی",
+desc:"اعداد مهم انگلیسی را یاد بگیر.",
+words:[
+["One","یک"],
+["Two","دو"],
+["Three","سه"],
+["Four","چهار"],
+["Five","پنج"],
+["Ten","ده"],
+["Twenty","بیست"],
+["One hundred","صد"]
+],
+examples:[
+"I have two books.",
+"I am thirteen years old.",
+"Ten students are here."
+],
+question:"عدد Three چند است؟",
+options:["۲","۳","۴"],
+answer:1
+},
+
+{
+title:"روزها و ماه‌ها",
+desc:"روزهای هفته و ماه‌های سال.",
+words:[
+["Monday","دوشنبه"],
+["Tuesday","سه‌شنبه"],
+["Wednesday","چهارشنبه"],
+["Thursday","پنجشنبه"],
+["Friday","جمعه"],
+["Saturday","شنبه"],
+["Sunday","یکشنبه"]
+],
+examples:[
+"Today is Monday.",
+"My birthday is in May.",
+"Sunday is the first day in some calendars."
+],
+question:"Sunday یعنی چه؟",
+options:["شنبه","یکشنبه","دوشنبه"],
+answer:1
+},
+
+{
+title:"رنگ‌ها",
+desc:"نام رنگ‌های پرکاربرد انگلیسی.",
+words:[
+["Red","قرمز"],
+["Blue","آبی"],
+["Green","سبز"],
+["Yellow","زرد"],
+["Black","مشکی"],
+["White","سفید"],
+["Orange","نارنجی"],
+["Purple","بنفش"]
+],
+examples:[
+"The car is red.",
+"My bag is black.",
+"I like blue."
+],
+question:"Blue چه رنگی است؟",
+options:["آبی","سبز","قرمز"],
+answer:0
+},
+
+{
+title:"اعضای خانواده",
+desc:"کلمات مهم مربوط به خانواده.",
+words:[
+["Father","پدر"],
+["Mother","مادر"],
+["Brother","برادر"],
+["Sister","خواهر"],
+["Son","پسر"],
+["Daughter","دختر"],
+["Family","خانواده"]
+],
+examples:[
+"This is my mother.",
+"I have one brother.",
+"My family is small."
+],
+question:"Brother یعنی چه؟",
+options:["خواهر","برادر","پدر"],
+answer:1
+},
+
+{
+title:"اشیای روزمره",
+desc:"نام وسایل و اشیای پرکاربرد.",
+words:[
+["Book","کتاب"],
+["Pen","خودکار"],
+["Phone","گوشی"],
+["Computer","کامپیوتر"],
+["Table","میز"],
+["Chair","صندلی"],
+["Bag","کیف"]
+],
+examples:[
+"This is my phone.",
+"I have a new book.",
+"The pen is on the table."
+],
+question:"Phone یعنی چه؟",
+options:["گوشی","کیف","صندلی"],
+answer:0
+},
+
+{
+title:"افعال پرکاربرد",
+desc:"مهم‌ترین فعل‌های کاربردی انگلیسی.",
+words:[
+["Go","رفتن"],
+["Come","آمدن"],
+["Eat","خوردن"],
+["Drink","نوشیدن"],
+["Play","بازی کردن"],
+["Read","خواندن"],
+["Write","نوشتن"],
+["Sleep","خوابیدن"]
+],
+examples:[
+"I read a book.",
+"I play football.",
+"They go to school."
+],
+question:"Read یعنی چه؟",
+options:["نوشتن","خواندن","خوابیدن"],
+answer:1
+},
+
+{
+title:"زمان حال ساده",
+desc:"ساختار و کاربرد Present Simple.",
+words:[
+["Every day","هر روز"],
+["Usually","معمولاً"],
+["Always","همیشه"],
+["Sometimes","گاهی"],
+["Never","هرگز"]
+],
+examples:[
+"I play football every day.",
+"She usually reads books.",
+"They go to school."
+],
+question:"کدام جمله حال ساده است؟",
+options:["I play football every day.","I am playing now.","I played yesterday."],
+answer:0
+},
+
+{
+title:"منفی کردن جملات",
+desc:"منفی کردن جمله‌ها با do not و does not.",
+words:[
+["do not","نمی‌کنم / نمی‌کنند"],
+["does not","نمی‌کند"],
+["don't","شکل کوتاه do not"],
+["doesn't","شکل کوتاه does not"]
+],
+examples:[
+"I do not like tea.",
+"They don't play tennis.",
+"He doesn't eat fish."
+],
+question:"منفی I like tea کدام است؟",
+options:["I doesn't like tea.","I don't like tea.","I not like tea."],
+answer:1
+},
+
+{
+title:"سوالی کردن جملات",
+desc:"ساخت سؤال با Do و Does.",
+words:[
+["Do you...?","آیا تو...؟"],
+["Does he...?","آیا او...؟"],
+["What","چه / چه چیزی"],
+["Where","کجا"],
+["Why","چرا"]
+],
+examples:[
+"Do you like football?",
+"Does he play games?",
+"Where do you live?"
+],
+question:"برای He معمولاً از کدام استفاده می‌کنیم؟",
+options:["Do","Does","Are"],
+answer:1
+},
+
+{
+title:"There is / There are",
+desc:"گفتن اینکه چیزی وجود دارد.",
+words:[
+["There is","وجود دارد - مفرد"],
+["There are","وجود دارند - جمع"],
+["There isn't","وجود ندارد"],
+["There aren't","وجود ندارند"]
+],
+examples:[
+"There is a book on the table.",
+"There are two chairs.",
+"There isn't a computer here."
+],
+question:"برای دو کتاب کدام درست است؟",
+options:["There is two books.","There are two books.","There am two books."],
+answer:1
+},
+
+{
+title:"اسم‌های قابل شمارش",
+desc:"اسم‌های مفرد و جمع و کاربرد a/an.",
+words:[
+["Book","کتاب"],
+["Books","کتاب‌ها"],
+["Apple","سیب"],
+["Apples","سیب‌ها"],
+["a","یک"],
+["an","یک"]
+],
+examples:[
+"I have a book.",
+"She has an apple.",
+"There are three books."
+],
+question:"کدام گزینه درست است؟",
+options:["an book","a book","a apples"],
+answer:1
+},
+
+{
+title:"صفات",
+desc:"توصیف افراد و اشیا با صفت.",
+words:[
+["Big","بزرگ"],
+["Small","کوچک"],
+["Fast","سریع"],
+["Slow","آهسته"],
+["Beautiful","زیبا"],
+["Easy","آسان"],
+["Difficult","سخت"]
+],
+examples:[
+"This is a big house.",
+"The car is fast.",
+"English is interesting."
+],
+question:"Fast یعنی چه؟",
+options:["سریع","کند","کوچک"],
+answer:0
+},
+
+{
+title:"مقایسه کردن",
+desc:"صفت‌های مقایسه‌ای و ساختارهای ساده.",
+words:[
+["Bigger","بزرگ‌تر"],
+["Smaller","کوچک‌تر"],
+["Faster","سریع‌تر"],
+["Better","بهتر"],
+["More","بیشتر"]
+],
+examples:[
+"My car is faster than yours.",
+"This book is better.",
+"Ali is taller than Reza."
+],
+question:"Better یعنی چه؟",
+options:["بدتر","بهتر","بزرگ‌تر"],
+answer:1
+},
+
+{
+title:"حروف اضافه",
+desc:"کاربرد in، on، under و کنار آن‌ها.",
+words:[
+["In","داخل"],
+["On","روی"],
+["Under","زیر"],
+["Behind","پشت"],
+["Next to","کنار"],
+["Between","بین"]
+],
+examples:[
+"The book is on the table.",
+"The cat is under the chair.",
+"The school is next to the park."
+],
+question:"کتاب روی میز است:",
+options:["The book is on the table.","The book is under table.","The book is in table."],
+answer:0
+},
+
+{
+title:"مکان‌ها",
+desc:"نام مکان‌های رایج در شهر.",
+words:[
+["School","مدرسه"],
+["Hospital","بیمارستان"],
+["Bank","بانک"],
+["Park","پارک"],
+["Store","فروشگاه"],
+["Library","کتابخانه"]
+],
+examples:[
+"I go to school.",
+"The bank is near the park.",
+"She is at the library."
+],
+question:"Library یعنی چه؟",
+options:["کتابخانه","بانک","بیمارستان"],
+answer:0
+},
+
+{
+title:"زمان و ساعت",
+desc:"پرسیدن و گفتن ساعت.",
+words:[
+["What time is it?","ساعت چند است؟"],
+["O'clock","دقیق"],
+["Morning","صبح"],
+["Afternoon","بعدازظهر"],
+["Night","شب"]
+],
+examples:[
+"What time is it?",
+"It is three o'clock.",
+"I study in the morning."
+],
+question:"برای پرسیدن ساعت چه می‌گوییم؟",
+options:["What is your name?","What time is it?","Where are you?"],
+answer:1
+},
+
+{
+title:"کارهای روزانه",
+desc:"صحبت درباره برنامه روزانه.",
+words:[
+["Wake up","بیدار شدن"],
+["Get up","از خواب بلند شدن"],
+["Study","درس خواندن"],
+["Work","کار کردن"],
+["Eat breakfast","صبحانه خوردن"],
+["Go to bed","به رختخواب رفتن"]
+],
+examples:[
+"I wake up at seven.",
+"I study English every day.",
+"I go to bed at ten."
+],
+question:"Wake up یعنی چه؟",
+options:["خوابیدن","بیدار شدن","دویدن"],
+answer:1
+},
+
+{
+title:"غذا و نوشیدنی",
+desc:"کلمات مهم مربوط به غذا و نوشیدنی.",
+words:[
+["Water","آب"],
+["Milk","شیر"],
+["Bread","نان"],
+["Rice","برنج"],
+["Apple","سیب"],
+["Chicken","مرغ"],
+["Juice","آبمیوه"]
+],
+examples:[
+"I drink water.",
+"I like rice.",
+"She drinks milk."
+],
+question:"Water یعنی چه؟",
+options:["آب","شیر","نان"],
+answer:0
+},
+
+{
+title:"خرید کردن",
+desc:"عبارت‌های کاربردی هنگام خرید.",
+words:[
+["How much?","چقدر؟"],
+["Price","قیمت"],
+["Cheap","ارزان"],
+["Expensive","گران"],
+["Buy","خریدن"],
+["Sell","فروختن"]
+],
+examples:[
+"How much is this?",
+"I want to buy this.",
+"It is too expensive."
+],
+question:"How much? برای چیست؟",
+options:["پرسیدن قیمت","پرسیدن نام","پرسیدن مسیر"],
+answer:0
+},
+
+{
+title:"لباس‌ها",
+desc:"نام لباس‌های رایج.",
+words:[
+["Shirt","پیراهن"],
+["T-shirt","تی‌شرت"],
+["Pants","شلوار"],
+["Shoes","کفش"],
+["Jacket","ژاکت"],
+["Hat","کلاه"]
+],
+examples:[
+"I am wearing a blue shirt.",
+"My shoes are black.",
+"This jacket is new."
+],
+question:"Shoes یعنی چه؟",
+options:["کفش","کلاه","شلوار"],
+answer:0
+},
+
+{
+title:"آب‌وهوا",
+desc:"صحبت درباره وضعیت هوا.",
+words:[
+["Sunny","آفتابی"],
+["Rainy","بارانی"],
+["Cloudy","ابری"],
+["Windy","بادی"],
+["Snowy","برفی"],
+["Hot","گرم"],
+["Cold","سرد"]
+],
+examples:[
+"It is sunny today.",
+"It is very cold.",
+"Tomorrow will be rainy."
+],
+question:"Sunny یعنی چه؟",
+options:["برفی","آفتابی","بارانی"],
+answer:1
+},
+
+{
+title:"حمل‌ونقل",
+desc:"وسایل نقلیه و سفر در شهر.",
+words:[
+["Car","ماشین"],
+["Bus","اتوبوس"],
+["Train","قطار"],
+["Plane","هواپیما"],
+["Bike","دوچرخه"],
+["Taxi","تاکسی"]
+],
+examples:[
+"I go to school by bus.",
+"The train is fast.",
+"I ride a bike."
+],
+question:"Train یعنی چه؟",
+options:["قطار","اتوبوس","تاکسی"],
+answer:0
+},
+
+{
+title:"شهر و مکان‌ها",
+desc:"صحبت درباره شهر و مکان‌های آن.",
+words:[
+["City","شهر"],
+["Street","خیابان"],
+["Road","جاده"],
+["Building","ساختمان"],
+["Square","میدان"],
+["Station","ایستگاه"]
+],
+examples:[
+"I live in a big city.",
+"The station is near the street.",
+"This building is very tall."
+],
+question:"City یعنی چه؟",
+options:["شهر","روستا","جاده"],
+answer:0
+},
+
+{
+title:"پرسیدن مسیر",
+desc:"عبارت‌های کاربردی برای پیدا کردن مسیر.",
+words:[
+["Where is...?","...کجاست؟"],
+["Turn left","به چپ بپیچ"],
+["Turn right","به راست بپیچ"],
+["Go straight","مستقیم برو"],
+["Near","نزدیک"],
+["Far","دور"]
+],
+examples:[
+"Where is the bank?",
+"Turn left at the street.",
+"Go straight."
+],
+question:"Turn right یعنی چه؟",
+options:["به چپ بپیچ","به راست بپیچ","مستقیم برو"],
+answer:1
+},
+
+{
+title:"مکالمه روزمره",
+desc:"عبارت‌های کاربردی برای مکالمه‌های روزانه.",
+words:[
+["Really?","واقعاً؟"],
+["Of course","البته"],
+["Maybe","شاید"],
+["I think so","فکر کنم همین‌طور باشد"],
+["Thank you","ممنون"],
+["You're welcome","خواهش می‌کنم"]
+],
+examples:[
+"Thank you!",
+"You're welcome.",
+"Really? That's great!"
+],
+question:"در جواب Thank you چه می‌گوییم؟",
+options:["You're welcome.","Goodbye.","Sorry."],
+answer:0
+},
+
+{
+title:"حال استمراری",
+desc:"Present Continuous برای کارهایی که اکنون در حال انجام‌اند.",
+words:[
+["am/is/are + ing","ساختار حال استمراری"],
+["Now","الان"],
+["At the moment","در حال حاضر"],
+["Reading","در حال خواندن"],
+["Playing","در حال بازی کردن"]
+],
+examples:[
+"I am studying now.",
+"She is reading a book.",
+"They are playing football."
+],
+question:"کدام جمله حال استمراری است؟",
+options:["I play every day.","I am playing now.","I played yesterday."],
+answer:1
+},
+
+{
+title:"گذشته ساده",
+desc:"صحبت درباره اتفاقاتی که در گذشته رخ داده‌اند.",
+words:[
+["Yesterday","دیروز"],
+["Last week","هفته گذشته"],
+["Played","بازی کرد"],
+["Watched","تماشا کرد"],
+["Visited","بازدید کرد"]
+],
+examples:[
+"I played football yesterday.",
+"She watched a movie.",
+"We visited our friend."
+],
+question:"Yesterday یعنی چه؟",
+options:["فردا","دیروز","امروز"],
+answer:1
+},
+
+{
+title:"افعال بی‌قاعده",
+desc:"آشنایی با چند فعل بی‌قاعده مهم.",
+words:[
+["Go → Went","رفتن → رفت"],
+["Eat → Ate","خوردن → خورد"],
+["See → Saw","دیدن → دید"],
+["Come → Came","آمدن → آمد"],
+["Take → Took","گرفتن → گرفت"]
+],
+examples:[
+"I went to school.",
+"She ate an apple.",
+"We saw a movie."
+],
+question:"گذشته Go چیست؟",
+options:["Goed","Went","Gone"],
+answer:1
+},
+
+{
+title:"گذشته استمراری",
+desc:"Past Continuous برای کاری که در گذشته در حال انجام بوده.",
+words:[
+["Was","بود"],
+["Were","بودند"],
+["Was reading","در حال خواندن بود"],
+["Were playing","در حال بازی بودند"]
+],
+examples:[
+"I was studying.",
+"They were playing.",
+"She was watching TV."
+],
+question:"برای They از کدام استفاده می‌کنیم؟",
+options:["Was","Were","Is"],
+answer:1
+},
+
+{
+title:"آینده با Will",
+desc:"صحبت درباره آینده با Will.",
+words:[
+["Will","خواهد"],
+["Tomorrow","فردا"],
+["Next week","هفته آینده"],
+["I will","من خواهم"],
+["We will","ما خواهیم"]
+],
+examples:[
+"I will study tomorrow.",
+"We will play next week.",
+"She will call you."
+],
+question:"کدام جمله درباره آینده است؟",
+options:["I played.","I am playing.","I will play."],
+answer:2
+},
+
+{
+title:"آینده با Going to",
+desc:"استفاده از be going to برای برنامه‌ها و قصدها.",
+words:[
+["Going to","قصد داشتن"],
+["Plan","برنامه"],
+["Tomorrow","فردا"],
+["Next month","ماه آینده"]
+],
+examples:[
+"I am going to study.",
+"She is going to travel.",
+"They are going to play."
+],
+question:"کدام ساختار درست است؟",
+options:["I going to play.","I am going to play.","I am go play."],
+answer:1
+},
+
+{
+title:"افعال Modal",
+desc:"آشنایی با افعال کمکی مهم مانند can، may و might.",
+words:[
+["Can","توانستن"],
+["May","ممکن است"],
+["Might","شاید"],
+["Must","باید"],
+["Should","بهتر است / باید"]
+],
+examples:[
+"I can swim.",
+"You should study.",
+"It might rain."
+],
+question:"Can بیشتر برای چه چیزی استفاده می‌شود؟",
+options:["توانایی","گذشته","رنگ"],
+answer:0
+},
+
+{
+title:"Can / Could",
+desc:"بیان توانایی و درخواست مؤدبانه.",
+words:[
+["Can you...?","می‌توانی...؟"],
+["Could you...?","می‌توانستید / می‌شود...؟"],
+["Can","توانستن"],
+["Could","توانستن در گذشته / درخواست مؤدبانه"]
+],
+examples:[
+"I can speak English.",
+"Can you help me?",
+"Could you open the door?"
+],
+question:"کدام درخواست مؤدبانه‌تر است؟",
+options:["Could you help me?","Help me!","You help me."],
+answer:0
+},
+
+{
+title:"Should / Must",
+desc:"تفاوت توصیه و الزام.",
+words:[
+["Should","بهتر است"],
+["Must","باید"],
+["Must not","نباید"],
+["Advice","توصیه"],
+["Rule","قانون"]
+],
+examples:[
+"You should study.",
+"You must follow the rules.",
+"You must not run here."
+],
+question:"Must بیشتر نشان‌دهنده چیست؟",
+options:["الزام","رنگ","زمان"],
+answer:0
+},
+
+{
+title:"Present Perfect",
+desc:"آشنایی با زمان حال کامل.",
+words:[
+["Have","دارم / داشته‌ام"],
+["Has","دارد / داشته است"],
+["Have been","بوده‌ام"],
+["Already","قبلاً / تا الان"],
+["Yet","هنوز / تاکنون"]
+],
+examples:[
+"I have finished my homework.",
+"She has visited London.",
+"They have already eaten."
+],
+question:"کدام جمله Present Perfect است؟",
+options:["I have finished my work.","I finished yesterday.","I am finishing."],
+answer:0
+},
+
+{
+title:"قیدها",
+desc:"استفاده از قیدها برای توضیح چگونگی انجام کار.",
+words:[
+["Quickly","به‌سرعت"],
+["Slowly","آهسته"],
+["Carefully","با دقت"],
+["Usually","معمولاً"],
+["Always","همیشه"],
+["Never","هرگز"]
+],
+examples:[
+"He runs quickly.",
+"She speaks slowly.",
+"I usually study at night."
+],
+question:"Quickly یعنی چه؟",
+options:["به‌سرعت","آرام","هرگز"],
+answer:0
+},
+
+{
+title:"جملات شرطی",
+desc:"آشنایی مقدماتی با جملات If.",
+words:[
+["If","اگر"],
+["If I study","اگر درس بخوانم"],
+["If it rains","اگر باران ببارد"],
+["Then","سپس"]
+],
+examples:[
+"If I study, I will pass.",
+"If it rains, we will stay home.",
+"If you practice, you will improve."
+],
+question:"If یعنی چه؟",
+options:["زیرا","اگر","اما"],
+answer:1
+},
+
+{
+title:"جملات موصولی",
+desc:"آشنایی با who، which و that.",
+words:[
+["Who","که - برای افراد"],
+["Which","که - برای اشیا"],
+["That","که"],
+["Person","شخص"],
+["Thing","چیز"]
+],
+examples:[
+"The boy who won is happy.",
+"This is the book that I bought.",
+"The phone which I use is new."
+],
+question:"Who معمولاً برای چه چیزی است؟",
+options:["افراد","اشیا","زمان"],
+answer:0
+},
+
+{
+title:"افعال عبارتی",
+desc:"آشنایی با Phrasal Verbs پرکاربرد.",
+words:[
+["Get up","بلند شدن"],
+["Wake up","بیدار شدن"],
+["Turn on","روشن کردن"],
+["Turn off","خاموش کردن"],
+["Look for","دنبال چیزی گشتن"],
+["Give up","تسلیم شدن"]
+],
+examples:[
+"Turn on the light.",
+"I am looking for my phone.",
+"Don't give up."
+],
+question:"Turn off یعنی چه؟",
+options:["روشن کردن","خاموش کردن","خریدن"],
+answer:1
+},
+
+{
+title:"مکالمه پیشرفته",
+desc:"ساخت مکالمه‌های طولانی‌تر و طبیعی‌تر.",
+words:[
+["Actually","در واقع"],
+["However","با این حال"],
+["Because","زیرا"],
+["Although","اگرچه"],
+["Probably","احتمالاً"]
+],
+examples:[
+"Actually, I don't know.",
+"I stayed home because it was raining.",
+"Although it was difficult, I tried."
+],
+question:"Because برای چه استفاده می‌شود؟",
+options:["بیان دلیل","بیان رنگ","بیان ساعت"],
+answer:0
+},
+
+{
+title:"خواندن متن",
+desc:"تمرین درک مطلب و پیدا کردن اطلاعات از متن.",
+words:[
+["Read","خواندن"],
+["Text","متن"],
+["Question","سؤال"],
+["Answer","پاسخ"],
+["Understand","درک کردن"]
+],
+examples:[
+"Read the text carefully.",
+"Answer the questions.",
+"Try to understand the main idea."
+],
+question:"برای درک متن چه کاری مفید است؟",
+options:["خواندن دقیق","نادیده گرفتن متن","فقط حدس زدن"],
+answer:0
+},
+
+{
+title:"نوشتن متن",
+desc:"اصول ساده برای نوشتن یک متن انگلیسی.",
+words:[
+["Sentence","جمله"],
+["Paragraph","پاراگراف"],
+["Topic","موضوع"],
+["Idea","ایده"],
+["Write","نوشتن"]
+],
+examples:[
+"Write a short paragraph.",
+"Use simple sentences.",
+"Explain your main idea."
+],
+question:"Paragraph یعنی چه؟",
+options:["کلمه","پاراگراف","حرف"],
+answer:1
+},
+
+{
+title:"درک شنیداری",
+desc:"مهارت شنیدن و فهمیدن زبان انگلیسی.",
+words:[
+["Listen","گوش دادن"],
+["Hear","شنیدن"],
+["Voice","صدا"],
+["Conversation","مکالمه"],
+["Understand","متوجه شدن"]
+],
+examples:[
+"Listen carefully.",
+"Try to understand the conversation.",
+"Repeat what you hear."
+],
+question:"Listen یعنی چه؟",
+options:["گوش دادن","نوشتن","خواندن"],
+answer:0
+},
+
+{
+title:"مرور جامع",
+desc:"مرور مهم‌ترین نکات ۴۸ درس گذشته.",
+words:[
+["Review","مرور"],
+["Practice","تمرین"],
+["Grammar","گرامر"],
+["Vocabulary","واژگان"],
+["Conversation","مکالمه"]
+],
+examples:[
+"Review your lessons.",
+"Practice every day.",
+"Learn new vocabulary."
+],
+question:"برای بهتر شدن زبان چه چیزی مهم است؟",
+options:["تمرین منظم","فقط یک بار مطالعه","نادیده گرفتن تمرین"],
+answer:0
+},
+
+{
+title:"آزمون نهایی",
+desc:"آخرین مرحله دوره انگلیسی Ghost Language Academy.",
+words:[
+["Final Exam","آزمون نهایی"],
+["Result","نتیجه"],
+["Certificate","مدرک"],
+["Success","موفقیت"],
+["Congratulations","تبریک"]
+],
+examples:[
+"You completed the English course.",
+"Congratulations!",
+"Keep practicing English."
+],
+question:"بعد از پایان دوره چه کاری بهتر است؟",
+options:["تمرین را ادامه بدهی","زبان را فراموش کنی","درس‌ها را پاک کنی"],
+answer:0
+}
+
+];
+
+
+/* =========================
+   STORAGE
+========================= */
+
+function completedKey(n){
+    return "englishLesson" + n + "Completed";
+}
+
+function isCompleted(n){
+    return localStorage.getItem(completedKey(n)) === "true";
+}
+
+function isUnlocked(n){
+    if(n === 1) return true;
+    return isCompleted(n - 1);
+}
+
+function getCompletedCount(){
+    let count = 0;
+
+    for(let i=1;i<=50;i++){
+        if(isCompleted(i)) count++;
+    }
+
+    return count;
+}
+
+function getXP(){
+    return Number(localStorage.getItem("englishXP") || 0);
+}
+
+
+/* =========================
+   RENDER LESSONS
+========================= */
+
+function renderLessons(){
+
+    const box = document.getElementById("lessons");
+
+    box.innerHTML = "";
+
+    lessons.forEach((lesson,index)=>{
+
+        const n = index + 1;
+        const completed = isCompleted(n);
+        const unlocked = isUnlocked(n);
+
+        const card = document.createElement("div");
+
+        card.className =
+            "lesson " +
+            (completed ? "completed " : "") +
+            (!unlocked ? "locked" : "");
+
+        card.innerHTML = `
+            <div class="number">درس ${n}</div>
+            <h3>${lesson.title}</h3>
+            <p>${lesson.desc}</p>
+
+            <div class="status">
+                ${
+                    completed
+                    ? "✅ تکمیل شده"
+                    : unlocked
+                    ? "▶ شروع درس"
+                    : "🔒 قفل"
+                }
+            </div>
+        `;
+
+        if(unlocked){
+            card.onclick = () => openLesson(n);
+        }
+
+        box.appendChild(card);
+    });
+
+    updateProgress();
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(){
+
+    const completed = getCompletedCount();
+    const percent = Math.round((completed / 50) * 100);
+
+    document.getElementById("progressText").textContent =
+        `پیشرفت: ${completed} از 50 درس`;
+
+    document.getElementById("xpText").textContent =
+        `XP: ${getXP()}`;
+
+    document.getElementById("progressBar").style.width =
+        percent + "%";
+}
+
+
+/* =========================
+   OPEN LESSON
+========================= */
+
+let currentLesson = 0;
+
+function openLesson(n){
+
+    if(!isUnlocked(n)) return;
+
+    currentLesson = n;
+
+    const lesson = lessons[n - 1];
+
+    document.getElementById("lessonList").style.display = "none";
+    document.getElementById("lessonView").style.display = "block";
+
+    document.getElementById("lessonNumber").textContent =
+        "LESSON " + n;
+
+    document.getElementById("lessonTitle").textContent =
+        lesson.title;
+
+    document.getElementById("lessonDescription").textContent =
+        lesson.desc;
+
+    let html = "";
+
+    html += `
+        <div class="section">
+            <h3>📚 واژگان مهم</h3>
+    `;
+
+    lesson.words.forEach(word=>{
+
+        html += `
+            <div class="word">
+                <b>${word[0]}</b>
+                <span>${word[1]}</span>
+            </div>
+        `;
+
+    });
+
+    html += `</div>`;
+
+    html += `
+        <div class="section">
+            <h3>💬 مثال‌ها</h3>
+    `;
+
+    lesson.examples.forEach(example=>{
+
+        html += `
+            <div class="example">
+                ${example}
+            </div>
+        `;
+
+    });
+
+    html += `</div>`;
+
+    html += `
+        <div class="section">
+            <h3>🧠 تمرین</h3>
+
+            <div class="quiz">
+                <p>${lesson.question}</p>
+    `;
+
+    lesson.options.forEach((option,i)=>{
+
+        html += `
+            <label>
+                <input type="radio" name="quiz" value="${i}">
+                ${option}
+            </label>
+        `;
+
+    });
+
+    html += `
+            </div>
+        </div>
+    `;
+
+    html += `
+        <div class="section">
+            <h3>✍️ تمرین نوشتاری</h3>
+            <p style="color:#aeb5d4;line-height:1.8;">
+                یک جمله انگلیسی درباره موضوع این درس بنویس:
+            </p>
+
+            <input
+                type="text"
+                id="typingAnswer"
+                placeholder="جمله انگلیسی خود را اینجا بنویس..."
+            >
+        </div>
+    `;
+
+    document.getElementById("lessonBody").innerHTML = html;
+
+    document.getElementById("message").textContent =
+        isCompleted(n)
+        ? "✅ این درس قبلاً تکمیل شده است."
+        : "";
+}
+
+
+/* =========================
+   COMPLETE
+========================= */
+
+function completeLesson(){
+
+    if(!currentLesson) return;
+
+    const lesson = lessons[currentLesson - 1];
+
+    const selected =
+        document.querySelector('input[name="quiz"]:checked');
+
+    if(!selected){
+
+        document.getElementById("message").textContent =
+            "⚠️ ابتدا به سؤال تمرینی پاسخ بده.";
+
+        return;
+    }
+
+    const answer = Number(selected.value);
+
+    if(answer !== lesson.answer){
+
+        document.getElementById("message").textContent =
+            "❌ پاسخ درست نیست. دوباره امتحان کن.";
+
+        return;
+    }
+
+    const key = completedKey(currentLesson);
+
+    const alreadyCompleted =
+        localStorage.getItem(key) === "true";
+
+    if(!alreadyCompleted){
+
+        localStorage.setItem(key,"true");
+
+        let xp = getXP();
+
+        xp += 20;
+
+        localStorage.setItem("englishXP",xp);
+    }
+
+    document.getElementById("message").textContent =
+        `🎉 درس ${currentLesson} با موفقیت تکمیل شد! +20 XP`;
+
+    setTimeout(()=>{
+
+        showList();
+
+        renderLessons();
+
+    },1200);
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+function showList(){
+
+    document.getElementById("lessonView").style.display = "none";
+    document.getElementById("lessonList").style.display = "block";
+
+    currentLesson = 0;
+
+    renderLessons();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderLessons();
+
+</script>
+
+</body>
+  </html>
