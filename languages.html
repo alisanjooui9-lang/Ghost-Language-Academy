@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<!DOCTYPE html><html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>انتخاب زبان | Ghost Language Academy</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#05070d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes"><title>انتخاب زبان | Ghost Language Academy</title><style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:Tahoma,Arial,sans-serif;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
 }
 
 body{
@@ -24,6 +29,7 @@ body{
 }
 
 /* Background */
+
 .bg{
     position:fixed;
     inset:0;
@@ -61,12 +67,14 @@ body{
     0%,100%{
         transform:translate(0,0);
     }
+
     50%{
         transform:translate(30px,-25px);
     }
 }
 
 /* Header */
+
 header{
     padding:20px 6%;
     display:flex;
@@ -74,6 +82,8 @@ header{
     align-items:center;
     border-bottom:1px solid rgba(255,255,255,.08);
     backdrop-filter:blur(15px);
+    position:relative;
+    z-index:5;
 }
 
 .logo{
@@ -95,6 +105,7 @@ header{
 }
 
 /* Main */
+
 main{
     max-width:1100px;
     margin:auto;
@@ -123,13 +134,19 @@ h1{
     background:linear-gradient(90deg,#fff,#00ffaa,#8d86ff,#fff);
     background-size:250%;
     -webkit-background-clip:text;
+    background-clip:text;
     color:transparent;
     animation:titleMove 6s linear infinite;
 }
 
 @keyframes titleMove{
-    0%{background-position:0%}
-    100%{background-position:250%}
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:250%;
+    }
 }
 
 .hero p{
@@ -139,6 +156,7 @@ h1{
 }
 
 /* Languages */
+
 .languages{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -185,8 +203,8 @@ h1{
     border-color:rgba(0,255,170,.3);
 }
 
-.active:hover{
-    transform:translateY(-10px) scale(1.01);
+.active:active{
+    transform:scale(.97);
 }
 
 .locked{
@@ -233,17 +251,29 @@ h1{
     border:1px solid rgba(255,255,255,.08);
 }
 
-/* English special */
+/* Completed languages */
+
+.active .name{
+    color:#00ffaa;
+}
+
 .english-card{
     background:
         linear-gradient(145deg,rgba(0,255,170,.08),rgba(255,255,255,.035));
 }
 
-.english-card .name{
-    color:#00ffaa;
+/* Update 2 */
+
+.update2{
+    border-color:rgba(150,120,255,.18);
+}
+
+.update2 .status{
+    color:#b9a8ff;
 }
 
 /* Bottom */
+
 .bottom{
     margin-top:35px;
     text-align:center;
@@ -265,6 +295,7 @@ h1{
 }
 
 /* Toast */
+
 .toast{
     position:fixed;
     bottom:25px;
@@ -278,6 +309,9 @@ h1{
     box-shadow:0 15px 40px rgba(0,0,0,.35);
     transition:.4s;
     z-index:20;
+    width:max-content;
+    max-width:90%;
+    text-align:center;
 }
 
 .toast.show{
@@ -285,13 +319,17 @@ h1{
 }
 
 /* Mobile */
+
 @media(max-width:800px){
+
     .languages{
         grid-template-columns:repeat(2,1fr);
     }
+
 }
 
 @media(max-width:520px){
+
     header{
         padding:17px;
     }
@@ -319,257 +357,220 @@ h1{
     h1{
         font-size:35px;
     }
+
 }
-</style>
-</head>
 
-<body>
-
-<div class="bg">
+</style></head><body><div class="bg">
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
+</div><header><div class="logo">
+    Ghost <span>Language</span> Academy
 </div>
 
-<header>
-    <div class="logo">
-        Ghost <span>Language</span> Academy
-    </div>
+<div class="free">
+    کاملاً رایگان
+</div>
 
-    <div class="free">
-        کاملاً رایگان
-    </div>
-</header>
+</header><main><section class="hero"><div class="badge">
+    🌍 نسخه 1.0
+</div>
 
-<main>
+<h1>
+    زبانت را انتخاب کن
+</h1>
 
-    <section class="hero">
-        <div class="badge">🌍 قدم اول یادگیری</div>
+<p>
+    زبان مورد علاقه‌ات را انتخاب کن و یادگیری را شروع کن.
+    <br>
+    آموزش‌ها تعاملی، مرحله‌ای و کاملاً رایگان هستند.
+</p>
 
-        <h1>زبانت را انتخاب کن</h1>
+</section><section class="languages"><!-- English --><div class="card active english-card"
+onclick="openLanguage('english.html','English','🇬🇧')"><div class="status ready">
+    ✓ آماده
+</div>
 
-        <p>
-            زبان مورد علاقه‌ات را انتخاب کن و یادگیری را شروع کن.
-            <br>
-            آموزش‌ها تعاملی، مرحله‌ای و کاملاً رایگان هستند.
-        </p>
-    </section>
+<div class="flag">🇬🇧</div>
 
-    <section class="languages">
+<div class="name">
+    انگلیسی
+</div>
 
-        <!-- English -->
-        <div class="card active english-card" onclick="openEnglish()">
+<div class="en">
+    English
+</div>
 
-            <div class="status ready">
-                ✓ آماده
-            </div>
+</div><!-- Spanish --><div class="card active"
+onclick="openLanguage('spanish.html','اسپانیایی','🇪🇸')"><div class="status ready">
+    ✓ آماده
+</div>
 
-            <div class="flag">🇬🇧</div>
+<div class="flag">🇪🇸</div>
 
-            <div class="name">
-                انگلیسی
-            </div>
+<div class="name">
+    اسپانیایی
+</div>
 
-            <div class="en">
-                English
-            </div>
+<div class="en">
+    Español
+</div>
 
-        </div>
+</div><!-- French --><div class="card active"
+onclick="openLanguage('french.html','فرانسوی','🇫🇷')"><div class="status ready">
+    ✓ آماده
+</div>
 
-        <!-- Spanish -->
-        <div class="card locked" onclick="comingSoon('اسپانیایی')">
+<div class="flag">🇫🇷</div>
 
-            <div class="status soon">
-                به‌زودی
-            </div>
+<div class="name">
+    فرانسوی
+</div>
 
-            <div class="flag">🇪🇸</div>
+<div class="en">
+    Français
+</div>
 
-            <div class="name">
-                اسپانیایی
-            </div>
+</div><!-- German --><div class="card active"
+onclick="openLanguage('german.html','آلمانی','🇩🇪')"><div class="status ready">
+    ✓ آماده
+</div>
 
-            <div class="en">
-                Español
-            </div>
+<div class="flag">🇩🇪</div>
 
-        </div>
+<div class="name">
+    آلمانی
+</div>
 
-        <!-- French -->
-        <div class="card locked" onclick="comingSoon('فرانسوی')">
+<div class="en">
+    Deutsch
+</div>
 
-            <div class="status soon">
-                به‌زودی
-            </div>
+</div><!-- Turkish --><div class="card active"
+onclick="openLanguage('turkish.html','ترکی','🇹🇷')"><div class="status ready">
+    ✓ آماده
+</div>
 
-            <div class="flag">🇫🇷</div>
+<div class="flag">🇹🇷</div>
 
-            <div class="name">
-                فرانسوی
-            </div>
+<div class="name">
+    ترکی
+</div>
 
-            <div class="en">
-                Français
-            </div>
+<div class="en">
+    Türkçe
+</div>
 
-        </div>
+</div><!-- Arabic --><div class="card active"
+onclick="openLanguage('arabic.html','عربی','🇸🇦')"><div class="status ready">
+    ✓ آماده
+</div>
 
-        <!-- German -->
-        <div class="card locked" onclick="comingSoon('آلمانی')">
+<div class="flag">🇸🇦</div>
 
-            <div class="status soon">
-                به‌زودی
-            </div>
+<div class="name">
+    عربی
+</div>
 
-            <div class="flag">🇩🇪</div>
+<div class="en">
+    العربية
+</div>
 
-            <div class="name">
-                آلمانی
-            </div>
+</div><!-- Russian --><div class="card active"
+onclick="openLanguage('russian.html','روسی','🇷🇺')"><div class="status ready">
+    ✓ آماده
+</div>
 
-            <div class="en">
-                Deutsch
-            </div>
+<div class="flag">🇷🇺</div>
 
-        </div>
+<div class="name">
+    روسی
+</div>
 
-        <!-- Turkish -->
-        <div class="card locked" onclick="comingSoon('ترکی')">
+<div class="en">
+    Русский
+</div>
 
-            <div class="status soon">
-                به‌زودی
-            </div>
+</div><!-- Italian Update 2 --><div class="card locked update2"
+onclick="comingSoon('ایتالیایی')"><div class="status soon">
+    Update 2
+</div>
 
-            <div class="flag">🇹🇷</div>
+<div class="flag">🇮🇹</div>
 
-            <div class="name">
-                ترکی
-            </div>
+<div class="name">
+    ایتالیایی
+</div>
 
-            <div class="en">
-                Türkçe
-            </div>
+<div class="en">
+    Italiano
+</div>
 
-        </div>
+</div><!-- Japanese Update 2 --><div class="card locked update2"
+onclick="comingSoon('ژاپنی')"><div class="status soon">
+    Update 2
+</div>
 
-        <!-- Arabic -->
-        <div class="card locked" onclick="comingSoon('عربی')">
+<div class="flag">🇯🇵</div>
 
-            <div class="status soon">
-                به‌زودی
-            </div>
+<div class="name">
+    ژاپنی
+</div>
 
-            <div class="flag">🇸🇦</div>
+<div class="en">
+    日本語
+</div>
 
-            <div class="name">
-                عربی
-            </div>
+</div></section><div class="bottom"><a href="index.html" class="back">
+    ← بازگشت به صفحه اصلی
+</a>
 
-            <div class="en">
-                العربية
-            </div>
+</div></main><div class="toast" id="toast"></div><script>
 
-        </div>
+/*
+    Ghost Language Academy
+    Version 1.0
+*/
 
-        <!-- Russian -->
-        <div class="card locked" onclick="comingSoon('روسی')">
+function openLanguage(file,language,flag){
 
-            <div class="status soon">
-                به‌زودی
-            </div>
+    localStorage.setItem(
+        "selectedLanguage",
+        language
+    );
 
-            <div class="flag">🇷🇺</div>
+    const toast=document.getElementById("toast");
 
-            <div class="name">
-                روسی
-            </div>
-
-            <div class="en">
-                Русский
-            </div>
-
-        </div>
-
-        <!-- Italian -->
-        <div class="card locked" onclick="comingSoon('ایتالیایی')">
-
-            <div class="status soon">
-                به‌زودی
-            </div>
-
-            <div class="flag">🇮🇹</div>
-
-            <div class="name">
-                ایتالیایی
-            </div>
-
-            <div class="en">
-                Italiano
-            </div>
-
-        </div>
-
-        <!-- Japanese -->
-        <div class="card locked" onclick="comingSoon('ژاپنی')">
-
-            <div class="status soon">
-                به‌زودی
-            </div>
-
-            <div class="flag">🇯🇵</div>
-
-            <div class="name">
-                ژاپنی
-            </div>
-
-            <div class="en">
-                日本語
-            </div>
-
-        </div>
-
-    </section>
-
-    <div class="bottom">
-        <a href="index.html" class="back">
-            ← بازگشت به صفحه اصلی
-        </a>
-    </div>
-
-</main>
-
-<div class="toast" id="toast"></div>
-
-<script>
-
-function openEnglish(){
-
-    localStorage.setItem("selectedLanguage","English");
-
-    const toast = document.getElementById("toast");
-
-    toast.innerHTML = "🇬🇧 زبان انگلیسی انتخاب شد!";
+    toast.innerHTML=
+        flag+" "+language+" انتخاب شد!";
 
     toast.classList.add("show");
 
     setTimeout(function(){
-        window.location.href = "english.html";
-    },700);
+
+        window.location.href=file;
+
+    },500);
+
 }
+
 
 function comingSoon(language){
 
-    const toast = document.getElementById("toast");
+    const toast=document.getElementById("toast");
 
-    toast.innerHTML = "🔒 آموزش " + language + " به‌زودی اضافه می‌شود.";
+    toast.innerHTML=
+        "🔒 آموزش "+language+
+        " در Update 2 اضافه می‌شود.";
 
     toast.classList.add("show");
 
     setTimeout(function(){
+
         toast.classList.remove("show");
+
     },2500);
+
 }
 
-</script>
-
-</body>
+</script></body>
 </html>
