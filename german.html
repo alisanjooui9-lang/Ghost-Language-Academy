@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>German — Ghost Language Academy</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top,#18233d 0%,#090d18 45%,#03050a 100%);
+  color:#fff;
+  min-height:100vh;
+}
+
+header{
+  padding:25px 18px;
+  text-align:center;
+  border-bottom:1px solid #26334f;
+  background:rgba(3,7,15,.75);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#4da3ff;
+}
+
+.subtitle{
+  color:#9daac0;
+  margin-top:8px;
+  font-size:14px;
+}
+
+.xp-box{
+  margin:15px auto 0;
+  max-width:650px;
+  padding:12px 16px;
+  border:1px solid #294b75;
+  border-radius:12px;
+  background:rgba(20,35,60,.55);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.xp{
+  color:#ffd54a;
+  font-weight:bold;
+}
+
+.container{
+  width:min(1100px,94%);
+  margin:25px auto 50px;
+}
+
+.intro{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.intro h1{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.intro p{
+  color:#aab5c8;
+}
+
+.lessons{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:15px;
+}
+
+.lesson-card{
+  background:linear-gradient(145deg,rgba(20,31,52,.95),rgba(8,13,24,.95));
+  border:1px solid #243b5d;
+  border-radius:16px;
+  padding:18px;
+  transition:.25s;
+}
+
+.lesson-card:hover{
+  transform:translateY(-4px);
+  border-color:#4da3ff;
+  box-shadow:0 10px 30px rgba(0,100,255,.12);
+}
+
+.lesson-card.locked{
+  opacity:.5;
+}
+
+.lesson-number{
+  color:#4da3ff;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.lesson-title{
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.status{
+  color:#8d9ab0;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.lesson-card button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:11px;
+  cursor:pointer;
+  background:#1677d2;
+  color:white;
+  font-weight:bold;
+}
+
+.lesson-card button:hover{
+  background:#2990ed;
+}
+
+.lesson-card.locked button{
+  background:#303a49;
+  cursor:not-allowed;
+}
+
+#lessonArea{
+  margin-top:25px;
+}
+
+.lesson-panel{
+  background:rgba(8,14,26,.96);
+  border:1px solid #294a72;
+  border-radius:18px;
+  padding:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.lesson-panel h2{
+  color:#4da3ff;
+  margin-bottom:18px;
+}
+
+.section{
+  margin:20px 0;
+  padding:18px;
+  background:rgba(20,31,50,.55);
+  border-radius:14px;
+  border:1px solid #1f3048;
+}
+
+.section h3{
+  margin-bottom:12px;
+  color:#ffd54a;
+}
+
+.words{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+}
+
+.word{
+  background:#111c2d;
+  padding:12px;
+  border-radius:10px;
+}
+
+.word b{
+  color:#fff;
+}
+
+.word small{
+  display:block;
+  color:#8ea0ba;
+  margin-top:5px;
+}
+
+.example{
+  background:#101a2a;
+  border-right:3px solid #4da3ff;
+  padding:12px;
+  border-radius:8px;
+  margin:8px 0;
+  direction:ltr;
+  text-align:left;
+}
+
+.example span{
+  display:block;
+  color:#98a8bd;
+  direction:rtl;
+  text-align:right;
+  margin-top:5px;
+}
+
+.exercise{
+  margin-top:20px;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.option{
+  border:1px solid #304766;
+  background:#111b2b;
+  color:white;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+  text-align:right;
+}
+
+.option:hover{
+  border-color:#4da3ff;
+}
+
+.option.correct{
+  border-color:#39d98a;
+  background:rgba(20,100,65,.3);
+}
+
+.option.wrong{
+  border-color:#ff5c67;
+  background:rgba(120,25,35,.3);
+}
+
+.complete-btn,
+.back-btn,
+.print-btn{
+  margin-top:18px;
+  border:0;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.complete-btn{
+  background:#20a96b;
+  color:white;
+}
+
+.complete-btn:disabled{
+  background:#344050;
+  cursor:not-allowed;
+}
+
+.back-btn{
+  background:#27364c;
+  color:white;
+}
+
+.print-btn{
+  background:#4d78ff;
+  color:white;
+}
+
+.exam-question{
+  margin:15px 0;
+  padding:16px;
+  background:#111b2b;
+  border-radius:12px;
+}
+
+.exam-question h4{
+  margin-bottom:10px;
+  direction:ltr;
+  text-align:left;
+}
+
+.exam-options label{
+  display:block;
+  padding:9px;
+  cursor:pointer;
+  direction:ltr;
+  text-align:left;
+}
+
+.result{
+  margin-top:18px;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.success{
+  background:rgba(30,150,90,.2);
+  border:1px solid #35c984;
+}
+
+.fail{
+  background:rgba(170,40,50,.2);
+  border:1px solid #ef5965;
+}
+
+.certificate{
+  display:none;
+  background:white;
+  color:#111;
+  padding:45px;
+  margin-top:30px;
+  border:10px double #1d3557;
+  text-align:center;
+}
+
+.certificate h1{
+  color:#1d3557;
+  font-size:36px;
+  margin-bottom:15px;
+}
+
+.certificate h2{
+  margin:15px 0;
+}
+
+.certificate .seal{
+  margin:25px auto;
+  width:130px;
+  height:130px;
+  border:5px solid #1d3557;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:13px;
+  padding:15px;
+}
+
+.signature{
+  margin-top:30px;
+  font-family:cursive;
+  font-size:28px;
+  color:#1d3557;
+}
+
+.cert-id{
+  margin-top:15px;
+  font-family:monospace;
+}
+
+footer{
+  text-align:center;
+  color:#66758c;
+  padding:30px;
+}
+
+@media print{
+  body{
+    background:white;
+  }
+
+  header,
+  .intro,
+  .lessons,
+  #lessonArea,
+  footer{
+    display:none !important;
+  }
+
+  .certificate{
+    display:block !important;
+    margin:0;
+    min-height:90vh;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">GHOST <span>LANGUAGE ACADEMY</span></div>
+  <div class="subtitle">German — Deutsch 🇩🇪</div>
+
+  <div class="xp-box">
+    <span>⭐ XP شما</span>
+    <span class="xp" id="xpDisplay">0 XP</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    <h1>🇩🇪 دوره کامل زبان آلمانی</h1>
+    <p>
+      از سطح مقدماتی تا پایان دوره در ۵۰ مرحله
+    </p>
+  </div>
+
+  <div class="lessons" id="lessons"></div>
+
+  <div id="lessonArea"></div>
+
+  <div class="certificate" id="certificate">
+    <h1>GHOST LANGUAGE ACADEMY</h1>
+    <h2>Certificate of Completion</h2>
+
+    <p>این گواهی به پاس موفقیت در دوره زبان آلمانی صادر می‌شود.</p>
+
+    <h2 id="certificateName">German Student</h2>
+
+    <p>
+      دوره کامل ۵۰ مرحله‌ای زبان آلمانی
+      <br>
+      German — Deutsch 🇩🇪
+    </p>
+
+    <p id="certificateScore"></p>
+    <p id="certificateDate"></p>
+
+    <div class="seal">
+      GHOST<br>
+      LANGUAGE<br>
+      ACADEMY<br>
+      ✓ VERIFIED
+    </div>
+
+    <div class="signature">
+      Ghost Director
+    </div>
+
+    <p class="cert-id" id="certificateID"></p>
+
+    <button class="print-btn" onclick="window.print()">
+      🖨️ چاپ / ذخیره PDF
+    </button>
+  </div>
+
+</div>
+
+<footer>
+  GHOST LANGUAGE ACADEMY © 2026
+</footer>
+
+<script>
+
+const lessons = [
+
+{
+number:1,
+title:"سلام و معرفی",
+words:[
+["Hallo","سلام"],
+["Guten Morgen","صبح بخیر"],
+["Guten Tag","روز بخیر"],
+["Guten Abend","عصر بخیر"],
+["Tschüss","خداحافظ"],
+["Danke","ممنون"],
+["Bitte","خواهش می‌کنم"],
+["Ja","بله"],
+["Nein","نه"]
+],
+examples:[
+["Hallo! Wie geht es dir?","سلام! حالت چطور است؟"],
+["Ich heiße Alex.","من الکس هستم."],
+["Guten Morgen!","صبح بخیر!"],
+["Danke!","ممنون!"],
+["Tschüss!","خداحافظ!"]
+],
+grammar:"در زبان آلمانی برای معرفی خود می‌توانی از جمله Ich heiße ... استفاده کنی.",
+tip:"اول کلمات سلام و خداحافظی را حفظ کن؛ این‌ها پایه مکالمه هستند.",
+question:"معنی «Danke» چیست؟",
+options:["خداحافظ","ممنون","صبح بخیر","نه"],
+correct:1
+},
+
+{
+number:2,
+title:"ضمیرهای شخصی",
+words:[
+["ich","من"],
+["du","تو"],
+["er","او مذکر"],
+["sie","او مؤنث / آنها"],
+["es","آن"],
+["wir","ما"],
+["ihr","شماها"],
+["Sie","شما رسمی"]
+],
+examples:[
+["Ich bin Schüler.","من دانش‌آموز هستم."],
+["Du bist nett.","تو مهربان هستی."],
+["Er ist mein Freund.","او دوست من است."],
+["Wir sind hier.","ما اینجا هستیم."],
+["Sie sind Lehrer.","شما معلم هستید."]
+],
+grammar:"ضمیرها نشان می‌دهند چه کسی انجام‌دهنده کار است. در آلمانی Sie با حرف بزرگ برای «شما»ی رسمی استفاده می‌شود.",
+tip:"ضمیرهای ich، du، er، sie و wir را به ترتیب تمرین کن.",
+question:"«wir» یعنی چه؟",
+options:["من","تو","ما","آنها"],
+correct:2
+},
+
+{
+number:3,
+title:"فعل sein — بودن",
+words:[
+["sein","بودن"],
+["bin","هستم"],
+["bist","هستی"],
+["ist","است"],
+["sind","هستیم / هستند"],
+["seid","هستید"],
+["Student","دانش‌آموز / دانشجو"],
+["Freund","دوست"]
+],
+examples:[
+["Ich bin Schüler.","من دانش‌آموز هستم."],
+["Du bist mein Freund.","تو دوست من هستی."],
+["Er ist nett.","او مهربان است."],
+["Wir sind bereit.","ما آماده هستیم."],
+["Sie sind hier.","آنها اینجا هستند."]
+],
+grammar:"فعل sein یکی از مهم‌ترین افعال آلمانی است و شکل آن با فاعل تغییر می‌کند.",
+tip:"صرف sein را هر روز چند بار با صدای بلند تکرار کن.",
+question:"کدام گزینه برای «من هستم» درست است؟",
+options:["Ich bist","Ich bin","Ich ist","Ich sind"],
+correct:1
+},
+
+{
+number:4,
+title:"اعداد ۱ تا ۱۰",
+words:[
+["eins","یک"],
+["zwei","دو"],
+["drei","سه"],
+["vier","چهار"],
+["fünf","پنج"],
+["sechs","شش"],
+["sieben","هفت"],
+["acht","هشت"],
+["neun","نه"],
+["zehn","ده"]
+],
+examples:[
+["Ich habe zwei Bücher.","من دو کتاب دارم."],
+["Drei Schüler sind hier.","سه دانش‌آموز اینجا هستند."],
+["Zehn Minuten.","ده دقیقه."],
+["Vier Freunde.","چهار دوست."],
+["Fünf Euro.","پنج یورو."]
+],
+grammar:"اعداد برای شمارش، زمان، قیمت و بسیاری از موقعیت‌های روزمره استفاده می‌شوند.",
+tip:"اعداد را از ۱ تا ۱۰ به صورت پشت سر هم و برعکس تمرین کن.",
+question:"«sieben» چند است؟",
+options:["۵","۶","۷","۸"],
+correct:2
+},
+
+{
+number:5,
+title:"رنگ‌ها",
+words:[
+["rot","قرمز"],
+["blau","آبی"],
+["grün","سبز"],
+["gelb","زرد"],
+["schwarz","مشکی"],
+["weiß","سفید"],
+["orange","نارنجی"],
+["braun","قهوه‌ای"]
+],
+examples:[
+["Das Auto ist rot.","ماشین قرمز است."],
+["Der Himmel ist blau.","آسمان آبی است."],
+["Das Gras ist grün.","چمن سبز است."],
+["Die Tasche ist schwarz.","کیف مشکی است."],
+["Das Papier ist weiß.","کاغذ سفید است."]
+],
+grammar:"برای توصیف رنگ، رنگ را معمولاً همراه اسم و فعل sein استفاده می‌کنیم.",
+tip:"اطراف خودت را نگاه کن و نام رنگ وسایل را به آلمانی بگو.",
+question:"«blau» یعنی چه؟",
+options:["سبز","آبی","قرمز","زرد"],
+correct:1
+},
+
+{
+number:6,
+title:"خانواده",
+words:[
+["Familie","خانواده"],
+["Mutter","مادر"],
+["Vater","پدر"],
+["Bruder","برادر"],
+["Schwester","خواهر"],
+["Sohn","پسر"],
+["Tochter","دختر"],
+["Eltern","والدین"]
+],
+examples:[
+["Das ist meine Mutter.","این مادر من است."],
+["Mein Vater ist nett.","پدر من مهربان است."],
+["Ich habe einen Bruder.","من یک برادر دارم."],
+["Meine Schwester ist hier.","خواهر من اینجاست."],
+["Meine Familie ist groß.","خانواده من بزرگ است."]
+],
+grammar:"mein برای مالکیت مذکر/خنثی و meine برای بسیاری از اسم‌های مؤنث و جمع استفاده می‌شود.",
+tip:"اعضای خانواده خودت را با واژه‌های آلمانی تمرین کن.",
+question:"«Mutter» یعنی چه؟",
+options:["خواهر","مادر","پدر","دختر"],
+correct:1
+},
+
+{
+number:7,
+title:"مدرسه",
+words:[
+["Schule","مدرسه"],
+["Lehrer","معلم"],
+["Schüler","دانش‌آموز"],
+["Klasse","کلاس"],
+["Buch","کتاب"],
+["Heft","دفتر"],
+["Stift","خودکار"],
+["Tafel","تخته"]
+],
+examples:[
+["Ich gehe zur Schule.","من به مدرسه می‌روم."],
+["Der Lehrer ist hier.","معلم اینجاست."],
+["Das Buch ist neu.","کتاب جدید است."],
+["Ich habe ein Heft.","من یک دفتر دارم."],
+["Die Klasse ist groß.","کلاس بزرگ است."]
+],
+grammar:"اسم‌ها در آلمانی با حرف بزرگ نوشته می‌شوند؛ مثل Schule و Buch.",
+tip:"اسم وسایل مدرسه را روی کاغذ بنویس و کنارشان معنی فارسی را قرار بده.",
+question:"«Schule» یعنی چه؟",
+options:["کتاب","مدرسه","معلم","کلاس"],
+correct:1
+},
+
+{
+number:8,
+title:"افعال روزمره",
+words:[
+["machen","انجام دادن"],
+["lernen","یاد گرفتن"],
+["lesen","خواندن"],
+["schreiben","نوشتن"],
+["spielen","بازی کردن"],
+["gehen","رفتن"],
+["kommen","آمدن"],
+["wohnen","زندگی کردن"]
+],
+examples:[
+["Ich lerne Deutsch.","من آلمانی یاد می‌گیرم."],
+["Ich lese ein Buch.","من یک کتاب می‌خوانم."],
+["Wir spielen zusammen.","ما با هم بازی می‌کنیم."],
+["Ich schreibe einen Satz.","من یک جمله می‌نویسم."],
+["Ich gehe nach Hause.","من به خانه می‌روم."]
+],
+grammar:"در جمله ساده آلمانی، فعل صرف‌شده معمولاً در جایگاه دوم قرار می‌گیرد.",
+tip:"هر روز پنج جمله با افعال جدید بساز.",
+question:"«lesen» یعنی چه؟",
+options:["نوشتن","خواندن","رفتن","بازی کردن"],
+correct:1
+},
+
+{
+number:9,
+title:"روزهای هفته",
+words:[
+["Montag","دوشنبه"],
+["Dienstag","سه‌شنبه"],
+["Mittwoch","چهارشنبه"],
+["Donnerstag","پنجشنبه"],
+["Freitag","جمعه"],
+["Samstag","شنبه"],
+["Sonntag","یکشنبه"]
+],
+examples:[
+["Heute ist Montag.","امروز دوشنبه است."],
+["Am Freitag habe ich Schule.","روز جمعه مدرسه دارم."],
+["Sonntag ist frei.","یکشنبه تعطیل است."],
+["Am Dienstag lerne ich.","سه‌شنبه درس می‌خوانم."],
+["Heute ist Mittwoch.","امروز چهارشنبه است."]
+],
+grammar:"برای گفتن «در روز ...» معمولاً از am استفاده می‌شود؛ مانند am Montag.",
+tip:"روزهای هفته را هر روز به ترتیب مرور کن.",
+question:"«Freitag» یعنی چه؟",
+options:["جمعه","شنبه","پنجشنبه","دوشنبه"],
+correct:0
+},
+
+{
+number:10,
+title:"ماه‌ها",
+words:[
+["Januar","ژانویه"],
+["Februar","فوریه"],
+["März","مارس"],
+["April","آوریل"],
+["Mai","مه"],
+["Juni","ژوئن"],
+["Juli","ژوئیه"],
+["August","اوت"],
+["September","سپتامبر"],
+["Oktober","اکتبر"],
+["November","نوامبر"],
+["Dezember","دسامبر"]
+],
+examples:[
+["Mein Geburtstag ist im Mai.","تولد من در ماه مه است."],
+["Im Januar ist es kalt.","در ژانویه هوا سرد است."],
+["Wir reisen im August.","ما در اوت سفر می‌کنیم."],
+["Der Kurs beginnt im September.","دوره در سپتامبر شروع می‌شود."],
+["Im Dezember ist Winter.","در دسامبر زمستان است."]
+],
+grammar:"برای بیان ماه معمولاً از im استفاده می‌شود.",
+tip:"ماه‌های آلمانی تقریباً شبیه نام‌های بین‌المللی هستند، پس حفظ آن‌ها آسان‌تر است.",
+question:"«Dezember» یعنی چه؟",
+options:["دسامبر","نوامبر","اکتبر","ژانویه"],
+correct:0
+},
+
+{
+number:11,
+title:"زمان و ساعت",
+words:[
+["Uhr","ساعت"],
+["heute","امروز"],
+["morgen","فردا"],
+["gestern","دیروز"],
+["früh","زود"],
+["spät","دیر"],
+["Minute","دقیقه"],
+["Stunde","ساعت"]
+],
+examples:[
+["Wie spät ist es?","ساعت چند است؟"],
+["Es ist drei Uhr.","ساعت سه است."],
+["Heute ist Montag.","امروز دوشنبه است."],
+["Morgen habe ich Schule.","فردا مدرسه دارم."],
+["Ich komme früh.","من زود می‌آیم."]
+],
+grammar:"برای پرسیدن زمان می‌توان گفت Wie spät ist es?",
+tip:"ساعت‌های مختلف را تصور کن و به آلمانی بیان کن.",
+question:"«heute» یعنی چه؟",
+options:["فردا","دیروز","امروز","دیر"],
+correct:2
+},
+
+{
+number:12,
+title:"خانه",
+words:[
+["Haus","خانه"],
+["Wohnung","آپارتمان"],
+["Zimmer","اتاق"],
+["Küche","آشپزخانه"],
+["Bad","حمام"],
+["Tür","در"],
+["Fenster","پنجره"],
+["Tisch","میز"]
+],
+examples:[
+["Das Haus ist groß.","خانه بزرگ است."],
+["Mein Zimmer ist klein.","اتاق من کوچک است."],
+["Die Küche ist sauber.","آشپزخانه تمیز است."],
+["Das Fenster ist offen.","پنجره باز است."],
+["Die Tür ist geschlossen.","در بسته است."]
+],
+grammar:"اسم‌ها در آلمانی جنس دستوری دارند و معمولاً همراه der، die یا das یاد گرفته می‌شوند.",
+tip:"اتاق خانه را تصور کن و وسایلش را به آلمانی نام ببر.",
+question:"«Zimmer» یعنی چه؟",
+options:["خانه","اتاق","آشپزخانه","در"],
+correct:1
+},
+
+{
+number:13,
+title:"غذا و نوشیدنی",
+words:[
+["Wasser","آب"],
+["Brot","نان"],
+["Milch","شیر"],
+["Apfel","سیب"],
+["Käse","پنیر"],
+["Reis","برنج"],
+["Tee","چای"],
+["Saft","آبمیوه"]
+],
+examples:[
+["Ich trinke Wasser.","من آب می‌نوشم."],
+["Ich esse Brot.","من نان می‌خورم."],
+["Der Tee ist heiß.","چای داغ است."],
+["Ich mag Äpfel.","من سیب دوست دارم."],
+["Der Saft ist kalt.","آبمیوه سرد است."]
+],
+grammar:"essen یعنی خوردن و trinken یعنی نوشیدن.",
+tip:"هنگام غذا خوردن نام خوراکی‌ها را به آلمانی تکرار کن.",
+question:"«Wasser» یعنی چه؟",
+options:["شیر","آب","نان","چای"],
+correct:1
+},
+
+{
+number:14,
+title:"خرید",
+words:[
+["kaufen","خریدن"],
+["Preis","قیمت"],
+["Euro","یورو"],
+["Geld","پول"],
+["teuer","گران"],
+["billig","ارزان"],
+["Geschäft","فروشگاه"],
+["brauchen","نیاز داشتن"]
+],
+examples:[
+["Wie viel kostet das?","این چقدر قیمت دارد؟"],
+["Das ist teuer.","این گران است."],
+["Ich möchte das kaufen.","می‌خواهم این را بخرم."],
+["Ich brauche Geld.","من پول لازم دارم."],
+["Der Preis ist gut.","قیمت خوب است."]
+],
+grammar:"عبارت Wie viel kostet das? یکی از جمله‌های کاربردی برای خرید است.",
+tip:"قیمت چند وسیله خیالی را به آلمانی تمرین کن.",
+question:"«teuer» یعنی چه؟",
+options:["ارزان","گران","جدید","زیبا"],
+correct:1
+},
+
+{
+number:15,
+title:"صفت‌های پرکاربرد",
+words:[
+["groß","بزرگ"],
+["klein","کوچک"],
+["neu","جدید"],
+["alt","قدیمی / پیر"],
+["gut","خوب"],
+["schlecht","بد"],
+["schnell","سریع"],
+["langsam","آهسته"]
+],
+examples:[
+["Das Auto ist schnell.","ماشین سریع است."],
+["Das Haus ist groß.","خانه بزرگ است."],
+["Das Buch ist neu.","کتاب جدید است."],
+["Der Film ist gut.","فیلم خوب است."],
+["Der Computer ist alt.","کامپیوتر قدیمی است."]
+],
+grammar:"صفت برای توصیف اسم یا حالت چیزی استفاده می‌شود.",
+tip:"برای هر صفت یک مثال واقعی در ذهن خودت بساز.",
+question:"«schnell» یعنی چه؟",
+options:["آهسته","سریع","کوچک","قدیمی"],
+correct:1
+},
+
+{
+number:16,
+title:"سؤال‌های ساده",
+words:[
+["wer","چه کسی"],
+["was","چه چیزی"],
+["wo","کجا"],
+["wann","چه زمانی"],
+["warum","چرا"],
+["wie","چگونه"],
+["wie viel","چقدر"],
+["welcher","کدام"]
+],
+examples:[
+["Wer bist du?","تو چه کسی هستی؟"],
+["Was machst du?","چه کار می‌کنی؟"],
+["Wo wohnst du?","کجا زندگی می‌کنی؟"],
+["Wann kommst du?","چه زمانی می‌آیی؟"],
+["Warum lernst du Deutsch?","چرا آلمانی یاد می‌گیری؟"]
+],
+grammar:"کلمات پرسشی معمولاً در ابتدای سؤال قرار می‌گیرند.",
+tip:"هر کلمه پرسشی را با یک سؤال کوتاه تمرین کن.",
+question:"«wo» یعنی چه؟",
+options:["چرا","کجا","چه کسی","چه زمانی"],
+correct:1
+},
+
+{
+number:17,
+title:"دوستان",
+words:[
+["Freund","دوست مذکر"],
+["Freundin","دوست مؤنث"],
+["zusammen","با هم"],
+["nett","مهربان"],
+["lustig","خنده‌دار"],
+["helfen","کمک کردن"],
+["treffen","ملاقات کردن"],
+["reden","صحبت کردن"]
+],
+examples:[
+["Mein Freund ist nett.","دوست من مهربان است."],
+["Wir treffen uns heute.","امروز همدیگر را ملاقات می‌کنیم."],
+["Wir reden zusammen.","ما با هم صحبت می‌کنیم."],
+["Ich helfe meinem Freund.","من به دوستم کمک می‌کنم."],
+["Meine Freundin ist lustig.","دوست من خنده‌دار است."]
+],
+grammar:"Freund برای دوست مذکر و Freundin برای دوست مؤنث است.",
+tip:"چند جمله کوتاه درباره دوستانت بساز.",
+question:"«zusammen» یعنی چه؟",
+options:["تنها","با هم","امروز","دیر"],
+correct:1
+},
+
+{
+number:18,
+title:"شهر",
+words:[
+["Stadt","شهر"],
+["Straße","خیابان"],
+["Park","پارک"],
+["Bahnhof","ایستگاه قطار"],
+["Schule","مدرسه"],
+["Krankenhaus","بیمارستان"],
+["Supermarkt","سوپرمارکت"],
+["Bank","بانک"]
+],
+examples:[
+["Die Stadt ist groß.","شهر بزرگ است."],
+["Ich gehe in den Park.","من به پارک می‌روم."],
+["Der Bahnhof ist dort.","ایستگاه قطار آنجاست."],
+["Der Supermarkt ist nah.","سوپرمارکت نزدیک است."],
+["Die Bank ist in der Straße.","بانک در خیابان است."]
+],
+grammar:"برای مکان‌ها باید به حروف اضافه و حالت اسم توجه کرد.",
+tip:"یک نقشه خیالی از شهر بساز و مکان‌ها را به آلمانی نام ببر.",
+question:"«Bahnhof» یعنی چه؟",
+options:["پارک","بانک","ایستگاه قطار","فروشگاه"],
+correct:2
+},
+
+{
+number:19,
+title:"حمل‌ونقل",
+words:[
+["Auto","ماشین"],
+["Bus","اتوبوس"],
+["Zug","قطار"],
+["Fahrrad","دوچرخه"],
+["Flugzeug","هواپیما"],
+["fahren","رفتن با وسیله"],
+["fliegen","پرواز کردن"],
+["reisen","سفر کردن"]
+],
+examples:[
+["Ich fahre mit dem Bus.","من با اتوبوس می‌روم."],
+["Der Zug kommt um acht Uhr.","قطار ساعت هشت می‌آید."],
+["Ich fahre Fahrrad.","من دوچرخه‌سواری می‌کنم."],
+["Wir reisen mit dem Zug.","ما با قطار سفر می‌کنیم."],
+["Das Flugzeug fliegt.","هواپیما پرواز می‌کند."]
+],
+grammar:"برای بیان وسیله نقلیه، ساختارهای مختلفی مثل mit dem Bus استفاده می‌شود.",
+tip:"نام وسایل حمل‌ونقل را با فعل مناسب تمرین کن.",
+question:"«Zug» یعنی چه؟",
+options:["قطار","ماشین","هواپیما","دوچرخه"],
+correct:0
+},
+
+{
+number:20,
+title:"آب‌وهوا",
+words:[
+["Wetter","آب‌وهوا"],
+["Sonne","خورشید"],
+["Regen","باران"],
+["Schnee","برف"],
+["Wind","باد"],
+["warm","گرم"],
+["kalt","سرد"],
+["heiß","داغ"]
+],
+examples:[
+["Das Wetter ist gut.","هوا خوب است."],
+["Heute ist es kalt.","امروز هوا سرد است."],
+["Die Sonne scheint.","خورشید می‌تابد."],
+["Es regnet.","باران می‌بارد."],
+["Im Winter schneit es.","در زمستان برف می‌بارد."]
+],
+grammar:"برای صحبت درباره آب‌وهوا، es اغلب به عنوان فاعل دستوری استفاده می‌شود.",
+tip:"هر روز وضعیت آب‌وهوا را با یک جمله آلمانی بیان کن.",
+question:"«Regen» یعنی چه؟",
+options:["برف","باد","باران","خورشید"],
+correct:2
+},
+
+{
+number:21,
+title:"افعال مهم",
+words:[
+["haben","داشتن"],
+["machen","انجام دادن"],
+["sehen","دیدن"],
+["geben","دادن"],
+["nehmen","گرفتن"],
+["finden","پیدا کردن"],
+["kommen","آمدن"],
+["bleiben","ماندن"]
+],
+examples:[
+["Ich habe ein Buch.","من یک کتاب دارم."],
+["Wir machen eine Aufgabe.","ما یک تمرین انجام می‌دهیم."],
+["Ich sehe einen Film.","من یک فیلم می‌بینم."],
+["Ich finde mein Handy.","من گوشی‌ام را پیدا می‌کنم."],
+["Wir bleiben hier.","ما اینجا می‌مانیم."]
+],
+grammar:"افعال در زمان حال با توجه به فاعل صرف می‌شوند.",
+tip:"فعل haben را با ich، du، er و wir تمرین کن.",
+question:"«haben» یعنی چه؟",
+options:["داشتن","دیدن","آمدن","ماندن"],
+correct:0
+},
+
+{
+number:22,
+title:"جملات منفی",
+words:[
+["nicht","نه / نیست"],
+["kein","هیچ"],
+["nie","هرگز"],
+["nichts","هیچ چیز"],
+["nicht mehr","دیگر نه"],
+["kein Problem","مشکلی نیست"],
+["Nein","نه"],
+["richtig","درست"]
+],
+examples:[
+["Ich bin nicht müde.","من خسته نیستم."],
+["Das ist nicht gut.","این خوب نیست."],
+["Ich habe kein Auto.","من ماشین ندارم."],
+["Ich weiß nichts.","من چیزی نمی‌دانم."],
+["Das ist nicht richtig.","این درست نیست."]
+],
+grammar:"nicht برای منفی کردن جمله یا بخش‌هایی از جمله استفاده می‌شود و kein معمولاً برای اسم بدون تعیین‌کننده استفاده می‌شود.",
+tip:"جمله‌های مثبت ساده را به جمله منفی تبدیل کن.",
+question:"برای «من خسته نیستم» کدام درست است؟",
+options:["Ich bin müde nicht","Ich nicht bin müde","Ich bin nicht müde","Nicht ich müde"],
+correct:2
+},
+
+{
+number:23,
+title:"افعال جداشدنی",
+words:[
+["aufstehen","بلند شدن"],
+["einkaufen","خرید کردن"],
+["anfangen","شروع کردن"],
+["anrufen","تماس گرفتن"],
+["aufmachen","باز کردن"],
+["zumachen","بستن"],
+["mitkommen","همراه آمدن"],
+["fernsehen","تلویزیون دیدن"]
+],
+examples:[
+["Ich stehe um sieben Uhr auf.","من ساعت هفت بیدار می‌شوم."],
+["Wir kaufen heute ein.","امروز خرید می‌کنیم."],
+["Der Kurs fängt an.","دوره شروع می‌شود."],
+["Ich rufe dich an.","به تو زنگ می‌زنم."],
+["Ich mache die Tür auf.","من در را باز می‌کنم."]
+],
+grammar:"در افعال جداشدنی، بخش جداشونده در جمله ساده معمولاً به انتهای جمله می‌رود.",
+tip:"فعل را یک‌بار کامل و سپس در جمله صرف‌شده تمرین کن.",
+question:"در جمله «Ich stehe um sieben Uhr auf» بخش جداشونده کدام است؟",
+options:["Ich","stehe","sieben","auf"],
+correct:3
+},
+
+{
+number:24,
+title:"حروف اضافه مکان",
+words:[
+["in","در / داخل"],
+["auf","روی"],
+["unter","زیر"],
+["über","بالای"],
+["neben","کنار"],
+["vor","جلوی"],
+["hinter","پشت"],
+["zwischen","بین"]
+],
+examples:[
+["Das Buch ist auf dem Tisch.","کتاب روی میز است."],
+["Der Ball ist unter dem Tisch.","توپ زیر میز است."],
+["Ich bin in der Schule.","من در مدرسه هستم."],
+["Das Auto steht vor dem Haus.","ماشین جلوی خانه است."],
+["Der Park ist neben der Schule.","پارک کنار مدرسه است."]
+],
+grammar:"حروف اضافه مکان جای چیزی را مشخص می‌کنند و می‌توانند روی حالت دستوری اسم اثر بگذارند.",
+tip:"وسایل اتاقت را با این حروف اضافه توصیف کن.",
+question:"«unter» یعنی چه؟",
+options:["روی","زیر","کنار","پشت"],
+correct:1
+},
+
+{
+number:25,
+title:"لباس‌ها",
+words:[
+["Kleidung","لباس"],
+["Hemd","پیراهن"],
+["Hose","شلوار"],
+["Schuh","کفش"],
+["Jacke","ژاکت"],
+["T-Shirt","تی‌شرت"],
+["Mütze","کلاه"],
+["tragen","پوشیدن"]
+],
+examples:[
+["Ich trage ein T-Shirt.","من تی‌شرت پوشیده‌ام."],
+["Die Jacke ist schwarz.","ژاکت مشکی است."],
+["Meine Schuhe sind neu.","کفش‌های من جدید هستند."],
+["Ich brauche eine Hose.","من یک شلوار لازم دارم."],
+["Das Hemd ist blau.","پیراهن آبی است."]
+],
+grammar:"tragen یعنی پوشیدن/به تن داشتن.",
+tip:"لباس‌هایی را که در تصویر می‌بینی به آلمانی نام ببر.",
+question:"«Schuh» یعنی چه؟",
+options:["کفش","کلاه","پیراهن","شلوار"],
+correct:0
+},
+
+{
+number:26,
+title:"بدن",
+words:[
+["Kopf","سر"],
+["Hand","دست"],
+["Auge","چشم"],
+["Ohr","گوش"],
+["Nase","بینی"],
+["Mund","دهان"],
+["Fuß","پا"],
+["Haar","مو"]
+],
+examples:[
+["Mein Kopf tut weh.","سرم درد می‌کند."],
+["Meine Hand ist kalt.","دستم سرد است."],
+["Ich habe zwei Augen.","من دو چشم دارم."],
+["Mein Ohr ist klein.","گوش من کوچک است."],
+["Ich wasche meine Hände.","دست‌هایم را می‌شویم."]
+],
+grammar:"برای بیان مالکیت اعضای بدن می‌توان از mein و meine استفاده کرد.",
+tip:"واژه‌های بدن را همراه تصویر یا حرکت یاد بگیر.",
+question:"«Auge» یعنی چه؟",
+options:["گوش","چشم","دست","پا"],
+correct:1
+},
+
+{
+number:27,
+title:"احساسات",
+words:[
+["glücklich","خوشحال"],
+["traurig","غمگین"],
+["müde","خسته"],
+["hungrig","گرسنه"],
+["durstig","تشنه"],
+["wütend","عصبانی"],
+["ruhig","آرام"],
+["nervös","مضطرب"]
+],
+examples:[
+["Ich bin glücklich.","من خوشحالم."],
+["Ich bin müde.","من خسته‌ام."],
+["Er ist traurig.","او غمگین است."],
+["Wir sind hungrig.","ما گرسنه‌ایم."],
+["Sie ist ruhig.","او آرام است."]
+],
+grammar:"احساسات معمولاً با فعل sein بیان می‌شوند.",
+tip:"حالت‌های مختلف را با جمله Ich bin ... تمرین کن.",
+question:"«müde» یعنی چه؟",
+options:["خوشحال","خسته","تشنه","آرام"],
+correct:1
+},
+
+{
+number:28,
+title:"کارهای روزانه",
+words:[
+["aufstehen","بیدار شدن"],
+["frühstücken","صبحانه خوردن"],
+["duschen","دوش گرفتن"],
+["lernen","درس خواندن"],
+["arbeiten","کار کردن"],
+["essen","غذا خوردن"],
+["schlafen","خوابیدن"],
+["beginnen","شروع کردن"]
+],
+examples:[
+["Ich stehe früh auf.","من زود بیدار می‌شوم."],
+["Ich frühstücke um acht Uhr.","ساعت هشت صبحانه می‌خورم."],
+["Ich lerne Deutsch.","من آلمانی می‌خوانم."],
+["Ich esse um zwölf Uhr.","ساعت دوازده غذا می‌خورم."],
+["Ich schlafe um zehn Uhr.","ساعت ده می‌خوابم."]
+],
+grammar:"برای توصیف برنامه روزانه، افعال زمان حال بسیار کاربردی هستند.",
+tip:"برنامه یک روز خودت را در پنج جمله آلمانی بنویس.",
+question:"«schlafen» یعنی چه؟",
+options:["خوابیدن","خوردن","کار کردن","بیدار شدن"],
+correct:0
+},
+
+{
+number:29,
+title:"سرگرمی‌ها",
+words:[
+["Musik","موسیقی"],
+["Film","فیلم"],
+["Spiel","بازی"],
+["Sport","ورزش"],
+["lesen","خواندن"],
+["schwimmen","شنا کردن"],
+["tanzen","رقصیدن"],
+["singen","آواز خواندن"]
+],
+examples:[
+["Ich höre Musik.","من موسیقی گوش می‌دهم."],
+["Ich sehe gern Filme.","من دوست دارم فیلم ببینم."],
+["Ich spiele gern Spiele.","من دوست دارم بازی کنم."],
+["Ich schwimme gern.","من دوست دارم شنا کنم."],
+["Wir machen Sport.","ما ورزش می‌کنیم."]
+],
+grammar:"gern برای بیان اینکه انجام کاری را دوست داریم بسیار کاربردی است.",
+tip:"سه سرگرمی مورد علاقه خیالی خودت را با Ich ... gern بگو.",
+question:"«Musik» یعنی چه؟",
+options:["ورزش","فیلم","موسیقی","بازی"],
+correct:2
+},
+
+{
+number:30,
+title:"طبیعت",
+words:[
+["Natur","طبیعت"],
+["Baum","درخت"],
+["Blume","گل"],
+["Berg","کوه"],
+["Fluss","رودخانه"],
+["Meer","دریا"],
+["Wald","جنگل"],
+["Tier","حیوان"]
+],
+examples:[
+["Der Baum ist groß.","درخت بزرگ است."],
+["Die Blume ist schön.","گل زیباست."],
+["Der Berg ist hoch.","کوه بلند است."],
+["Der Fluss ist lang.","رودخانه طولانی است."],
+["Ich liebe die Natur.","من طبیعت را دوست دارم."]
+],
+grammar:"اسم‌های طبیعت را با der، die یا das همراه یاد بگیر.",
+tip:"یک منظره طبیعی تصور کن و چیزهایی را که می‌بینی به آلمانی نام ببر.",
+question:"«Baum» یعنی چه؟",
+options:["گل","درخت","کوه","جنگل"],
+correct:1
+},
+
+{
+number:31,
+title:"گذشته ساده و Perfekt مقدماتی",
+words:[
+["gestern","دیروز"],
+["gemacht","انجام داده"],
+["gespielt","بازی کرده"],
+["gelernt","یاد گرفته"],
+["gesehen","دیده"],
+["gegangen","رفته"],
+["gekommen","آمده"],
+["gegessen","خورده"]
+],
+examples:[
+["Ich habe Deutsch gelernt.","من آلمانی یاد گرفته‌ام."],
+["Ich habe Fußball gespielt.","من فوتبال بازی کرده‌ام."],
+["Ich habe einen Film gesehen.","من یک فیلم دیده‌ام."],
+["Ich bin nach Hause gegangen.","من به خانه رفته‌ام."],
+["Wir haben zusammen gegessen.","ما با هم غذا خورده‌ایم."]
+],
+grammar:"Perfekt یکی از زمان‌های اصلی گذشته در گفت‌وگوی روزمره آلمانی است و معمولاً با haben یا sein ساخته می‌شود.",
+tip:"افعال پرکاربرد را همراه شکل Partizip II یاد بگیر.",
+question:"کدام جمله به Perfekt نزدیک است؟",
+options:["Ich spiele.","Ich habe gespielt.","Ich spielen.","Ich spielte bin."],
+correct:1
+},
+
+{
+number:32,
+title:"آینده با werden",
+words:[
+["werden","شدن / خواهد"],
+["morgen","فردا"],
+["später","بعداً"],
+["bald","به‌زودی"],
+["reisen","سفر کردن"],
+["lernen","یاد گرفتن"],
+["machen","انجام دادن"],
+["besuchen","بازدید کردن"]
+],
+examples:[
+["Ich werde morgen lernen.","فردا درس خواهم خواند."],
+["Wir werden reisen.","ما سفر خواهیم کرد."],
+["Er wird später kommen.","او بعداً خواهد آمد."],
+["Sie wird Deutsch lernen.","او آلمانی یاد خواهد گرفت."],
+["Ich werde dich besuchen.","به دیدنت خواهم آمد."]
+],
+grammar:"آینده در آلمانی می‌تواند با werden + مصدر ساخته شود.",
+tip:"برای آینده سه برنامه خیالی بساز.",
+question:"کدام کلمه برای ساخت آینده کاربرد دارد؟",
+options:["sein","werden","haben","machen"],
+correct:1
+},
+
+{
+number:33,
+title:"افعال مدال — können",
+words:[
+["können","توانستن"],
+["kann","می‌توانم / می‌تواند"],
+["schwimmen","شنا کردن"],
+["sprechen","صحبت کردن"],
+["helfen","کمک کردن"],
+["spielen","بازی کردن"],
+["kommen","آمدن"],
+["lernen","یاد گرفتن"]
+],
+examples:[
+["Ich kann Deutsch sprechen.","من می‌توانم آلمانی صحبت کنم."],
+["Kannst du schwimmen?","می‌توانی شنا کنی؟"],
+["Wir können helfen.","ما می‌توانیم کمک کنیم."],
+["Er kann gut spielen.","او می‌تواند خوب بازی کند."],
+["Ich kann heute kommen.","امروز می‌توانم بیایم."]
+],
+grammar:"بعد از فعل مدال، فعل اصلی معمولاً به صورت مصدر در پایان جمله می‌آید.",
+tip:"با Ich kann ... پنج جمله بساز.",
+question:"«können» یعنی چه؟",
+options:["خواستن","توانستن","باید","دوست داشتن"],
+correct:1
+},
+
+{
+number:34,
+title:"müssen — باید",
+words:[
+["müssen","باید"],
+["muss","باید"],
+["Schule","مدرسه"],
+["Hausaufgabe","تکلیف"],
+["lernen","درس خواندن"],
+["arbeiten","کار کردن"],
+["warten","منتظر ماندن"],
+["gehen","رفتن"]
+],
+examples:[
+["Ich muss lernen.","من باید درس بخوانم."],
+["Du musst zur Schule gehen.","تو باید به مدرسه بروی."],
+["Wir müssen warten.","ما باید صبر کنیم."],
+["Er muss arbeiten.","او باید کار کند."],
+["Ich muss meine Hausaufgabe machen.","باید تکالیفم را انجام دهم."]
+],
+grammar:"müssen برای بیان ضرورت و اجبار استفاده می‌شود.",
+tip:"کارهایی را که باید انجام دهی با Ich muss ... تمرین کن.",
+question:"«Ich muss lernen» یعنی چه؟",
+options:["من می‌توانم درس بخوانم","من باید درس بخوانم","من دوست دارم درس بخوانم","من درس نمی‌خوانم"],
+correct:1
+},
+
+{
+number:35,
+title:"wollen — خواستن",
+words:[
+["wollen","خواستن"],
+["will","می‌خواهم"],
+["möchten","مایل بودن"],
+["gehen","رفتن"],
+["kaufen","خریدن"],
+["essen","خوردن"],
+["trinken","نوشیدن"],
+["lernen","یاد گرفتن"]
+],
+examples:[
+["Ich will Deutsch lernen.","من می‌خواهم آلمانی یاد بگیرم."],
+["Wir wollen nach Hause gehen.","ما می‌خواهیم به خانه برویم."],
+["Ich möchte Wasser trinken.","می‌خواهم آب بنوشم."],
+["Er will ein Buch kaufen.","او می‌خواهد کتاب بخرد."],
+["Sie möchte essen.","او می‌خواهد غذا بخورد."]
+],
+grammar:"wollen برای خواستن و möchten برای بیان خواسته مؤدبانه کاربرد دارند.",
+tip:"برای درخواست مؤدبانه از Ich möchte ... استفاده کن.",
+question:"کدام گزینه یعنی «من می‌خواهم آب بنوشم»؟",
+options:[
+"Ich möchte Wasser trinken.",
+"Ich Wasser möchte.",
+"Ich trinken Wasser möchte.",
+"Ich Wasser trinken."
+],
+correct:0
+},
+
+{
+number:36,
+title:"داتیو مقدماتی",
+words:[
+["mit","با"],
+["bei","نزد / در"],
+["nach","به"],
+["aus","از"],
+["zu","به / نزد"],
+["mir","من ـ داتیو"],
+["dir","تو ـ داتیو"],
+["Freund","دوست"]
+],
+examples:[
+["Ich gehe mit meinem Freund.","من با دوستم می‌روم."],
+["Ich bin bei meiner Familie.","من نزد خانواده‌ام هستم."],
+["Ich komme aus Deutschland.","من از آلمان می‌آیم."],
+["Ich gehe zu meinem Freund.","من نزد دوستم می‌روم."],
+["Komm mit mir!","با من بیا!"]
+],
+grammar:"برخی حروف اضافه مانند mit و bei همیشه با داتیو می‌آیند.",
+tip:"فعلاً عبارت‌های آماده مانند mit mir و mit meinem Freund را حفظ کن.",
+question:"«mit mir» یعنی چه؟",
+options:["با تو","با من","بدون من","برای من"],
+correct:1
+},
+
+{
+number:37,
+title:"آکوزاتیو مقدماتی",
+words:[
+["einen","یک ـ مذکر آکوزاتیو"],
+["einem","یک ـ داتیو"],
+["den","حرف تعریف مذکر آکوزاتیو"],
+["sehen","دیدن"],
+["haben","داشتن"],
+["kaufen","خریدن"],
+["finden","پیدا کردن"],
+["brauchen","نیاز داشتن"]
+],
+examples:[
+["Ich sehe einen Hund.","من یک سگ می‌بینم."],
+["Ich kaufe einen Ball.","من یک توپ می‌خرم."],
+["Ich habe einen Bruder.","من یک برادر دارم."],
+["Wir finden den Schlüssel.","ما کلید را پیدا می‌کنیم."],
+["Ich brauche einen Stift.","من یک خودکار لازم دارم."]
+],
+grammar:"در آکوزاتیو، برخی حروف تعریف مذکر تغییر می‌کنند؛ مثلاً ein → einen.",
+tip:"فقط نمونه‌های کاربردی را حفظ کن و بعداً جزئیات را بیشتر یاد بگیر.",
+question:"کدام جمله درست است؟",
+options:[
+"Ich sehe ein Hund.",
+"Ich sehe einen Hund.",
+"Ich einen sehe Hund.",
+"Ich sehe einem Hund."
+],
+correct:1
+},
+
+{
+number:38,
+title:"مقایسه",
+words:[
+["größer","بزرگ‌تر"],
+["kleiner","کوچک‌تر"],
+["schneller","سریع‌تر"],
+["langsamer","آهسته‌تر"],
+["besser","بهتر"],
+["schlechter","بدتر"],
+["mehr","بیشتر"],
+["weniger","کمتر"]
+],
+examples:[
+["Mein Haus ist größer.","خانه من بزرگ‌تر است."],
+["Dieses Auto ist schneller.","این ماشین سریع‌تر است."],
+["Deutsch ist besser für mich.","آلمانی برای من بهتر است."],
+["Heute habe ich mehr Zeit.","امروز زمان بیشتری دارم."],
+["Dieses Buch ist kleiner.","این کتاب کوچک‌تر است."]
+],
+grammar:"برای بسیاری از صفت‌ها با افزودن -er شکل مقایسه‌ای ساخته می‌شود.",
+tip:"دو چیز را با هم مقایسه کن.",
+question:"«besser» یعنی چه؟",
+options:["بدتر","بهتر","بیشتر","کوچک‌تر"],
+correct:1
+},
+
+{
+number:39,
+title:"مکالمه در رستوران",
+words:[
+["Restaurant","رستوران"],
+["Speisekarte","منو"],
+["essen","خوردن"],
+["trinken","نوشیدن"],
+["Wasser","آب"],
+["Rechnung","صورتحساب"],
+["bitte","لطفاً"],
+["zahlen","پرداخت کردن"]
+],
+examples:[
+["Die Speisekarte, bitte.","منو لطفاً."],
+["Ich möchte Wasser.","من آب می‌خواهم."],
+["Ich möchte etwas essen.","می‌خواهم چیزی بخورم."],
+["Die Rechnung, bitte.","صورتحساب لطفاً."],
+["Wir möchten zahlen.","ما می‌خواهیم پرداخت کنیم."]
+],
+grammar:"Ich möchte ... یکی از کاربردی‌ترین ساختارها برای درخواست مؤدبانه است.",
+tip:"یک مکالمه کوتاه رستورانی را در ذهن تمرین کن.",
+question:"«Rechnung» یعنی چه؟",
+options:["منو","صورتحساب","غذا","آب"],
+correct:1
+},
+
+{
+number:40,
+title:"مکالمه تلفنی",
+words:[
+["Telefon","تلفن"],
+["anrufen","زنگ زدن"],
+["sprechen","صحبت کردن"],
+["hören","شنیدن"],
+["Nummer","شماره"],
+["später","بعداً"],
+["jetzt","الان"],
+["Nachricht","پیام"]
+],
+examples:[
+["Hallo, wer ist da?","سلام، چه کسی است؟"],
+["Ich rufe später an.","بعداً زنگ می‌زنم."],
+["Kann ich mit Anna sprechen?","می‌توانم با آنا صحبت کنم؟"],
+["Ich höre dich nicht gut.","صدایت را خوب نمی‌شنوم."],
+["Schick mir eine Nachricht.","برایم پیام بفرست."]
+],
+grammar:"برای تماس گرفتن از anrufen استفاده می‌شود.",
+tip:"جمله‌های کوتاه تلفنی را چند بار با صدای بلند تمرین کن.",
+question:"«anrufen» یعنی چه؟",
+options:["پیام دادن","زنگ زدن","شنیدن","شماره"],
+correct:1
+},
+
+{
+number:41,
+title:"سفر",
+words:[
+["Reise","سفر"],
+["Hotel","هتل"],
+["Pass","گذرنامه"],
+["Koffer","چمدان"],
+["Ticket","بلیت"],
+["Flughafen","فرودگاه"],
+["Bahnhof","ایستگاه قطار"],
+["Urlaub","تعطیلات"]
+],
+examples:[
+["Ich reise nach Berlin.","من به برلین سفر می‌کنم."],
+["Wo ist der Bahnhof?","ایستگاه قطار کجاست؟"],
+["Ich habe ein Ticket.","من یک بلیت دارم."],
+["Das Hotel ist schön.","هتل زیباست."],
+["Mein Koffer ist schwer.","چمدان من سنگین است."]
+],
+grammar:"nach برای بسیاری از شهرها و کشورها بدون حرف تعریف استفاده می‌شود.",
+tip:"یک سفر خیالی را با پنج جمله آلمانی توصیف کن.",
+question:"«Koffer» یعنی چه؟",
+options:["بلیت","هتل","چمدان","فرودگاه"],
+correct:2
+},
+
+{
+number:42,
+title:"پرسیدن مسیر",
+words:[
+["links","چپ"],
+["rechts","راست"],
+["geradeaus","مستقیم"],
+["Straße","خیابان"],
+["Ecke","گوشه"],
+["hier","اینجا"],
+["dort","آنجا"],
+["nah","نزدیک"]
+],
+examples:[
+["Gehen Sie geradeaus.","مستقیم بروید."],
+["Dann gehen Sie nach links.","سپس به چپ بروید."],
+["Die Bank ist rechts.","بانک سمت راست است."],
+["Wo ist die Schule?","مدرسه کجاست؟"],
+["Der Park ist dort.","پارک آنجاست."]
+],
+grammar:"برای دستورهای ساده می‌توان از حالت امری استفاده کرد.",
+tip:"مسیر اتاق تا در خانه را به آلمانی توضیح بده.",
+question:"«geradeaus» یعنی چه؟",
+options:["چپ","راست","مستقیم","پشت"],
+correct:2
+},
+
+{
+number:43,
+title:"شغل‌ها",
+words:[
+["Arzt","پزشک"],
+["Lehrer","معلم"],
+["Ingenieur","مهندس"],
+["Programmierer","برنامه‌نویس"],
+["Designer","طراح"],
+["Polizist","پلیس"],
+["Koch","آشپز"],
+["Beruf","شغل"]
+],
+examples:[
+["Ich bin Programmierer.","من برنامه‌نویس هستم."],
+["Mein Vater ist Ingenieur.","پدر من مهندس است."],
+["Sie ist Lehrerin.","او معلم است."],
+["Er ist Arzt.","او پزشک است."],
+["Was ist dein Beruf?","شغل تو چیست؟"]
+],
+grammar:"بعضی نام‌های شغلی برای جنس مؤنث شکل متفاوتی دارند، مثل Lehrer → Lehrerin.",
+tip:"نام چند شغل را یاد بگیر و با Ich bin ... جمله بساز.",
+question:"«Programmierer» یعنی چه؟",
+options:["طراح","برنامه‌نویس","معلم","پزشک"],
+correct:1
+},
+
+{
+number:44,
+title:"فناوری و اینترنت",
+words:[
+["Computer","رایانه"],
+["Handy","گوشی موبایل"],
+["Internet","اینترنت"],
+["Website","وب‌سایت"],
+["Programm","برنامه"],
+["Code","کد"],
+["Datei","فایل"],
+["Passwort","رمز عبور"]
+],
+examples:[
+["Ich benutze einen Computer.","من از رایانه استفاده می‌کنم."],
+["Mein Handy ist neu.","گوشی من جدید است."],
+["Die Website ist schnell.","وب‌سایت سریع است."],
+["Ich schreibe Code.","من کد می‌نویسم."],
+["Die Datei ist hier.","فایل اینجاست."]
+],
+grammar:"benutzen یعنی استفاده کردن.",
+tip:"وسایل فناوری اطرافت را با نام آلمانی آن‌ها تمرین کن.",
+question:"«Handy» در آلمانی معمولاً یعنی چه؟",
+options:["کامپیوتر","گوشی موبایل","اینترنت","فایل"],
+correct:1
+},
+
+{
+number:45,
+title:"محیط زیست",
+words:[
+["Umwelt","محیط زیست"],
+["Natur","طبیعت"],
+["Wasser","آب"],
+["Luft","هوا"],
+["Müll","زباله"],
+["recyceln","بازیافت کردن"],
+["schützen","محافظت کردن"],
+["sauber","تمیز"]
+],
+examples:[
+["Wir schützen die Umwelt.","ما از محیط زیست محافظت می‌کنیم."],
+["Die Luft ist sauber.","هوا تمیز است."],
+["Wir recyceln den Müll.","ما زباله را بازیافت می‌کنیم."],
+["Wasser ist wichtig.","آب مهم است."],
+["Die Natur ist schön.","طبیعت زیباست."]
+],
+grammar:"برای صحبت درباره محیط زیست می‌توان از فعل schützen استفاده کرد.",
+tip:"سه راه ساده برای مراقبت از محیط زیست را به آلمانی نام ببر.",
+question:"«Umwelt» یعنی چه؟",
+options:["طبیعت","محیط زیست","زباله","هوا"],
+correct:1
+},
+
+{
+number:46,
+title:"جمله‌سازی پیشرفته‌تر",
+words:[
+["deshalb","به همین دلیل"],
+["aber","اما"],
+["und","و"],
+["oder","یا"],
+["weil","زیرا"],
+["dass","که"],
+["wenn","اگر / وقتی"],
+["auch","همچنین"]
+],
+examples:[
+["Ich lerne Deutsch, weil es interessant ist.","من آلمانی یاد می‌گیرم، زیرا جالب است."],
+["Ich bin müde, aber ich lerne.","خسته‌ام، اما درس می‌خوانم."],
+["Ich lerne Deutsch und Englisch.","من آلمانی و انگلیسی یاد می‌گیرم."],
+["Wenn ich Zeit habe, lerne ich.","اگر وقت داشته باشم، درس می‌خوانم."],
+["Es ist kalt, deshalb bleibe ich zu Hause.","هوا سرد است، به همین دلیل در خانه می‌مانم."]
+],
+grammar:"حروف ربط باعث می‌شوند جمله‌های طولانی‌تر و طبیعی‌تر بسازی. بعد از weil و بعضی بندهای وابسته، جای فعل تغییر می‌کند.",
+tip:"از und، aber و weil برای ساخت جمله‌های طولانی‌تر استفاده کن.",
+question:"«weil» یعنی چه؟",
+options:["اما","زیرا","یا","همچنین"],
+correct:1
+},
+
+{
+number:47,
+title:"مکالمه روزمره",
+words:[
+["Wie geht's?","حالت چطور است؟"],
+["gut","خوب"],
+["schlecht","بد"],
+["super","عالی"],
+["natürlich","البته"],
+["vielleicht","شاید"],
+["wirklich","واقعاً"],
+["genau","دقیقاً"]
+],
+examples:[
+["Wie geht's dir?","حالت چطور است؟"],
+["Mir geht's gut.","حالم خوب است."],
+["Wirklich?","واقعاً؟"],
+["Natürlich!","البته!"],
+["Vielleicht morgen.","شاید فردا."]
+],
+grammar:"Mir geht's gut یک عبارت ثابت و بسیار رایج برای گفتن «حالم خوب است» است.",
+tip:"مکالمه‌های کوتاه روزمره را با صدای بلند تمرین کن.",
+question:"«Wie geht's dir?» یعنی چه؟",
+options:["کجا زندگی می‌کنی؟","حالت چطور است؟","چه کار می‌کنی؟","اسمت چیست؟"],
+correct:1
+},
+
+{
+number:48,
+title:"مرور واژگان مهم",
+words:[
+["lernen","یاد گرفتن"],
+["sprechen","صحبت کردن"],
+["verstehen","فهمیدن"],
+["lesen","خواندن"],
+["schreiben","نوشتن"],
+["fragen","پرسیدن"],
+["antworten","پاسخ دادن"],
+["wiederholen","تکرار کردن"]
+],
+examples:[
+["Ich lerne Deutsch.","من آلمانی یاد می‌گیرم."],
+["Ich spreche ein bisschen Deutsch.","من کمی آلمانی صحبت می‌کنم."],
+["Ich verstehe die Frage.","من سؤال را می‌فهمم."],
+["Ich lese den Text.","من متن را می‌خوانم."],
+["Ich wiederhole den Satz.","من جمله را تکرار می‌کنم."]
+],
+grammar:"برای پیشرفت، چهار مهارت hören، sprechen، lesen و schreiben را با هم تمرین کن.",
+tip:"قبل از آزمون نهایی، درس‌های قبلی را مرور کن.",
+question:"«verstehen» یعنی چه؟",
+options:["پرسیدن","فهمیدن","نوشتن","خواندن"],
+correct:1
+},
+
+{
+number:49,
+title:"آمادگی آزمون نهایی",
+words:[
+["Prüfung","آزمون"],
+["Frage","سؤال"],
+["Antwort","پاسخ"],
+["richtig","درست"],
+["falsch","غلط"],
+["Punkt","امتیاز"],
+["Ergebnis","نتیجه"],
+["Erfolg","موفقیت"]
+],
+examples:[
+["Die Prüfung beginnt.","آزمون شروع می‌شود."],
+["Lies die Frage.","سؤال را بخوان."],
+["Wähle die richtige Antwort.","پاسخ درست را انتخاب کن."],
+["Das Ergebnis ist gut.","نتیجه خوب است."],
+["Viel Erfolg!","موفق باشی!"]
+],
+grammar:"برای آزمون نهایی، روی واژگان پایه، افعال، جمله‌سازی و درک معنی تمرکز کن.",
+tip:"قبل از آزمون، اشتباهات تمرین‌های قبلی را مرور کن.",
+question:"«Prüfung» یعنی چه؟",
+options:["نتیجه","آزمون","پاسخ","امتیاز"],
+correct:1
+},
+
+{
+number:50,
+title:"🏆 آزمون نهایی آلمانی"
+}
+
+];
+
+const examQuestions=[
+{
+q:"معنی «Guten Morgen» چیست؟",
+options:["شب بخیر","صبح بخیر","خداحافظ","ممنون"],
+correct:1
+},
+{
+q:"کدام گزینه یعنی «من هستم»؟",
+options:["Ich bist","Ich bin","Ich ist","Ich sind"],
+correct:1
+},
+{
+q:"«Wasser» یعنی چه؟",
+options:["نان","آب","شیر","چای"],
+correct:1
+},
+{
+q:"کدام گزینه یعنی «من آلمانی یاد می‌گیرم»؟",
+options:[
+"Ich lerne Deutsch.",
+"Ich Deutsch lerne.",
+"Ich lernen Deutsch.",
+"Deutsch ich lerne."
+],
+correct:0
+},
+{
+q:"«Schule» یعنی چه؟",
+options:["مدرسه","خانه","فروشگاه","خیابان"],
+correct:0
+},
+{
+q:"معنی «Ich bin müde» چیست؟",
+options:[
+"من خوشحالم.",
+"من گرسنه‌ام.",
+"من خسته‌ام.",
+"من آماده‌ام."
+],
+correct:2
+},
+{
+q:"کدام گزینه برای «من می‌توانم آلمانی صحبت کنم» درست است؟",
+options:[
+"Ich kann Deutsch sprechen.",
+"Ich Deutsch kann sprechen.",
+"Ich kann sprechen Deutsch.",
+"Ich sprechen kann Deutsch."
+],
+correct:0
+},
+{
+q:"«morgen» یعنی چه؟",
+options:["امروز","دیروز","فردا","دیشب"],
+correct:2
+},
+{
+q:"«Wie geht's dir?» یعنی چه؟",
+options:[
+"اسمت چیست؟",
+"کجا زندگی می‌کنی؟",
+"حالت چطور است؟",
+"چند سال داری؟"
+],
+correct:2
+},
+{
+q:"«Prüfung» یعنی چه؟",
+options:["آزمون","کتاب","درس","موفقیت"],
+correct:0
+}
+];
+
+let xp = Number(localStorage.getItem("germanXP") || 0);
+let examAnswers={};
+
+function completed(n){
+  return localStorage.getItem(`germanLesson${n}Completed`) === "true";
+}
+
+function updateXP(){
+  document.getElementById("xpDisplay").textContent = xp + " XP";
+  localStorage.setItem("germanXP",xp);
+}
+
+function renderLessons(){
+
+  const container=document.getElementById("lessons");
+  container.innerHTML="";
+
+  lessons.forEach(lesson=>{
+
+    const unlocked =
+      lesson.number===1 ||
+      completed(lesson.number-1);
+
+    const done=completed(lesson.number);
+
+    const card=document.createElement("div");
+    card.className="lesson-card" + (!unlocked ? " locked" : "");
+
+    card.innerHTML=`
+      <div class="lesson-number">درس ${lesson.number}</div>
+      <div class="lesson-title">${lesson.title}</div>
+      <div class="status">
+        ${
+          done
+          ? "✅ تکمیل شده"
+          : unlocked
+          ? "🔓 باز است"
+          : "🔒 قفل"
+        }
+      </div>
+
+      <button
+        ${!unlocked ? "disabled" : ""}
+        onclick="openLesson(${lesson.number})">
+        ${
+          done
+          ? "مشاهده دوباره"
+          : unlocked
+          ? "شروع درس"
+          : "قفل است"
+        }
+      </button>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function openLesson(number){
+
+  if(number===50){
+    renderFinalExam();
+    document.getElementById("lessonArea")
+      .scrollIntoView({behavior:"smooth"});
+    return;
+  }
+
+  const lesson=lessons.find(x=>x.number===number);
+
+  const area=document.getElementById("lessonArea");
+
+  area.innerHTML=`
+    <div class="lesson-panel">
+
+      <h2>🇩🇪 درس ${lesson.number}: ${lesson.title}</h2>
+
+      <div class="section">
+        <h3>📚 واژگان</h3>
+
+        <div class="words">
+          ${lesson.words.map(w=>`
+            <div class="word">
+              <b dir="ltr">${w[0]}</b>
+              <small>${w[1]}</small>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>💬 مثال‌ها</h3>
+
+        ${lesson.examples.map(e=>`
+          <div class="example">
+            ${e[0]}
+            <span>${e[1]}</span>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="section">
+        <h3>🧠 نکته گرامری</h3>
+        <p>${lesson.grammar}</p>
+      </div>
+
+      <div class="section">
+        <h3>💡 نکته یادگیری</h3>
+        <p>${lesson.tip}</p>
+      </div>
+
+      <div class="section exercise">
+        <h3>📝 تمرین</h3>
+        <p>${lesson.question}</p>
+
+        <div class="options">
+          ${lesson.options.map((o,i)=>`
+            <button
+              class="option"
+              onclick="answerLesson(${i},${lesson.correct},this)">
+              ${o}
+            </button>
+          `).join("")}
+        </div>
+
+        <button
+          class="complete-btn"
+          id="completeBtn"
+          disabled
+          onclick="completeLesson(${lesson.number})">
+          ✅ تکمیل درس +20 XP
+        </button>
+      </div>
+
+      <button class="back-btn" onclick="closeLesson()">
+        ← بستن درس
+      </button>
+
+    </div>
+  `;
+
+  area.scrollIntoView({behavior:"smooth"});
+}
+
+function answerLesson(selected,correct,button){
+
+  const buttons=document.querySelectorAll(".option");
+
+  buttons.forEach(b=>b.disabled=true);
+
+  if(selected===correct){
+
+    button.classList.add("correct");
+
+    document.getElementById("completeBtn").disabled=false;
+
+  }else{
+
+    button.classList.add("wrong");
+
+    buttons[correct].classList.add("correct");
+  }
+}
+
+function completeLesson(number){
+
+  if(completed(number)){
+
+    closeLesson();
+    return;
+  }
+
+  localStorage.setItem(`germanLesson${number}Completed`,"true");
+
+  xp += 20;
+  updateXP();
+
+  renderLessons();
+
+  document.getElementById("lessonArea").innerHTML=`
+    <div class="lesson-panel">
+      <div class="result success">
+        🎉 درس ${number} با موفقیت تکمیل شد!
+        <br>
+        +20 XP
+      </div>
+
+      ${
+        number < 49
+        ? `
+          <button
+            class="complete-btn"
+            onclick="openLesson(${number+1})">
+            ➡️ رفتن به درس بعدی
+          </button>
+        `
+        : `
+          <button
+            class="complete-btn"
+            onclick="renderFinalExam()">
+            🏆 ورود به آزمون نهایی
+          </button>
+        `
+      }
+    </div>
+  `;
+
+  renderLessons();
+}
+
+function closeLesson(){
+  document.getElementById("lessonArea").innerHTML="";
+}
+
+function renderFinalExam(){
+
+  examAnswers={};
+
+  const area=document.getElementById("lessonArea");
+
+  area.innerHTML=`
+    <div class="lesson-panel">
+
+      <h2>🏆 آزمون نهایی زبان آلمانی</h2>
+
+      <p>
+        برای دریافت گواهی باید حداقل
+        <b>70٪</b>
+        پاسخ‌ها را درست جواب بدهی.
+      </p>
+
+      <div id="examArea">
+
+        ${examQuestions.map((q,i)=>`
+
+          <div class="exam-question">
+
+            <h4>
+              ${i+1}. ${q.q}
+            </h4>
+
+            <div class="exam-options">
+
+              ${q.options.map((o,j)=>`
+                <label>
+                  <input
+                    type="radio"
+                    name="exam${i}"
+                    onchange="selectExamAnswer(${i},${j})">
+                  ${o}
+                </label>
+              `).join("")}
+
+            </div>
+
+          </div>
+
+        `).join("")}
+
+        <button
+          class="complete-btn"
+          onclick="submitExam()">
+          📝 ثبت آزمون
+        </button>
+
+      </div>
+
+      <div id="examResult"></div>
+
+    </div>
+  `;
+
+  area.scrollIntoView({behavior:"smooth"});
+}
+
+function selectExamAnswer(question,answer){
+  examAnswers[question]=answer;
+}
+
+function submitExam(){
+
+  if(Object.keys(examAnswers).length < examQuestions.length){
+
+    document.getElementById("examResult").innerHTML=`
+      <div class="result fail">
+        ⚠️ لطفاً به همه سؤال‌ها پاسخ بده.
+      </div>
+    `;
+
+    return;
+  }
+
+  let score=0;
+
+  examQuestions.forEach((q,i)=>{
+    if(examAnswers[i]===q.correct){
+      score++;
+    }
+  });
+
+  const percent=Math.round(
+    score / examQuestions.length * 100
+  );
+
+  localStorage.setItem("germanExamScore",percent);
+
+  if(percent>=70){
+
+    localStorage.setItem("germanExamPassed","true");
+
+    if(
+      localStorage.getItem("germanExamXPAdded")!=="true"
+    ){
+
+      xp += 50;
+
+      localStorage.setItem(
+        "germanExamXPAdded",
+        "true"
+      );
+
+      updateXP();
+    }
+
+    createCertificate(percent);
+
+    document.getElementById("examResult").innerHTML=`
+      <div class="result success">
+        🎉 تبریک!
+        <br>
+        آزمون را با موفقیت پشت سر گذاشتی.
+        <br>
+        نمره: ${percent}٪
+        <br>
+        +50 XP
+      </div>
+    `;
+
+  }else{
+
+    document.getElementById("examResult").innerHTML=`
+      <div class="result fail">
+        ❌ این بار موفق نشدی.
+        <br>
+        نمره شما: ${percent}٪
+        <br>
+        برای قبولی حداقل 70٪ لازم است.
+        <br><br>
+        درس‌ها را مرور کن و دوباره امتحان بده.
+      </div>
+    `;
+  }
+}
+
+function createCertificate(percent){
+
+  let certID =
+    localStorage.getItem("germanCertificateID");
+
+  if(!certID){
+
+    certID =
+      "GLA-DEU-" +
+      Math.random()
+        .toString(36)
+        .substring(2,8)
+        .toUpperCase();
+
+    localStorage.setItem(
+      "germanCertificateID",
+      certID
+    );
+  }
+
+  document.getElementById("certificateName")
+    .textContent="German Student";
+
+  document.getElementById("certificateScore")
+    .textContent=`نمره آزمون نهایی: ${percent}٪`;
+
+  document.getElementById("certificateDate")
+    .textContent=
+      "تاریخ صدور: " +
+      new Date().toLocaleDateString("fa-IR");
+
+  document.getElementById("certificateID")
+    .textContent="Certificate ID: " + certID;
+
+  document.getElementById("certificate").style.display="block";
+
+  document.getElementById("certificate")
+    .scrollIntoView({behavior:"smooth"});
+}
+
+updateXP();
+renderLessons();
+
+if(localStorage.getItem("germanExamPassed")==="true"){
+
+  const savedScore =
+    Number(localStorage.getItem("germanExamScore") || 70);
+
+  createCertificate(savedScore);
+}
+
+</script>
+
+</body>
+</html>
+
+این فایل را با نام "german.html" داخل ریپوی "Ghost-Language-Academy" قرار بده. بعد از اضافه‌کردنش، می‌توانیم کارت 🇩🇪 German — Deutsch را هم در "languages.html" فعال کنیم تا از صفحه زبان‌ها مستقیم وارد دوره آلمانی شود.
