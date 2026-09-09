@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 11 | افعال پرکاربرد</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #18243d 0%, #090d18 45%, #05070d 100%);
+      color: #fff;
+      min-height: 100vh;
+      line-height: 1.8;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 15px;
+      text-align: center;
+      background: rgba(5, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #aeb9d1;
+      font-size: 14px;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 7px;
+      background: #20283a;
+      margin-top: 14px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 22%;
+      height: 100%;
+      background: linear-gradient(90deg, #00e5ff, #7c4dff);
+      border-radius: 20px;
+    }
+
+    main {
+      width: min(1050px, 92%);
+      margin: 30px auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #aeb9d1;
+    }
+
+    .section {
+      background: rgba(17, 24, 40, 0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    }
+
+    .section h3 {
+      color: #00e5ff;
+      margin-bottom: 16px;
+      font-size: 21px;
+    }
+
+    .verb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+    }
+
+    .verb-card {
+      padding: 18px;
+      border-radius: 15px;
+      background: #101827;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.25s;
+      text-align: center;
+    }
+
+    .verb-card:hover {
+      transform: translateY(-4px);
+      border-color: #00e5ff;
+    }
+
+    .icon {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    .english {
+      display: block;
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .persian {
+      display: block;
+      color: #aeb9d1;
+      margin-top: 3px;
+    }
+
+    .speak-btn {
+      background: #18263a;
+      border: 1px solid #30415f;
+      font-size: 13px;
+      padding: 7px 12px;
+      margin-top: 8px;
+    }
+
+    .example {
+      background: rgba(0, 229, 255, 0.07);
+      border-right: 4px solid #00e5ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+
+    .example strong {
+      color: #00e5ff;
+    }
+
+    .ltr {
+      direction: ltr;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+
+    .tip {
+      background: rgba(124, 77, 255, 0.12);
+      border: 1px solid rgba(124, 77, 255, 0.35);
+      padding: 15px;
+      border-radius: 12px;
+      color: #dcd6ff;
+    }
+
+    .formula {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #0b111e;
+      text-align: center;
+      direction: ltr;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .question {
+      background: #0d1422;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .question-title {
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #29344b;
+      background: #131c2c;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: right;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      border-color: #00e5ff;
+      background: #18263a;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+      min-height: 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid #2c3850;
+      background: #0a101c;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      margin-top: 8px;
+    }
+
+    input:focus {
+      border-color: #00e5ff;
+    }
+
+    button {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #00bcd4, #7c4dff);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .complete {
+      text-align: center;
+      padding: 28px 20px;
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(0,229,255,0.10),
+        rgba(124,77,255,0.12)
+      );
+      border: 1px solid rgba(0,229,255,0.25);
+    }
+
+    .complete h3 {
+      color: #00e5ff;
+      margin-bottom: 8px;
+    }
+
+    .xp {
+      color: #ffd54f;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .status {
+      margin-top: 12px;
+      color: #aeb9d1;
+    }
+
+    footer {
+      text-align: center;
+      color: #71809d;
+      padding: 25px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Ghost Language Academy</h1>
+  <p>Lesson 11 — افعال پرکاربرد</p>
+
+  <div class="progress-container">
+    <div class="progress"></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <h2>⚡ افعال پرکاربرد | Common Verbs</h2>
+    <p>
+      در این درس با چند فعل بسیار مهم و پرکاربرد انگلیسی آشنا می‌شویم.
+    </p>
+  </div>
+
+  <section class="section">
+    <h3>📚 افعال مهم</h3>
+
+    <div class="verb-grid">
+
+      <div class="verb-card">
+        <div class="icon">🚶</div>
+        <span class="english">Go</span>
+        <span class="persian">رفتن</span>
+        <button class="speak-btn" onclick="speak('Go')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">👀</div>
+        <span class="english">See</span>
+        <span class="persian">دیدن</span>
+        <button class="speak-btn" onclick="speak('See')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">🍎</div>
+        <span class="english">Eat</span>
+        <span class="persian">خوردن</span>
+        <button class="speak-btn" onclick="speak('Eat')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">🥤</div>
+        <span class="english">Drink</span>
+        <span class="persian">نوشیدن</span>
+        <button class="speak-btn" onclick="speak('Drink')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">📖</div>
+        <span class="english">Read</span>
+        <span class="persian">خواندن</span>
+        <button class="speak-btn" onclick="speak('Read')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">✍️</div>
+        <span class="english">Write</span>
+        <span class="persian">نوشتن</span>
+        <button class="speak-btn" onclick="speak('Write')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">🗣️</div>
+        <span class="english">Speak</span>
+        <span class="persian">صحبت کردن</span>
+        <button class="speak-btn" onclick="speak('Speak')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">👂</div>
+        <span class="english">Listen</span>
+        <span class="persian">گوش دادن</span>
+        <button class="speak-btn" onclick="speak('Listen')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">💼</div>
+        <span class="english">Work</span>
+        <span class="persian">کار کردن</span>
+        <button class="speak-btn" onclick="speak('Work')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">📚</div>
+        <span class="english">Study</span>
+        <span class="persian">مطالعه کردن</span>
+        <button class="speak-btn" onclick="speak('Study')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">😴</div>
+        <span class="english">Sleep</span>
+        <span class="persian">خوابیدن</span>
+        <button class="speak-btn" onclick="speak('Sleep')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">❤️</div>
+        <span class="english">Like</span>
+        <span class="persian">دوست داشتن</span>
+        <button class="speak-btn" onclick="speak('Like')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">❤️</div>
+        <span class="english">Love</span>
+        <span class="persian">عاشق بودن / خیلی دوست داشتن</span>
+        <button class="speak-btn" onclick="speak('Love')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">🎮</div>
+        <span class="english">Play</span>
+        <span class="persian">بازی کردن</span>
+        <button class="speak-btn" onclick="speak('Play')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">🏃</div>
+        <span class="english">Run</span>
+        <span class="persian">دویدن</span>
+        <button class="speak-btn" onclick="speak('Run')">🔊 تلفظ</button>
+      </div>
+
+      <div class="verb-card">
+        <div class="icon">🚶</div>
+        <span class="english">Walk</span>
+        <span class="persian">راه رفتن</span>
+        <button class="speak-btn" onclick="speak('Walk')">🔊 تلفظ</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>🧠 استفاده از فعل در جمله</h3>
+
+    <div class="formula">
+      Subject + Verb + Object
+    </div>
+
+    <div class="example ltr">
+      <strong>I read a book.</strong><br>
+      من یک کتاب می‌خوانم.
+    </div>
+
+    <div class="example ltr">
+      <strong>I play football.</strong><br>
+      من فوتبال بازی می‌کنم.
+    </div>
+
+    <div class="example ltr">
+      <strong>They watch TV.</strong><br>
+      آن‌ها تلویزیون تماشا می‌کنند.
+    </div>
+
+    <div class="example ltr">
+      <strong>We study English.</strong><br>
+      ما انگلیسی مطالعه می‌کنیم.
+    </div>
+
+    <div class="example ltr">
+      <strong>You speak English.</strong><br>
+      تو انگلیسی صحبت می‌کنی.
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>💡 نکته مهم</h3>
+
+    <div class="tip">
+      در زمان حال ساده، وقتی فاعل
+      <b>He / She / It</b>
+      باشد، معمولاً به فعل اصلی
+      <b>s</b>
+      یا <b>es</b>
+      اضافه می‌کنیم.
+      <br><br>
+
+      <span class="ltr">
+        I play football.
+      </span>
+      <br>
+
+      <span class="ltr">
+        He plays football.
+      </span>
+      <br><br>
+
+      این موضوع را در درس‌های بعدی با جزئیات بیشتری یاد می‌گیریم.
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>📝 آزمون</h3>
+
+    <div class="question">
+      <div class="question-title">
+        1. کدام گزینه به معنی «رفتن» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q1')">Go</button>
+      <button class="option" onclick="answer(this, false, 'q1')">Read</button>
+      <button class="option" onclick="answer(this, false, 'q1')">Sleep</button>
+
+      <div id="q1" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        2. کدام گزینه به معنی «خواندن» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q2')">Write</button>
+      <button class="option" onclick="answer(this, true, 'q2')">Read</button>
+      <button class="option" onclick="answer(this, false, 'q2')">Run</button>
+
+      <div id="q2" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        3. کدام گزینه به معنی «نوشتن» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q3')">Write</button>
+      <button class="option" onclick="answer(this, false, 'q3')">Drink</button>
+      <button class="option" onclick="answer(this, false, 'q3')">Walk</button>
+
+      <div id="q3" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        4. کدام گزینه به معنی «خوابیدن» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q4')">Work</button>
+      <button class="option" onclick="answer(this, true, 'q4')">Sleep</button>
+      <button class="option" onclick="answer(this, false, 'q4')">Speak</button>
+
+      <div id="q4" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        5. معنی جمله زیر چیست؟
+      </div>
+
+      <div class="example ltr">
+        <strong>I play football.</strong>
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q5')">
+        من فوتبال بازی می‌کنم.
+      </button>
+
+      <button class="option" onclick="answer(this, false, 'q5')">
+        من فوتبال می‌خوانم.
+      </button>
+
+      <button class="option" onclick="answer(this, false, 'q5')">
+        من فوتبال می‌نوشم.
+      </button>
+
+      <div id="q5" class="feedback"></div>
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>⌨️ تمرین تایپ</h3>
+
+    <p>
+      ترجمه انگلیسی «من انگلیسی مطالعه می‌کنم» را بنویس:
+    </p>
+
+    <input
+      id="typing1"
+      type="text"
+      placeholder="Type your answer..."
+    >
+
+    <button onclick="checkTyping()">
+      بررسی پاسخ
+    </button>
+
+    <div id="typingFeedback" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h3>🌍 ترجمه کن</h3>
+
+    <div class="example ltr">
+      <strong>She reads a book.</strong>
+    </div>
+
+    <p>
+      ترجمه فارسی را بنویس:
+    </p>
+
+    <input
+      id="translation"
+      type="text"
+      placeholder="ترجمه فارسی..."
+    >
+
+    <button onclick="checkTranslation()">
+      بررسی
+    </button>
+
+    <div id="translationFeedback" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h3>🔤 جای خالی را پر کن</h3>
+
+    <div class="question">
+      <div class="question-title ltr">
+        I ______ English.
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q6')">Sleep</button>
+      <button class="option" onclick="answer(this, true, 'q6')">Study</button>
+      <button class="option" onclick="answer(this, false, 'q6')">Drink</button>
+
+      <div id="q6" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title ltr">
+        They ______ football.
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q7')">Read</button>
+      <button class="option" onclick="answer(this, true, 'q7')">Play</button>
+      <button class="option" onclick="answer(this, false, 'q7')">Sleep</button>
+
+      <div id="q7" class="feedback"></div>
+    </div>
+
+  </section>
+
+  <section class="complete">
+    <h3>🏆 پایان درس ۱۱</h3>
+
+    <p>
+      اگر افعال پرکاربرد را یاد گرفتی، درس را کامل کن تا درس بعدی باز شود.
+    </p>
+
+    <div class="xp">⭐ +20 XP</div>
+
+    <button onclick="completeLesson()">
+      ✅ تکمیل درس
+    </button>
+
+    <div id="status" class="status"></div>
+  </section>
+
+</main>
+
+<footer>
+  Ghost Language Academy © 2026
+</footer>
+
+<script>
+  function speak(text) {
+    if ("speechSynthesis" in window) {
+      speechSynthesis.cancel();
+
+      const utterance =
+        new SpeechSynthesisUtterance(text);
+
+      utterance.lang = "en-US";
+      utterance.rate = 0.85;
+
+      speechSynthesis.speak(utterance);
+    } else {
+      alert("مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.");
+    }
+  }
+
+  function answer(button, correct, feedbackId) {
+    const feedback =
+      document.getElementById(feedbackId);
+
+    if (correct) {
+      feedback.textContent = "✅ درست است!";
+      feedback.style.color = "#00e676";
+      button.style.borderColor = "#00e676";
+    } else {
+      feedback.textContent =
+        "❌ پاسخ اشتباه است. دوباره تلاش کن.";
+
+      feedback.style.color = "#ff5252";
+      button.style.borderColor = "#ff5252";
+    }
+  }
+
+  function normalize(text) {
+    return text
+      .trim()
+      .toLowerCase()
+      .replace(/[؟?!.,]/g, "")
+      .replace(/\s+/g, " ");
+  }
+
+  function checkTyping() {
+    const input =
+      normalize(document.getElementById("typing1").value);
+
+    const feedback =
+      document.getElementById("typingFeedback");
+
+    if (input === "i study english") {
+      feedback.textContent =
+        "✅ عالی! پاسخ درست است.";
+
+      feedback.style.color = "#00e676";
+    } else {
+      feedback.textContent =
+        "❌ پاسخ درست: I study English.";
+
+      feedback.style.color = "#ff5252";
+    }
+  }
+
+  function checkTranslation() {
+    const input =
+      normalize(document.getElementById("translation").value);
+
+    const feedback =
+      document.getElementById("translationFeedback");
+
+    const correctAnswers = [
+      "او یک کتاب می خواند",
+      "او یک کتاب می‌خواند",
+      "او کتاب می خواند",
+      "او کتاب می‌خواند"
+    ];
+
+    if (correctAnswers.includes(input)) {
+      feedback.textContent =
+        "✅ ترجمه درست است!";
+
+      feedback.style.color = "#00e676";
+    } else {
+      feedback.textContent =
+        "❌ پاسخ پیشنهادی: او یک کتاب می‌خواند.";
+
+      feedback.style.color = "#ff5252";
+    }
+  }
+
+  function getXP() {
+    const keys = [
+      "xp",
+      "XP",
+      "userXP",
+      "totalXP",
+      "englishXP"
+    ];
+
+    for (const key of keys) {
+      const value =
+        parseInt(localStorage.getItem(key));
+
+      if (!isNaN(value)) {
+        return {
+          key: key,
+          value: value
+        };
+      }
+    }
+
+    return {
+      key: "xp",
+      value: 0
+    };
+  }
+
+  function completeLesson() {
+    const alreadyCompleted =
+      localStorage.getItem("lesson11Completed") === "true";
+
+    if (!alreadyCompleted) {
+      const xpData = getXP();
+
+      localStorage.setItem(
+        xpData.key,
+        xpData.value + 20
+      );
+
+      localStorage.setItem(
+        "lesson11Completed",
+        "true"
+      );
+    }
+
+    const status =
+      document.getElementById("status");
+
+    status.innerHTML =
+      "🎉 درس ۱۱ با موفقیت تکمیل شد!<br>" +
+      "⭐ ۲۰ XP دریافت کردی.<br>" +
+      "🔓 درس ۱۲ «زمان حال ساده» برایت باز شد.";
+
+    status.style.color = "#00e676";
+  }
+
+  window.addEventListener("load", function() {
+    if (
+      localStorage.getItem("lesson11Completed") === "true"
+    ) {
+      document.getElementById("status").innerHTML =
+        "✅ این درس قبلاً تکمیل شده است.<br>" +
+        "🔓 درس ۱۲ «زمان حال ساده» باز است.";
+
+      document.getElementById("status").style.color =
+        "#00e676";
+    }
+  });
+</script>
+
+</body>
+        </html>
