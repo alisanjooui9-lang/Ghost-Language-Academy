@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>French — Ghost Language Academy</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top,#172033 0%,#080b12 45%,#030509 100%);
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    padding:25px 15px;
+    text-align:center;
+    border-bottom:1px solid #263247;
+    background:rgba(5,8,14,.88);
+    position:sticky;
+    top:0;
+    z-index:20;
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#00d9ff;
+}
+
+.subtitle{
+    color:#9daabd;
+    margin-top:8px;
+}
+
+.container{
+    width:min(1100px,94%);
+    margin:25px auto 60px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:rgba(15,22,35,.9);
+    border:1px solid #27364e;
+    border-radius:16px;
+    padding:17px;
+    text-align:center;
+}
+
+.stat b{
+    display:block;
+    font-size:24px;
+    color:#00d9ff;
+    margin-top:7px;
+}
+
+.progress-box{
+    background:#0c111b;
+    border:1px solid #27364e;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:25px;
+}
+
+.progress{
+    height:12px;
+    background:#182131;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#00d9ff,#7c4dff);
+    transition:.4s;
+}
+
+.lessons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.lesson-card{
+    background:linear-gradient(145deg,#101827,#080d15);
+    border:1px solid #26364d;
+    border-radius:18px;
+    padding:20px;
+    transition:.25s;
+}
+
+.lesson-card:hover{
+    transform:translateY(-4px);
+    border-color:#00d9ff;
+}
+
+.lesson-card.locked{
+    opacity:.45;
+    filter:grayscale(.7);
+}
+
+.lesson-number{
+    color:#00d9ff;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.lesson-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    border-radius:12px;
+    padding:12px 16px;
+    color:#fff;
+    background:linear-gradient(135deg,#007c99,#5940a8);
+    font-weight:bold;
+    width:100%;
+}
+
+button:hover{
+    filter:brightness(1.15);
+}
+
+button:disabled{
+    cursor:not-allowed;
+    opacity:.5;
+}
+
+#course{
+    display:none;
+}
+
+.lesson-box{
+    background:rgba(10,15,24,.97);
+    border:1px solid #293a54;
+    border-radius:20px;
+    padding:25px;
+}
+
+.back{
+    width:auto;
+    margin-bottom:20px;
+    background:#172235;
+}
+
+.lesson-header{
+    border-bottom:1px solid #26364d;
+    padding-bottom:20px;
+    margin-bottom:22px;
+}
+
+.lesson-header h2{
+    color:#00d9ff;
+    margin-bottom:10px;
+}
+
+.section{
+    margin:22px 0;
+}
+
+.section h3{
+    color:#8f7cff;
+    margin-bottom:12px;
+}
+
+.explanation{
+    line-height:2;
+    color:#d9e0eb;
+}
+
+.words{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:10px;
+}
+
+.word{
+    background:#111a29;
+    border:1px solid #26364d;
+    border-radius:12px;
+    padding:12px;
+}
+
+.word strong{
+    display:block;
+    color:#00d9ff;
+    direction:ltr;
+    text-align:left;
+    margin-bottom:5px;
+}
+
+.examples{
+    display:grid;
+    gap:10px;
+}
+
+.example{
+    background:#0e1724;
+    border-right:3px solid #00d9ff;
+    padding:13px;
+    border-radius:8px;
+    line-height:1.9;
+}
+
+.fr{
+    direction:ltr;
+    text-align:left;
+    color:#fff;
+    font-weight:bold;
+}
+
+.tip{
+    background:rgba(124,77,255,.1);
+    border:1px solid #513f91;
+    padding:15px;
+    border-radius:12px;
+    line-height:2;
+}
+
+.quiz{
+    background:#0d1522;
+    border:1px solid #2b3d59;
+    border-radius:15px;
+    padding:18px;
+}
+
+.question{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.options{
+    display:grid;
+    gap:9px;
+}
+
+.option{
+    background:#172234;
+    border:1px solid #2c3d58;
+    text-align:right;
+}
+
+.option:hover{
+    border-color:#00d9ff;
+}
+
+.option.correct{
+    background:#123d35;
+    border-color:#20d39b;
+}
+
+.option.wrong{
+    background:#411c25;
+    border-color:#ff5364;
+}
+
+.result{
+    margin-top:15px;
+    min-height:25px;
+    font-weight:bold;
+}
+
+.complete-btn{
+    margin-top:18px;
+}
+
+.exam{
+    background:linear-gradient(145deg,#16102a,#090d18);
+    border:1px solid #5948a1;
+}
+
+.exam-question{
+    margin:20px 0;
+    padding:18px;
+    background:#0d1522;
+    border-radius:14px;
+    border:1px solid #293b58;
+}
+
+.exam-question p{
+    margin-bottom:12px;
+    line-height:1.8;
+}
+
+.exam-option{
+    margin:6px 0;
+    background:#182337;
+    text-align:right;
+}
+
+.certificate{
+    display:none;
+    background:#fff;
+    color:#111;
+    border:12px double #111;
+    padding:35px;
+    margin-top:25px;
+    text-align:center;
+    position:relative;
+}
+
+.certificate h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.certificate h2{
+    color:#222;
+    margin:15px 0;
+}
+
+.certificate .name{
+    font-size:28px;
+    font-weight:bold;
+    margin:20px;
+}
+
+.cert-info{
+    line-height:2;
+}
+
+.signature{
+    margin-top:35px;
+    display:inline-block;
+    min-width:220px;
+}
+
+.signature-line{
+    border-top:2px solid #111;
+    margin-top:35px;
+    padding-top:7px;
+}
+
+.seal{
+    margin:25px auto 0;
+    width:115px;
+    height:115px;
+    border:5px double #111;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.print-btn{
+    background:#222;
+    margin-top:20px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+@media(max-width:650px){
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .lesson-box{
+        padding:17px;
+    }
+
+    .certificate{
+        padding:20px;
+    }
+}
+
+@media print{
+    body{
+        background:#fff;
+    }
+
+    header,
+    .stats,
+    .progress-box,
+    #lessonList,
+    .back,
+    #course,
+    .print-btn{
+        display:none!important;
+    }
+
+    .certificate{
+        display:block!important;
+        margin:0;
+        min-height:90vh;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">GHOST <span>LANGUAGE</span> ACADEMY</div>
+    <div class="subtitle">🇫🇷 دوره جامع زبان فرانسوی — Français</div>
+</header>
+
+<div class="container">
+
+    <div id="dashboard">
+
+        <div class="stats">
+            <div class="stat">
+                درس‌های تکمیل‌شده
+                <b id="completedCount">0 / 50</b>
+            </div>
+
+            <div class="stat">
+                XP
+                <b id="xp">0</b>
+            </div>
+
+            <div class="stat">
+                وضعیت
+                <b id="status">در حال یادگیری</b>
+            </div>
+        </div>
+
+        <div class="progress-box">
+            <div>پیشرفت دوره فرانسوی</div>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="lessons" id="lessonList"></div>
+
+    </div>
+
+    <div id="course">
+
+        <button class="back" onclick="backToLessons()">← بازگشت به فهرست درس‌ها</button>
+
+        <div class="lesson-box" id="lessonContent"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+const lessons = [
+
+{
+title:"سلام و احوالپرسی",
+explanation:"در این درس با عبارت‌های پایه برای سلام کردن، خداحافظی و پرسیدن حال افراد آشنا می‌شوید.",
+words:[
+["Bonjour","سلام / روز بخیر"],
+["Salut","سلام / خداحافظی دوستانه"],
+["Bonsoir","عصر بخیر"],
+["Au revoir","خداحافظ"],
+["Merci","ممنون"],
+["Merci beaucoup","خیلی ممنون"],
+["S'il vous plaît","لطفاً"],
+["Ça va ?","خوبی؟"],
+["Très bien","خیلی خوب"],
+["À bientôt","به‌زودی می‌بینمت"]
+],
+examples:[
+["Bonjour ! Ça va ?","سلام! خوبی؟"],
+["Salut, mon ami !","سلام، دوست من!"],
+["Bonsoir, Madame.","عصر بخیر، خانم."],
+["Merci beaucoup !","خیلی ممنون!"],
+["Au revoir !","خداحافظ!"]
+],
+tip:"در موقعیت رسمی از Bonjour و در موقعیت دوستانه می‌توان از Salut استفاده کرد.",
+question:"معنی Bonjour چیست؟",
+options:["سلام / روز بخیر","شب بخیر","ممنون","خداحافظ"],
+answer:0
+},
+
+{
+title:"معرفی خود",
+explanation:"یاد می‌گیریم چگونه نام، سن و اطلاعات ساده درباره خودمان را به زبان فرانسوی بیان کنیم.",
+words:[
+["Je","من"],
+["Tu","تو"],
+["Vous","شما"],
+["Je m'appelle","اسم من ... است"],
+["Nom","نام خانوادگی"],
+["Prénom","نام"],
+["Âge","سن"],
+["J'ai","من دارم"],
+["Ans","سال"],
+["Enchanté","خوشوقتم"]
+],
+examples:[
+["Je m'appelle Ali.","اسم من علی است."],
+["Je suis étudiant.","من دانش‌آموز هستم."],
+["J'ai douze ans.","من دوازده سال دارم."],
+["Enchanté !","خوشوقتم!"],
+["Quel est ton nom ?","نام تو چیست؟"]
+],
+tip:"برای گفتن سن در فرانسوی از J'ai استفاده می‌شود؛ مثلاً J'ai douze ans.",
+question:"Je m'appelle یعنی چه؟",
+options:["من هستم","اسم من ... است","من دارم","تو هستی"],
+answer:1
+},
+
+{
+title:"اعداد ۰ تا ۲۰",
+explanation:"در این درس اعداد پایه فرانسوی را یاد می‌گیریم.",
+words:[
+["Zéro","۰"],
+["Un","۱"],
+["Deux","۲"],
+["Trois","۳"],
+["Quatre","۴"],
+["Cinq","۵"],
+["Six","۶"],
+["Sept","۷"],
+["Huit","۸"],
+["Neuf","۹"],
+["Dix","۱۰"],
+["Onze","۱۱"]
+],
+examples:[
+["J'ai deux livres.","من دو کتاب دارم."],
+["Il a cinq stylos.","او پنج خودکار دارد."],
+["Trois plus deux font cinq.","سه به علاوه دو می‌شود پنج."],
+["J'ai dix ans.","من ده سال دارم."],
+["Il y a six élèves.","شش دانش‌آموز وجود دارد."]
+],
+tip:"اعداد برای خرید، گفتن سن، ساعت و شماره‌ها بسیار مهم هستند.",
+question:"Deux چند است؟",
+options:["۱","۲","۳","۴"],
+answer:1
+},
+
+{
+title:"اعداد ۱۱ تا ۲۰",
+explanation:"ادامه اعداد فرانسوی و استفاده از آن‌ها در جمله.",
+words:[
+["Onze","۱۱"],
+["Douze","۱۲"],
+["Treize","۱۳"],
+["Quatorze","۱۴"],
+["Quinze","۱۵"],
+["Seize","۱۶"],
+["Dix-sept","۱۷"],
+["Dix-huit","۱۸"],
+["Dix-neuf","۱۹"],
+["Vingt","۲۰"]
+],
+examples:[
+["J'ai quinze ans.","من پانزده سال دارم."],
+["Il a dix-huit livres.","او هجده کتاب دارد."],
+["Vingt élèves sont ici.","بیست دانش‌آموز اینجا هستند."],
+["J'ai douze stylos.","من دوازده خودکار دارم."],
+["Elle a seize ans.","او شانزده سال دارد."]
+],
+tip:"در اعداد ۱۷ تا ۱۹ از Dix به همراه عدد استفاده می‌شود.",
+question:"Vingt چند است؟",
+options:["۱۰","۱۵","۲۰","۳۰"],
+answer:2
+},
+
+{
+title:"خانواده",
+explanation:"واژگان مربوط به اعضای خانواده را یاد می‌گیریم.",
+words:[
+["Famille","خانواده"],
+["Père","پدر"],
+["Mère","مادر"],
+["Frère","برادر"],
+["Sœur","خواهر"],
+["Parents","والدین"],
+["Fils","پسر"],
+["Fille","دختر"],
+["Grand-père","پدربزرگ"],
+["Grand-mère","مادربزرگ"]
+],
+examples:[
+["C'est mon père.","این پدر من است."],
+["Ma mère est gentille.","مادرم مهربان است."],
+["J'ai un frère.","من یک برادر دارم."],
+["Ma sœur est étudiante.","خواهرم دانش‌آموز است."],
+["Ma famille est grande.","خانواده من بزرگ است."]
+],
+tip:"mon برای اسم مذکر و ma برای اسم مؤنث در حالت ملکی استفاده می‌شود.",
+question:"Père یعنی چه؟",
+options:["مادر","پدر","برادر","خواهر"],
+answer:1
+},
+
+{
+title:"رنگ‌ها",
+explanation:"رنگ‌های پرکاربرد زبان فرانسوی.",
+words:[
+["Rouge","قرمز"],
+["Bleu","آبی"],
+["Vert","سبز"],
+["Jaune","زرد"],
+["Noir","مشکی"],
+["Blanc","سفید"],
+["Orange","نارنجی"],
+["Rose","صورتی"],
+["Violet","بنفش"],
+["Gris","خاکستری"]
+],
+examples:[
+["Le ciel est bleu.","آسمان آبی است."],
+["La voiture est rouge.","ماشین قرمز است."],
+["Le sac est noir.","کیف مشکی است."],
+["J'aime le vert.","من سبز را دوست دارم."],
+["La fleur est rose.","گل صورتی است."]
+],
+tip:"صفت رنگ در فرانسوی می‌تواند با جنسیت اسم تغییر کند.",
+question:"Rouge چه رنگی است؟",
+options:["آبی","سبز","قرمز","زرد"],
+answer:2
+},
+
+{
+title:"روزهای هفته",
+explanation:"روزهای هفته و کاربرد آن‌ها در جمله.",
+words:[
+["Lundi","دوشنبه"],
+["Mardi","سه‌شنبه"],
+["Mercredi","چهارشنبه"],
+["Jeudi","پنجشنبه"],
+["Vendredi","جمعه"],
+["Samedi","شنبه"],
+["Dimanche","یکشنبه"],
+["Aujourd'hui","امروز"],
+["Demain","فردا"],
+["Hier","دیروز"]
+],
+examples:[
+["Aujourd'hui, c'est lundi.","امروز دوشنبه است."],
+["Demain, c'est mardi.","فردا سه‌شنبه است."],
+["Je travaille lundi.","من دوشنبه کار می‌کنم."],
+["Nous étudions vendredi.","ما جمعه مطالعه می‌کنیم."],
+["Dimanche est un jour de repos.","یکشنبه روز استراحت است."]
+],
+tip:"روزهای هفته در فرانسوی معمولاً با حرف بزرگ شروع نمی‌شوند.",
+question:"Samedi یعنی چه؟",
+options:["شنبه","یکشنبه","جمعه","دوشنبه"],
+answer:0
+},
+
+{
+title:"ماه‌ها",
+explanation:"ماه‌های سال به زبان فرانسوی.",
+words:[
+["Janvier","ژانویه"],
+["Février","فوریه"],
+["Mars","مارس"],
+["Avril","آوریل"],
+["Mai","مه"],
+["Juin","ژوئن"],
+["Juillet","ژوئیه"],
+["Août","اوت"],
+["Septembre","سپتامبر"],
+["Octobre","اکتبر"],
+["Novembre","نوامبر"],
+["Décembre","دسامبر"]
+],
+examples:[
+["Nous sommes en janvier.","ما در ماه ژانویه هستیم."],
+["Mon anniversaire est en mai.","تولد من در ماه مه است."],
+["L'école commence en septembre.","مدرسه در سپتامبر شروع می‌شود."],
+["Décembre est le dernier mois.","دسامبر آخرین ماه است."],
+["Il fait froid en hiver.","در زمستان هوا سرد است."]
+],
+tip:"برای ماه‌ها معمولاً از en استفاده می‌شود.",
+question:"Décembre کدام ماه است؟",
+options:["مارس","ژوئن","دسامبر","اکتبر"],
+answer:2
+},
+
+{
+title:"اشیای مدرسه",
+explanation:"واژگان مربوط به کلاس و وسایل مدرسه.",
+words:[
+["École","مدرسه"],
+["Classe","کلاس"],
+["Livre","کتاب"],
+["Cahier","دفتر"],
+["Stylo","خودکار"],
+["Crayon","مداد"],
+["Gomme","پاک‌کن"],
+["Sac","کیف"],
+["Table","میز"],
+["Chaise","صندلی"]
+],
+examples:[
+["C'est mon livre.","این کتاب من است."],
+["J'ai un cahier.","من یک دفتر دارم."],
+["Le stylo est bleu.","خودکار آبی است."],
+["Mon sac est noir.","کیف من مشکی است."],
+["La classe est grande.","کلاس بزرگ است."]
+],
+tip:"در فرانسوی جنسیت اسم‌ها مهم است؛ بسیاری از اسم‌ها مذکر یا مؤنث هستند.",
+question:"Livre یعنی چه؟",
+options:["کتاب","دفتر","مداد","کیف"],
+answer:0
+},
+
+{
+title:"افعال پایه",
+explanation:"با چند فعل بسیار مهم فرانسوی آشنا می‌شویم.",
+words:[
+["Être","بودن"],
+["Avoir","داشتن"],
+["Aller","رفتن"],
+["Faire","انجام دادن"],
+["Aimer","دوست داشتن"],
+["Parler","صحبت کردن"],
+["Manger","خوردن"],
+["Boire","نوشیدن"],
+["Lire","خواندن"],
+["Écrire","نوشتن"]
+],
+examples:[
+["Je suis étudiant.","من دانش‌آموز هستم."],
+["J'ai un livre.","من یک کتاب دارم."],
+["Je vais à l'école.","من به مدرسه می‌روم."],
+["J'aime le français.","من فرانسوی را دوست دارم."],
+["Je lis un livre.","من یک کتاب می‌خوانم."]
+],
+tip:"Être و Avoir از مهم‌ترین افعال فرانسوی هستند.",
+question:"Avoir یعنی چه؟",
+options:["رفتن","داشتن","بودن","خوردن"],
+answer:1
+},
+
+{
+title:"ضمیرهای شخصی",
+explanation:"ضمیرهای اصلی زبان فرانسوی.",
+words:[
+["Je","من"],
+["Tu","تو"],
+["Il","او - مذکر"],
+["Elle","او - مؤنث"],
+["Nous","ما"],
+["Vous","شما"],
+["Ils","آن‌ها - مذکر/مختلط"],
+["Elles","آن‌ها - مؤنث"],
+["On","ما / مردم"],
+["Moi","من"]
+],
+examples:[
+["Je suis prêt.","من آماده‌ام."],
+["Tu es mon ami.","تو دوست من هستی."],
+["Il est étudiant.","او دانش‌آموز است."],
+["Elle est gentille.","او مهربان است."],
+["Nous sommes ensemble.","ما با هم هستیم."]
+],
+tip:"برای صحبت رسمی یا خطاب به چند نفر از Vous استفاده می‌شود.",
+question:"Nous یعنی چه؟",
+options:["من","تو","ما","آن‌ها"],
+answer:2
+},
+
+{
+title:"فعل être",
+explanation:"صرف فعل بودن در زمان حال.",
+words:[
+["Je suis","من هستم"],
+["Tu es","تو هستی"],
+["Il est","او هست"],
+["Elle est","او هست"],
+["Nous sommes","ما هستیم"],
+["Vous êtes","شما هستید"],
+["Ils sont","آن‌ها هستند"],
+["Elles sont","آن‌ها هستند"]
+],
+examples:[
+["Je suis étudiant.","من دانش‌آموز هستم."],
+["Tu es intelligent.","تو باهوشی."],
+["Elle est française.","او فرانسوی است."],
+["Nous sommes prêts.","ما آماده‌ایم."],
+["Ils sont amis.","آن‌ها دوست هستند."]
+],
+tip:"صرف être را حفظ کنید؛ در بسیاری از جمله‌های پایه استفاده می‌شود.",
+question:"Je ___ étudiant.",
+options:["es","suis","est","sommes"],
+answer:1
+},
+
+{
+title:"فعل avoir",
+explanation:"صرف فعل داشتن در زمان حال.",
+words:[
+["J'ai","من دارم"],
+["Tu as","تو داری"],
+["Il a","او دارد"],
+["Elle a","او دارد"],
+["Nous avons","ما داریم"],
+["Vous avez","شما دارید"],
+["Ils ont","آن‌ها دارند"],
+["Elles ont","آن‌ها دارند"]
+],
+examples:[
+["J'ai un frère.","من یک برادر دارم."],
+["Tu as un livre.","تو یک کتاب داری."],
+["Elle a une voiture.","او یک ماشین دارد."],
+["Nous avons une maison.","ما یک خانه داریم."],
+["Ils ont deux chiens.","آن‌ها دو سگ دارند."]
+],
+tip:"J'ai قبل از اسم معمولاً برای بیان داشتن چیزی استفاده می‌شود.",
+question:"Nous ___ un livre.",
+options:["a","as","avons","avez"],
+answer:2
+},
+
+{
+title:"مذکر و مؤنث",
+explanation:"مفهوم جنسیت دستوری در زبان فرانسوی.",
+words:[
+["Un","یک - مذکر"],
+["Une","یک - مؤنث"],
+["Le","حرف تعریف مذکر"],
+["La","حرف تعریف مؤنث"],
+["Les","حرف تعریف جمع"],
+["Petit","کوچک - مذکر"],
+["Petite","کوچک - مؤنث"],
+["Grand","بزرگ - مذکر"],
+["Grande","بزرگ - مؤنث"],
+["Belle","زیبا - مؤنث"]
+],
+examples:[
+["Un garçon.","یک پسر."],
+["Une fille.","یک دختر."],
+["Le livre.","کتاب."],
+["La table.","میز."],
+["Une grande maison.","یک خانه بزرگ."]
+],
+tip:"اسم‌ها جنسیت دستوری دارند و کلمات اطرافشان می‌توانند با آن هماهنگ شوند.",
+question:"Une برای چه اسمی استفاده می‌شود؟",
+options:["مذکر","مؤنث","جمع فقط","فعل"],
+answer:1
+},
+
+{
+title:"غذاها",
+explanation:"واژگان کاربردی مربوط به غذا و خوراکی‌ها.",
+words:[
+["Pain","نان"],
+["Fromage","پنیر"],
+["Riz","برنج"],
+["Viande","گوشت"],
+["Poulet","مرغ"],
+["Poisson","ماهی"],
+["Pomme","سیب"],
+["Banane","موز"],
+["Eau","آب"],
+["Lait","شیر"]
+],
+examples:[
+["J'aime le fromage.","من پنیر دوست دارم."],
+["Je mange une pomme.","من یک سیب می‌خورم."],
+["Je bois de l'eau.","من آب می‌نوشم."],
+["Le pain est bon.","نان خوب است."],
+["J'aime le poulet.","من مرغ دوست دارم."]
+],
+tip:"برای گفتن «من دوست دارم» از J'aime استفاده کنید.",
+question:"Eau یعنی چه؟",
+options:["شیر","آب","نان","پنیر"],
+answer:1
+},
+
+{
+title:"نوشیدنی‌ها",
+explanation:"چند نوشیدنی پرکاربرد فرانسوی.",
+words:[
+["Eau","آب"],
+["Café","قهوه"],
+["Thé","چای"],
+["Lait","شیر"],
+["Jus","آبمیوه"],
+["Jus d'orange","آب پرتقال"],
+["Chocolat chaud","شکلات داغ"],
+["Boisson","نوشیدنی"],
+["Verre","لیوان"],
+["Tasse","فنجان"]
+],
+examples:[
+["Je bois de l'eau.","من آب می‌نوشم."],
+["Je voudrais un café.","یک قهوه می‌خواهم."],
+["Elle boit du thé.","او چای می‌نوشد."],
+["Un verre d'eau, s'il vous plaît.","لطفاً یک لیوان آب."],
+["J'aime le jus d'orange.","من آب پرتقال دوست دارم."]
+],
+tip:"Je voudrais عبارت مؤدبانه‌ای برای درخواست کردن است.",
+question:"Thé یعنی چه؟",
+options:["چای","قهوه","آب","شیر"],
+answer:0
+},
+
+{
+title:"خانه",
+explanation:"واژگان اتاق‌ها و بخش‌های مختلف خانه.",
+words:[
+["Maison","خانه"],
+["Chambre","اتاق خواب"],
+["Cuisine","آشپزخانه"],
+["Salon","اتاق نشیمن"],
+["Salle de bain","حمام"],
+["Porte","در"],
+["Fenêtre","پنجره"],
+["Jardin","باغ"],
+["Lit","تخت"],
+["Table","میز"]
+],
+examples:[
+["Ma maison est grande.","خانه من بزرگ است."],
+["Ma chambre est petite.","اتاق من کوچک است."],
+["La cuisine est propre.","آشپزخانه تمیز است."],
+["J'ouvre la fenêtre.","پنجره را باز می‌کنم."],
+["Le jardin est beau.","باغ زیباست."]
+],
+tip:"Ma و Mon هر دو به معنی «مال من» هستند و بر اساس جنسیت اسم تغییر می‌کنند.",
+question:"Chambre یعنی چه؟",
+options:["آشپزخانه","اتاق خواب","باغ","در"],
+answer:1
+},
+
+{
+title:"شهر",
+explanation:"واژگان مهم برای صحبت درباره شهر.",
+words:[
+["Ville","شهر"],
+["Rue","خیابان"],
+["Place","میدان"],
+["École","مدرسه"],
+["Hôpital","بیمارستان"],
+["Banque","بانک"],
+["Magasin","فروشگاه"],
+["Parc","پارک"],
+["Gare","ایستگاه قطار"],
+["Restaurant","رستوران"]
+],
+examples:[
+["J'habite en ville.","من در شهر زندگی می‌کنم."],
+["Le parc est près de l'école.","پارک نزدیک مدرسه است."],
+["Je vais au magasin.","من به فروشگاه می‌روم."],
+["La gare est grande.","ایستگاه قطار بزرگ است."],
+["Le restaurant est ouvert.","رستوران باز است."]
+],
+tip:"برای مکان‌ها عبارت‌های près de و loin de بسیار کاربردی هستند.",
+question:"Ville یعنی چه؟",
+options:["روستا","شهر","خانه","مدرسه"],
+answer:1
+},
+
+{
+title:"حمل‌ونقل",
+explanation:"وسایل نقلیه و سفر درون شهر.",
+words:[
+["Voiture","ماشین"],
+["Bus","اتوبوس"],
+["Train","قطار"],
+["Métro","مترو"],
+["Vélo","دوچرخه"],
+["Avion","هواپیما"],
+["Taxi","تاکسی"],
+["Gare","ایستگاه"],
+["Aéroport","فرودگاه"],
+["Billet","بلیت"]
+],
+examples:[
+["Je prends le bus.","من با اتوبوس می‌روم."],
+["Le train arrive.","قطار می‌رسد."],
+["Je vais en voiture.","من با ماشین می‌روم."],
+["Où est la gare ?","ایستگاه کجاست؟"],
+["J'ai un billet.","من یک بلیت دارم."]
+],
+tip:"prendre یعنی گرفتن/سوار شدن و در عبارت‌های حمل‌ونقل بسیار کاربرد دارد.",
+question:"Train یعنی چه؟",
+options:["اتوبوس","قطار","هواپیما","دوچرخه"],
+answer:1
+},
+
+{
+title:"آب‌وهوا",
+explanation:"عبارت‌های رایج برای توصیف وضعیت هوا.",
+words:[
+["Soleil","خورشید"],
+["Pluie","باران"],
+["Neige","برف"],
+["Vent","باد"],
+["Chaud","گرم"],
+["Froid","سرد"],
+["Nuageux","ابری"],
+["Beau","خوب / زیبا"],
+["Temps","هوا"],
+["Orage","طوفان"]
+],
+examples:[
+["Il fait chaud.","هوا گرم است."],
+["Il fait froid.","هوا سرد است."],
+["Il pleut.","باران می‌بارد."],
+["Il neige.","برف می‌بارد."],
+["Il fait beau.","هوا خوب است."]
+],
+tip:"برای توصیف هوا اغلب از Il fait استفاده می‌شود.",
+question:"Il fait froid یعنی چه؟",
+options:["هوا گرم است","هوا سرد است","باران می‌بارد","هوا آفتابی است"],
+answer:1
+},
+
+{
+title:"لباس‌ها",
+explanation:"واژگان اصلی لباس و پوشاک.",
+words:[
+["Chemise","پیراهن"],
+["Pantalon","شلوار"],
+["Chaussures","کفش"],
+["Veste","کت"],
+["Robe","لباس زنانه"],
+["Chapeau","کلاه"],
+["T-shirt","تی‌شرت"],
+["Manteau","پالتو"],
+["Chaussettes","جوراب"],
+["Vêtements","لباس‌ها"]
+],
+examples:[
+["Ma chemise est blanche.","پیراهن من سفید است."],
+["J'aime cette veste.","من این کت را دوست دارم."],
+["Mes chaussures sont noires.","کفش‌های من مشکی هستند."],
+["Il porte un chapeau.","او کلاه پوشیده است."],
+["Le manteau est chaud.","پالتو گرم است."]
+],
+tip:"porter یعنی پوشیدن/به تن داشتن.",
+question:"Chaussures یعنی چه؟",
+options:["کفش","کلاه","پیراهن","شلوار"],
+answer:0
+},
+
+{
+title:"صفات پایه",
+explanation:"صفات ساده برای توصیف افراد و اشیا.",
+words:[
+["Grand","بزرگ / قدبلند"],
+["Petit","کوچک / کوتاه"],
+["Bon","خوب"],
+["Mauvais","بد"],
+["Beau","زیبا"],
+["Joli","قشنگ"],
+["Nouveau","جدید"],
+["Vieux","قدیمی / پیر"],
+["Rapide","سریع"],
+["Lent","کند"]
+],
+examples:[
+["La maison est grande.","خانه بزرگ است."],
+["Le livre est nouveau.","کتاب جدید است."],
+["La voiture est rapide.","ماشین سریع است."],
+["C'est un bon livre.","این کتاب خوبی است."],
+["Le film est mauvais.","فیلم بد است."]
+],
+tip:"برخی صفات مانند grand و petit بر اساس جنسیت تغییر می‌کنند.",
+question:"Bon یعنی چه؟",
+options:["بد","خوب","کند","قدیمی"],
+answer:1
+},
+
+{
+title:"احساسات",
+explanation:"چگونه احساسات ساده خود را بیان کنیم.",
+words:[
+["Heureux","خوشحال"],
+["Triste","غمگین"],
+["Fatigué","خسته"],
+["Content","راضی / خوشحال"],
+["Malade","بیمار"],
+["En colère","عصبانی"],
+["Peur","ترس"],
+["Amour","عشق"],
+["Calme","آرام"],
+["Stressé","مضطرب"]
+],
+examples:[
+["Je suis heureux.","من خوشحالم."],
+["Elle est triste.","او ناراحت است."],
+["Je suis fatigué.","من خسته‌ام."],
+["Il est malade.","او بیمار است."],
+["Nous sommes calmes.","ما آرام هستیم."]
+],
+tip:"برای بسیاری از احساسات از فعل être استفاده می‌شود.",
+question:"Fatigué یعنی چه؟",
+options:["خوشحال","خسته","عصبانی","آرام"],
+answer:1
+},
+
+{
+title:"ساعت و زمان",
+explanation:"عبارت‌های پایه برای گفتن ساعت و زمان.",
+words:[
+["Heure","ساعت"],
+["Minute","دقیقه"],
+["Matin","صبح"],
+["Après-midi","بعدازظهر"],
+["Soir","عصر / شب"],
+["Nuit","شب"],
+["Maintenant","الان"],
+["Aujourd'hui","امروز"],
+["Demain","فردا"],
+["Tôt","زود"]
+],
+examples:[
+["Quelle heure est-il ?","ساعت چند است؟"],
+["Il est deux heures.","ساعت دو است."],
+["Il est midi.","ظهر است."],
+["Je travaille le matin.","من صبح کار می‌کنم."],
+["À quelle heure ?","چه ساعتی؟"]
+],
+tip:"عبارت Quelle heure est-il? برای پرسیدن ساعت بسیار مهم است.",
+question:"Quelle heure est-il ? یعنی چه؟",
+options:["امروز چه روزی است؟","ساعت چند است؟","کجا هستی؟","چند سال داری؟"],
+answer:1
+},
+
+{
+title:"افعال حرکتی",
+explanation:"افعال مهم مربوط به حرکت و رفت‌وآمد.",
+words:[
+["Aller","رفتن"],
+["Venir","آمدن"],
+["Partir","ترک کردن / رفتن"],
+["Arriver","رسیدن"],
+["Entrer","وارد شدن"],
+["Sortir","بیرون رفتن"],
+["Marcher","راه رفتن"],
+["Courir","دویدن"],
+["Monter","بالا رفتن"],
+["Descendre","پایین آمدن"]
+],
+examples:[
+["Je vais à l'école.","من به مدرسه می‌روم."],
+["Je viens demain.","فردا می‌آیم."],
+["Il arrive à huit heures.","او ساعت هشت می‌رسد."],
+["Nous marchons dans le parc.","ما در پارک راه می‌رویم."],
+["Ils courent vite.","آن‌ها سریع می‌دوند."]
+],
+tip:"Aller یکی از مهم‌ترین افعال مکالمه روزمره است.",
+question:"Aller یعنی چه؟",
+options:["آمدن","رفتن","دویدن","رسیدن"],
+answer:1
+},
+
+{
+title:"مکان و جهت",
+explanation:"عبارت‌های ضروری برای پرسیدن و توضیح دادن مکان.",
+words:[
+["Ici","اینجا"],
+["Là","آنجا"],
+["À gauche","سمت چپ"],
+["À droite","سمت راست"],
+["Devant","جلو"],
+["Derrière","پشت"],
+["Près","نزدیک"],
+["Loin","دور"],
+["Sur","روی"],
+["Sous","زیر"]
+],
+examples:[
+["La banque est à droite.","بانک سمت راست است."],
+["L'école est près d'ici.","مدرسه نزدیک اینجاست."],
+["Le livre est sur la table.","کتاب روی میز است."],
+["Le sac est sous la chaise.","کیف زیر صندلی است."],
+["Le magasin est devant l'école.","فروشگاه جلوی مدرسه است."]
+],
+tip:"À gauche و À droite را برای مسیرها زیاد خواهید دید.",
+question:"À droite یعنی چه؟",
+options:["سمت چپ","سمت راست","جلو","پشت"],
+answer:1
+},
+
+{
+title:"خرید",
+explanation:"عبارت‌های کاربردی هنگام خرید.",
+words:[
+["Acheter","خریدن"],
+["Prix","قیمت"],
+["Argent","پول"],
+["Cher","گران"],
+["Bon marché","ارزان"],
+["Combien","چقدر"],
+["Magasin","فروشگاه"],
+["Produit","محصول"],
+["Taille","اندازه"],
+["Choisir","انتخاب کردن"]
+],
+examples:[
+["Combien ça coûte ?","این چقدر قیمت دارد؟"],
+["Je voudrais acheter ce livre.","می‌خواهم این کتاب را بخرم."],
+["C'est trop cher.","این خیلی گران است."],
+["C'est bon marché.","این ارزان است."],
+["Je choisis le bleu.","من آبی را انتخاب می‌کنم."]
+],
+tip:"Combien ça coûte? یکی از مهم‌ترین جمله‌ها هنگام خرید است.",
+question:"Cher یعنی چه؟",
+options:["ارزان","گران","زیبا","جدید"],
+answer:1
+},
+
+{
+title:"رستوران",
+explanation:"عبارت‌های کاربردی در رستوران.",
+words:[
+["Menu","منو"],
+["Table","میز"],
+["Serveur","پیشخدمت مرد"],
+["Serveuse","پیشخدمت زن"],
+["Commande","سفارش"],
+["Plat","غذا"],
+["Dessert","دسر"],
+["Addition","صورتحساب"],
+["Délicieux","خوشمزه"],
+["Restaurant","رستوران"]
+],
+examples:[
+["Je voudrais le menu.","من منو را می‌خواهم."],
+["Une table pour deux, s'il vous plaît.","لطفاً یک میز برای دو نفر."],
+["Je voudrais commander.","می‌خواهم سفارش بدهم."],
+["C'est délicieux.","این خوشمزه است."],
+["L'addition, s'il vous plaît.","لطفاً صورتحساب."]
+],
+tip:"Je voudrais یک عبارت مؤدبانه و بسیار مفید برای درخواست کردن است.",
+question:"Addition در رستوران یعنی چه؟",
+options:["منو","دسر","صورتحساب","میز"],
+answer:2
+},
+
+{
+title:"پرسیدن سؤال",
+explanation:"چگونه سؤال‌های ساده فرانسوی بسازیم.",
+words:[
+["Qui","چه کسی"],
+["Quoi","چه چیزی"],
+["Où","کجا"],
+["Quand","چه زمانی"],
+["Pourquoi","چرا"],
+["Comment","چگونه"],
+["Combien","چقدر"],
+["Quel","کدام / چه"],
+["Est-ce que","آیا"],
+["Pourquoi","چرا"]
+],
+examples:[
+["Qui est-ce ?","این چه کسی است؟"],
+["Où habites-tu ?","کجا زندگی می‌کنی؟"],
+["Quand arrives-tu ?","چه زمانی می‌رسی؟"],
+["Pourquoi tu apprends le français ?","چرا فرانسوی یاد می‌گیری؟"],
+["Comment ça va ?","حالت چطور است؟"]
+],
+tip:"کلمات پرسشی را حفظ کنید؛ با آن‌ها می‌توانید مکالمه‌های زیادی بسازید.",
+question:"Où یعنی چه؟",
+options:["چرا","کجا","چه کسی","چگونه"],
+answer:1
+},
+
+{
+title:"زمان حال",
+explanation:"آشنایی با ساخت جمله‌های ساده در زمان حال.",
+words:[
+["Aujourd'hui","امروز"],
+["Maintenant","اکنون"],
+["Je parle","من صحبت می‌کنم"],
+["Tu parles","تو صحبت می‌کنی"],
+["Il parle","او صحبت می‌کند"],
+["Nous parlons","ما صحبت می‌کنیم"],
+["Vous parlez","شما صحبت می‌کنید"],
+["Ils parlent","آن‌ها صحبت می‌کنند"]
+],
+examples:[
+["Je parle français.","من فرانسوی صحبت می‌کنم."],
+["Tu regardes un film.","تو یک فیلم تماشا می‌کنی."],
+["Nous étudions aujourd'hui.","ما امروز مطالعه می‌کنیم."],
+["Ils jouent au football.","آن‌ها فوتبال بازی می‌کنند."],
+["Elle travaille à l'école.","او در مدرسه کار می‌کند."]
+],
+tip:"بسیاری از افعال گروه اول در زمان حال الگوی مشابهی دارند.",
+question:"Je parle français یعنی چه؟",
+options:["من انگلیسی صحبت می‌کنم","من فرانسوی صحبت می‌کنم","من فرانسوی می‌خوانم","من فرانسوی می‌نویسم"],
+answer:1
+},
+
+{
+title:"افعال گروه اول",
+explanation:"افعال پایان‌یافته به -er مانند parler و aimer.",
+words:[
+["Parler","صحبت کردن"],
+["Aimer","دوست داشتن"],
+["Jouer","بازی کردن"],
+["Regarder","تماشا کردن"],
+["Écouter","گوش دادن"],
+["Étudier","مطالعه کردن"],
+["Travailler","کار کردن"],
+["Habiter","زندگی کردن"],
+["Danser","رقصیدن"],
+["Chanter","آواز خواندن"]
+],
+examples:[
+["J'aime le français.","من فرانسوی را دوست دارم."],
+["Je joue au football.","من فوتبال بازی می‌کنم."],
+["Nous regardons un film.","ما یک فیلم می‌بینیم."],
+["J'écoute de la musique.","من موسیقی گوش می‌دهم."],
+["Ils étudient le français.","آن‌ها فرانسوی مطالعه می‌کنند."]
+],
+tip:"افعال -er بسیار رایج هستند و یادگیری الگوی صرف آن‌ها مفید است.",
+question:"Aimer یعنی چه؟",
+options:["دوست داشتن","گوش دادن","بازی کردن","کار کردن"],
+answer:0
+},
+
+{
+title:"منفی کردن جمله",
+explanation:"یاد می‌گیریم چگونه جمله‌های ساده را منفی کنیم.",
+words:[
+["Ne ... pas","نمی / نیست"],
+["Jamais","هرگز"],
+["Rien","هیچ چیز"],
+["Plus","دیگر"],
+["Non","نه"],
+["Pas","نه"],
+["Personne","هیچ‌کس"],
+["Encore","هنوز / دوباره"],
+["Vrai","درست"],
+["Faux","غلط"]
+],
+examples:[
+["Je ne parle pas anglais.","من انگلیسی صحبت نمی‌کنم."],
+["Je n'aime pas le café.","من قهوه دوست ندارم."],
+["Il ne travaille pas aujourd'hui.","او امروز کار نمی‌کند."],
+["Nous ne sommes pas prêts.","ما آماده نیستیم."],
+["Ce n'est pas vrai.","این درست نیست."]
+],
+tip:"ساختار پایه منفی در فرانسوی ne ... pas است.",
+question:"Je ne parle pas français یعنی چه؟",
+options:["من فرانسوی صحبت می‌کنم","من فرانسوی صحبت نمی‌کنم","من فرانسوی می‌نویسم","من فرانسوی دوست دارم"],
+answer:1
+},
+
+{
+title:"ضمیرهای ملکی",
+explanation:"کلمات مربوط به مال من، مال تو و مال او.",
+words:[
+["Mon","مال من - مذکر"],
+["Ma","مال من - مؤنث"],
+["Mes","مال من - جمع"],
+["Ton","مال تو - مذکر"],
+["Ta","مال تو - مؤنث"],
+["Tes","مال تو - جمع"],
+["Son","مال او - مذکر"],
+["Sa","مال او - مؤنث"],
+["Ses","مال او - جمع"],
+["Notre","مال ما"]
+],
+examples:[
+["Mon livre est ici.","کتاب من اینجاست."],
+["Ma maison est grande.","خانه من بزرگ است."],
+["Mes amis sont ici.","دوستان من اینجا هستند."],
+["Ton sac est noir.","کیف تو مشکی است."],
+["Sa voiture est nouvelle.","ماشین او جدید است."]
+],
+tip:"انتخاب mon/ma/mes به جنسیت و تعداد اسم بستگی دارد.",
+question:"Ma برای چه چیزی استفاده می‌شود؟",
+options:["اسم مؤنث مفرد","اسم مذکر مفرد","اسم جمع","فعل"],
+answer:0
+},
+
+{
+title:"دوستان و روابط اجتماعی",
+explanation:"واژگان و جمله‌های ساده برای صحبت درباره دوستان.",
+words:[
+["Ami","دوست مذکر"],
+["Amie","دوست مؤنث"],
+["Camarade","همکلاسی / دوست"],
+["Groupe","گروه"],
+["Ensemble","با هم"],
+["Rencontrer","ملاقات کردن"],
+["Aider","کمک کردن"],
+["Partager","به اشتراک گذاشتن"],
+["Inviter","دعوت کردن"],
+["Visiter","بازدید کردن"]
+],
+examples:[
+["C'est mon ami.","این دوست من است."],
+["Elle est mon amie.","او دوست من است."],
+["Nous sommes ensemble.","ما با هم هستیم."],
+["Je vais inviter mon ami.","می‌خواهم دوستم را دعوت کنم."],
+["Nous visitons le musée.","ما از موزه بازدید می‌کنیم."]
+],
+tip:"در فرانسوی ami برای دوست مذکر و amie برای دوست مؤنث است.",
+question:"Ami یعنی چه؟",
+options:["معلم","دوست مذکر","برادر","همسایه"],
+answer:1
+},
+
+{
+title:"مدرسه و درس‌ها",
+explanation:"واژگان بیشتر درباره مدرسه و درس.",
+words:[
+["Professeur","معلم"],
+["Élève","دانش‌آموز"],
+["Mathématiques","ریاضی"],
+["Français","فرانسوی"],
+["Anglais","انگلیسی"],
+["Sciences","علوم"],
+["Histoire","تاریخ"],
+["Devoirs","تکالیف"],
+["Examen","امتحان"],
+["Leçon","درس"]
+],
+examples:[
+["Je suis élève.","من دانش‌آموز هستم."],
+["Le professeur explique la leçon.","معلم درس را توضیح می‌دهد."],
+["J'étudie les mathématiques.","من ریاضی مطالعه می‌کنم."],
+["J'ai des devoirs.","من تکلیف دارم."],
+["L'examen est demain.","امتحان فرداست."]
+],
+tip:"Français هم به معنی زبان فرانسوی و هم فرانسوی‌بودن است؛ معنی از جمله مشخص می‌شود.",
+question:"Professeur یعنی چه؟",
+options:["دانش‌آموز","معلم","درس","امتحان"],
+answer:1
+},
+
+{
+title:"سرگرمی‌ها",
+explanation:"صحبت درباره علاقه‌ها و سرگرمی‌ها.",
+words:[
+["Musique","موسیقی"],
+["Film","فیلم"],
+["Jeu","بازی"],
+["Football","فوتبال"],
+["Lecture","مطالعه"],
+["Dessin","نقاشی"],
+["Sport","ورزش"],
+["Photo","عکس"],
+["Internet","اینترنت"],
+["Voyage","سفر"]
+],
+examples:[
+["J'aime la musique.","من موسیقی را دوست دارم."],
+["Je joue au football.","من فوتبال بازی می‌کنم."],
+["J'aime regarder des films.","من دوست دارم فیلم تماشا کنم."],
+["Je lis beaucoup.","من زیاد مطالعه می‌کنم."],
+["J'aime voyager.","من سفر کردن را دوست دارم."]
+],
+tip:"برای صحبت درباره علاقه‌ها، J'aime یکی از مهم‌ترین ساختارهاست.",
+question:"Musique یعنی چه؟",
+options:["فیلم","موسیقی","بازی","سفر"],
+answer:1
+},
+
+{
+title:"طبیعت",
+explanation:"واژگان مربوط به طبیعت و محیط اطراف.",
+words:[
+["Nature","طبیعت"],
+["Arbre","درخت"],
+["Fleur","گل"],
+["Montagne","کوه"],
+["Rivière","رودخانه"],
+["Mer","دریا"],
+["Forêt","جنگل"],
+["Animal","حیوان"],
+["Ciel","آسمان"],
+["Terre","زمین"]
+],
+examples:[
+["J'aime la nature.","من طبیعت را دوست دارم."],
+["L'arbre est grand.","درخت بزرگ است."],
+["La mer est belle.","دریا زیباست."],
+["Le ciel est bleu.","آسمان آبی است."],
+["La forêt est verte.","جنگل سبز است."]
+],
+tip:"اسم‌های مربوط به طبیعت را با صفت‌های رنگ و اندازه ترکیب کنید تا جمله‌های بیشتری بسازید.",
+question:"Montagne یعنی چه؟",
+options:["رودخانه","کوه","جنگل","دریا"],
+answer:1
+},
+
+{
+title:"حیوانات",
+explanation:"نام چند حیوان رایج در فرانسوی.",
+words:[
+["Chien","سگ"],
+["Chat","گربه"],
+["Oiseau","پرنده"],
+["Poisson","ماهی"],
+["Cheval","اسب"],
+["Lion","شیر"],
+["Tigre","ببر"],
+["Lapin","خرگوش"],
+["Souris","موش"],
+["Animal","حیوان"]
+],
+examples:[
+["J'ai un chien.","من یک سگ دارم."],
+["Le chat est petit.","گربه کوچک است."],
+["Le lion est fort.","شیر قوی است."],
+["J'aime les animaux.","من حیوانات را دوست دارم."],
+["L'oiseau vole.","پرنده پرواز می‌کند."]
+],
+tip:"برای جمع بستن بسیاری از اسم‌ها s اضافه می‌شود، ولی تلفظ همیشه تغییر نمی‌کند.",
+question:"Chien یعنی چه؟",
+options:["گربه","سگ","اسب","پرنده"],
+answer:1
+},
+
+{
+title:"گذشته ساده در مکالمه",
+explanation:"آشنایی مقدماتی با passé composé برای بیان اتفاق‌های گذشته.",
+words:[
+["Hier","دیروز"],
+["Avant","قبل"],
+["Après","بعد"],
+["J'ai mangé","من خوردم"],
+["J'ai regardé","من تماشا کردم"],
+["J'ai joué","من بازی کردم"],
+["J'ai étudié","من مطالعه کردم"],
+["J'ai parlé","من صحبت کردم"],
+["J'ai travaillé","من کار کردم"],
+["J'ai visité","من بازدید کردم"]
+],
+examples:[
+["Hier, j'ai étudié.","دیروز مطالعه کردم."],
+["J'ai regardé un film.","یک فیلم تماشا کردم."],
+["J'ai joué au football.","فوتبال بازی کردم."],
+["Nous avons visité Paris.","ما از پاریس بازدید کردیم."],
+["J'ai parlé avec mon ami.","با دوستم صحبت کردم."]
+],
+tip:"برای شروع، ساختار J'ai + participe passé را برای بسیاری از افعال پرکاربرد یاد بگیرید.",
+question:"Hier یعنی چه؟",
+options:["امروز","فردا","دیروز","اکنون"],
+answer:2
+},
+
+{
+title:"آینده نزدیک",
+explanation:"استفاده از aller برای گفتن کارهایی که قرار است انجام شوند.",
+words:[
+["Demain","فردا"],
+["Bientôt","به‌زودی"],
+["Plus tard","بعداً"],
+["Je vais","من قرار است / می‌روم"],
+["Tu vas","تو قرار است"],
+["Il va","او قرار است"],
+["Nous allons","ما قرار است"],
+["Vous allez","شما قرار است"],
+["Ils vont","آن‌ها قرار است"],
+["Préparer","آماده کردن"]
+],
+examples:[
+["Je vais étudier demain.","فردا قرار است مطالعه کنم."],
+["Nous allons voyager.","ما قرار است سفر کنیم."],
+["Elle va travailler.","او قرار است کار کند."],
+["Ils vont jouer.","آن‌ها قرار است بازی کنند."],
+["Je vais apprendre le français.","من قرار است فرانسوی یاد بگیرم."]
+],
+tip:"ساختار aller + مصدر برای آینده نزدیک بسیار پرکاربرد است.",
+question:"Je vais étudier یعنی چه؟",
+options:["مطالعه کردم","مطالعه نمی‌کنم","قرار است مطالعه کنم","مطالعه کرده‌ام"],
+answer:2
+},
+
+{
+title:"مکالمه روزمره",
+explanation:"عبارت‌هایی برای گفتگوهای ساده روزانه.",
+words:[
+["Comment ça va ?","حالت چطور است؟"],
+["Ça va bien","خوبم"],
+["Et toi ?","و تو؟"],
+["Quoi de neuf ?","چه خبر؟"],
+["D'accord","باشه"],
+["Bien sûr","البته"],
+["Peut-être","شاید"],
+["Exactement","دقیقاً"],
+["Vraiment","واقعاً"],
+["Merci","ممنون"]
+],
+examples:[
+["Bonjour ! Comment ça va ?","سلام! حالت چطور است؟"],
+["Ça va bien, et toi ?","خوبم، تو چطوری؟"],
+["D'accord, merci.","باشه، ممنون."],
+["Bien sûr !","البته!"],
+["À bientôt !","به‌زودی می‌بینمت!"]
+],
+tip:"این عبارت‌ها را حفظ کنید تا مکالمه‌های ساده سریع‌تر شکل بگیرند.",
+question:"Et toi ? یعنی چه؟",
+options:["و تو؟","کجا؟","چرا؟","چه زمانی؟"],
+answer:0
+},
+
+{
+title:"تلفظ و صداها",
+explanation:"در فرانسوی برخی حروف و ترکیب‌ها تلفظ متفاوتی دارند. تمرکز این درس روی آشنایی اولیه با تلفظ است.",
+words:[
+["Bonjour","سلام"],
+["Français","فرانسوی"],
+["Rouge","قرمز"],
+["Chat","گربه"],
+["Chanson","آهنگ"],
+["Oui","بله"],
+["Non","نه"],
+["Merci","ممنون"],
+["Beaucoup","خیلی"],
+["Aujourd'hui","امروز"]
+],
+examples:[
+["Bonjour, comment ça va ?","سلام، حالت چطور است؟"],
+["Je parle français.","من فرانسوی صحبت می‌کنم."],
+["Merci beaucoup.","خیلی ممنون."],
+["Oui, bien sûr.","بله، البته."],
+["Non, merci.","نه، ممنون."]
+],
+tip:"در فرانسوی بعضی حروف پایانی ممکن است تلفظ نشوند؛ شنیدن فایل صوتی زبان‌آموزی می‌تواند به یادگیری تلفظ کمک کند.",
+question:"Oui یعنی چه؟",
+options:["نه","بله","ممنون","شاید"],
+answer:1
+},
+
+{
+title:"جمله‌سازی پیشرفته‌تر",
+explanation:"ترکیب فاعل، فعل، مفعول و صفت برای ساخت جمله‌های کامل‌تر.",
+words:[
+["Parce que","زیرا / چون"],
+["Mais","اما"],
+["Et","و"],
+["Ou","یا"],
+["Donc","پس / بنابراین"],
+["Avec","با"],
+["Sans","بدون"],
+["Pour","برای"],
+["Très","خیلی"],
+["Aussi","همچنین"]
+],
+examples:[
+["J'apprends le français parce que j'aime les langues.","من فرانسوی یاد می‌گیرم چون زبان‌ها را دوست دارم."],
+["Je parle français et anglais.","من فرانسوی و انگلیسی صحبت می‌کنم."],
+["Je suis fatigué mais heureux.","خسته‌ام اما خوشحالم."],
+["Je travaille avec mon ami.","من با دوستم کار می‌کنم."],
+["C'est très intéressant.","این خیلی جالب است."]
+],
+tip:"با اتصال‌دهنده‌هایی مثل et، mais و parce que می‌توانید جمله‌های طولانی‌تر بسازید.",
+question:"Parce que یعنی چه؟",
+options:["اما","و","چون","یا"],
+answer:2
+},
+
+{
+title:"فرانسوی در سفر",
+explanation:"عبارت‌های ضروری برای سفر و پرسیدن اطلاعات.",
+words:[
+["Voyage","سفر"],
+["Hôtel","هتل"],
+["Chambre","اتاق"],
+["Passeport","گذرنامه"],
+["Billet","بلیت"],
+["Aéroport","فرودگاه"],
+["Gare","ایستگاه"],
+["Réservation","رزرو"],
+["Départ","حرکت"],
+["Arrivée","ورود"]
+],
+examples:[
+["J'ai une réservation.","من یک رزرو دارم."],
+["Où est l'hôtel ?","هتل کجاست؟"],
+["Voici mon passeport.","این گذرنامه من است."],
+["Où est la gare ?","ایستگاه کجاست؟"],
+["Quelle heure est le départ ?","حرکت چه ساعتی است؟"]
+],
+tip:"جمله‌های کوتاه و مؤدبانه در سفر بسیار کاربردی‌اند.",
+question:"Hôtel یعنی چه؟",
+options:["فرودگاه","هتل","ایستگاه","رستوران"],
+answer:1
+},
+
+{
+title:"فرهنگ و زندگی روزمره فرانسه",
+explanation:"آشنایی با چند واژه و عبارت مربوط به زندگی روزمره در کشورهای فرانسوی‌زبان.",
+words:[
+["Culture","فرهنگ"],
+["Langue","زبان"],
+["Musée","موزه"],
+["Cinéma","سینما"],
+["Bibliothèque","کتابخانه"],
+["Café","کافه"],
+["Boulangerie","نانوایی"],
+["Marché","بازار"],
+["Musique","موسیقی"],
+["Fête","جشن"]
+],
+examples:[
+["J'aime visiter les musées.","من دوست دارم از موزه‌ها بازدید کنم."],
+["Je vais à la bibliothèque.","من به کتابخانه می‌روم."],
+["La boulangerie est près du marché.","نانوایی نزدیک بازار است."],
+["Nous allons au cinéma.","ما به سینما می‌رویم."],
+["La musique française est intéressante.","موسیقی فرانسوی جالب است."]
+],
+tip:"یادگیری زبان فقط حفظ لغت نیست؛ آشنایی با فرهنگ نیز به درک بهتر زبان کمک می‌کند.",
+question:"Boulangerie یعنی چه؟",
+options:["کتابخانه","نانوایی","موزه","بازار"],
+answer:1
+},
+
+{
+title:"مرور جامع ۱",
+explanation:"در این درس واژگان و ساختارهای مهم درس‌های قبلی را مرور می‌کنیم.",
+words:[
+["Bonjour","سلام"],
+["Famille","خانواده"],
+["École","مدرسه"],
+["Maison","خانه"],
+["Ami","دوست"],
+["Livre","کتاب"],
+["Manger","خوردن"],
+["Boire","نوشیدن"],
+["Parler","صحبت کردن"],
+["Apprendre","یاد گرفتن"]
+],
+examples:[
+["Je m'appelle Ali.","اسم من علی است."],
+["J'apprends le français.","من فرانسوی یاد می‌گیرم."],
+["Ma famille est grande.","خانواده من بزرگ است."],
+["Je vais à l'école.","من به مدرسه می‌روم."],
+["Je parle français.","من فرانسوی صحبت می‌کنم."]
+],
+tip:"مرور منظم باعث می‌شود لغات و ساختارها بهتر در حافظه بمانند.",
+question:"J'apprends le français یعنی چه؟",
+options:["من فرانسوی یاد می‌گیرم","من فرانسوی نمی‌دانم","من فرانسوی را فراموش می‌کنم","من انگلیسی یاد می‌گیرم"],
+answer:0
+},
+
+{
+title:"مرور جامع ۲",
+explanation:"تمرین ترکیبی روی زمان‌ها، افعال و واژگان.",
+words:[
+["Hier","دیروز"],
+["Aujourd'hui","امروز"],
+["Demain","فردا"],
+["J'ai","من دارم"],
+["Je suis","من هستم"],
+["Je vais","من قرار است"],
+["Je veux","من می‌خواهم"],
+["Je peux","من می‌توانم"],
+["Je dois","من باید"],
+["Je sais","من می‌دانم"]
+],
+examples:[
+["Hier, j'ai étudié.","دیروز مطالعه کردم."],
+["Aujourd'hui, je travaille.","امروز کار می‌کنم."],
+["Demain, je vais voyager.","فردا قرار است سفر کنم."],
+["Je veux apprendre.","می‌خواهم یاد بگیرم."],
+["Je peux parler français.","می‌توانم فرانسوی صحبت کنم."]
+],
+tip:"افعال vouloir، pouvoir و devoir برای بیان خواستن، توانستن و باید بسیار مهم هستند.",
+question:"Je peux یعنی چه؟",
+options:["من باید","من می‌توانم","من می‌خواهم","من می‌دانم"],
+answer:1
+},
+
+{
+title:"مرور جامع ۳",
+explanation:"تمرکز روی ساخت جمله‌های طبیعی‌تر و اتصال چند ایده.",
+words:[
+["D'abord","ابتدا"],
+["Ensuite","سپس"],
+["Enfin","در نهایت"],
+["Parce que","چون"],
+["Mais","اما"],
+["Alors","پس"],
+["Toujours","همیشه"],
+["Souvent","اغلب"],
+["Parfois","گاهی"],
+["Jamais","هرگز"]
+],
+examples:[
+["D'abord, j'étudie. Ensuite, je joue.","ابتدا مطالعه می‌کنم. سپس بازی می‌کنم."],
+["J'aime le français parce que c'est intéressant.","فرانسوی را دوست دارم چون جالب است."],
+["Je vais souvent au parc.","من اغلب به پارک می‌روم."],
+["Je regarde parfois des films.","گاهی فیلم تماشا می‌کنم."],
+["Je ne suis jamais en retard.","من هرگز دیر نمی‌کنم."]
+],
+tip:"قیدهای زمان و تکرار جمله‌های شما را طبیعی‌تر می‌کنند.",
+question:"Ensuite یعنی چه؟",
+options:["ابتدا","سپس","هرگز","گاهی"],
+answer:1
+},
+
+{
+title:"مکالمه در موقعیت‌های مختلف",
+explanation:"ترکیب سلام، معرفی، خرید، مدرسه و پرسیدن اطلاعات.",
+words:[
+["Excusez-moi","ببخشید"],
+["Pardon","ببخشید"],
+["Pouvez-vous","می‌توانید؟"],
+["Je cherche","دنبال ... می‌گردم"],
+["Je voudrais","می‌خواهم"],
+["Je comprends","می‌فهمم"],
+["Je ne comprends pas","نمی‌فهمم"],
+["Répéter","تکرار کردن"],
+["Lentement","آهسته"],
+["Aider","کمک کردن"]
+],
+examples:[
+["Excusez-moi, où est la gare ?","ببخشید، ایستگاه کجاست؟"],
+["Pouvez-vous m'aider ?","می‌توانید به من کمک کنید؟"],
+["Je ne comprends pas.","من متوجه نمی‌شوم."],
+["Pouvez-vous répéter ?","می‌توانید تکرار کنید؟"],
+["Parlez lentement, s'il vous plaît.","لطفاً آهسته صحبت کنید."]
+],
+tip:"این عبارت‌ها برای زمانی که هنوز همه صحبت‌های فرانسوی را متوجه نمی‌شوید بسیار مفید هستند.",
+question:"Je ne comprends pas یعنی چه؟",
+options:["می‌فهمم","نمی‌فهمم","کمک می‌کنم","تکرار می‌کنم"],
+answer:1
+},
+
+{
+title:"ساختارهای مهم A2",
+explanation:"در این مرحله جمله‌ها کمی طولانی‌تر می‌شوند و چند ساختار کاربردی را مرور می‌کنیم.",
+words:[
+["Il faut","لازم است / باید"],
+["Il y a","وجود دارد"],
+["J'aime bien","خیلی دوست دارم"],
+["Je préfère","ترجیح می‌دهم"],
+["Je pense","فکر می‌کنم"],
+["Je crois","فکر می‌کنم / باور دارم"],
+["Je voudrais","می‌خواهم"],
+["J'aimerais","دوست دارم / مایلم"],
+["C'est pourquoi","به همین دلیل"],
+["Peut-être","شاید"]
+],
+examples:[
+["Il y a un parc ici.","اینجا یک پارک وجود دارد."],
+["Il faut étudier.","باید مطالعه کرد."],
+["Je préfère le français.","من فرانسوی را ترجیح می‌دهم."],
+["Je pense que c'est intéressant.","فکر می‌کنم جالب است."],
+["J'aimerais voyager en France.","مایلم به فرانسه سفر کنم."]
+],
+tip:"ساختارهای Il y a و Il faut در مکالمه روزمره بسیار پرکاربرد هستند.",
+question:"Il y a یعنی چه؟",
+options:["باید","وجود دارد","من می‌خواهم","من می‌دانم"],
+answer:1
+},
+
+{
+title:"فرانسوی برای ارتباط آنلاین",
+explanation:"واژگان پایه مربوط به اینترنت و ارتباطات دیجیتال.",
+words:[
+["Internet","اینترنت"],
+["Message","پیام"],
+["Téléphone","تلفن"],
+["Ordinateur","رایانه"],
+["Application","برنامه"],
+["Site","سایت"],
+["Compte","حساب"],
+["Mot de passe","رمز عبور"],
+["Envoyer","ارسال کردن"],
+["Recevoir","دریافت کردن"]
+],
+examples:[
+["J'envoie un message.","من یک پیام ارسال می‌کنم."],
+["Je reçois un message.","من یک پیام دریافت می‌کنم."],
+["Mon téléphone est ici.","تلفن من اینجاست."],
+["Je visite un site web.","من از یک سایت وب بازدید می‌کنم."],
+["J'ai un compte.","من یک حساب دارم."]
+],
+tip:"این واژگان برای استفاده روزمره از اینترنت و برنامه‌ها مفید هستند.",
+question:"Message یعنی چه؟",
+options:["حساب","پیام","رمز عبور","سایت"],
+answer:1
+},
+
+{
+title:"توصیف یک روز",
+explanation:"یاد می‌گیریم برنامه روزانه خود را با جمله‌های ساده تعریف کنیم.",
+words:[
+["Se lever","بیدار شدن"],
+["Se réveiller","از خواب بیدار شدن"],
+["Petit-déjeuner","صبحانه خوردن"],
+["Commencer","شروع کردن"],
+["Finir","تمام کردن"],
+["Déjeuner","ناهار خوردن"],
+["Dîner","شام خوردن"],
+["Dormir","خوابیدن"],
+["Matin","صبح"],
+["Soir","عصر"]
+],
+examples:[
+["Je me lève à sept heures.","من ساعت هفت بیدار می‌شوم."],
+["Je prends mon petit-déjeuner.","صبحانه می‌خورم."],
+["Je vais à l'école.","به مدرسه می‌روم."],
+["Je fais mes devoirs.","تکالیفم را انجام می‌دهم."],
+["Je dors à dix heures.","ساعت ده می‌خوابم."]
+],
+tip:"افعال انعکاسی مثل se lever در برنامه روزانه زیاد استفاده می‌شوند.",
+question:"Dormir یعنی چه؟",
+options:["خوابیدن","بیدار شدن","شروع کردن","تمام کردن"],
+answer:0
+},
+
+{
+title:"توصیف افراد",
+explanation:"ساخت جمله برای معرفی ظاهر و ویژگی‌های عمومی افراد.",
+words:[
+["Gentil","مهربان"],
+["Intelligent","باهوش"],
+["Drôle","بامزه"],
+["Sérieux","جدی"],
+["Calme","آرام"],
+["Fort","قوی"],
+["Jeune","جوان"],
+["Adulte","بزرگسال"],
+["Personne","شخص"],
+["Caractère","شخصیت"]
+],
+examples:[
+["Mon ami est gentil.","دوست من مهربان است."],
+["Elle est très intelligente.","او بسیار باهوش است."],
+["Il est calme.","او آرام است."],
+["Mon professeur est sérieux.","معلم من جدی است."],
+["C'est une personne sympathique.","او فرد خوش‌برخوردی است."]
+],
+tip:"صفات باید با اسم از نظر جنسیت و گاهی تعداد هماهنگ شوند.",
+question:"Intelligent یعنی چه؟",
+options:["باهوش","خسته","آرام","جوان"],
+answer:0
+},
+
+{
+title:"توصیف مکان‌ها",
+explanation:"تمرین توصیف شهر، خانه، مدرسه و مکان‌های مختلف.",
+words:[
+["Grand","بزرگ"],
+["Petit","کوچک"],
+["Propre","تمیز"],
+["Sale","کثیف"],
+["Calme","آرام"],
+["Bruit","سر و صدا"],
+["Moderne","مدرن"],
+["Ancien","قدیمی"],
+["Beau","زیبا"],
+["Intéressant","جالب"]
+],
+examples:[
+["Ma ville est grande.","شهر من بزرگ است."],
+["Le parc est calme.","پارک آرام است."],
+["L'école est moderne.","مدرسه مدرن است."],
+["Le musée est intéressant.","موزه جالب است."],
+["La maison est propre.","خانه تمیز است."]
+],
+tip:"با ترکیب اسم + être + صفت می‌توانید مکان‌ها را به‌سادگی توصیف کنید.",
+question:"Propre یعنی چه؟",
+options:["کثیف","تمیز","قدیمی","شلوغ"],
+answer:1
+},
+
+{
+title:"نوشتن متن کوتاه فرانسوی",
+explanation:"در این درس یاد می‌گیریم چند جمله را به یک متن کوتاه و منظم تبدیل کنیم.",
+words:[
+["Texte","متن"],
+["Phrase","جمله"],
+["Début","شروع"],
+["Fin","پایان"],
+["Idée","ایده"],
+["Sujet","موضوع"],
+["Écrire","نوشتن"],
+["Lire","خواندن"],
+["Comprendre","فهمیدن"],
+["Réviser","مرور کردن"]
+],
+examples:[
+["Je m'appelle Ali. J'aime le français.","اسم من علی است. فرانسوی را دوست دارم."],
+["J'habite dans une grande ville.","در یک شهر بزرگ زندگی می‌کنم."],
+["J'étudie à l'école.","در مدرسه درس می‌خوانم."],
+["J'aime apprendre les langues.","دوست دارم زبان یاد بگیرم."],
+["Je veux parler français.","می‌خواهم فرانسوی صحبت کنم."]
+],
+tip:"برای نوشتن متن بهتر، ابتدا جمله‌های کوتاه بسازید و سپس آن‌ها را با et، mais و parce que به هم وصل کنید.",
+question:"Écrire یعنی چه؟",
+options:["خواندن","نوشتن","فهمیدن","مرور کردن"],
+answer:1
+},
+
+{
+title:"مرور نهایی گرامر",
+explanation:"مرور ساختارهای اصلی دوره: être، avoir، افعال -er، منفی، مالکیت و زمان‌ها.",
+words:[
+["Être","بودن"],
+["Avoir","داشتن"],
+["Aller","رفتن"],
+["Parler","صحبت کردن"],
+["Aimer","دوست داشتن"],
+["Ne ... pas","منفی"],
+["Mon","مال من"],
+["Ma","مال من"],
+["Hier","دیروز"],
+["Demain","فردا"]
+],
+examples:[
+["Je suis étudiant.","من دانش‌آموز هستم."],
+["J'ai un livre.","من یک کتاب دارم."],
+["Je parle français.","من فرانسوی صحبت می‌کنم."],
+["Je ne parle pas anglais.","من انگلیسی صحبت نمی‌کنم."],
+["Demain, je vais étudier.","فردا قرار است مطالعه کنم."]
+],
+tip:"اگر بتوانید این ساختارها را در جمله‌های جدید استفاده کنید، پایه خوبی برای ادامه یادگیری فرانسوی دارید.",
+question:"کدام جمله درست است؟",
+options:[
+"Je suis étudiant.",
+"Je es étudiant.",
+"Je sont étudiant.",
+"Je être étudiant."
+],
+answer:0
+},
+
+{
+title:"آمادگی آزمون نهایی",
+explanation:"این درس آخرین مرور پیش از آزمون نهایی است. همه موضوعات اصلی دوره را مرور کنید.",
+words:[
+["Révision","مرور"],
+["Examen","آزمون"],
+["Question","سؤال"],
+["Réponse","پاسخ"],
+["Correct","درست"],
+["Erreur","اشتباه"],
+["Réussir","موفق شدن"],
+["Apprendre","یاد گرفتن"],
+["Connaître","شناختن / دانستن"],
+["Comprendre","فهمیدن"]
+],
+examples:[
+["Je suis prêt pour l'examen.","من برای آزمون آماده‌ام."],
+["Je révise mes leçons.","درس‌هایم را مرور می‌کنم."],
+["Je comprends la question.","سؤال را می‌فهمم."],
+["Je connais la réponse.","پاسخ را می‌دانم."],
+["Je veux réussir.","می‌خواهم موفق شوم."]
+],
+tip:"قبل از آزمون نهایی، درس‌های قبلی و واژگان را دوباره مرور کنید.",
+question:"Examen یعنی چه؟",
+options:["درس","آزمون","پاسخ","اشتباه"],
+answer:1
+},
+
+{
+title:"آزمون نهایی فرانسوی",
+explanation:"آفرین! به آزمون نهایی دوره فرانسوی رسیدید. برای دریافت گواهی باید حداقل ۷۰٪ امتیاز بگیرید.",
+words:[
+["Examen final","آزمون نهایی"],
+["Score","امتیاز"],
+["Certificat","گواهی"],
+["Réussite","موفقیت"],
+["Français","فرانسوی"]
+],
+examples:[
+["Je suis prêt.","من آماده‌ام."],
+["Bonne chance !","موفق باشی!"],
+["Félicitations !","تبریک!"],
+["J'ai réussi l'examen.","در آزمون موفق شدم."],
+["Je parle français.","من فرانسوی صحبت می‌کنم."]
+],
+tip:"حداقل نمره قبولی آزمون نهایی ۷۰٪ است.",
+question:"برای دریافت گواهی حداقل چند درصد لازم است؟",
+options:["۵۰٪","۶۰٪","۷۰٪","۹۰٪"],
+answer:2
+}
+
+];
+
+const examQuestions=[
+{
+q:"معنی Bonjour چیست؟",
+o:["خداحافظ","سلام / روز بخیر","ممنون","شب بخیر"],
+a:1
+},
+{
+q:"Je m'appelle یعنی چه؟",
+o:["من دارم","اسم من ... است","من می‌روم","من می‌دانم"],
+a:1
+},
+{
+q:"کدام گزینه به معنی «ممنون» است؟",
+o:["Bonjour","Merci","Pardon","Bonsoir"],
+a:1
+},
+{
+q:"Avoir یعنی چه؟",
+o:["داشتن","رفتن","بودن","صحبت کردن"],
+a:0
+},
+{
+q:"کدام جمله درست است؟",
+o:["Je suis étudiant.","Je es étudiant.","Je sont étudiant.","Je être étudiant."],
+a:0
+},
+{
+q:"Où یعنی چه؟",
+o:["چرا","کجا","چه کسی","چگونه"],
+a:1
+},
+{
+q:"Il fait froid یعنی چه؟",
+o:["هوا گرم است","هوا سرد است","هوا خوب است","باران می‌بارد"],
+a:1
+},
+{
+q:"Cher یعنی چه؟",
+o:["ارزان","گران","جدید","زیبا"],
+a:1
+},
+{
+q:"Je ne parle pas français یعنی چه؟",
+o:["من فرانسوی صحبت می‌کنم","من فرانسوی صحبت نمی‌کنم","من فرانسوی می‌خوانم","من فرانسوی دوست دارم"],
+a:1
+},
+{
+q:"Je vais étudier یعنی چه؟",
+o:["مطالعه کردم","قرار است مطالعه کنم","مطالعه نمی‌کنم","مطالعه کرده‌ام"],
+a:1
+}
+];
+
+let currentLesson=0;
+
+function completed(n){
+    return localStorage.getItem("frenchLesson"+n+"Completed")==="true";
+}
+
+function getXP(){
+    return Number(localStorage.getItem("frenchXP")||0);
+}
+
+function updateStats(){
+    let count=0;
+
+    for(let i=1;i<=50;i++){
+        if(completed(i)) count++;
+    }
+
+    document.getElementById("completedCount").textContent=count+" / 50";
+    document.getElementById("xp").textContent=getXP();
+
+    let percent=(count/50)*100;
+    document.getElementById("progressBar").style.width=percent+"%";
+
+    if(localStorage.getItem("frenchExamPassed")==="true"){
+        document.getElementById("status").textContent="دوره تکمیل شد 🏆";
+    }else{
+        document.getElementById("status").textContent="در حال یادگیری";
+    }
+}
+
+function addXP(amount,key){
+    if(localStorage.getItem(key)==="true") return;
+
+    localStorage.setItem(key,"true");
+
+    let xp=getXP()+amount;
+    localStorage.setItem("frenchXP",xp);
+
+    updateStats();
+}
+
+function renderLessons(){
+
+    const list=document.getElementById("lessonList");
+    list.innerHTML="";
+
+    lessons.forEach((lesson,index)=>{
+
+        const number=index+1;
+        const unlocked=
+            number===1 ||
+            completed(number-1);
+
+        const card=document.createElement("div");
+        card.className="lesson-card"+(unlocked?"":" locked");
+
+        let buttonText;
+
+        if(completed(number)){
+            buttonText="✓ تکمیل شده";
+        }else if(unlocked){
+            buttonText=number===50?"🏆 شروع آزمون نهایی":"شروع درس";
+        }else{
+            buttonText="🔒 قفل";
+        }
+
+        card.innerHTML=`
+            <div class="lesson-number">LESSON ${number}</div>
+            <div class="lesson-title">${lesson.title}</div>
+            <button ${unlocked?"":"disabled"} onclick="openLesson(${index})">
+                ${buttonText}
+            </button>
+        `;
+
+        list.appendChild(card);
+    });
+
+    updateStats();
+}
+
+function openLesson(index){
+
+    currentLesson=index;
+
+    document.getElementById("dashboard").style.display="none";
+    document.getElementById("course").style.display="block";
+
+    if(index===49){
+        renderFinalExam();
+    }else{
+        renderLesson(index);
+    }
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderLesson(index){
+
+    const lesson=lessons[index];
+    const already=completed(index+1);
+
+    let words=lesson.words.map(w=>`
+        <div class="word">
+            <strong>${w[0]}</strong>
+            <span>${w[1]}</span>
+        </div>
+    `).join("");
+
+    let examples=lesson.examples.map(e=>`
+        <div class="example">
+            <div class="fr">${e[0]}</div>
+            <div>${e[1]}</div>
+        </div>
+    `).join("");
+
+    let options=lesson.options.map((o,i)=>`
+        <button class="option" onclick="answerLesson(${i},${lesson.answer},this)">
+            ${o}
+        </button>
+    `).join("");
+
+    document.getElementById("lessonContent").innerHTML=`
+
+        <div class="lesson-header">
+            <h2>درس ${index+1}: ${lesson.title}</h2>
+            <p>🇫🇷 Français</p>
+        </div>
+
+        <div class="section">
+            <h3>📖 توضیح درس</h3>
+            <p class="explanation">${lesson.explanation}</p>
+        </div>
+
+        <div class="section">
+            <h3>🧠 واژگان</h3>
+            <div class="words">${words}</div>
+        </div>
+
+        <div class="section">
+            <h3>💬 مثال‌ها</h3>
+            <div class="examples">${examples}</div>
+        </div>
+
+        <div class="section">
+            <h3>💡 نکته آموزشی</h3>
+            <div class="tip">${lesson.tip}</div>
+        </div>
+
+        <div class="section quiz">
+            <h3>📝 تمرین</h3>
+            <div class="question">${lesson.question}</div>
+
+            <div class="options">
+                ${options}
+            </div>
+
+            <div class="result" id="lessonResult"></div>
+
+            <button
+                class="complete-btn"
+                id="completeBtn"
+                disabled
+                onclick="completeLesson(${index+1})">
+                ${already?"✓ درس تکمیل شده":"تکمیل درس و دریافت XP"}
+            </button>
+        </div>
+    `;
+}
+
+function answerLesson(selected,correct,button){
+
+    const buttons=document.querySelectorAll(".option");
+
+    buttons.forEach(b=>b.disabled=true);
+
+    const result=document.getElementById("lessonResult");
+
+    if(selected===correct){
+
+        button.classList.add("correct");
+
+        result.textContent="✅ پاسخ درست است!";
+
+        document.getElementById("completeBtn").disabled=false;
+
+    }else{
+
+        button.classList.add("wrong");
+
+        result.textContent="❌ پاسخ اشتباه است. گزینه درست را دوباره انتخاب کنید.";
+
+        setTimeout(()=>{
+            buttons.forEach(b=>b.disabled=false);
+            button.classList.remove("wrong");
+        },700);
+    }
+}
+
+function completeLesson(number){
+
+    if(completed(number)){
+        backToLessons();
+        return;
+    }
+
+    localStorage.setItem("frenchLesson"+number+"Completed","true");
+
+    addXP(20,"frenchLesson"+number+"XP");
+
+    alert("🎉 درس "+number+" تکمیل شد! +20 XP");
+
+    backToLessons();
+}
+
+function renderFinalExam(){
+
+    let html=`
+        <div class="lesson-header">
+            <h2>🏆 آزمون نهایی زبان فرانسوی</h2>
+            <p>برای دریافت گواهی باید حداقل ۷۰٪ پاسخ‌ها درست باشند.</p>
+        </div>
+
+        <div class="exam">
+    `;
+
+    examQuestions.forEach((item,index)=>{
+
+        html+=`
+            <div class="exam-question">
+                <p><b>${index+1}. ${item.q}</b></p>
+        `;
+
+        item.o.forEach((option,i)=>{
+            html+=`
+                <button
+                    class="exam-option"
+                    data-question="${index}"
+                    data-answer="${i}"
+                    onclick="selectExamAnswer(${index},${i},this)">
+                    ${option}
+                </button>
+            `;
+        });
+
+        html+=`</div>`;
+    });
+
+    html+=`
+            <div id="examResult" class="result"></div>
+
+            <button onclick="submitExam()">
+                🎓 ثبت آزمون و بررسی نتیجه
+            </button>
+        </div>
+
+        <div id="certificate" class="certificate"></div>
+    `;
+
+    document.getElementById("lessonContent").innerHTML=html;
+}
+
+const examAnswers={};
+
+function selectExamAnswer(q,a,button){
+
+    examAnswers[q]=a;
+
+    document
+        .querySelectorAll('[data-question="'+q+'"]')
+        .forEach(b=>b.classList.remove("correct","wrong"));
+
+    button.classList.add("correct");
+}
+
+function submitExam(){
+
+    let score=0;
+
+    examQuestions.forEach((q,index)=>{
+        if(examAnswers[index]===q.a){
+            score++;
+        }
+    });
+
+    const percent=Math.round((score/examQuestions.length)*100);
+
+    const result=document.getElementById("examResult");
+
+    if(percent>=70){
+
+        result.textContent=
+            "🎉 تبریک! شما با نمره "+percent+"٪ آزمون نهایی را با موفقیت گذراندید.";
+
+        localStorage.setItem("frenchExamPassed","true");
+        localStorage.setItem("frenchExamScore",percent);
+
+        addXP(50,"frenchExamXPAdded");
+
+        localStorage.setItem("frenchLesson50Completed","true");
+
+        updateStats();
+
+        showCertificate(percent);
+
+    }else{
+
+        result.textContent=
+            "❌ نمره شما "+percent+"٪ است. برای قبولی حداقل ۷۰٪ لازم است. دوباره مرور کنید و تلاش کنید.";
+    }
+}
+
+function showCertificate(score){
+
+    const cert=document.getElementById("certificate");
+
+    const date=new Date().toLocaleDateString("fa-IR");
+
+    let id=localStorage.getItem("frenchCertificateID");
+
+    if(!id){
+
+        id="GLA-FRA-"+Math.floor(100000+Math.random()*900000);
+
+        localStorage.setItem("frenchCertificateID",id);
+    }
+
+    cert.innerHTML=`
+        <h1>GHOST LANGUAGE ACADEMY</h1>
+
+        <h2>گواهی پایان دوره</h2>
+
+        <p>بدین‌وسیله تأیید می‌شود که</p>
+
+        <div class="name">کاربر نمونه</div>
+
+        <p>
+            دوره جامع زبان فرانسوی
+            <br>
+            <b>Français — French Language Course</b>
+        </p>
+
+        <p class="cert-info">
+            را با موفقیت به پایان رسانده است.
+            <br>
+            نمره آزمون نهایی: <b>${score}%</b>
+            <br>
+            تاریخ صدور: <b>${date}</b>
+            <br>
+            شناسه گواهی: <b>${id}</b>
+        </p>
+
+        <div class="seal">
+            GHOST<br>
+            LANGUAGE<br>
+            ACADEMY<br>
+            ✓ VERIFIED
+        </div>
+
+        <div class="signature">
+            <div style="font-family:cursive;font-size:25px;">
+                Ghost Director
+            </div>
+
+            <div class="signature-line">
+                مدیر آکادمی
+            </div>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">
+            🖨️ چاپ / ذخیره به صورت PDF
+        </button>
+    `;
+
+    cert.style.display="block";
+}
+
+function backToLessons(){
+
+    document.getElementById("course").style.display="none";
+    document.getElementById("dashboard").style.display="block";
+
+    renderLessons();
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderLessons();
+
+</script>
+
+</body>
+  </html>
