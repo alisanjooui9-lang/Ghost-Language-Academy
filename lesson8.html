@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 8 | رنگ‌ها</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #18243d 0%, #090d18 45%, #05070d 100%);
+      color: #fff;
+      min-height: 100vh;
+      line-height: 1.8;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 15px;
+      text-align: center;
+      background: rgba(5, 8, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #aeb9d1;
+      font-size: 14px;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 7px;
+      background: #20283a;
+      margin-top: 14px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 16%;
+      height: 100%;
+      background: linear-gradient(90deg, #00e5ff, #7c4dff);
+      border-radius: 20px;
+    }
+
+    main {
+      width: min(1000px, 92%);
+      margin: 30px auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #aeb9d1;
+    }
+
+    .section {
+      background: rgba(17, 24, 40, 0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    }
+
+    .section h3 {
+      color: #00e5ff;
+      margin-bottom: 16px;
+      font-size: 21px;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+    }
+
+    .color-card {
+      padding: 18px;
+      border-radius: 15px;
+      text-align: center;
+      background: #101827;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.25s;
+    }
+
+    .color-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .color-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      border: 3px solid rgba(255,255,255,0.7);
+    }
+
+    .red { background: #f44336; }
+    .blue { background: #2196f3; }
+    .green { background: #4caf50; }
+    .yellow { background: #ffeb3b; }
+    .orange { background: #ff9800; }
+    .purple { background: #9c27b0; }
+    .pink { background: #e91e63; }
+    .black { background: #000; }
+    .white { background: #fff; }
+    .gray { background: #808080; }
+    .brown { background: #795548; }
+    .cyan { background: #00bcd4; }
+
+    .english {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      direction: ltr;
+    }
+
+    .persian {
+      display: block;
+      color: #aeb9d1;
+      margin-top: 3px;
+    }
+
+    .example {
+      background: rgba(0, 229, 255, 0.07);
+      border-right: 4px solid #00e5ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+
+    .example strong {
+      color: #00e5ff;
+    }
+
+    .ltr {
+      direction: ltr;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+
+    .tip {
+      background: rgba(124, 77, 255, 0.12);
+      border: 1px solid rgba(124, 77, 255, 0.35);
+      padding: 15px;
+      border-radius: 12px;
+      color: #dcd6ff;
+    }
+
+    .question {
+      background: #0d1422;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .question-title {
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #29344b;
+      background: #131c2c;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: right;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      border-color: #00e5ff;
+      background: #18263a;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+      min-height: 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid #2c3850;
+      background: #0a101c;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      margin-top: 8px;
+    }
+
+    input:focus {
+      border-color: #00e5ff;
+    }
+
+    button {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #00bcd4, #7c4dff);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .speak-btn {
+      background: #18263a;
+      border: 1px solid #30415f;
+      font-size: 13px;
+      padding: 7px 12px;
+    }
+
+    .complete {
+      text-align: center;
+      padding: 28px 20px;
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        rgba(0,229,255,0.10),
+        rgba(124,77,255,0.12)
+      );
+      border: 1px solid rgba(0,229,255,0.25);
+    }
+
+    .complete h3 {
+      color: #00e5ff;
+      margin-bottom: 8px;
+    }
+
+    .xp {
+      color: #ffd54f;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .status {
+      margin-top: 12px;
+      color: #aeb9d1;
+    }
+
+    footer {
+      text-align: center;
+      color: #71809d;
+      padding: 25px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Ghost Language Academy</h1>
+  <p>Lesson 8 — رنگ‌ها</p>
+
+  <div class="progress-container">
+    <div class="progress"></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <h2>🎨 رنگ‌ها | Colors</h2>
+    <p>در این درس با رنگ‌های پرکاربرد انگلیسی آشنا می‌شویم.</p>
+  </div>
+
+  <section class="section">
+    <h3>📚 رنگ‌های مهم</h3>
+
+    <div class="color-grid">
+
+      <div class="color-card">
+        <div class="color-box red"></div>
+        <span class="english">Red</span>
+        <span class="persian">قرمز</span>
+        <button class="speak-btn" onclick="speak('Red')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box blue"></div>
+        <span class="english">Blue</span>
+        <span class="persian">آبی</span>
+        <button class="speak-btn" onclick="speak('Blue')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box green"></div>
+        <span class="english">Green</span>
+        <span class="persian">سبز</span>
+        <button class="speak-btn" onclick="speak('Green')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box yellow"></div>
+        <span class="english">Yellow</span>
+        <span class="persian">زرد</span>
+        <button class="speak-btn" onclick="speak('Yellow')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box orange"></div>
+        <span class="english">Orange</span>
+        <span class="persian">نارنجی</span>
+        <button class="speak-btn" onclick="speak('Orange')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box purple"></div>
+        <span class="english">Purple</span>
+        <span class="persian">بنفش</span>
+        <button class="speak-btn" onclick="speak('Purple')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box pink"></div>
+        <span class="english">Pink</span>
+        <span class="persian">صورتی</span>
+        <button class="speak-btn" onclick="speak('Pink')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box black"></div>
+        <span class="english">Black</span>
+        <span class="persian">مشکی / سیاه</span>
+        <button class="speak-btn" onclick="speak('Black')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box white"></div>
+        <span class="english">White</span>
+        <span class="persian">سفید</span>
+        <button class="speak-btn" onclick="speak('White')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box gray"></div>
+        <span class="english">Gray</span>
+        <span class="persian">خاکستری</span>
+        <button class="speak-btn" onclick="speak('Gray')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box brown"></div>
+        <span class="english">Brown</span>
+        <span class="persian">قهوه‌ای</span>
+        <button class="speak-btn" onclick="speak('Brown')">🔊 تلفظ</button>
+      </div>
+
+      <div class="color-card">
+        <div class="color-box cyan"></div>
+        <span class="english">Cyan</span>
+        <span class="persian">فیروزه‌ای / آبی روشن</span>
+        <button class="speak-btn" onclick="speak('Cyan')">🔊 تلفظ</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>🧠 جمله‌سازی با رنگ‌ها</h3>
+
+    <div class="example ltr">
+      <strong>The car is red.</strong><br>
+      ماشین قرمز است.
+    </div>
+
+    <div class="example ltr">
+      <strong>My bag is black.</strong><br>
+      کیف من مشکی است.
+    </div>
+
+    <div class="example ltr">
+      <strong>She has a blue phone.</strong><br>
+      او یک گوشی آبی دارد.
+    </div>
+
+    <div class="example ltr">
+      <strong>I like green.</strong><br>
+      من رنگ سبز را دوست دارم.
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>💡 نکته مهم</h3>
+
+    <div class="tip">
+      وقتی می‌خواهیم رنگ یک چیز را بگوییم، معمولاً از ساختار
+      <b>be + color</b>
+      استفاده می‌کنیم.
+      <br><br>
+
+      مثال:
+      <span class="ltr"><b>The sky is blue.</b></span>
+      <br>
+      آسمان آبی است.
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>📝 آزمون ۱</h3>
+
+    <div class="question">
+      <div class="question-title">
+        1. کدام گزینه به معنی «قرمز» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q1')">Red</button>
+      <button class="option" onclick="answer(this, false, 'q1')">Blue</button>
+      <button class="option" onclick="answer(this, false, 'q1')">Green</button>
+
+      <div id="q1" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        2. کدام گزینه به معنی «سفید» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q2')">Black</button>
+      <button class="option" onclick="answer(this, true, 'q2')">White</button>
+      <button class="option" onclick="answer(this, false, 'q2')">Brown</button>
+
+      <div id="q2" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        3. کدام گزینه به معنی «سبز» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q3')">Yellow</button>
+      <button class="option" onclick="answer(this, false, 'q3')">Purple</button>
+      <button class="option" onclick="answer(this, true, 'q3')">Green</button>
+
+      <div id="q3" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        4. کدام گزینه به معنی «بنفش» است؟
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q4')">Pink</button>
+      <button class="option" onclick="answer(this, true, 'q4')">Purple</button>
+      <button class="option" onclick="answer(this, false, 'q4')">Orange</button>
+
+      <div id="q4" class="feedback"></div>
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>⌨️ تمرین تایپ</h3>
+
+    <p>ترجمه انگلیسی «ماشین آبی است» را بنویس:</p>
+
+    <input id="typing1" type="text" placeholder="Type your answer...">
+    <button onclick="checkTyping()">بررسی پاسخ</button>
+
+    <div id="typingFeedback" class="feedback"></div>
+  </section>
+
+  <section class="section">
+    <h3>🔤 رنگ را پیدا کن</h3>
+
+    <div class="question">
+      <div class="question-title">
+        What color is the sun usually shown as?
+      </div>
+
+      <button class="option" onclick="answer(this, true, 'q5')">Yellow</button>
+      <button class="option" onclick="answer(this, false, 'q5')">Black</button>
+      <button class="option" onclick="answer(this, false, 'q5')">Purple</button>
+
+      <div id="q5" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        What color is grass usually?
+      </div>
+
+      <button class="option" onclick="answer(this, false, 'q6')">Blue</button>
+      <button class="option" onclick="answer(this, true, 'q6')">Green</button>
+      <button class="option" onclick="answer(this, false, 'q6')">Pink</button>
+
+      <div id="q6" class="feedback"></div>
+    </div>
+
+  </section>
+
+  <section class="section">
+    <h3>🌍 ترجمه کن</h3>
+
+    <div class="example ltr">
+      <strong>The house is white.</strong>
+    </div>
+
+    <p>ترجمه:</p>
+
+    <input id="translation" type="text" placeholder="ترجمه فارسی را بنویس...">
+    <button onclick="checkTranslation()">بررسی</button>
+
+    <div id="translationFeedback" class="feedback"></div>
+  </section>
+
+  <section class="complete">
+    <h3>🏆 پایان درس ۸</h3>
+
+    <p>
+      اگر رنگ‌ها را یاد گرفتی، درس را کامل کن تا درس بعدی باز شود.
+    </p>
+
+    <div class="xp">⭐ +20 XP</div>
+
+    <button onclick="completeLesson()">
+      ✅ تکمیل درس
+    </button>
+
+    <div id="status" class="status"></div>
+  </section>
+
+</main>
+
+<footer>
+  Ghost Language Academy © 2026
+</footer>
+
+<script>
+  function speak(text) {
+    if ("speechSynthesis" in window) {
+      speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = 0.85;
+
+      speechSynthesis.speak(utterance);
+    } else {
+      alert("مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.");
+    }
+  }
+
+  function answer(button, correct, feedbackId) {
+    const feedback = document.getElementById(feedbackId);
+
+    if (correct) {
+      feedback.textContent = "✅ درست است!";
+      feedback.style.color = "#00e676";
+      button.style.borderColor = "#00e676";
+    } else {
+      feedback.textContent = "❌ پاسخ اشتباه است. دوباره تلاش کن.";
+      feedback.style.color = "#ff5252";
+      button.style.borderColor = "#ff5252";
+    }
+  }
+
+  function normalize(text) {
+    return text
+      .trim()
+      .toLowerCase()
+      .replace(/[؟?!.,]/g, "")
+      .replace(/\s+/g, " ");
+  }
+
+  function checkTyping() {
+    const input = normalize(document.getElementById("typing1").value);
+    const feedback = document.getElementById("typingFeedback");
+
+    const answers = [
+      "the car is blue",
+      "the car is blue."
+    ];
+
+    if (answers.includes(input)) {
+      feedback.textContent = "✅ عالی! پاسخ درست است.";
+      feedback.style.color = "#00e676";
+    } else {
+      feedback.textContent = "❌ پاسخ درست: The car is blue.";
+      feedback.style.color = "#ff5252";
+    }
+  }
+
+  function checkTranslation() {
+    const input = normalize(document.getElementById("translation").value);
+    const feedback = document.getElementById("translationFeedback");
+
+    const correctAnswers = [
+      "خانه سفید است",
+      "خانه سفید می باشد",
+      "خانه سفید میباشد"
+    ];
+
+    if (correctAnswers.includes(input)) {
+      feedback.textContent = "✅ درست ترجمه کردی!";
+      feedback.style.color = "#00e676";
+    } else {
+      feedback.textContent = "❌ پاسخ پیشنهادی: خانه سفید است.";
+      feedback.style.color = "#ff5252";
+    }
+  }
+
+  function getXP() {
+    const keys = ["xp", "XP", "userXP", "totalXP", "englishXP"];
+
+    for (const key of keys) {
+      const value = parseInt(localStorage.getItem(key));
+
+      if (!isNaN(value)) {
+        return {
+          key: key,
+          value: value
+        };
+      }
+    }
+
+    return {
+      key: "xp",
+      value: 0
+    };
+  }
+
+  function completeLesson() {
+    const alreadyCompleted =
+      localStorage.getItem("lesson8Completed") === "true";
+
+    if (!alreadyCompleted) {
+      const xpData = getXP();
+
+      localStorage.setItem(
+        xpData.key,
+        xpData.value + 20
+      );
+
+      localStorage.setItem(
+        "lesson8Completed",
+        "true"
+      );
+    }
+
+    const status = document.getElementById("status");
+
+    status.innerHTML =
+      "🎉 درس ۸ با موفقیت تکمیل شد!<br>" +
+      "⭐ ۲۰ XP دریافت کردی.<br>" +
+      "🔓 درس ۹ «اعضای خانواده» برایت باز شد.";
+
+    status.style.color = "#00e676";
+  }
+
+  window.addEventListener("load", function() {
+    if (localStorage.getItem("lesson8Completed") === "true") {
+      document.getElementById("status").innerHTML =
+        "✅ این درس قبلاً تکمیل شده است.<br>" +
+        "🔓 درس ۹ «اعضای خانواده» باز است.";
+
+      document.getElementById("status").style.color = "#00e676";
+    }
+  });
+</script>
+
+</body>
+  </html>
