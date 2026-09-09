@@ -1,0 +1,2791 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish | Ghost Language Academy</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top,#18233d 0,#080b14 45%,#03050a 100%);
+    color:#fff;
+    min-height:100vh;
+}
+
+.container{
+    width:min(1100px,94%);
+    margin:auto;
+    padding:25px 0 60px;
+}
+
+header{
+    text-align:center;
+    padding:25px 10px;
+    margin-bottom:20px;
+}
+
+.logo{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#fff;
+    text-shadow:0 0 20px #00c8ff;
+}
+
+.subtitle{
+    margin-top:8px;
+    color:#9aa9c7;
+    font-size:15px;
+}
+
+.course-box{
+    background:rgba(14,20,36,.88);
+    border:1px solid rgba(0,200,255,.25);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 0 30px rgba(0,200,255,.08);
+    margin-bottom:22px;
+}
+
+.course-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.progress-area{
+    margin-top:15px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    color:#aebbd4;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.progress{
+    height:13px;
+    background:#050812;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid #17243d;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#00c8ff,#7b5cff);
+    box-shadow:0 0 15px rgba(0,200,255,.6);
+    transition:.5s;
+}
+
+.xp{
+    display:inline-block;
+    margin-top:15px;
+    padding:9px 15px;
+    border-radius:12px;
+    background:#091426;
+    border:1px solid #1d3558;
+    color:#67dfff;
+    font-weight:bold;
+}
+
+.lessons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:15px;
+}
+
+.lesson-card{
+    position:relative;
+    background:linear-gradient(145deg,rgba(16,24,43,.95),rgba(7,11,21,.98));
+    border:1px solid #1a2d4c;
+    border-radius:20px;
+    padding:18px;
+    transition:.3s;
+}
+
+.lesson-card:hover{
+    transform:translateY(-4px);
+    border-color:#00c8ff;
+    box-shadow:0 0 22px rgba(0,200,255,.12);
+}
+
+.lesson-card.locked{
+    opacity:.55;
+}
+
+.lesson-number{
+    color:#67dfff;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.lesson-card h3{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.lesson-card p{
+    color:#9eabc3;
+    font-size:13px;
+    min-height:38px;
+    line-height:1.8;
+}
+
+button{
+    width:100%;
+    margin-top:14px;
+    padding:12px;
+    border:0;
+    border-radius:12px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(90deg,#008dff,#704cff);
+    transition:.25s;
+}
+
+button:hover{
+    filter:brightness(1.15);
+}
+
+button:disabled{
+    cursor:not-allowed;
+    background:#20293a;
+    color:#6d7890;
+}
+
+.lesson-view{
+    display:none;
+}
+
+.lesson-view.active{
+    display:block;
+}
+
+.back{
+    width:auto;
+    padding:10px 18px;
+    background:#121b2d;
+    border:1px solid #273b5c;
+    margin-bottom:18px;
+}
+
+.lesson-header{
+    border-bottom:1px solid #20314e;
+    padding-bottom:18px;
+    margin-bottom:22px;
+}
+
+.lesson-header h1{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.lesson-header p{
+    color:#aab7cf;
+    line-height:2;
+}
+
+.section{
+    background:rgba(10,16,29,.9);
+    border:1px solid #1b2d49;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+}
+
+.section h2{
+    color:#66ddff;
+    margin-bottom:14px;
+    font-size:21px;
+}
+
+.intro{
+    line-height:2.2;
+    color:#d6deed;
+}
+
+.vocab{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:10px;
+}
+
+.word{
+    background:#0b1323;
+    border:1px solid #1c3151;
+    border-radius:13px;
+    padding:13px;
+}
+
+.word .es{
+    display:block;
+    color:#fff;
+    font-weight:bold;
+    font-size:17px;
+    direction:ltr;
+    text-align:left;
+}
+
+.word .fa{
+    display:block;
+    color:#8fa1bf;
+    margin-top:5px;
+}
+
+.example{
+    background:#0a1220;
+    border-right:3px solid #00c8ff;
+    padding:13px;
+    margin:9px 0;
+    border-radius:8px;
+    line-height:1.9;
+}
+
+.example strong{
+    direction:ltr;
+    display:inline-block;
+    color:#fff;
+}
+
+.tip{
+    padding:15px;
+    background:rgba(91,76,255,.08);
+    border:1px solid rgba(123,92,255,.25);
+    border-radius:13px;
+    line-height:2;
+    color:#cbd3e7;
+}
+
+.question{
+    margin-top:12px;
+    padding:15px;
+    background:#080e19;
+    border-radius:13px;
+    border:1px solid #192b46;
+}
+
+.question-title{
+    margin-bottom:12px;
+    line-height:1.9;
+}
+
+.option{
+    width:100%;
+    text-align:right;
+    margin:7px 0;
+    background:#101a2c;
+    border:1px solid #233958;
+}
+
+.option.correct{
+    background:#123c31;
+    border-color:#24c78a;
+}
+
+.option.wrong{
+    background:#421c25;
+    border-color:#e05267;
+}
+
+.typing{
+    margin-top:18px;
+}
+
+input{
+    width:100%;
+    padding:13px;
+    border-radius:11px;
+    border:1px solid #273c5c;
+    background:#070d18;
+    color:#fff;
+    outline:none;
+}
+
+input:focus{
+    border-color:#00c8ff;
+}
+
+.complete-btn{
+    margin-top:20px;
+}
+
+.message{
+    margin-top:12px;
+    padding:12px;
+    border-radius:10px;
+    display:none;
+    line-height:1.8;
+}
+
+.message.show{
+    display:block;
+}
+
+.success{
+    background:#10382e;
+    border:1px solid #25c995;
+    color:#8ff0ce;
+}
+
+.error{
+    background:#3d1b23;
+    border:1px solid #e25a70;
+    color:#ffadb9;
+}
+
+/* Certificate */
+
+.certificate{
+    display:none;
+    background:#fff;
+    color:#111;
+    padding:35px;
+    border-radius:18px;
+    margin-top:25px;
+    position:relative;
+    overflow:hidden;
+}
+
+.certificate.show{
+    display:block;
+}
+
+.certificate-inner{
+    border:7px double #222;
+    padding:35px;
+    text-align:center;
+}
+
+.certificate h1{
+    font-family:Georgia,serif;
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.certificate h2{
+    font-size:25px;
+    margin:12px 0;
+}
+
+.student-name{
+    font-size:30px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.certificate p{
+    line-height:2;
+}
+
+.cert-info{
+    display:flex;
+    justify-content:space-around;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.cert-item{
+    padding:10px 18px;
+    border:1px solid #aaa;
+    border-radius:8px;
+}
+
+.signature-area{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-top:45px;
+    gap:25px;
+}
+
+.signature{
+    text-align:center;
+}
+
+.signature-name{
+    font-family:cursive;
+    font-size:28px;
+    font-weight:bold;
+    border-bottom:2px solid #111;
+    padding:0 20px 5px;
+}
+
+.seal{
+    width:120px;
+    height:120px;
+    border:4px solid #222;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-weight:bold;
+    font-size:11px;
+    margin:auto;
+}
+
+.print-btn{
+    background:#111;
+    color:#fff;
+}
+
+@media print{
+    body{
+        background:#fff;
+    }
+
+    body *{
+        visibility:hidden;
+    }
+
+    .certificate,
+    .certificate *{
+        visibility:visible;
+    }
+
+    .certificate{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        display:block!important;
+        margin:0;
+        box-shadow:none;
+    }
+
+    .print-btn{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+    .logo{
+        font-size:31px;
+    }
+
+    .lesson-header h1{
+        font-size:24px;
+    }
+
+    .certificate{
+        padding:10px;
+    }
+
+    .certificate-inner{
+        padding:20px 10px;
+    }
+
+    .signature-area{
+        flex-direction:column;
+        align-items:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <div class="logo">GHOST LANGUAGE ACADEMY</div>
+    <div class="subtitle">دوره جامع زبان اسپانیایی — Español</div>
+</header>
+
+<div id="coursePage">
+
+<div class="course-box">
+
+    <div class="course-title">
+        🇪🇸 دوره اسپانیایی | Español
+    </div>
+
+    <div class="progress-info">
+        <span id="completedText">0 از 50 درس</span>
+        <span id="percentText">0%</span>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="xp" id="xpText">⭐ XP: 0</div>
+
+</div>
+
+<div class="lessons" id="lessons"></div>
+
+</div>
+
+<div class="lesson-view" id="lessonView">
+
+<button class="back" onclick="backToLessons()">← بازگشت به فهرست درس‌ها</button>
+
+<div class="section lesson-header">
+    <div class="lesson-number" id="viewNumber"></div>
+    <h1 id="viewTitle"></h1>
+    <p id="viewIntro"></p>
+</div>
+
+<div class="section">
+    <h2>📚 واژگان مهم</h2>
+    <div class="vocab" id="vocab"></div>
+</div>
+
+<div class="section">
+    <h2>📖 توضیح درس</h2>
+    <div class="intro" id="explanation"></div>
+</div>
+
+<div class="section">
+    <h2>💬 مثال‌ها</h2>
+    <div id="examples"></div>
+</div>
+
+<div class="section">
+    <h2>💡 نکته آموزشی</h2>
+    <div class="tip" id="tip"></div>
+</div>
+
+<div class="section">
+    <h2>📝 تمرین</h2>
+    <div id="question"></div>
+
+    <div class="typing">
+        <label>⌨️ یک جمله اسپانیایی مرتبط با درس بنویس:</label>
+        <input id="typingInput" placeholder="مثلاً: Hola, me llamo Carlos.">
+    </div>
+
+    <button class="complete-btn" id="completeBtn" onclick="completeLesson()">
+        ✅ تکمیل درس
+    </button>
+
+    <div class="message" id="message"></div>
+</div>
+
+</div>
+
+<div class="certificate" id="certificate">
+<div class="certificate-inner">
+
+    <h1>GHOST LANGUAGE ACADEMY</h1>
+
+    <p>Certificate of Completion</p>
+
+    <h2>گواهی پایان دوره زبان اسپانیایی</h2>
+
+    <p>این گواهی به نام</p>
+
+    <div class="student-name" id="studentName">کاربر نمونه</div>
+
+    <p>
+        به دلیل موفقیت در تکمیل دوره آموزشی
+        <strong>Español — Spanish</strong>
+        و قبولی در آزمون نهایی اعطا می‌گردد.
+    </p>
+
+    <div class="cert-info">
+        <div class="cert-item">
+            امتیاز آزمون:
+            <strong id="certScore">0%</strong>
+        </div>
+
+        <div class="cert-item">
+            تاریخ:
+            <strong id="certDate"></strong>
+        </div>
+
+        <div class="cert-item">
+            کد گواهی:
+            <strong id="certId"></strong>
+        </div>
+    </div>
+
+    <div class="signature-area">
+
+        <div class="signature">
+            <div class="signature-name">Ghost Director</div>
+            <p>مدیر Ghost Language Academy</p>
+        </div>
+
+        <div>
+            <div class="seal">
+                GHOST<br>
+                LANGUAGE<br>
+                ACADEMY<br>
+                ✓ VERIFIED
+            </div>
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+        🖨️ چاپ / ذخیره به صورت PDF
+    </button>
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+const lessons = [
+
+{
+title:"سلام و احوالپرسی",
+intro:"در این درس با اولین کلمات و عبارت‌های کاربردی اسپانیایی آشنا می‌شوید.",
+explanation:"برای شروع زبان اسپانیایی، یادگیری سلام کردن، خداحافظی و پرسیدن حال افراد بسیار مهم است. «Hola» برای سلام کردن استفاده می‌شود و در موقعیت‌های مختلف کاربرد دارد. «Buenos días» یعنی صبح بخیر، «Buenas tardes» یعنی عصر بخیر و «Buenas noches» برای شب بخیر استفاده می‌شود.",
+vocab:[
+["Hola","سلام"],
+["Adiós","خداحافظ"],
+["Gracias","ممنون"],
+["Por favor","لطفاً"],
+["Buenos días","صبح بخیر"],
+["Buenas tardes","عصر بخیر"],
+["Buenas noches","شب بخیر"],
+["Sí","بله"],
+["No","نه"],
+["Bien","خوب"]
+],
+examples:[
+["Hola, ¿cómo estás?","سلام، حالت چطوره؟"],
+["Buenos días, amigo.","صبح بخیر، دوست من."],
+["Estoy bien, gracias.","خوبم، ممنون."],
+["Adiós, hasta luego.","خداحافظ، بعداً می‌بینمت."],
+["Por favor, entra.","لطفاً وارد شو."]
+],
+tip:"در اسپانیایی علامت سؤال در ابتدای جمله نیز می‌آید: ¿Cómo estás؟"
+},
+
+{
+title:"معرفی خود",
+intro:"یاد می‌گیریم نام خود را بگوییم و از دیگران نامشان را بپرسیم.",
+explanation:"برای معرفی خود می‌توان از «Me llamo ...» استفاده کرد که به معنی «نام من ... است» می‌باشد. همچنین «Soy ...» یعنی «من ... هستم». برای پرسیدن نام شخص دیگر می‌توان گفت «¿Cómo te llamas؟»",
+vocab:[
+["Me llamo","نام من ... است"],
+["Nombre","نام"],
+["Soy","هستم"],
+["¿Cómo?","چگونه؟"],
+["Mucho gusto","از آشنایی خوشحالم"],
+["Amigo","دوست"],
+["Amiga","دوست (مونث)"],
+["Persona","شخص"],
+["Estudiante","دانش‌آموز"],
+["Profesor","معلم"]
+],
+examples:[
+["Me llamo Carlos.","نام من کارلوس است."],
+["¿Cómo te llamas?","اسمت چیست؟"],
+["Soy estudiante.","من دانش‌آموز هستم."],
+["Mucho gusto.","از آشنایی خوشحالم."],
+["Soy profesor.","من معلم هستم."]
+],
+tip:"«Me llamo» یکی از رایج‌ترین روش‌های معرفی نام در اسپانیایی است."
+},
+
+{
+title:"ضمیرهای شخصی",
+intro:"با ضمیرهای اصلی اسپانیایی آشنا می‌شویم.",
+explanation:"ضمیرهای شخصی نشان می‌دهند چه کسی درباره یک عمل صحبت می‌کند. Yo یعنی من، tú یعنی تو، él یعنی او برای مذکر و ella یعنی او برای مونث. در اسپانیایی گاهی ضمیر از جمله حذف می‌شود چون شکل فعل شخص را مشخص می‌کند.",
+vocab:[
+["Yo","من"],
+["Tú","تو"],
+["Él","او (مذکر)"],
+["Ella","او (مونث)"],
+["Nosotros","ما"],
+["Vosotros","شما"],
+["Ellos","آن‌ها (مذکر/مختلط)"],
+["Ellas","آن‌ها (مونث)"],
+["Usted","شما رسمی"],
+["Ustedes","شماها"]
+],
+examples:[
+["Yo soy estudiante.","من دانش‌آموز هستم."],
+["Tú eres mi amigo.","تو دوست من هستی."],
+["Él es profesor.","او معلم است."],
+["Ella es estudiante.","او دانش‌آموز است."],
+["Nosotros somos amigos.","ما دوست هستیم."]
+],
+tip:"در کشورهای مختلف اسپانیایی‌زبان، کاربرد vosotros متفاوت است؛ در این دوره شکل رایج اسپانیایی معیار را یاد می‌گیریم."
+},
+
+{
+title:"افعال ser و estar",
+intro:"تفاوت دو فعل بسیار مهم «ser» و «estar» را یاد می‌گیریم.",
+explanation:"فعل ser معمولاً برای هویت، ویژگی‌ها و چیزهای نسبتاً ثابت استفاده می‌شود. فعل estar بیشتر برای حالت یا موقعیت استفاده می‌شود. مثال: «Soy estudiante» یعنی من دانش‌آموز هستم و «Estoy cansado» یعنی خسته هستم.",
+vocab:[
+["Ser","بودن"],
+["Estar","بودن/قرار داشتن"],
+["Soy","هستم"],
+["Eres","هستی"],
+["Es","است"],
+["Somos","هستیم"],
+["Estoy","هستم"],
+["Estás","هستی"],
+["Está","است"],
+["Bien","خوب"]
+],
+examples:[
+["Soy estudiante.","من دانش‌آموز هستم."],
+["Ella es profesora.","او معلم است."],
+["Estoy bien.","من خوبم."],
+["¿Estás cansado?","خسته‌ای؟"],
+["Madrid está en España.","مادرید در اسپانیا قرار دارد."]
+],
+tip:"یک راه ساده برای شروع: ser برای «چی هستم؟» و estar برای «چه حالتی دارم/کجا هستم؟»."
+},
+
+{
+title:"اعداد ۱ تا ۱۰",
+intro:"اعداد پایه اسپانیایی را یاد می‌گیریم.",
+explanation:"اعداد در مکالمات روزمره، ساعت، سن، قیمت و شماره‌ها بسیار مهم هستند. از یک تا ده را ابتدا حفظ کنید و سپس با آن‌ها جمله بسازید.",
+vocab:[
+["Uno","یک"],
+["Dos","دو"],
+["Tres","سه"],
+["Cuatro","چهار"],
+["Cinco","پنج"],
+["Seis","شش"],
+["Siete","هفت"],
+["Ocho","هشت"],
+["Nueve","نه"],
+["Diez","ده"]
+],
+examples:[
+["Tengo dos libros.","دو کتاب دارم."],
+["Hay cinco estudiantes.","پنج دانش‌آموز وجود دارد."],
+["Tengo diez años.","من ده سال دارم."],
+["Uno, dos, tres.","یک، دو، سه."],
+["Son cuatro.","چهار تا هستند."]
+],
+tip:"عددها را با صدای بلند تمرین کنید تا تلفظشان بهتر در ذهن بماند."
+},
+
+{
+title:"خانواده",
+intro:"واژگان مربوط به اعضای خانواده را یاد می‌گیریم.",
+explanation:"در این درس با کلمات مربوط به خانواده آشنا می‌شوید. «Familia» یعنی خانواده. برای پدر «padre» و برای مادر «madre» استفاده می‌شود.",
+vocab:[
+["Familia","خانواده"],
+["Padre","پدر"],
+["Madre","مادر"],
+["Hermano","برادر"],
+["Hermana","خواهر"],
+["Hijo","پسر"],
+["Hija","دختر"],
+["Abuelo","پدربزرگ"],
+["Abuela","مادربزرگ"],
+["Primo","پسرعمو/پسردایی/پسرخاله/پسردخترعمو"]
+],
+examples:[
+["Mi familia es grande.","خانواده من بزرگ است."],
+["Mi madre es profesora.","مادر من معلم است."],
+["Tengo un hermano.","یک برادر دارم."],
+["Mi padre está en casa.","پدرم در خانه است."],
+["Ella es mi hermana.","او خواهر من است."]
+],
+tip:"کلمه «mi» یعنی «مال من / ـِ من» و قبل از اسم مفرد می‌آید."
+},
+
+{
+title:"رنگ‌ها",
+intro:"رنگ‌های پرکاربرد اسپانیایی را یاد می‌گیریم.",
+explanation:"رنگ‌ها برای توصیف اشیا بسیار کاربرد دارند. توجه کنید بعضی رنگ‌ها بسته به جنسیت اسم ممکن است شکل متفاوتی داشته باشند.",
+vocab:[
+["Rojo","قرمز"],
+["Azul","آبی"],
+["Verde","سبز"],
+["Amarillo","زرد"],
+["Negro","مشکی"],
+["Blanco","سفید"],
+["Naranja","نارنجی"],
+["Rosa","صورتی"],
+["Morado","بنفش"],
+["Gris","خاکستری"]
+],
+examples:[
+["El coche es rojo.","ماشین قرمز است."],
+["La casa es blanca.","خانه سفید است."],
+["Tengo una camisa azul.","یک پیراهن آبی دارم."],
+["El libro es verde.","کتاب سبز است."],
+["Mi mochila es negra.","کوله‌پشتی من مشکی است."]
+],
+tip:"صفت‌ها در اسپانیایی معمولاً باید با اسم از نظر جنسیت و تعداد هماهنگ شوند."
+},
+
+{
+title:"اشیای روزمره",
+intro:"نام وسایل ساده‌ای که هر روز می‌بینیم را یاد می‌گیریم.",
+explanation:"یادگیری اسم اشیای اطراف باعث می‌شود سریع‌تر بتوانید جمله‌های واقعی بسازید.",
+vocab:[
+["Libro","کتاب"],
+["Mesa","میز"],
+["Silla","صندلی"],
+["Puerta","در"],
+["Ventana","پنجره"],
+["Teléfono","تلفن"],
+["Mochila","کوله‌پشتی"],
+["Bolígrafo","خودکار"],
+["Cuaderno","دفتر"],
+["Computadora","رایانه"]
+],
+examples:[
+["El libro está en la mesa.","کتاب روی میز است."],
+["La puerta está abierta.","در باز است."],
+["Tengo un teléfono.","یک تلفن دارم."],
+["Mi mochila es nueva.","کوله‌پشتی من جدید است."],
+["El cuaderno está aquí.","دفتر اینجاست."]
+],
+tip:"«aquí» یعنی اینجا و «allí» یعنی آنجا."
+},
+
+{
+title:"خانه",
+intro:"با بخش‌ها و اتاق‌های مختلف خانه آشنا می‌شویم.",
+explanation:"کلمات خانه از پرکاربردترین واژگان مکالمه روزانه هستند.",
+vocab:[
+["Casa","خانه"],
+["Habitación","اتاق"],
+["Cocina","آشپزخانه"],
+["Baño","حمام/سرویس"],
+["Sala","اتاق نشیمن"],
+["Dormitorio","اتاق خواب"],
+["Jardín","باغچه"],
+["Puerta","در"],
+["Ventana","پنجره"],
+["Cama","تخت"]
+],
+examples:[
+["Mi casa es grande.","خانه من بزرگ است."],
+["La cocina está aquí.","آشپزخانه اینجاست."],
+["Mi habitación es pequeña.","اتاق من کوچک است."],
+["La cama está en el dormitorio.","تخت در اتاق خواب است."],
+["Estoy en casa.","من در خانه هستم."]
+],
+tip:"«en casa» یعنی «در خانه» و یکی از عبارت‌های بسیار رایج است."
+},
+
+{
+title:"غذا و نوشیدنی",
+intro:"واژگان پایه غذا و نوشیدنی را یاد می‌گیریم.",
+explanation:"برای سفارش غذا یا صحبت درباره خوراکی‌ها، این واژگان بسیار کاربردی هستند.",
+vocab:[
+["Agua","آب"],
+["Pan","نان"],
+["Leche","شیر"],
+["Arroz","برنج"],
+["Carne","گوشت"],
+["Pollo","مرغ"],
+["Pescado","ماهی"],
+["Fruta","میوه"],
+["Manzana","سیب"],
+["Comida","غذا"]
+],
+examples:[
+["Quiero agua.","آب می‌خواهم."],
+["Me gusta la fruta.","میوه دوست دارم."],
+["Como arroz.","برنج می‌خورم."],
+["El pollo está bueno.","مرغ خوشمزه است."],
+["Tengo una manzana.","یک سیب دارم."]
+],
+tip:"«Quiero» یعنی «می‌خواهم» و در موقعیت‌های روزمره بسیار کاربرد دارد."
+},
+
+{
+title:"افعال پرکاربرد",
+intro:"با چند فعل بسیار مهم اسپانیایی آشنا می‌شویم.",
+explanation:"افعال پایه مثل داشتن، رفتن، آمدن، خوردن و دیدن به شما اجازه می‌دهند جمله‌های بیشتری بسازید.",
+vocab:[
+["Tener","داشتن"],
+["Ir","رفتن"],
+["Venir","آمدن"],
+["Comer","خوردن"],
+["Beber","نوشیدن"],
+["Vivir","زندگی کردن"],
+["Ver","دیدن"],
+["Hablar","صحبت کردن"],
+["Escuchar","گوش دادن"],
+["Leer","خواندن"]
+],
+examples:[
+["Tengo un libro.","یک کتاب دارم."],
+["Voy a casa.","به خانه می‌روم."],
+["Quiero comer.","می‌خواهم غذا بخورم."],
+["Vivo en España.","در اسپانیا زندگی می‌کنم."],
+["Me gusta leer.","خواندن را دوست دارم."]
+],
+tip:"بیشتر مصدرهای اسپانیایی به -ar، -er یا -ir ختم می‌شوند."
+},
+
+{
+title:"روزهای هفته",
+intro:"روزهای هفته و کاربرد آن‌ها در جمله را یاد می‌گیریم.",
+explanation:"برای برنامه‌ریزی و صحبت درباره مدرسه، کار و فعالیت‌های روزمره باید روزهای هفته را بدانید.",
+vocab:[
+["Lunes","دوشنبه"],
+["Martes","سه‌شنبه"],
+["Miércoles","چهارشنبه"],
+["Jueves","پنجشنبه"],
+["Viernes","جمعه"],
+["Sábado","شنبه"],
+["Domingo","یکشنبه"],
+["Hoy","امروز"],
+["Mañana","فردا"],
+["Ayer","دیروز"]
+],
+examples:[
+["Hoy es lunes.","امروز دوشنبه است."],
+["Mañana es martes.","فردا سه‌شنبه است."],
+["Estudio el lunes.","دوشنبه درس می‌خوانم."],
+["El sábado descanso.","شنبه استراحت می‌کنم."],
+["Ayer fue domingo.","دیروز یکشنبه بود."]
+],
+tip:"نام روزهای هفته در اسپانیایی معمولاً با حرف کوچک نوشته می‌شوند."
+},
+
+{
+title:"ماه‌ها",
+intro:"نام ماه‌های سال را یاد می‌گیریم.",
+explanation:"ماه‌ها برای صحبت درباره تاریخ، تولد، تعطیلات و برنامه‌ها استفاده می‌شوند.",
+vocab:[
+["Enero","ژانویه"],
+["Febrero","فوریه"],
+["Marzo","مارس"],
+["Abril","آوریل"],
+["Mayo","مه"],
+["Junio","ژوئن"],
+["Julio","ژوئیه"],
+["Agosto","اوت"],
+["Septiembre","سپتامبر"],
+["Octubre","اکتبر"]
+],
+examples:[
+["Mi cumpleaños es en mayo.","تولد من در ماه مه است."],
+["Estamos en enero.","در ماه ژانویه هستیم."],
+["Viajo en julio.","در ماه ژوئیه سفر می‌کنم."],
+["Septiembre es después de agosto.","سپتامبر بعد از اوت است."],
+["Nací en marzo.","من در ماه مارس متولد شدم."]
+],
+tip:"برای بیان «در ماه...» معمولاً از «en» استفاده می‌شود."
+},
+
+{
+title:"ساعت و زمان",
+intro:"یاد می‌گیریم درباره ساعت و زمان صحبت کنیم.",
+explanation:"برای گفتن ساعت در اسپانیایی از ساختارهایی مانند «Es la una» برای ساعت یک و «Son las dos» برای ساعت دو استفاده می‌شود.",
+vocab:[
+["Hora","ساعت"],
+["Minuto","دقیقه"],
+["Hoy","امروز"],
+["Ahora","الان"],
+["Temprano","زود"],
+["Tarde","دیر/عصر"],
+["Mañana","صبح/فردا"],
+["Noche","شب"],
+["Mediodía","ظهر"],
+["Medianoche","نیمه‌شب"]
+],
+examples:[
+["¿Qué hora es?","ساعت چند است؟"],
+["Es la una.","ساعت یک است."],
+["Son las dos.","ساعت دو است."],
+["Ahora es tarde.","الان دیر است."],
+["Nos vemos mañana.","فردا همدیگر را می‌بینیم."]
+],
+tip:"«¿Qué hora es?» عبارت استاندارد برای پرسیدن ساعت است."
+},
+
+{
+title:"صفت‌ها",
+intro:"با صفت‌های رایج برای توصیف افراد و اشیا آشنا می‌شویم.",
+explanation:"صفت‌ها اطلاعات بیشتری درباره اسم می‌دهند؛ مانند بزرگ، کوچک، خوب، جدید و قدیمی.",
+vocab:[
+["Grande","بزرگ"],
+["Pequeño","کوچک"],
+["Bueno","خوب"],
+["Malo","بد"],
+["Nuevo","جدید"],
+["Viejo","قدیمی/پیر"],
+["Bonito","زیبا"],
+["Fácil","آسان"],
+["Difícil","سخت"],
+["Rápido","سریع"]
+],
+examples:[
+["La casa es grande.","خانه بزرگ است."],
+["El libro es nuevo.","کتاب جدید است."],
+["El ejercicio es fácil.","تمرین آسان است."],
+["El coche es rápido.","ماشین سریع است."],
+["La ciudad es bonita.","شهر زیباست."]
+],
+tip:"به هماهنگی صفت با جنسیت و تعداد اسم توجه کنید."
+},
+
+{
+title:"منفی کردن جمله",
+intro:"یاد می‌گیریم چگونه در اسپانیایی جمله منفی بسازیم.",
+explanation:"برای منفی کردن بسیاری از جمله‌ها کافی است «no» را قبل از فعل قرار دهیم. این ساختار ساده و بسیار پرکاربرد است.",
+vocab:[
+["No","نه/نمی"],
+["Nunca","هرگز"],
+["Nada","هیچ چیز"],
+["Nadie","هیچ‌کس"],
+["Tampoco","همچنین نه"],
+["Querer","خواستن"],
+["Saber","دانستن"],
+["Tener","داشتن"],
+["Hablar","صحبت کردن"],
+["Entender","فهمیدن"]
+],
+examples:[
+["No entiendo.","نمی‌فهمم."],
+["No tengo tiempo.","وقت ندارم."],
+["No quiero comer.","نمی‌خواهم غذا بخورم."],
+["Nunca voy allí.","هرگز به آنجا نمی‌روم."],
+["No sé.","نمی‌دانم."]
+],
+tip:"در جمله‌های ساده، «no» معمولاً مستقیماً قبل از فعل قرار می‌گیرد."
+},
+
+{
+title:"سؤال ساختن",
+intro:"با پرسش‌های پایه اسپانیایی آشنا می‌شویم.",
+explanation:"کلمات پرسشی مانند qué، quién، dónde و cuándo برای ساخت سؤال استفاده می‌شوند.",
+vocab:[
+["Qué","چه/چی"],
+["Quién","چه کسی"],
+["Dónde","کجا"],
+["Cuándo","چه زمانی"],
+["Por qué","چرا"],
+["Cómo","چگونه"],
+["Cuánto","چقدر"],
+["Cuál","کدام"],
+["Pregunta","سؤال"],
+["Respuesta","پاسخ"]
+],
+examples:[
+["¿Qué haces?","چه کار می‌کنی؟"],
+["¿Quién es él?","او کیست؟"],
+["¿Dónde vives?","کجا زندگی می‌کنی؟"],
+["¿Cuándo vienes?","کی می‌آیی؟"],
+["¿Por qué estudias español?","چرا اسپانیایی می‌خوانی؟"]
+],
+tip:"در نوشتار استاندارد اسپانیایی سؤال با «¿» شروع و با «?» تمام می‌شود."
+},
+
+{
+title:"شهر و مکان‌ها",
+intro:"نام مکان‌های مهم در شهر را یاد می‌گیریم.",
+explanation:"با این واژگان می‌توانید درباره مکان‌ها و مقصدهای روزمره صحبت کنید.",
+vocab:[
+["Ciudad","شهر"],
+["Escuela","مدرسه"],
+["Hospital","بیمارستان"],
+["Banco","بانک"],
+["Tienda","فروشگاه"],
+["Restaurante","رستوران"],
+["Parque","پارک"],
+["Estación","ایستگاه"],
+["Biblioteca","کتابخانه"],
+["Calle","خیابان"]
+],
+examples:[
+["La escuela está cerca.","مدرسه نزدیک است."],
+["Voy al parque.","به پارک می‌روم."],
+["El banco está en la calle.","بانک در خیابان است."],
+["Estoy en la biblioteca.","در کتابخانه هستم."],
+["El restaurante está aquí.","رستوران اینجاست."]
+],
+tip:"«cerca» یعنی نزدیک و «lejos» یعنی دور."
+},
+
+{
+title:"حمل‌ونقل",
+intro:"واژگان مربوط به وسایل حمل‌ونقل را یاد می‌گیریم.",
+explanation:"برای صحبت درباره رفت‌وآمد، کلمات مربوط به اتوبوس، قطار، ماشین و هواپیما کاربرد زیادی دارند.",
+vocab:[
+["Coche","ماشین"],
+["Autobús","اتوبوس"],
+["Tren","قطار"],
+["Avión","هواپیما"],
+["Bicicleta","دوچرخه"],
+["Taxi","تاکسی"],
+["Metro","مترو"],
+["Caminar","پیاده رفتن"],
+["Viaje","سفر"],
+["Billete","بلیط"]
+],
+examples:[
+["Voy en autobús.","با اتوبوس می‌روم."],
+["Viajo en tren.","با قطار سفر می‌کنم."],
+["Tengo un coche.","یک ماشین دارم."],
+["Quiero un billete.","یک بلیط می‌خواهم."],
+["Voy a caminar.","می‌خواهم پیاده بروم."]
+],
+tip:"«en» همراه بسیاری از وسایل حمل‌ونقل برای بیان «با ...» استفاده می‌شود."
+},
+
+{
+title:"خرید",
+intro:"عبارت‌های پایه برای خرید و صحبت درباره قیمت.",
+explanation:"در خرید باید بتوانید قیمت را بپرسید، چیزی را بخواهید و درباره مقدار صحبت کنید.",
+vocab:[
+["Comprar","خریدن"],
+["Vender","فروختن"],
+["Precio","قیمت"],
+["Dinero","پول"],
+["Barato","ارزان"],
+["Caro","گران"],
+["Quiero","می‌خواهم"],
+["Cuánto","چقدر"],
+["Tienda","فروشگاه"],
+["Necesitar","نیاز داشتن"]
+],
+examples:[
+["¿Cuánto cuesta?","چقدر قیمت دارد؟"],
+["Quiero comprar esto.","می‌خواهم این را بخرم."],
+["Es barato.","ارزان است."],
+["Es muy caro.","خیلی گران است."],
+["Necesito dinero.","به پول نیاز دارم."]
+],
+tip:"«¿Cuánto cuesta?» یکی از مهم‌ترین جمله‌ها هنگام خرید است."
+},
+
+{
+title:"آب‌وهوا",
+intro:"درباره هوا و شرایط جوی صحبت می‌کنیم.",
+explanation:"برای صحبت درباره هوا از ساختارهای مختلفی استفاده می‌شود؛ مثلاً «Hace frío» یعنی هوا سرد است و «Hace calor» یعنی هوا گرم است.",
+vocab:[
+["Tiempo","هوا/زمان"],
+["Sol","خورشید"],
+["Lluvia","باران"],
+["Nieve","برف"],
+["Viento","باد"],
+["Calor","گرما"],
+["Frío","سرما"],
+["Nublado","ابری"],
+["Llover","باریدن"],
+["Caluroso","گرم"]
+],
+examples:[
+["Hace calor.","هوا گرم است."],
+["Hace frío.","هوا سرد است."],
+["Está nublado.","هوا ابری است."],
+["Llueve mucho.","خیلی باران می‌بارد."],
+["Hace viento.","هوا باد دارد."]
+],
+tip:"برای بسیاری از توصیف‌های آب‌وهوا از فعل «hacer» استفاده می‌شود."
+},
+
+{
+title:"لباس‌ها",
+intro:"واژگان مربوط به لباس و پوشاک.",
+explanation:"این کلمات در خرید، توصیف ظاهر و مکالمات روزمره کاربرد دارند.",
+vocab:[
+["Camisa","پیراهن"],
+["Pantalón","شلوار"],
+["Zapatos","کفش"],
+["Chaqueta","ژاکت"],
+["Sombrero","کلاه"],
+["Vestido","لباس"],
+["Ropa","لباس/پوشاک"],
+["Calcetines","جوراب"],
+["Talla","سایز"],
+["Color","رنگ"]
+],
+examples:[
+["Tengo una camisa azul.","یک پیراهن آبی دارم."],
+["Mis zapatos son negros.","کفش‌های من مشکی هستند."],
+["Necesito una chaqueta.","به یک ژاکت نیاز دارم."],
+["¿Qué talla es?","چه سایزی است؟"],
+["Me gusta este vestido.","این لباس را دوست دارم."]
+],
+tip:"«este/esta» برای اشاره به «این» استفاده می‌شود و باید با اسم هماهنگ شود."
+},
+
+{
+title:"مدرسه",
+intro:"واژگان و جمله‌های مربوط به مدرسه.",
+explanation:"در این درس کلمات دانش‌آموز، معلم، کلاس، کتاب و درس را تمرین می‌کنیم.",
+vocab:[
+["Escuela","مدرسه"],
+["Clase","کلاس"],
+["Alumno","دانش‌آموز"],
+["Estudiante","دانش‌آموز"],
+["Profesor","معلم"],
+["Libro","کتاب"],
+["Lección","درس"],
+["Tarea","تکلیف"],
+["Examen","امتحان"],
+["Pregunta","سؤال"]
+],
+examples:[
+["Voy a la escuela.","به مدرسه می‌روم."],
+["Tengo una clase.","یک کلاس دارم."],
+["La lección es fácil.","درس آسان است."],
+["Tengo tarea.","تکلیف دارم."],
+["El examen es mañana.","امتحان فرداست."]
+],
+tip:"«tarea» معمولاً برای تکلیف یا کاری که باید انجام شود استفاده می‌شود."
+},
+
+{
+title:"فعالیت‌های روزانه",
+intro:"درباره کارهایی که هر روز انجام می‌دهیم صحبت می‌کنیم.",
+explanation:"برای توصیف برنامه روزانه، افعالی مانند بیدار شدن، رفتن، درس خواندن، خوردن و خوابیدن بسیار مهم هستند.",
+vocab:[
+["Despertarse","بیدار شدن"],
+["Levantarse","بلند شدن"],
+["Estudiar","درس خواندن"],
+["Trabajar","کار کردن"],
+["Comer","غذا خوردن"],
+["Dormir","خوابیدن"],
+["Jugar","بازی کردن"],
+["Leer","خواندن"],
+["Escribir","نوشتن"],
+["Descansar","استراحت کردن"]
+],
+examples:[
+["Me levanto temprano.","زود بیدار می‌شوم."],
+["Estudio español.","اسپانیایی می‌خوانم."],
+["Como a las dos.","ساعت دو غذا می‌خورم."],
+["Juego después de estudiar.","بعد از درس خواندن بازی می‌کنم."],
+["Duermo por la noche.","شب می‌خوابم."]
+],
+tip:"افعال بازتابی مانند despertarse و levantarse همراه با ضمیر بازتابی استفاده می‌شوند."
+},
+
+{
+title:"زمان حال استمراری",
+intro:"ساختار بیان کاری که همین حالا در حال انجام است.",
+explanation:"برای بیان کاری که اکنون در حال انجام است، یکی از ساختارهای مهم «estar + gerundio» است. برای نمونه «Estoy estudiando» یعنی «دارم درس می‌خوانم».",
+vocab:[
+["Estar","بودن"],
+["Estudiando","در حال درس خواندن"],
+["Comiendo","در حال خوردن"],
+["Bebiendo","در حال نوشیدن"],
+["Hablando","در حال صحبت"],
+["Leyendo","در حال خواندن"],
+["Escribiendo","در حال نوشتن"],
+["Jugando","در حال بازی"],
+["Trabajando","در حال کار"],
+["Durmiendo","در حال خواب"]
+],
+examples:[
+["Estoy estudiando.","دارم درس می‌خوانم."],
+["Estoy comiendo.","دارم غذا می‌خورم."],
+["Ella está leyendo.","او در حال خواندن است."],
+["Estamos jugando.","داریم بازی می‌کنیم."],
+["Estoy escribiendo.","دارم می‌نویسم."]
+],
+tip:"در این ساختار فعل estar صرف می‌شود و فعل اصلی به شکل gerundio می‌آید."
+},
+
+{
+title:"مالکیت",
+intro:"یاد می‌گیریم بگوییم چیزی متعلق به چه کسی است.",
+explanation:"کلمات mi، tu، su و شکل‌های جمع آن‌ها برای نشان دادن مالکیت استفاده می‌شوند.",
+vocab:[
+["Mi","مال من"],
+["Tu","مال تو"],
+["Su","مال او/شما"],
+["Nuestro","مال ما"],
+["Vuestro","مال شما"],
+["Mis","مال من (جمع)"],
+["Tus","مال تو (جمع)"],
+["Sus","مال او/شما (جمع)"],
+["Casa","خانه"],
+["Libro","کتاب"]
+],
+examples:[
+["Mi libro es nuevo.","کتاب من جدید است."],
+["Tu casa es grande.","خانه تو بزرگ است."],
+["Su teléfono está aquí.","تلفن او اینجاست."],
+["Nuestro profesor es amable.","معلم ما مهربان است."],
+["Mis amigos están aquí.","دوستان من اینجا هستند."]
+],
+tip:"صفت ملکی باید از نظر تعداد با اسم هماهنگ شود؛ مثلاً mi و mis."
+},
+
+{
+title:"جمع بستن اسم‌ها",
+intro:"قوانین پایه جمع بستن اسم‌ها.",
+explanation:"بسیاری از اسم‌هایی که به واکه ختم می‌شوند با افزودن s جمع بسته می‌شوند و برخی اسم‌هایی که به صامت ختم می‌شوند با es.",
+vocab:[
+["Libro","کتاب"],
+["Libros","کتاب‌ها"],
+["Casa","خانه"],
+["Casas","خانه‌ها"],
+["Amigo","دوست"],
+["Amigos","دوستان"],
+["Flor","گل"],
+["Flores","گل‌ها"],
+["Clase","کلاس"],
+["Clases","کلاس‌ها"]
+],
+examples:[
+["Tengo dos libros.","دو کتاب دارم."],
+["Las casas son grandes.","خانه‌ها بزرگ هستند."],
+["Mis amigos están aquí.","دوستان من اینجا هستند."],
+["Hay muchas clases.","کلاس‌های زیادی وجود دارد."],
+["Las flores son bonitas.","گل‌ها زیبا هستند."]
+],
+tip:"در بسیاری از موارد، -s یا -es برای ساخت جمع استفاده می‌شود."
+},
+
+{
+title:"حروف اضافه",
+intro:"با کلمات کوچک اما بسیار مهمی مانند en، de، a و con آشنا می‌شویم.",
+explanation:"حروف اضافه رابطه بین کلمات را مشخص می‌کنند. «en» می‌تواند معنی در/روی بدهد، «de» برای مالکیت یا مبدأ و «a» برای جهت کاربرد دارد.",
+vocab:[
+["En","در/روی"],
+["De","از/مالِ"],
+["A","به"],
+["Con","با"],
+["Sin","بدون"],
+["Para","برای"],
+["Por","به‌خاطر/از طریق"],
+["Sobre","درباره/روی"],
+["Entre","بین"],
+["Desde","از"]
+],
+examples:[
+["Estoy en casa.","در خانه هستم."],
+["Voy a la escuela.","به مدرسه می‌روم."],
+["Soy de Irán.","من اهل ایران هستم."],
+["Voy con mi amigo.","با دوستم می‌روم."],
+["Esto es para ti.","این برای توست."]
+],
+tip:"حروف اضافه را با مثال‌های واقعی یاد بگیرید؛ حفظ کردن جداگانه آن‌ها سخت‌تر است."
+},
+
+{
+title:"توصیف افراد",
+intro:"یاد می‌گیریم درباره ویژگی‌های افراد صحبت کنیم.",
+explanation:"برای توصیف افراد از صفت‌هایی مانند بلند، کوتاه، مهربان، جوان و باهوش استفاده می‌کنیم.",
+vocab:[
+["Alto","قدبلند"],
+["Bajo","کوتاه"],
+["Joven","جوان"],
+["Amable","مهربان"],
+["Inteligente","باهوش"],
+["Fuerte","قوی"],
+["Rápido","سریع"],
+["Lento","آهسته"],
+["Feliz","خوشحال"],
+["Triste","ناراحت"]
+],
+examples:[
+["Él es alto.","او قدبلند است."],
+["Ella es inteligente.","او باهوش است."],
+["Mi amigo es amable.","دوست من مهربان است."],
+["Estoy feliz.","خوشحالم."],
+["Él está triste.","او ناراحت است."]
+],
+tip:"برای حالت‌های موقتی مانند خوشحال یا ناراحت، معمولاً estar مناسب‌تر است."
+},
+
+{
+title:"احساسات",
+intro:"احساسات و حالت‌های مختلف را بیان می‌کنیم.",
+explanation:"برای بیان احساسات، ساختارهای مختلفی وجود دارد. در این مرحله روی جمله‌های ساده با estar تمرکز می‌کنیم.",
+vocab:[
+["Feliz","خوشحال"],
+["Triste","ناراحت"],
+["Cansado","خسته"],
+["Enfermo","بیمار"],
+["Nervioso","مضطرب"],
+["Contento","راضی/خوشحال"],
+["Enojado","عصبانی"],
+["Aburrido","کسل"],
+["Sorprendido","متعجب"],
+["Preocupado","نگران"]
+],
+examples:[
+["Estoy feliz.","خوشحالم."],
+["Estoy cansado.","خسته‌ام."],
+["Ella está contenta.","او خوشحال است."],
+["Estoy preocupado.","نگرانم."],
+["Él está enojado.","او عصبانی است."]
+],
+tip:"بعضی صفت‌های احساسی با توجه به جنسیت گوینده ممکن است تغییر کنند."
+},
+
+{
+title:"دوست داشتن و علاقه",
+intro:"یاد می‌گیریم درباره چیزهایی که دوست داریم صحبت کنیم.",
+explanation:"فعل «gustar» کمی با ساختار فارسی متفاوت است. عبارت «Me gusta» یعنی «من دوست دارم» و برای یک چیز یا یک فعل مفرد استفاده می‌شود.",
+vocab:[
+["Gustar","دوست داشتن"],
+["Me gusta","من دوست دارم"],
+["Te gusta","تو دوست داری"],
+["Música","موسیقی"],
+["Fútbol","فوتبال"],
+["Leer","خواندن"],
+["Jugar","بازی کردن"],
+["Cine","سینما"],
+["Comida","غذا"],
+["Libro","کتاب"]
+],
+examples:[
+["Me gusta el fútbol.","من فوتبال دوست دارم."],
+["Me gusta leer.","من خواندن را دوست دارم."],
+["Te gusta la música.","تو موسیقی دوست داری."],
+["Me gustan los libros.","من کتاب‌ها را دوست دارم."],
+["No me gusta el café.","من قهوه دوست ندارم."]
+],
+tip:"با اسم مفرد معمولاً «gusta» و با اسم جمع «gustan» استفاده می‌شود."
+},
+
+{
+title:"زمان گذشته ساده",
+intro:"با یکی از ساختارهای پایه برای صحبت درباره گذشته آشنا می‌شویم.",
+explanation:"برای بیان اتفاقی که در گذشته رخ داده، اسپانیایی از زمان‌های گذشته مختلف استفاده می‌کند. در این درس با چند شکل پرکاربرد آشنا می‌شویم.",
+vocab:[
+["Ayer","دیروز"],
+["Antes","قبلاً"],
+["Fui","رفتم/بودم"],
+["Hablé","صحبت کردم"],
+["Comí","خوردم"],
+["Viví","زندگی کردم"],
+["Vi","دیدم"],
+["Estudié","درس خواندم"],
+["Jugué","بازی کردم"],
+["Llegué","رسیدم"]
+],
+examples:[
+["Ayer estudié.","دیروز درس خواندم."],
+["Comí en casa.","در خانه غذا خوردم."],
+["Vi una película.","یک فیلم دیدم."],
+["Fui a la escuela.","به مدرسه رفتم."],
+["Jugué fútbol.","فوتبال بازی کردم."]
+],
+tip:"پسوندهای گذشته در فعل‌ها بسته به نوع فعل تغییر می‌کنند؛ آن‌ها را کم‌کم با مثال یاد بگیرید."
+},
+
+{
+title:"برنامه آینده",
+intro:"یاد می‌گیریم درباره کارهایی که قرار است انجام دهیم صحبت کنیم.",
+explanation:"یکی از روش‌های ساده برای بیان آینده، استفاده از «ir a + infinitivo» است. مثلاً «Voy a estudiar» یعنی «قرار است درس بخوانم».",
+vocab:[
+["Mañana","فردا"],
+["Futuro","آینده"],
+["Voy a","قرار است"],
+["Estudiar","درس خواندن"],
+["Viajar","سفر کردن"],
+["Comer","غذا خوردن"],
+["Jugar","بازی کردن"],
+["Aprender","یاد گرفتن"],
+["Visitar","بازدید کردن"],
+["Hacer","انجام دادن"]
+],
+examples:[
+["Voy a estudiar.","قرار است درس بخوانم."],
+["Voy a viajar.","قرار است سفر کنم."],
+["Vamos a comer.","قرار است غذا بخوریم."],
+["Voy a aprender español.","قرار است اسپانیایی یاد بگیرم."],
+["Mañana voy a jugar.","فردا قرار است بازی کنم."]
+],
+tip:"ساختار «ir a + فعل» یکی از ساده‌ترین راه‌های صحبت درباره آینده است."
+},
+
+{
+title:"افعال توانستن و نیاز داشتن",
+intro:"توانایی و نیاز خود را بیان می‌کنیم.",
+explanation:"«Poder» برای توانستن و «necesitar» برای نیاز داشتن استفاده می‌شود.",
+vocab:[
+["Poder","توانستن"],
+["Necesitar","نیاز داشتن"],
+["Puedo","می‌توانم"],
+["Puedes","می‌توانی"],
+["Necesito","نیاز دارم"],
+["Ayuda","کمک"],
+["Intentar","تلاش کردن"],
+["Hacer","انجام دادن"],
+["Aprender","یاد گرفتن"],
+["Practicar","تمرین کردن"]
+],
+examples:[
+["Puedo hablar español.","می‌توانم اسپانیایی صحبت کنم."],
+["Necesito ayuda.","به کمک نیاز دارم."],
+["¿Puedes ayudarme?","می‌توانی به من کمک کنی؟"],
+["Puedo hacerlo.","می‌توانم آن را انجام دهم."],
+["Necesito practicar.","باید تمرین کنم."]
+],
+tip:"بعد از «puedo» معمولاً مصدر فعل می‌آید؛ مثل «Puedo estudiar»."
+},
+
+{
+title:"دستور و درخواست",
+intro:"روش‌های ساده برای درخواست کردن و بیان دستور.",
+explanation:"در مکالمه روزمره لازم است بتوانید از دیگران چیزی بخواهید. عبارت‌هایی مثل «Por favor» لحن درخواست را مؤدبانه‌تر می‌کنند.",
+vocab:[
+["Por favor","لطفاً"],
+["Ven","بیا"],
+["Mira","نگاه کن"],
+["Escucha","گوش کن"],
+["Habla","صحبت کن"],
+["Espera","صبر کن"],
+["Ayuda","کمک کن"],
+["Abre","باز کن"],
+["Cierra","ببند"],
+["Dime","به من بگو"]
+],
+examples:[
+["Ven aquí, por favor.","لطفاً بیا اینجا."],
+["Escucha, por favor.","لطفاً گوش کن."],
+["Mira esto.","به این نگاه کن."],
+["Espera un momento.","یک لحظه صبر کن."],
+["Dime la verdad.","حقیقت را به من بگو."]
+],
+tip:"در مکالمه واقعی، لحن و استفاده از «por favor» برای مؤدبانه صحبت کردن مهم است."
+},
+
+{
+title:"رستوران",
+intro:"عبارت‌های مهم برای سفارش غذا.",
+explanation:"در رستوران باید بتوانید منو بخواهید، غذا سفارش دهید و صورتحساب را درخواست کنید.",
+vocab:[
+["Menú","منو"],
+["Mesa","میز"],
+["Restaurante","رستوران"],
+["Agua","آب"],
+["Comida","غذا"],
+["Cuenta","صورتحساب"],
+["Quiero","می‌خواهم"],
+["Para mí","برای من"],
+["Delicioso","خوشمزه"],
+["Camarero","پیشخدمت"]
+],
+examples:[
+["Quiero agua, por favor.","لطفاً آب می‌خواهم."],
+["El menú, por favor.","لطفاً منو."],
+["Quiero una mesa.","یک میز می‌خواهم."],
+["La comida está deliciosa.","غذا خوشمزه است."],
+["La cuenta, por favor.","صورتحساب لطفاً."]
+],
+tip:"درخواست «La cuenta, por favor» یک عبارت بسیار کاربردی برای پایان غذا در رستوران است."
+},
+
+{
+title:"سفر",
+intro:"واژگان و جمله‌های کاربردی برای سفر.",
+explanation:"این درس کلماتی مانند فرودگاه، هتل، بلیط و چمدان را پوشش می‌دهد.",
+vocab:[
+["Viaje","سفر"],
+["Aeropuerto","فرودگاه"],
+["Hotel","هتل"],
+["Pasaporte","گذرنامه"],
+["Maleta","چمدان"],
+["Billete","بلیط"],
+["Avión","هواپیما"],
+["Habitación","اتاق"],
+["Reserva","رزرو"],
+["Destino","مقصد"]
+],
+examples:[
+["Estoy en el aeropuerto.","در فرودگاه هستم."],
+["Tengo mi pasaporte.","گذرنامه‌ام را دارم."],
+["Tengo una reserva.","یک رزرو دارم."],
+["¿Dónde está el hotel?","هتل کجاست؟"],
+["Mi avión sale mañana.","هواپیمای من فردا حرکت می‌کند."]
+],
+tip:"در سفر، عبارت‌های پرسشی ساده بسیار مهم‌تر از جمله‌های پیچیده هستند."
+},
+
+{
+title:"جهت‌ها",
+intro:"یاد می‌گیریم مسیر و جهت را توضیح دهیم.",
+explanation:"برای پیدا کردن مسیر باید واژگانی مانند راست، چپ، مستقیم، نزدیک و دور را بدانید.",
+vocab:[
+["Derecha","راست"],
+["Izquierda","چپ"],
+["Recto","مستقیم"],
+["Cerca","نزدیک"],
+["Lejos","دور"],
+["Aquí","اینجا"],
+["Allí","آنجا"],
+["Calle","خیابان"],
+["Girar","پیچیدن"],
+["Caminar","پیاده رفتن"]
+],
+examples:[
+["Gira a la derecha.","به راست بپیچ."],
+["Gira a la izquierda.","به چپ بپیچ."],
+["Sigue recto.","مستقیم ادامه بده."],
+["Está cerca.","نزدیک است."],
+["La escuela está allí.","مدرسه آنجاست."]
+],
+tip:"برای دادن مسیر، جمله‌های کوتاه و واضح معمولاً بهترین انتخاب هستند."
+},
+
+{
+title:"تلفظ و الفبای اسپانیایی",
+intro:"با چند نکته مهم تلفظ اسپانیایی آشنا می‌شویم.",
+explanation:"الفبای اسپانیایی شبیه الفبای لاتین است اما تلفظ برخی حروف متفاوت است. حرف H در بسیاری از کلمات تلفظ نمی‌شود. حرف J معمولاً صدایی شبیه «خ» دارد و حرف Ñ صدای ویژه‌ای دارد.",
+vocab:[
+["A","آ"],
+["E","اِ"],
+["I","ای"],
+["O","اُ"],
+["U","او"],
+["J","خ"],
+["H","معمولاً بی‌صدا"],
+["Ñ","نی/ñ"],
+["R","ر"],
+["LL","بسته به لهجه"]
+],
+examples:[
+["Hola","سلام"],
+["Jardín","باغ"],
+["Hombre","مرد"],
+["Niño","پسر بچه"],
+["Rojo","قرمز"]
+],
+tip:"تلفظ در کشورهای اسپانیایی‌زبان ممکن است متفاوت باشد؛ هدف این دوره یادگیری اسپانیایی معیار و قابل فهم است."
+},
+
+{
+title:"مکالمه روزمره",
+intro:"چند الگوی مهم برای مکالمه‌های ساده.",
+explanation:"در این مرحله باید بتوانید یک مکالمه کوتاه را آغاز کنید، احوالپرسی کنید، سؤال بپرسید و خداحافظی کنید.",
+vocab:[
+["Hola","سلام"],
+["¿Cómo estás?","حالت چطور است؟"],
+["Bien","خوب"],
+["Gracias","ممنون"],
+["¿Y tú?","و تو؟"],
+["Muy bien","خیلی خوب"],
+["Hasta luego","بعداً می‌بینمت"],
+["Nos vemos","می‌بینمت"],
+["Claro","حتماً"],
+["Vale","باشه"]
+],
+examples:[
+["Hola, ¿cómo estás?","سلام، حالت چطوره؟"],
+["Muy bien, gracias. ¿Y tú?","خیلی خوب، ممنون. تو چطور؟"],
+["Estoy bien.","خوبم."],
+["Claro, vamos.","حتماً، برویم."],
+["Hasta luego.","بعداً می‌بینمت."]
+],
+tip:"مکالمه را با جمله‌های ساده شروع کنید؛ لازم نیست از ابتدا جمله‌های پیچیده بسازید."
+},
+
+{
+title:"اعداد ۱۱ تا ۲۰",
+intro:"اعداد ۱۱ تا ۲۰ را یاد می‌گیریم.",
+explanation:"بعد از یادگیری ده عدد اول، حالا اعداد ۱۱ تا ۲۰ را تمرین می‌کنیم.",
+vocab:[
+["Once","یازده"],
+["Doce","دوازده"],
+["Trece","سیزده"],
+["Catorce","چهارده"],
+["Quince","پانزده"],
+["Dieciséis","شانزده"],
+["Diecisiete","هفده"],
+["Dieciocho","هجده"],
+["Diecinueve","نوزده"],
+["Veinte","بیست"]
+],
+examples:[
+["Tengo doce libros.","دوازده کتاب دارم."],
+["Hay quince estudiantes.","پانزده دانش‌آموز وجود دارد."],
+["Tengo veinte años.","من بیست سال دارم."],
+["Son dieciséis.","شانزده تا هستند."],
+["Quince minutos.","پانزده دقیقه."]
+],
+tip:"اعداد را به صورت گروه‌های کوچک تمرین کنید تا حفظ کردنشان آسان‌تر شود."
+},
+
+{
+title:"افعال hablar و estudiar",
+intro:"صرف دو فعل پرکاربرد برای صحبت و درس خواندن.",
+explanation:"افعال با توجه به فاعل تغییر می‌کنند. «Yo hablo» یعنی من صحبت می‌کنم و «Tú hablas» یعنی تو صحبت می‌کنی.",
+vocab:[
+["Hablo","صحبت می‌کنم"],
+["Hablas","صحبت می‌کنی"],
+["Habla","صحبت می‌کند"],
+["Hablamos","صحبت می‌کنیم"],
+["Estudio","درس می‌خوانم"],
+["Estudias","درس می‌خوانی"],
+["Estudia","درس می‌خواند"],
+["Estudiamos","درس می‌خوانیم"],
+["Español","اسپانیایی"],
+["Idioma","زبان"]
+],
+examples:[
+["Hablo español.","اسپانیایی صحبت می‌کنم."],
+["Tú hablas español.","تو اسپانیایی صحبت می‌کنی."],
+["Ella estudia español.","او اسپانیایی می‌خواند."],
+["Nosotros estudiamos juntos.","ما با هم درس می‌خوانیم."],
+["Estudio todos los días.","هر روز درس می‌خوانم."]
+],
+tip:"صرف فعل را با یک جمله کوتاه برای هر شخص تمرین کنید."
+},
+
+{
+title:"صرف فعل tener",
+intro:"فعل مهم tener به معنی داشتن.",
+explanation:"Tener یکی از افعال بسیار مهم اسپانیایی است. شکل‌های آن برای اشخاص مختلف متفاوت است.",
+vocab:[
+["Tengo","دارم"],
+["Tienes","داری"],
+["Tiene","دارد"],
+["Tenemos","داریم"],
+["Tenéis","دارید"],
+["Tienen","دارند"],
+["Edad","سن"],
+["Tiempo","وقت"],
+["Hambre","گرسنگی"],
+["Sed","تشنگی"]
+],
+examples:[
+["Tengo un libro.","یک کتاب دارم."],
+["Tienes tiempo.","وقت داری."],
+["Ella tiene hambre.","او گرسنه است."],
+["Tenemos una casa.","یک خانه داریم."],
+["Tienen dos coches.","آن‌ها دو ماشین دارند."]
+],
+tip:"Tener در چند عبارت ثابت نیز استفاده می‌شود، مانند «tener hambre» برای گرسنه بودن."
+},
+
+{
+title:"صرف فعل ir",
+intro:"فعل ir به معنی رفتن.",
+explanation:"Ir یکی از افعال بی‌قاعده و بسیار مهم است. شکل‌های آن را باید با تمرین یاد گرفت.",
+vocab:[
+["Voy","می‌روم"],
+["Vas","می‌روی"],
+["Va","می‌رود"],
+["Vamos","می‌رویم"],
+["Vais","می‌روید"],
+["Van","می‌روند"],
+["Casa","خانه"],
+["Escuela","مدرسه"],
+["Parque","پارک"],
+["Trabajo","محل کار"]
+],
+examples:[
+["Voy a casa.","به خانه می‌روم."],
+["Vas a la escuela.","به مدرسه می‌روی."],
+["Ella va al parque.","او به پارک می‌رود."],
+["Vamos juntos.","با هم می‌رویم."],
+["Van al trabajo.","آن‌ها به محل کار می‌روند."]
+],
+tip:"«ir a» برای بیان مقصد و همچنین ساختار آینده نزدیک بسیار مهم است."
+},
+
+{
+title:"مقایسه",
+intro:"یاد می‌گیریم دو چیز را با هم مقایسه کنیم.",
+explanation:"برای مقایسه بیشتر بودن یک ویژگی، ساختار «más ... que» و برای کمتر بودن «menos ... que» کاربرد دارد.",
+vocab:[
+["Más","بیشتر"],
+["Menos","کمتر"],
+["Que","از/که"],
+["Grande","بزرگ"],
+["Pequeño","کوچک"],
+["Rápido","سریع"],
+["Lento","آهسته"],
+["Mejor","بهتر"],
+["Peor","بدتر"],
+["Igual","یکسان"]
+],
+examples:[
+["Juan es más alto que Pedro.","خوان از پدرو قدبلندتر است."],
+["Este coche es más rápido.","این ماشین سریع‌تر است."],
+["Es menos caro.","ارزان‌تر است."],
+["Mi libro es mejor.","کتاب من بهتر است."],
+["Son iguales.","آن‌ها یکسان هستند."]
+],
+tip:"ساختار پایه را به صورت «más + صفت + que» به خاطر بسپارید."
+},
+
+{
+title:"ضمیرهای مفعولی ساده",
+intro:"با me، te، lo، la و شکل‌های رایج آن‌ها آشنا می‌شویم.",
+explanation:"ضمیرهای مفعولی می‌توانند جای مفعول جمله قرار بگیرند. در این سطح فقط با کاربردهای پایه آشنا می‌شویم.",
+vocab:[
+["Me","مرا/به من"],
+["Te","تو را/به تو"],
+["Lo","او/آن را، مذکر"],
+["La","او/آن را، مونث"],
+["Nos","ما را"],
+["Los","آن‌ها را، مذکر"],
+["Las","آن‌ها را، مونث"],
+["Ver","دیدن"],
+["Ayudar","کمک کردن"],
+["Llamar","تماس گرفتن"]
+],
+examples:[
+["Me llamas.","به من زنگ می‌زنی."],
+["Te ayudo.","به تو کمک می‌کنم."],
+["Lo veo.","او/آن را می‌بینم."],
+["La veo.","او/آن را می‌بینم."],
+["Nos ayudan.","آن‌ها به ما کمک می‌کنند."]
+],
+tip:"جای ضمیر مفعولی در جمله‌های ساده معمولاً قبل از فعل صرف‌شده است."
+},
+
+{
+title:"جمله‌های طولانی‌تر",
+intro:"ترکیب چند بخش برای ساخت جمله‌های طبیعی‌تر.",
+explanation:"حالا واژگان و ساختارهای قبلی را ترکیب می‌کنیم تا جمله‌های طولانی‌تر بسازیم.",
+vocab:[
+["Porque","زیرا/چون"],
+["Pero","اما"],
+["Y","و"],
+["O","یا"],
+["También","همچنین"],
+["Después","بعد"],
+["Antes","قبل"],
+["Entonces","پس"],
+["Siempre","همیشه"],
+["A veces","گاهی"]
+],
+examples:[
+["Estudio español porque me gusta.","اسپانیایی می‌خوانم چون دوستش دارم."],
+["Quiero ir, pero estoy cansado.","می‌خواهم بروم، اما خسته‌ام."],
+["Estudio y trabajo.","درس می‌خوانم و کار می‌کنم."],
+["A veces leo libros.","گاهی کتاب می‌خوانم."],
+["Después voy a casa.","بعد به خانه می‌روم."]
+],
+tip:"برای طبیعی‌تر شدن زبان، به‌جای حفظ جمله‌های جدا، کلمات ربط را هم یاد بگیرید."
+},
+
+{
+title:"خواندن متن کوتاه",
+intro:"یک متن ساده اسپانیایی را می‌خوانیم و درک می‌کنیم.",
+explanation:"خواندن متن‌های کوتاه به افزایش سرعت درک زبان کمک می‌کند. ابتدا معنی کلی را پیدا کنید و سپس سراغ کلمات ناشناخته بروید.",
+vocab:[
+["Texto","متن"],
+["Leer","خواندن"],
+["Casa","خانه"],
+["Escuela","مدرسه"],
+["Amigo","دوست"],
+["Día","روز"],
+["Mañana","صبح/فردا"],
+["Tarde","عصر"],
+["Noche","شب"],
+["Familia","خانواده"]
+],
+examples:[
+["Me llamo Carlos y soy estudiante.","نام من کارلوس است و دانش‌آموز هستم."],
+["Vivo con mi familia.","با خانواده‌ام زندگی می‌کنم."],
+["Voy a la escuela por la mañana.","صبح به مدرسه می‌روم."],
+["Por la tarde estudio.","بعدازظهر درس می‌خوانم."],
+["Por la noche leo un libro.","شب یک کتاب می‌خوانم."]
+],
+tip:"هنگام خواندن لازم نیست تک‌تک کلمات را ترجمه کنید؛ ابتدا مفهوم کلی را پیدا کنید."
+},
+
+{
+title:"نوشتن به اسپانیایی",
+intro:"اصول ساخت یک متن کوتاه.",
+explanation:"برای نوشتن یک متن ساده می‌توانید از معرفی، اطلاعات شخصی، علاقه‌ها و برنامه روزانه استفاده کنید.",
+vocab:[
+["Escribir","نوشتن"],
+["Frase","جمله"],
+["Texto","متن"],
+["Primero","اول"],
+["Después","بعد"],
+["Finalmente","در نهایت"],
+["Mi nombre","نام من"],
+["Me gusta","دوست دارم"],
+["Vivo","زندگی می‌کنم"],
+["Estudio","درس می‌خوانم"]
+],
+examples:[
+["Me llamo Carlos.","نام من کارلوس است."],
+["Vivo en una ciudad grande.","در یک شهر بزرگ زندگی می‌کنم."],
+["Me gusta aprender idiomas.","دوست دارم زبان یاد بگیرم."],
+["Estudio español todos los días.","هر روز اسپانیایی می‌خوانم."],
+["Finalmente, descanso.","در نهایت استراحت می‌کنم."]
+],
+tip:"متن‌های کوتاه و درست بهتر از متن‌های خیلی طولانی با خطاهای زیاد هستند."
+},
+
+{
+title:"مرور درس‌های ۱ تا ۱۰",
+intro:"مرور سلام، معرفی، ضمیرها، اعداد، خانواده و رنگ‌ها.",
+explanation:"در این درس مطالب ابتدایی دوره را دوباره تمرین می‌کنیم. هدف این است که پایه‌های اسپانیایی محکم شوند.",
+vocab:[
+["Hola","سلام"],
+["Nombre","نام"],
+["Yo","من"],
+["Familia","خانواده"],
+["Uno","یک"],
+["Rojo","قرمز"],
+["Libro","کتاب"],
+["Casa","خانه"],
+["Madre","مادر"],
+["Gracias","ممنون"]
+],
+examples:[
+["Hola, me llamo Carlos.","سلام، نام من کارلوس است."],
+["Yo soy estudiante.","من دانش‌آموز هستم."],
+["Mi familia es grande.","خانواده من بزرگ است."],
+["Tengo un libro rojo.","یک کتاب قرمز دارم."],
+["Estoy en casa.","در خانه هستم."]
+],
+tip:"اگر این واژگان را بدون نگاه کردن به ترجمه به یاد می‌آورید، پایه خوبی ساخته‌اید."
+},
+
+{
+title:"مرور درس‌های ۱۱ تا ۲۰",
+intro:"مرور روزها، زمان، سؤال‌ها، مکان‌ها و خرید.",
+explanation:"در این مرور، جمله‌های کاربردی روزمره را ترکیب می‌کنیم.",
+vocab:[
+["Lunes","دوشنبه"],
+["Hoy","امروز"],
+["Dónde","کجا"],
+["Escuela","مدرسه"],
+["Coche","ماشین"],
+["Precio","قیمت"],
+["Calor","گرما"],
+["Camisa","پیراهن"],
+["Clase","کلاس"],
+["Tarea","تکلیف"]
+],
+examples:[
+["Hoy es lunes.","امروز دوشنبه است."],
+["¿Dónde está la escuela?","مدرسه کجاست؟"],
+["Voy en coche.","با ماشین می‌روم."],
+["¿Cuánto cuesta?","چقدر قیمت دارد؟"],
+["Tengo tarea.","تکلیف دارم."]
+],
+tip:"سعی کنید از هر کلمه حداقل یک جمله جدید بسازید."
+},
+
+{
+title:"مرور افعال",
+intro:"مرور افعال ser، estar، tener، ir و افعال پرکاربرد.",
+explanation:"افعال پایه ستون اصلی جمله‌های اسپانیایی هستند. در این درس صرف و کاربرد آن‌ها را مرور می‌کنیم.",
+vocab:[
+["Ser","بودن"],
+["Estar","بودن/قرار داشتن"],
+["Tener","داشتن"],
+["Ir","رفتن"],
+["Hablar","صحبت کردن"],
+["Estudiar","درس خواندن"],
+["Comer","خوردن"],
+["Vivir","زندگی کردن"],
+["Leer","خواندن"],
+["Escribir","نوشتن"]
+],
+examples:[
+["Soy estudiante.","دانش‌آموز هستم."],
+["Estoy en casa.","در خانه هستم."],
+["Tengo un libro.","یک کتاب دارم."],
+["Voy a la escuela.","به مدرسه می‌روم."],
+["Estudio español.","اسپانیایی می‌خوانم."]
+],
+tip:"فعل‌ها را در جمله یاد بگیرید، نه فقط به شکل فهرست."
+},
+
+{
+title:"مکالمه در مدرسه",
+intro:"یک مکالمه ساده درباره کلاس و درس.",
+explanation:"در مدرسه ممکن است درباره درس، تکلیف، معلم و امتحان صحبت کنید. این درس جمله‌های آماده و قابل استفاده‌ای ارائه می‌دهد.",
+vocab:[
+["Clase","کلاس"],
+["Profesor","معلم"],
+["Alumno","دانش‌آموز"],
+["Tarea","تکلیف"],
+["Examen","امتحان"],
+["Libro","کتاب"],
+["Página","صفحه"],
+["Pregunta","سؤال"],
+["Respuesta","پاسخ"],
+["Entender","فهمیدن"]
+],
+examples:[
+["¿Qué página?","چه صفحه‌ای؟"],
+["No entiendo.","نمی‌فهمم."],
+["Tengo una pregunta.","یک سؤال دارم."],
+["¿Tenemos tarea?","تکلیف داریم؟"],
+["El examen es mañana.","امتحان فرداست."]
+],
+tip:"عبارت «No entiendo» برای زمانی که چیزی را متوجه نمی‌شوید بسیار کاربردی است."
+},
+
+{
+title:"مکالمه با دوست",
+intro:"عبارت‌های ساده برای گفت‌وگو با دوست.",
+explanation:"در مکالمه دوستانه می‌توانید درباره برنامه، علاقه‌ها و حال خود صحبت کنید.",
+vocab:[
+["Amigo","دوست"],
+["¿Qué haces?","چه کار می‌کنی؟"],
+["Vamos","برویم"],
+["Jugar","بازی کردن"],
+["Hablar","صحبت کردن"],
+["Ver","دیدن"],
+["Película","فیلم"],
+["Música","موسیقی"],
+["Claro","حتماً"],
+["Ahora","الان"]
+],
+examples:[
+["¿Qué haces ahora?","الان چه کار می‌کنی؟"],
+["Vamos a jugar.","بیا بازی کنیم."],
+["¿Quieres ver una película?","می‌خواهی یک فیلم ببینی؟"],
+["Claro, vamos.","حتماً، برویم."],
+["Me gusta esta música.","این موسیقی را دوست دارم."]
+],
+tip:"برای مکالمه روان، عبارت‌های کوتاه و پرتکرار را زیاد تکرار کنید."
+},
+
+{
+title:"زمان گذشته و آینده",
+intro:"مقایسه صحبت درباره دیروز و فردا.",
+explanation:"برای گذشته می‌توان از شکل‌های گذشته فعل استفاده کرد و برای آینده نزدیک از «ir a + infinitivo» استفاده می‌کنیم.",
+vocab:[
+["Ayer","دیروز"],
+["Hoy","امروز"],
+["Mañana","فردا"],
+["Fui","رفتم"],
+["Comí","خوردم"],
+["Estudié","درس خواندم"],
+["Voy a","قرار است"],
+["Haré","انجام خواهم داد"],
+["Después","بعد"],
+["Antes","قبل"]
+],
+examples:[
+["Ayer estudié.","دیروز درس خواندم."],
+["Hoy estudio.","امروز درس می‌خوانم."],
+["Mañana voy a estudiar.","فردا قرار است درس بخوانم."],
+["Ayer fui a la escuela.","دیروز به مدرسه رفتم."],
+["Mañana voy a jugar.","فردا قرار است بازی کنم."]
+],
+tip:"کلمات زمانی مثل ayer، hoy و mañana به شنونده کمک می‌کنند زمان جمله را سریع تشخیص دهد."
+},
+
+{
+title:"گرامر جمع‌بندی",
+intro:"مرور مهم‌ترین ساختارهای گرامری دوره.",
+explanation:"در این درس ساختار جمله، فعل، صفت، مالکیت، منفی کردن و سؤال پرسیدن را مرور می‌کنیم.",
+vocab:[
+["Sujeto","فاعل"],
+["Verbo","فعل"],
+["Objeto","مفعول"],
+["Adjetivo","صفت"],
+["Pregunta","سؤال"],
+["Negación","منفی"],
+["Plural","جمع"],
+["Singular","مفرد"],
+["Posesivo","ملکی"],
+["Frase","جمله"]
+],
+examples:[
+["Yo estudio español.","من اسپانیایی می‌خوانم."],
+["Mi casa es grande.","خانه من بزرگ است."],
+["No tengo tiempo.","وقت ندارم."],
+["¿Dónde vives?","کجا زندگی می‌کنی؟"],
+["Mis amigos son inteligentes.","دوستان من باهوش هستند."]
+],
+tip:"در بیشتر جمله‌های ساده، پیدا کردن فاعل و فعل اولین قدم برای فهمیدن جمله است."
+},
+
+{
+title:"اسپانیایی در دنیای واقعی",
+intro:"عبارت‌های کاربردی برای موقعیت‌های واقعی.",
+explanation:"هدف زبان فقط حفظ لغت نیست؛ باید بتوانید در موقعیت‌های مختلف پیام خود را منتقل کنید.",
+vocab:[
+["Ayuda","کمک"],
+["Necesito","نیاز دارم"],
+["Perdón","ببخشید"],
+["Disculpe","ببخشید رسمی"],
+["Gracias","ممنون"],
+["De nada","خواهش می‌کنم"],
+["Problema","مشکل"],
+["Entender","فهمیدن"],
+["Repetir","تکرار کردن"],
+["Despacio","آهسته"]
+],
+examples:[
+["Perdón, ¿puede repetir?","ببخشید، می‌توانید تکرار کنید؟"],
+["No entiendo.","نمی‌فهمم."],
+["¿Puede hablar más despacio?","می‌توانید آهسته‌تر صحبت کنید؟"],
+["Necesito ayuda.","به کمک نیاز دارم."],
+["Muchas gracias.","خیلی ممنون."]
+],
+tip:"توانایی درخواست کمک یا درخواست تکرار، بخش مهمی از یادگیری زبان واقعی است."
+},
+
+{
+title:"درک شنیداری",
+intro:"تمرین ذهنی برای تشخیص کلمات در گفتار.",
+explanation:"هنگام شنیدن اسپانیایی، لازم نیست همه کلمات را بفهمید. ابتدا کلمات کلیدی مانند اسم، عدد، مکان و فعل را پیدا کنید.",
+vocab:[
+["Escuchar","گوش دادن"],
+["Oír","شنیدن"],
+["Palabra","کلمه"],
+["Frase","جمله"],
+["Rápido","سریع"],
+["Despacio","آهسته"],
+["Repetir","تکرار کردن"],
+["Entender","فهمیدن"],
+["Voz","صدا"],
+["Sonido","صدا"]
+],
+examples:[
+["Escucha la frase.","به جمله گوش کن."],
+["Habla despacio.","آهسته صحبت کن."],
+["¿Puedes repetir?","می‌توانی تکرار کنی؟"],
+["Entiendo la palabra.","کلمه را می‌فهمم."],
+["Escucho español cada día.","هر روز اسپانیایی گوش می‌دهم."]
+],
+tip:"برای تقویت شنیداری، محتوای ساده و کوتاه را چند بار گوش کنید و روی کلمات آشنا تمرکز کنید."
+},
+
+{
+title:"آزمون آمادگی نهایی",
+intro:"آخرین مرور قبل از آزمون نهایی.",
+explanation:"قبل از ورود به آزمون نهایی، سلام و معرفی، افعال پایه، اعداد، زمان‌ها، سؤال‌ها، جمله‌های منفی، مکالمه و واژگان روزمره را مرور کنید.",
+vocab:[
+["Repasar","مرور کردن"],
+["Preparar","آماده کردن"],
+["Examen","امتحان"],
+["Pregunta","سؤال"],
+["Respuesta","پاسخ"],
+["Correcto","درست"],
+["Incorrecto","نادرست"],
+["Aprender","یاد گرفتن"],
+["Practicar","تمرین کردن"],
+["Éxito","موفقیت"]
+],
+examples:[
+["Voy a repasar.","قرار است مرور کنم."],
+["Estoy preparado.","آماده هستم."],
+["Quiero aprender más.","می‌خواهم بیشتر یاد بگیرم."],
+["Practico español cada día.","هر روز اسپانیایی تمرین می‌کنم."],
+["Estoy listo para el examen.","برای امتحان آماده‌ام."]
+],
+tip:"قبل از آزمون، اشتباهات درس‌های قبلی را دوباره مرور کنید."
+},
+
+{
+title:"آزمون نهایی اسپانیایی",
+intro:"به درس ۵۰ رسیدید! پس از تکمیل این درس، آزمون نهایی نمایش داده می‌شود.",
+explanation:"این درس مرحله پایانی دوره است. ابتدا مطالب را مرور کنید و سپس آزمون نهایی ۱۰ سؤالی را انجام دهید. برای دریافت گواهی باید حداقل ۷۰ درصد امتیاز کسب کنید.",
+vocab:[
+["Examen final","آزمون نهایی"],
+["Certificado","گواهی"],
+["Puntuación","امتیاز"],
+["Aprobado","قبول‌شده"],
+["Curso","دوره"],
+["Final","نهایی"],
+["Éxito","موفقیت"],
+["Español","اسپانیایی"],
+["Aprender","یاد گرفتن"],
+["Graduación","پایان دوره"]
+],
+examples:[
+["He terminado el curso.","دوره را تمام کرده‌ام."],
+["Estoy listo para el examen.","برای آزمون آماده‌ام."],
+["Quiero obtener mi certificado.","می‌خواهم گواهی خود را دریافت کنم."],
+["Aprendo español.","اسپانیایی یاد می‌گیرم."],
+["¡Buen trabajo!","آفرین/کارت عالی بود!"]
+],
+tip:"بعد از قبولی در آزمون نهایی، گواهی پایان دوره برای شما ساخته می‌شود."
+}
+
+];
+
+// Ensure exactly 50 lessons
+console.log("Spanish lessons:", lessons.length);
+
+let currentLesson = null;
+let selectedAnswer = null;
+
+const examQuestions = [
+{
+q:"کدام گزینه به معنی «سلام» است؟",
+options:["Hola","Gracias","Adiós","Casa"],
+answer:0
+},
+{
+q:"«Gracias» یعنی چه؟",
+options:["خداحافظ","ممنون","سلام","لطفاً"],
+answer:1
+},
+{
+q:"«Me llamo Carlos» یعنی:",
+options:["من دانش‌آموز هستم","من خوب هستم","نام من کارلوس است","من به خانه می‌روم"],
+answer:2
+},
+{
+q:"کدام گزینه به معنی «خانه» است؟",
+options:["Escuela","Casa","Calle","Mesa"],
+answer:1
+},
+{
+q:"«Tengo» به چه معنی است؟",
+options:["می‌روم","دارم","هستم","می‌خورم"],
+answer:1
+},
+{
+q:"«¿Dónde vives?» یعنی:",
+options:["چه کار می‌کنی؟","کجا زندگی می‌کنی؟","چند سال داری؟","چه چیزی می‌خوری؟"],
+answer:1
+},
+{
+q:"کدام گزینه به معنی «فردا» است؟",
+options:["Ayer","Hoy","Mañana","Ahora"],
+answer:2
+},
+{
+q:"«Estoy bien» یعنی:",
+options:["خوبم","گرسنه‌ام","خسته‌ام","می‌روم"],
+answer:0
+},
+{
+q:"برای منفی کردن یک جمله ساده معمولاً از چه کلمه‌ای استفاده می‌شود؟",
+options:["Sí","No","Muy","Más"],
+answer:1
+},
+{
+q:"«Voy a estudiar» یعنی:",
+options:["درس خواندم","درس نمی‌خوانم","قرار است درس بخوانم","درس خوانده‌ام"],
+answer:2
+}
+];
+
+function getCompleted(){
+    let count=0;
+
+    for(let i=1;i<=50;i++){
+        if(localStorage.getItem(`spanishLesson${i}Completed`)==="true"){
+            count++;
+        }
+    }
+
+    return count;
+}
+
+function getXP(){
+    return Number(localStorage.getItem("spanishXP") || 0);
+}
+
+function updateProgress(){
+
+    const completed=getCompleted();
+    const percent=Math.round((completed/50)*100);
+
+    document.getElementById("completedText").textContent =
+        `${completed} از 50 درس`;
+
+    document.getElementById("percentText").textContent =
+        `${percent}%`;
+
+    document.getElementById("progressBar").style.width =
+        `${percent}%`;
+
+    document.getElementById("xpText").textContent =
+        `⭐ XP: ${getXP()}`;
+}
+
+function isUnlocked(index){
+
+    if(index===0) return true;
+
+    return localStorage.getItem(
+        `spanishLesson${index}Completed`
+    )==="true";
+}
+
+function renderLessons(){
+
+    const box=document.getElementById("lessons");
+    box.innerHTML="";
+
+    lessons.forEach((lesson,index)=>{
+
+        const completed=
+            localStorage.getItem(
+                `spanishLesson${index+1}Completed`
+            )==="true";
+
+        const unlocked=isUnlocked(index);
+
+        const card=document.createElement("div");
+        card.className=
+            `lesson-card ${unlocked ? "" : "locked"}`;
+
+        card.innerHTML=`
+            <div class="lesson-number">
+                LESSON ${index+1}
+            </div>
+
+            <h3>
+                ${index+1}. ${lesson.title}
+            </h3>
+
+            <p>
+                ${lesson.intro}
+            </p>
+
+            <button
+                ${unlocked ? "" : "disabled"}
+                onclick="openLesson(${index})"
+            >
+                ${
+                    completed
+                    ? "✅ تکمیل شده"
+                    : unlocked
+                    ? "📖 مشاهده درس"
+                    : "🔒 قفل"
+                }
+            </button>
+        `;
+
+        box.appendChild(card);
+    });
+
+    updateProgress();
+}
+
+function openLesson(index){
+
+    if(!isUnlocked(index)) return;
+
+    currentLesson=index;
+
+    document.getElementById("coursePage").style.display="none";
+    document.getElementById("lessonView").classList.add("active");
+
+    const lesson=lessons[index];
+
+    document.getElementById("viewNumber").textContent=
+        `LESSON ${index+1} / 50`;
+
+    document.getElementById("viewTitle").textContent=
+        `${index+1}. ${lesson.title}`;
+
+    document.getElementById("viewIntro").textContent=
+        lesson.intro;
+
+    const vocab=document.getElementById("vocab");
+    vocab.innerHTML="";
+
+    lesson.vocab.forEach(item=>{
+        vocab.innerHTML+=`
+            <div class="word">
+                <span class="es">${item[0]}</span>
+                <span class="fa">${item[1]}</span>
+            </div>
+        `;
+    });
+
+    document.getElementById("explanation").textContent=
+        lesson.explanation;
+
+    const examples=document.getElementById("examples");
+    examples.innerHTML="";
+
+    lesson.examples.forEach(item=>{
+        examples.innerHTML+=`
+            <div class="example">
+                <strong>${item[0]}</strong>
+                <br>
+                ${item[1]}
+            </div>
+        `;
+    });
+
+    document.getElementById("tip").textContent=
+        lesson.tip;
+
+    selectedAnswer=null;
+
+    if(index===49){
+        renderFinalExam();
+    }else{
+        renderQuestion(index);
+    }
+
+    document.getElementById("typingInput").value="";
+    hideMessage();
+
+    const completed=
+        localStorage.getItem(
+            `spanishLesson${index+1}Completed`
+        )==="true";
+
+    document.getElementById("completeBtn").disabled=
+        completed;
+
+    document.getElementById("completeBtn").textContent=
+        completed
+        ? "✅ این درس قبلاً تکمیل شده"
+        : "✅ تکمیل درس";
+}
+
+function renderQuestion(index){
+
+    const lesson=lessons[index];
+
+    // سوال آموزشی ساده برای هر درس
+    const correct =
+        index % 2 === 0
+        ? lesson.vocab[0][0]
+        : lesson.vocab[1][0];
+
+    const wrong1=lesson.vocab[2][0];
+    const wrong2=lesson.vocab[3][0];
+    const wrong3=lesson.vocab[4][0];
+
+    const options=[
+        correct,
+        wrong1,
+        wrong2,
+        wrong3
+    ];
+
+    // برای جلوگیری از تکراری بودن پاسخ صحیح همیشه جای آن تصادفی نیست
+    // اما ترتیب هر درس متفاوت می‌شود.
+    const shift=index%4;
+    const arranged=[
+        options[(0+shift)%4],
+        options[(1+shift)%4],
+        options[(2+shift)%4],
+        options[(3+shift)%4]
+    ];
+
+    const correctIndex=arranged.indexOf(correct);
+
+    document.getElementById("question").innerHTML=`
+        <div class="question">
+            <div class="question-title">
+                <strong>سؤال:</strong>
+                معنی واژه «${correct}» چیست؟
+            </div>
+
+            ${arranged.map((option,i)=>`
+                <button
+                    class="option"
+                    onclick="selectAnswer(${i},${correctIndex})"
+                >
+                    ${option}
+                </button>
+            `).join("")}
+        </div>
+    `;
+}
+
+function selectAnswer(index,correctIndex){
+
+    selectedAnswer=index;
+
+    const buttons=document.querySelectorAll(".option");
+
+    buttons.forEach((button,i)=>{
+        button.classList.remove("correct","wrong");
+
+        if(i===index){
+            if(i===correctIndex){
+                button.classList.add("correct");
+            }else{
+                button.classList.add("wrong");
+            }
+        }
+    });
+}
+
+function renderFinalExam(){
+
+    document.getElementById("question").innerHTML=`
+        <div class="question">
+            <h3 style="margin-bottom:12px;">
+                🏆 آزمون نهایی — ۱۰ سؤال
+            </h3>
+
+            <p style="color:#aab7cf;line-height:2;">
+                برای قبولی باید حداقل ۷ سؤال از ۱۰ سؤال را درست پاسخ دهید.
+            </p>
+
+            <div id="examArea"></div>
+
+            <button onclick="submitExam()">
+                🎯 ثبت آزمون نهایی
+            </button>
+
+            <div id="examResult" class="message"></div>
+        </div>
+    `;
+
+    const area=document.getElementById("examArea");
+
+    examQuestions.forEach((q,i)=>{
+
+        area.innerHTML+=`
+            <div class="question" style="margin-top:15px;">
+                <div class="question-title">
+                    <strong>${i+1}.</strong>
+                    ${q.q}
+                </div>
+
+                ${q.options.map((op,j)=>`
+                    <button
+                        class="option"
+                        name="exam${i}"
+                        onclick="selectExamAnswer(${i},${j},this)"
+                    >
+                        ${op}
+                    </button>
+                `).join("")}
+            </div>
+        `;
+    });
+}
+
+let examAnswers={};
+
+function selectExamAnswer(qIndex,answer,button){
+
+    examAnswers[qIndex]=answer;
+
+    const parent=button.parentElement;
+    const buttons=parent.querySelectorAll(".option");
+
+    buttons.forEach(b=>{
+        b.classList.remove("correct","wrong");
+    });
+
+    button.classList.add("correct");
+}
+
+function submitExam(){
+
+    let score=0;
+
+    examQuestions.forEach((q,i)=>{
+        if(examAnswers[i]===q.answer){
+            score++;
+        }
+    });
+
+    const percent=score*10;
+
+    const result=document.getElementById("examResult");
+
+    result.classList.add("show");
+
+    if(percent>=70){
+
+        result.className="message show success";
+
+        result.innerHTML=
+            `🎉 تبریک! شما با امتیاز <strong>${percent}%</strong> قبول شدید.`;
+
+        localStorage.setItem(
+            "spanishFinalExamPassed",
+            "true"
+        );
+
+        localStorage.setItem(
+            "spanishFinalExamScore",
+            percent
+        );
+
+        if(localStorage.getItem("spanishExamXPAdded")!=="true"){
+
+            const xp=getXP()+50;
+
+            localStorage.setItem(
+                "spanishXP",
+                xp
+            );
+
+            localStorage.setItem(
+                "spanishExamXPAdded",
+                "true"
+            );
+        }
+
+        generateCertificate(percent);
+
+    }else{
+
+        result.className="message show error";
+
+        result.innerHTML=
+            `❌ امتیاز شما ${percent}% است. برای قبولی حداقل 70% لازم است. دوباره تلاش کنید.`;
+    }
+}
+
+function completeLesson(){
+
+    if(currentLesson===null) return;
+
+    const number=currentLesson+1;
+
+    if(number===50){
+        showMessage(
+            "برای تکمیل درس ۵۰ باید آزمون نهایی را با حداقل ۷۰٪ قبول شوید.",
+            "error"
+        );
+        return;
+    }
+
+    if(selectedAnswer===null){
+
+        showMessage(
+            "ابتدا به سؤال درس پاسخ دهید.",
+            "error"
+        );
+
+        return;
+    }
+
+    // گزینه صحیح را با بررسی کلاس مشخص می‌کنیم
+    const selected=document.querySelector(".option.correct");
+
+    if(!selected){
+
+        showMessage(
+            "❌ پاسخ انتخاب‌شده درست نیست. دوباره تلاش کنید.",
+            "error"
+        );
+
+        return;
+    }
+
+    const key=`spanishLesson${number}Completed`;
+
+    if(localStorage.getItem(key)!=="true"){
+
+        localStorage.setItem(key,"true");
+
+        const xp=getXP()+20;
+
+        localStorage.setItem(
+            "spanishXP",
+            xp
+        );
+    }
+
+    showMessage(
+        "🎉 درس با موفقیت تکمیل شد! درس بعدی برای شما باز شد.",
+        "success"
+    );
+
+    document.getElementById("completeBtn").disabled=true;
+
+    document.getElementById("completeBtn").textContent=
+        "✅ تکمیل شده";
+
+    updateProgress();
+}
+
+function showMessage(text,type){
+
+    const box=document.getElementById("message");
+
+    box.textContent=text;
+
+    box.className=
+        `message show ${type}`;
+}
+
+function hideMessage(){
+
+    const box=document.getElementById("message");
+
+    box.className="message";
+    box.textContent="";
+}
+
+function backToLessons(){
+
+    document.getElementById("lessonView").classList.remove("active");
+    document.getElementById("coursePage").style.display="block";
+
+    renderLessons();
+}
+
+function generateCertificate(score){
+
+    const cert=document.getElementById("certificate");
+
+    cert.classList.add("show");
+
+    const savedName=
+        localStorage.getItem("spanishStudentName") ||
+        "کاربر نمونه";
+
+    document.getElementById("studentName").textContent=
+        savedName;
+
+    document.getElementById("certScore").textContent=
+        `${score}%`;
+
+    document.getElementById("certDate").textContent=
+        new Date().toLocaleDateString("fa-IR");
+
+    let certId=
+        localStorage.getItem("spanishCertificateId");
+
+    if(!certId){
+
+        certId=
+            "GLA-ESP-" +
+            Math.random()
+            .toString(36)
+            .substring(2,8)
+            .toUpperCase();
+
+        localStorage.setItem(
+            "spanishCertificateId",
+            certId
+        );
+    }
+
+    document.getElementById("certId").textContent=
+        certId;
+}
+
+window.addEventListener("load",()=>{
+
+    renderLessons();
+
+    if(
+        localStorage.getItem(
+            "spanishFinalExamPassed"
+        )==="true"
+    ){
+
+        const score=
+            Number(
+                localStorage.getItem(
+                    "spanishFinalExamScore"
+                ) || 0
+            );
+
+        generateCertificate(score);
+    }
+});
+
+</script>
+
+</body>
+  </html>
